@@ -1,0 +1,333 @@
+---
+---
+
+<section class="about" id="nosotros">
+  <div class="about-inner">
+    <!-- Left: text + team cards -->
+    <div class="about-text reveal">
+      <p class="section-label">Quiénes somos</p>
+      <h2 class="section-title">Dos personas, <em>un equipo</em> completo</h2>
+      <p class="about-desc">
+        Somos Thomas y [nombre], una pareja con una misión clara: ayudar a los negocios del Eixample y Barcelona a brillar online. Unimos tecnología, diseño y estrategia en un equipo ágil que ejecuta rápido y bien.
+      </p>
+      <div class="about-team">
+        <div class="team-card">
+          <div class="team-avatar team-avatar-1">👨‍💻</div>
+          <div class="team-name">Thomas</div>
+          <div class="team-role">Desarrollo & Automatización</div>
+          <div class="team-skills">
+            <span class="team-skill">Next.js</span>
+            <span class="team-skill">React</span>
+            <span class="team-skill">n8n</span>
+            <span class="team-skill">IA</span>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar team-avatar-2">👩‍🎨</div>
+          <div class="team-name">[Tu novia]</div>
+          <div class="team-role">Diseño & Contenido</div>
+          <div class="team-skills">
+            <span class="team-skill">Instagram</span>
+            <span class="team-skill">Reels</span>
+            <span class="team-skill">Fotografía</span>
+            <span class="team-skill">Video</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: stat cards -->
+    <div class="about-visual reveal">
+      <!-- Card 1: Active clients -->
+      <div class="av-card av-1">
+        <div class="av-label">CLIENTES ACTIVOS</div>
+        <div class="av-val">12+</div>
+        <div class="av-sub">negocios en Barcelona</div>
+        <div class="av-bar-row">
+          <div class="av-bar">
+            <div class="av-bar-fill av-bar-fill-purple" style="width: 85%"></div>
+          </div>
+          <div class="av-bar">
+            <div class="av-bar-fill av-bar-fill-green" style="width: 70%"></div>
+          </div>
+          <div class="av-bar">
+            <div class="av-bar-fill av-bar-fill-light" style="width: 92%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Delivery time -->
+      <div class="av-card av-2">
+        <div class="av-label av-label-dark">TIEMPO DE ENTREGA</div>
+        <div class="av-val av-val-purple">3–5</div>
+        <div class="av-sub av-sub-dark">días para tu web</div>
+      </div>
+
+      <!-- Card 3: Free audit -->
+      <div class="av-card av-3">
+        <div class="av-label av-label-purple">AUDITORÍA</div>
+        <div class="av-val-sm">Gratis</div>
+        <div class="av-sub-sm">Analizamos tu presencia digital sin costo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--color-cream-dark);
+    padding: 120px 48px;
+  }
+
+  .about-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-text .section-title {
+    margin-bottom: 24px;
+  }
+
+  .about-desc {
+    font-size: 16px;
+    color: var(--color-ink-muted);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+
+  .about-team {
+    display: flex;
+    gap: 16px;
+  }
+
+  .team-card {
+    flex: 1;
+    background: var(--color-cream);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--color-cream-dark);
+  }
+
+  .team-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+
+  .team-avatar-1 {
+    background: var(--color-purple-light);
+  }
+
+  .team-avatar-2 {
+    background: var(--color-green-light);
+  }
+
+  .team-name {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    margin-bottom: 4px;
+    color: var(--color-ink);
+  }
+
+  .team-role {
+    font-size: 12px;
+    color: var(--color-ink-muted);
+    margin-bottom: 10px;
+  }
+
+  .team-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .team-skill {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: var(--color-cream);
+    color: var(--color-ink-muted);
+    border: 1px solid var(--color-cream-dark);
+  }
+
+  /* Visual stat cards */
+  .about-visual {
+    position: relative;
+    height: 480px;
+  }
+
+  .av-card {
+    position: absolute;
+    background: var(--color-cream);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 30px rgba(17, 17, 16, 0.08);
+    border: 1px solid var(--color-cream-dark);
+  }
+
+  .av-1 {
+    width: 260px;
+    top: 0;
+    left: 0;
+  }
+
+  .av-2 {
+    width: 220px;
+    top: 120px;
+    right: 0;
+    background: var(--color-ink-soft);
+    color: var(--color-cream);
+    border-color: transparent;
+  }
+
+  .av-3 {
+    width: 200px;
+    bottom: 0;
+    left: 40px;
+    background: var(--color-purple-light);
+    border-color: transparent;
+  }
+
+  .av-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    opacity: 0.5;
+    margin-bottom: 8px;
+  }
+
+  .av-label-dark {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: rgba(247, 244, 239, 0.4);
+    margin-bottom: 8px;
+  }
+
+  .av-label-purple {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--color-purple-deep);
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+
+  .av-val {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 4px;
+    color: var(--color-ink);
+  }
+
+  .av-val-purple {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 4px;
+    color: var(--color-purple);
+  }
+
+  .av-val-sm {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--color-ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .av-sub {
+    font-size: 12px;
+    opacity: 0.5;
+  }
+
+  .av-sub-dark {
+    font-size: 12px;
+    color: rgba(247, 244, 239, 0.4);
+  }
+
+  .av-sub-sm {
+    font-size: 11px;
+    color: var(--color-ink-muted);
+    margin-top: 4px;
+  }
+
+  .av-bar-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .av-bar {
+    height: 4px;
+    border-radius: 2px;
+    background: var(--color-cream-dark);
+    overflow: hidden;
+  }
+
+  .av-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+  }
+
+  .av-bar-fill-purple {
+    background: var(--color-purple);
+  }
+
+  .av-bar-fill-green {
+    background: var(--color-green);
+  }
+
+  .av-bar-fill-light {
+    background: var(--color-purple-light);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .about-inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .about-visual {
+      height: 360px;
+    }
+
+    .av-1 {
+      width: 220px;
+    }
+
+    .av-2 {
+      width: 180px;
+      top: 100px;
+    }
+
+    .av-3 {
+      width: 160px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .about {
+      padding: 80px 24px;
+    }
+
+    .about-team {
+      flex-direction: column;
+    }
+  }
+</style>

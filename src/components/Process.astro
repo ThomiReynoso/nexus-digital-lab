@@ -1,0 +1,201 @@
+---
+const steps = [
+  {
+    num: '01',
+    name: 'Auditoría gratuita',
+    desc: 'Analizamos tu presencia digital actual y te decimos exactamente qué mejorar y por qué.',
+    badge: 'Sin costo',
+    badgeType: 'purple',
+  },
+  {
+    num: '02',
+    name: 'Propuesta a medida',
+    desc: 'Diseñamos una solución específica para tu negocio, con precios claros y plazos reales.',
+    badge: 'Personalizado',
+    badgeType: 'green',
+  },
+  {
+    num: '03',
+    name: 'Ejecución rápida',
+    desc: 'Ejecutamos en tiempo récord usando las mejores herramientas. Tu web en días, no meses.',
+    badge: 'Ágil',
+    badgeType: 'purple',
+  },
+  {
+    num: '04',
+    name: 'Crecimiento continuo',
+    desc: 'Seguimiento, métricas y optimización constante. No desaparecemos tras la entrega.',
+    badge: 'Recurrente',
+    badgeType: 'green',
+  },
+];
+---
+
+<section class="process" id="proceso">
+  <div class="process-inner">
+    <div class="reveal">
+      <p class="section-label process-label">Cómo trabajamos</p>
+      <h2 class="section-title process-title">Un proceso <em>simple</em> que funciona</h2>
+    </div>
+
+    <div class="process-steps reveal">
+      {steps.map((step, i) => (
+        <div class="step">
+          <div class="step-num">{step.num}</div>
+          <div class="step-name">{step.name}</div>
+          <div class="step-desc">{step.desc}</div>
+          <span class={`step-badge step-badge-${step.badgeType}`}>{step.badge}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process {
+    background: var(--color-ink);
+    padding: 120px 48px;
+    color: var(--color-cream);
+  }
+
+  .process-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .process-label {
+    color: var(--color-green);
+  }
+
+  .process-title {
+    color: var(--color-cream);
+    margin-bottom: 0;
+  }
+
+  .process-title em {
+    color: var(--color-purple);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+    position: relative;
+  }
+
+  /* Connecting line between steps (desktop) */
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 44px;
+    left: calc(25% - 8px);
+    right: calc(25% - 8px);
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(247, 244, 239, 0.15) 10%,
+      rgba(247, 244, 239, 0.15) 90%,
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  .step {
+    background: rgba(247, 244, 239, 0.04);
+    border: 1px solid rgba(247, 244, 239, 0.08);
+    border-radius: 16px;
+    padding: 32px 28px;
+    position: relative;
+    transition: background 0.25s;
+  }
+
+  .step:hover {
+    background: rgba(247, 244, 239, 0.07);
+  }
+
+  /* Arrow connector between steps */
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 44px;
+    right: -8px;
+    width: 14px;
+    height: 14px;
+    border-top: 1px solid rgba(247, 244, 239, 0.2);
+    border-right: 1px solid rgba(247, 244, 239, 0.2);
+    transform: rotate(45deg) translateY(-50%);
+    z-index: 1;
+  }
+
+  .step-num {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    font-style: italic;
+    color: rgba(247, 244, 239, 0.12);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .step-name {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--color-cream);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: rgba(247, 244, 239, 0.45);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .step-badge {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+
+  .step-badge-purple {
+    background: rgba(184, 169, 217, 0.15);
+    color: var(--color-purple);
+  }
+
+  .step-badge-green {
+    background: rgba(168, 197, 160, 0.15);
+    color: var(--color-green);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .process-steps {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .process-steps::before {
+      display: none;
+    }
+
+    .step:not(:last-child)::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .process {
+      padding: 80px 24px;
+    }
+
+    .process-steps {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+</style>

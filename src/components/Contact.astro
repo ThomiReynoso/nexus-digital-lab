@@ -1,0 +1,308 @@
+---
+---
+
+<section class="contact" id="contacto">
+  <!-- Left: contact info -->
+  <div class="reveal">
+    <h2 class="contact-title">¿Listo para <em>crecer</em> online?</h2>
+    <p class="contact-sub">
+      Cuéntanos sobre tu negocio. Te hacemos una auditoría gratuita y te decimos exactamente cómo podemos ayudarte.
+    </p>
+    <div class="contact-links">
+      <a href="https://wa.me/34600000000" class="clink" target="_blank" rel="noopener noreferrer">
+        <div class="clink-icon clink-icon-1">💬</div>
+        <div class="clink-text">
+          <div class="clink-label">WHATSAPP</div>
+          <div class="clink-val">Escríbenos ahora</div>
+        </div>
+        <span class="clink-arrow">→</span>
+      </a>
+      <a href="mailto:hola@nexusdigitallabs.com" class="clink">
+        <div class="clink-icon clink-icon-2">✉️</div>
+        <div class="clink-text">
+          <div class="clink-label">EMAIL</div>
+          <div class="clink-val">hola@nexusdigitallabs.com</div>
+        </div>
+        <span class="clink-arrow">→</span>
+      </a>
+      <a href="https://instagram.com/nexusdigitallabs" class="clink" target="_blank" rel="noopener noreferrer">
+        <div class="clink-icon clink-icon-3">📸</div>
+        <div class="clink-text">
+          <div class="clink-label">INSTAGRAM</div>
+          <div class="clink-val">@nexusdigitallabs</div>
+        </div>
+        <span class="clink-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Right: contact form -->
+  <div class="contact-form reveal">
+    <div class="form-title">Cuéntanos sobre tu negocio</div>
+    <form
+      method="POST"
+      data-netlify="true"
+      name="contact"
+      netlify-honeypot="bot-field"
+    >
+      <!-- Honeypot anti-spam field -->
+      <p style="display: none;">
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </p>
+      <input type="hidden" name="form-name" value="contact" />
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="name">Nombre</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-input"
+            placeholder="Tu nombre"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="business">Negocio</label>
+          <input
+            type="text"
+            id="business"
+            name="business"
+            class="form-input"
+            placeholder="Nombre del negocio"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="service">¿Qué necesitas?</label>
+        <input
+          type="text"
+          id="service"
+          name="service"
+          class="form-input"
+          placeholder="Web, redes, fotografía..."
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="message">Mensaje</label>
+        <textarea
+          id="message"
+          name="message"
+          class="form-input"
+          placeholder="Cuéntanos sobre tu negocio y qué quieres mejorar..."
+        ></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">
+        Solicitar auditoría gratuita →
+      </button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: 120px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .contact-title {
+    font-family: var(--font-serif);
+    font-size: clamp(36px, 4vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    color: var(--color-ink);
+  }
+
+  .contact-title em {
+    font-style: italic;
+    color: var(--color-purple-deep);
+  }
+
+  .contact-sub {
+    font-size: 16px;
+    color: var(--color-ink-muted);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 36px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .clink {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 14px;
+    color: var(--color-ink);
+    text-decoration: none;
+    padding: 16px 20px;
+    background: var(--color-cream-dark);
+    border-radius: 12px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .clink:hover {
+    background: var(--color-purple-light);
+    transform: translateX(4px);
+  }
+
+  .clink-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .clink-icon-1 {
+    background: var(--color-green-light);
+  }
+
+  .clink-icon-2 {
+    background: var(--color-purple-light);
+  }
+
+  .clink-icon-3 {
+    background: var(--color-cream);
+    border: 1px solid var(--color-cream-dark);
+  }
+
+  .clink-text {
+    flex: 1;
+  }
+
+  .clink-label {
+    font-size: 11px;
+    color: var(--color-ink-muted);
+    margin-bottom: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  .clink-val {
+    font-weight: 500;
+  }
+
+  .clink-arrow {
+    color: var(--color-ink-muted);
+    font-size: 14px;
+  }
+
+  /* Form */
+  .contact-form {
+    background: var(--color-ink-soft);
+    border-radius: 24px;
+    padding: 40px;
+    color: var(--color-cream);
+  }
+
+  .form-title {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    margin-bottom: 28px;
+    color: var(--color-cream);
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-label {
+    font-size: 12px;
+    color: rgba(247, 244, 239, 0.45);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 13px 16px;
+    background: rgba(247, 244, 239, 0.06);
+    border: 1px solid rgba(247, 244, 239, 0.1);
+    border-radius: 10px;
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .form-input::placeholder {
+    color: rgba(247, 244, 239, 0.25);
+  }
+
+  .form-input:focus {
+    border-color: var(--color-purple);
+    background: rgba(247, 244, 239, 0.09);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  textarea.form-input {
+    resize: none;
+    height: 100px;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--color-purple-deep);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .form-submit:hover {
+    background: #6B5BA0;
+    transform: translateY(-1px);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .contact {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contact {
+      padding: 80px 24px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+      padding: 28px 24px;
+    }
+  }
+</style>

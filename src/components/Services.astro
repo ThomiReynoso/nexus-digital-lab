@@ -1,0 +1,297 @@
+---
+---
+
+<section class="services" id="servicios">
+  <div class="reveal">
+    <p class="section-label">Lo que hacemos</p>
+    <h2 class="section-title">Servicios diseñados para <em>hacer crecer</em> tu negocio</h2>
+  </div>
+
+  <div class="services-grid reveal">
+    <!-- Service 01: Web Development — large featured card -->
+    <div class="svc svc-1">
+      <div>
+        <div class="svc-num">01</div>
+        <div class="svc-icon">🌐</div>
+        <div class="svc-name">Desarrollo web</div>
+        <div class="svc-desc">
+          Creamos páginas web profesionales, rápidas y optimizadas que representan tu negocio y convierten visitas en clientes. Desde landings hasta tiendas online.
+        </div>
+        <div class="svc-tags">
+          <span class="svc-tag">Landing pages</span>
+          <span class="svc-tag">E-commerce</span>
+          <span class="svc-tag">Web corporativa</span>
+          <span class="svc-tag">Reservas online</span>
+        </div>
+      </div>
+      <div class="svc-arrow">↗</div>
+    </div>
+
+    <!-- Service 02: Social Media -->
+    <div class="svc svc-2">
+      <div class="svc-num svc-num-purple">02</div>
+      <div class="svc-icon">📱</div>
+      <div class="svc-name svc-name-dark">Gestión de redes sociales</div>
+      <div class="svc-desc svc-desc-muted">
+        Estrategia, contenido y publicación diaria. Construimos tu comunidad y posicionamos tu marca en Instagram y más.
+      </div>
+      <div class="svc-tags">
+        <span class="svc-tag">Instagram</span>
+        <span class="svc-tag">Contenido</span>
+        <span class="svc-tag">Estrategia</span>
+      </div>
+    </div>
+
+    <!-- Service 03: Photography & Video -->
+    <div class="svc svc-3">
+      <div class="svc-num svc-num-green">03</div>
+      <div class="svc-icon">📸</div>
+      <div class="svc-name svc-name-dark">Foto y video profesional</div>
+      <div class="svc-desc svc-desc-muted">
+        Sesiones de fotografía de producto, negocio y reels para redes. Contenido visual que enamora a tus clientes.
+      </div>
+    </div>
+
+    <!-- Service 04: Automation -->
+    <div class="svc svc-4">
+      <div class="svc-num svc-num-faint">04</div>
+      <div class="svc-icon">⚡</div>
+      <div class="svc-name svc-name-sm">Automatización de procesos</div>
+      <div class="svc-desc svc-desc-dark">
+        Automatizamos tareas repetitivas: respuestas, pedidos, leads. Más tiempo para lo que importa.
+      </div>
+    </div>
+
+    <!-- Service 05: Strategy & Content -->
+    <div class="svc svc-5">
+      <div class="svc-num svc-num-faint">05</div>
+      <div class="svc-icon">🎯</div>
+      <div class="svc-name svc-name-sm">Estrategia & contenido</div>
+      <div class="svc-desc svc-desc-dark">
+        Planificamos y ejecutamos tu estrategia de contenido. Cada post con un propósito claro.
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: 120px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  .svc {
+    border-radius: 20px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s;
+  }
+
+  .svc:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Card variants */
+  .svc-1 {
+    background: var(--color-ink-soft);
+    color: var(--color-cream);
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 480px;
+  }
+
+  .svc-2 {
+    background: var(--color-purple-light);
+    min-height: 220px;
+  }
+
+  .svc-3 {
+    background: var(--color-green-light);
+    min-height: 220px;
+  }
+
+  .svc-4 {
+    background: var(--color-cream-dark);
+    min-height: 220px;
+  }
+
+  .svc-5 {
+    background: var(--color-cream);
+    border: 1px solid var(--color-cream-dark);
+    min-height: 220px;
+  }
+
+  /* Number variants */
+  .svc-num {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    margin-bottom: 28px;
+  }
+
+  .svc-num-purple {
+    color: var(--color-purple-deep);
+    opacity: 0.5;
+  }
+
+  .svc-num-green {
+    color: var(--color-green-deep);
+    opacity: 0.5;
+  }
+
+  .svc-num-faint {
+    opacity: 0.35;
+  }
+
+  /* Icon */
+  .svc-icon {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  /* Name variants */
+  .svc-name {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+
+  .svc-1 .svc-name {
+    font-size: 32px;
+    color: var(--color-cream);
+  }
+
+  .svc-name-dark {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+    color: var(--color-ink);
+  }
+
+  .svc-name-sm {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    color: var(--color-ink);
+  }
+
+  /* Description variants */
+  .svc-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    font-weight: 300;
+    opacity: 0.65;
+    flex: 1;
+  }
+
+  .svc-desc-muted {
+    font-size: 13px;
+    line-height: 1.7;
+    font-weight: 300;
+    color: var(--color-ink-muted);
+  }
+
+  .svc-desc-dark {
+    font-size: 13px;
+    line-height: 1.7;
+    font-weight: 300;
+    color: var(--color-ink-muted);
+  }
+
+  /* Tags */
+  .svc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 28px;
+  }
+
+  .svc-tag {
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-weight: 400;
+  }
+
+  .svc-1 .svc-tag {
+    background: rgba(247, 244, 239, 0.12);
+    color: rgba(247, 244, 239, 0.7);
+  }
+
+  .svc-2 .svc-tag {
+    background: rgba(123, 107, 176, 0.12);
+    color: var(--color-purple-deep);
+  }
+
+  .svc-3 .svc-tag {
+    background: rgba(90, 138, 82, 0.12);
+    color: var(--color-green-deep);
+  }
+
+  /* Arrow */
+  .svc-arrow {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(247, 244, 239, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: rgba(247, 244, 239, 0.6);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .svc:hover .svc-arrow {
+    background: rgba(247, 244, 239, 0.2);
+    color: rgba(247, 244, 239, 0.9);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .services-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .svc-1 {
+      grid-column: span 2;
+      grid-row: span 1;
+      min-height: 280px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .services {
+      padding: 80px 24px;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .svc-1 {
+      grid-column: span 1;
+    }
+  }
+</style>
