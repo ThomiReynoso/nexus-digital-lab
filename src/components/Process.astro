@@ -32,6 +32,7 @@ const steps = [
 ---
 
 <section class="process" id="proceso">
+  <div class="process-bg"></div>
   <div class="process-inner">
     <div class="reveal">
       <p class="section-label process-label">Cómo trabajamos</p>
@@ -53,12 +54,26 @@ const steps = [
 
 <style>
   .process {
-    background: var(--color-ink);
+    background: #0E0E0E;
     padding: 120px 48px;
     color: var(--color-cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .process-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/neuronas.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    pointer-events: none;
   }
 
   .process-inner {
+    position: relative;
+    z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -73,46 +88,30 @@ const steps = [
   }
 
   .process-title em {
-    color: var(--color-purple);
+    color: var(--color-green);
   }
 
   .process-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
+    gap: 20px;
     margin-top: 64px;
     position: relative;
   }
 
-  /* Connecting line between steps (desktop) */
-  .process-steps::before {
-    content: '';
-    position: absolute;
-    top: 44px;
-    left: calc(25% - 8px);
-    right: calc(25% - 8px);
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(247, 244, 239, 0.15) 10%,
-      rgba(247, 244, 239, 0.15) 90%,
-      transparent
-    );
-    pointer-events: none;
-  }
 
   .step {
-    background: rgba(247, 244, 239, 0.04);
-    border: 1px solid rgba(247, 244, 239, 0.08);
+    background: rgba(247, 244, 239, 0.10);
+    border: 2px solid rgba(90, 138, 82, 0.35);
     border-radius: 16px;
     padding: 32px 28px;
     position: relative;
-    transition: background 0.25s;
+    transition: background 0.25s, border-color 0.25s;
   }
 
   .step:hover {
-    background: rgba(247, 244, 239, 0.07);
+    background: rgba(247, 244, 239, 0.15);
+    border-color: rgba(90, 138, 82, 0.6);
   }
 
   /* Arrow connector between steps */
@@ -133,7 +132,7 @@ const steps = [
     font-family: var(--font-serif);
     font-size: 48px;
     font-style: italic;
-    color: rgba(247, 244, 239, 0.12);
+    color: var(--color-green);
     line-height: 1;
     margin-bottom: 24px;
   }
@@ -148,7 +147,7 @@ const steps = [
 
   .step-desc {
     font-size: 13px;
-    color: rgba(247, 244, 239, 0.45);
+    color: rgba(247, 244, 239, 0.68);
     line-height: 1.7;
     font-weight: 300;
   }

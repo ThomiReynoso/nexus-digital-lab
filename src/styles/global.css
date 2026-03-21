@@ -3,14 +3,14 @@
 @theme {
   --color-cream: #F7F4EF;
   --color-cream-dark: #EDE9E1;
-  --color-ink: #111110;
+  --color-ink: #FFFFFF;
   --color-ink-soft: #1C1C1A;
-  --color-ink-muted: #7A7870;
+  --color-ink-muted: #A8A49C;
   --color-purple: #B8A9D9;
-  --color-purple-light: #DDD6F0;
+  --color-purple-light: #2A2340;
   --color-purple-deep: #7B6BB0;
   --color-green: #A8C5A0;
-  --color-green-light: #D4E8D0;
+  --color-green-light: #1A2B18;
   --color-green-deep: #5A8A52;
   --font-serif: "DM Serif Display", Georgia, serif;
   --font-sans: "DM Sans", sans-serif;
@@ -29,7 +29,7 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: var(--color-cream);
+  background: #0A0A0A;
   color: var(--color-ink);
   overflow-x: hidden;
 }
@@ -73,34 +73,41 @@ body {
 
 /* Button utilities */
 .btn-primary {
-  background: var(--color-ink);
-  color: var(--color-cream);
+  background: var(--color-purple-deep);
+  color: #FFFFFF;
   font-size: 14px;
   font-weight: 500;
   padding: 14px 28px;
   border-radius: 100px;
   text-decoration: none;
   display: inline-block;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
 }
 
 .btn-primary:hover {
+  background: #6B5BA0;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(17, 17, 16, 0.15);
+  box-shadow: 0 8px 24px rgba(123, 107, 176, 0.35);
 }
 
 .btn-secondary {
+  background: var(--color-purple-deep);
+  color: #FFFFFF;
   font-size: 14px;
-  color: var(--color-ink-muted);
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 100px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.2s;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
 }
 
 .btn-secondary:hover {
-  color: var(--color-ink);
+  background: #6B5BA0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(123, 107, 176, 0.35);
 }
 
 .btn-secondary::after {
