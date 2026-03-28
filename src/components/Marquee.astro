@@ -1,0 +1,65 @@
+---
+---
+
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-text">
+      DISEÑO WEB <span class="dot">·</span> BARCELONA <span class="dot">·</span> CONTENIDO DIGITAL <span class="dot">·</span> FOTOGRAFÍA <span class="dot">·</span> AUTOMATIZACIÓN <span class="dot">·</span> ESTRATEGIA DIGITAL <span class="dot">·</span>&nbsp;
+    </span>
+    <span class="marquee-text" aria-hidden="true">
+      DISEÑO WEB <span class="dot">·</span> BARCELONA <span class="dot">·</span> CONTENIDO DIGITAL <span class="dot">·</span> FOTOGRAFÍA <span class="dot">·</span> AUTOMATIZACIÓN <span class="dot">·</span> ESTRATEGIA DIGITAL <span class="dot">·</span>&nbsp;
+    </span>
+  </div>
+</div>
+
+<style>
+  .marquee-strip {
+    background: #0A0A0A;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 18px 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+
+  .marquee-strip:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-text {
+    display: inline-block;
+    white-space: nowrap;
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(247, 244, 239, 0.85);
+    padding-right: 0;
+  }
+
+  .marquee-text .dot {
+    color: #7B6BB0;
+    margin: 0 12px;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>

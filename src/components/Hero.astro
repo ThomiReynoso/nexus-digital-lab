@@ -1,9 +1,11 @@
 ---
 ---
 
-<section class="hero">
-  <!-- Background image with Ken Burns animation -->
-  <div class="hero-bg"></div>
+<section class="hero" id="hero">
+  <!-- Background video -->
+  <video class="hero-bg" id="hero-video" muted loop playsinline disablepictureinpicture>
+    <source src="/hero-video.mp4" type="video/mp4" />
+  </video>
   <div class="hero-bg-overlay"></div>
 
   <!-- Background blobs -->
@@ -13,7 +15,7 @@
   <!-- Left content -->
   <div class="hero-left">
     <div class="hero-tag">Agencia digital · Barcelona</div>
-    <h1 class="hero-title">
+    <h1 class="hero-title split-text" data-split-text>
       Ayudamos a tu negocio a <em>conectar</em> con más <span class="green">clientes</span>
     </h1>
     <p class="hero-sub">
@@ -60,13 +62,12 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/hero.jpg');
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     opacity: 0.8;
-    animation: kenBurns 24s ease-in-out infinite alternate;
-    will-change: transform;
     z-index: 0;
+    pointer-events: none;
   }
 
   .hero-bg-overlay {
@@ -77,15 +78,7 @@
     pointer-events: none;
   }
 
-  @keyframes kenBurns {
-    0%   { transform: scale(1)    translate(0%, 0%); }
-    25%  { transform: scale(1.06) translate(-1%, 0.5%); }
-    50%  { transform: scale(1.1)  translate(-1.5%, -1%); }
-    75%  { transform: scale(1.06) translate(0.5%, -0.5%); }
-    100% { transform: scale(1.12) translate(1%, 1%); }
-  }
-
-  .hero-blob {
+.hero-blob {
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
@@ -328,3 +321,23 @@
     }
   }
 </style>
+
+<script>
+  function startHeroVideo() {
+    const v = document.getElementById('hero-video') as HTMLVideoElement;
+    if (!v) return;
+    v.muted = true;
+    v.volume = 0;
+    v.play().catch(() => {
+      // fallback: try again on first user interaction
+      document.addEventListener('click', () => v.play(), { once: true });
+      document.addEventListener('touchstart', () => v.play(), { once: true });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startHeroVideo);
+  } else {
+    startHeroVideo();
+  }
+</script>

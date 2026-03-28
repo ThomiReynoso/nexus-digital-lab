@@ -47,6 +47,130 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://nexusdig
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
+    <!-- Preloader + animation styles -->
+    <style>
+      #preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #0A0A0A;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      #preloader-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+      #preloader-brand {
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(3rem, 8vw, 6rem);
+        color: #F7F4EF;
+        display: flex;
+        gap: 0.05em;
+        overflow: hidden;
+      }
+      #preloader-studio {
+        font-family: var(--font-sans, 'DM Sans', sans-serif);
+        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        font-weight: 300;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: rgba(247, 244, 239, 0.6);
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      .slide-up-char {
+        display: inline-block;
+        transform: translateY(120%);
+      }
+      #page-load-green {
+        position: absolute;
+        left: 0; top: 0;
+        height: 100%;
+        width: 0;
+        background: #7B6BB0;
+      }
+      #page-load-black {
+        position: absolute;
+        left: 0; top: 0;
+        width: 100%;
+        height: 0;
+        background: #0A0A0A;
+      }
+
+      /* Hero content hidden until preloader exits */
+      .hero-left,
+      .hero-right {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+      .hero-left.hero-revealed,
+      .hero-right.hero-revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      [data-animate] {
+        will-change: transform, opacity;
+      }
+
+      /* ─── Custom cursor ─────────────────────────────────────────────────── */
+      body { cursor: none; }
+      a, button { cursor: none; }
+
+      #cursor-dot {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: var(--color-cream);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 99999;
+        transform: translate(-50%, -50%);
+        transition: width 0.2s, height 0.2s, background 0.2s;
+      }
+
+      #cursor-ring {
+        position: fixed;
+        width: 36px;
+        height: 36px;
+        border: 1.5px solid rgba(247, 244, 239, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 99998;
+        transform: translate(-50%, -50%);
+      }
+
+      body.cursor-hover #cursor-ring {
+        width: 60px;
+        height: 60px;
+        border-color: var(--color-green);
+        transition: width 0.3s, height 0.3s, border-color 0.3s;
+      }
+      body.cursor-hover #cursor-dot {
+        width: 4px;
+        height: 4px;
+      }
+
+      /* ─── Portfolio card 3D tilt ──────────────────────────────────────────── */
+      .pcard {
+        transform-style: preserve-3d;
+        will-change: transform;
+      }
+
+      /* ─── Hide cursor on mobile ─────────────────────────────────────────── */
+      @media (max-width: 768px) {
+        #cursor-dot, #cursor-ring { display: none; }
+        body { cursor: auto; }
+        a, button { cursor: auto; }
+      }
+    </style>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -56,6 +180,365 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://nexusdig
     />
   </head>
   <body>
+    <!-- Page entry preloader -->
+    <div id="preloader" aria-hidden="true">
+      <div id="preloader-logo">
+        <div id="preloader-brand">
+          <span class="slide-up-char">C</span>
+          <span class="slide-up-char">a</span>
+          <span class="slide-up-char">l</span>
+          <span class="slide-up-char">a</span>
+          <span class="slide-up-char">X</span>
+        </div>
+        <div id="preloader-studio">studio</div>
+      </div>
+      <div id="page-load-green"></div>
+      <div id="page-load-black"></div>
+    </div>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
     <slot />
+
+    <script>
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      import SplitType from 'split-type';
+      import Lenis from 'lenis';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // ─── Reduced motion check (must run before preloader) ───────────────────────
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ─── Preloader safety fallback ───────────────────────────────────────────────
+      function removePreloader() {
+        const p = document.getElementById('preloader');
+        if (p) {
+          p.style.opacity = '0';
+          p.style.transition = 'opacity 0.3s';
+          setTimeout(() => { p.remove(); document.body.style.overflow = ''; }, 300);
+        } else {
+          document.body.style.overflow = '';
+        }
+      }
+
+      // Always remove preloader after 4s at the latest
+      const preloaderFallback = setTimeout(removePreloader, 4000);
+
+      try {
+        // ─── Lenis smooth scroll ──────────────────────────────────────────────────
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+
+        // Connect Lenis → ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+
+        // ─── Preloader ────────────────────────────────────────────────────────────
+        const preloader = document.getElementById('preloader');
+        const chars = document.querySelectorAll('.slide-up-char');
+        const greenWipe = document.getElementById('page-load-green');
+        const blackWipe = document.getElementById('page-load-black');
+
+        document.body.style.overflow = 'hidden';
+
+        if (prefersReducedMotion || !preloader) {
+          // Skip animation entirely for reduced-motion users or missing preloader
+          clearTimeout(preloaderFallback);
+          removePreloader();
+        } else {
+          const tl = gsap.timeline({
+            onComplete: () => {
+              clearTimeout(preloaderFallback);
+              preloader.remove();
+              document.body.style.overflow = '';
+            }
+          });
+
+          tl
+            // Letters slide up
+            .to(chars, {
+              y: '0%',
+              duration: 0.8,
+              stagger: 0.07,
+              ease: 'power3.out',
+            })
+            // "studio" fades in
+            .to('#preloader-studio', {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              ease: 'power2.out',
+            }, '-=0.3')
+            // Brief hold
+            .to({}, { duration: 0.3 })
+            // Letters exit upward
+            .to(chars, {
+              y: '-120%',
+              duration: 0.5,
+              stagger: 0.05,
+              ease: 'power3.in',
+            }, '-=0.1')
+            // Green horizontal wipe
+            .to(greenWipe, {
+              width: '100vw',
+              duration: 0.5,
+              ease: 'power2.inOut',
+            }, '-=0.2')
+            // Black vertical wipe covers green
+            .to(blackWipe, {
+              height: '100vh',
+              duration: 0.4,
+              ease: 'power2.inOut',
+            })
+            // Fade out preloader
+            .to(preloader, {
+              autoAlpha: 0,
+              duration: 0.3,
+              ease: 'power1.out',
+            });
+        }
+
+        // ─── Section entrance animations (ScrollTrigger.batch) ────────────────────
+        if (!prefersReducedMotion) {
+          gsap.set('[data-animate]', { autoAlpha: 0, y: 40 });
+
+          ScrollTrigger.batch('[data-animate]', {
+            onEnter: (elements) => {
+              gsap.to(elements, {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.12,
+                ease: 'power3.out',
+              });
+            },
+            start: 'top 88%',
+            once: true,
+          });
+
+          // ─── SplitType character text reveal (scrubbed to scroll) ──────────────
+          const splitTargets = document.querySelectorAll('[data-split-text]');
+
+          splitTargets.forEach((el) => {
+            const split = new SplitType(el as HTMLElement, { types: 'chars' });
+
+            gsap.fromTo(
+              split.chars,
+              { opacity: 0.15 },
+              {
+                opacity: 1,
+                stagger: 0.05,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: el,
+                  start: 'top 85%',
+                  end: 'top 20%',
+                  scrub: 1,
+                },
+              }
+            );
+          });
+        } else {
+          // Reduced motion: ensure all animated elements are visible
+          gsap.set('[data-animate]', { autoAlpha: 1, y: 0 });
+          gsap.set('[data-split-text] .char', { opacity: 1 });
+        }
+      } catch (e) {
+        console.error('Animation init error:', e);
+        clearTimeout(preloaderFallback);
+        removePreloader();
+      }
+
+      // ─── Custom cursor ──────────────────────────────────────────────────────────
+      const dot = document.getElementById('cursor-dot');
+      const ring = document.getElementById('cursor-ring');
+
+      if (dot && ring) {
+        let mouseX = 0, mouseY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          gsap.set(dot, { x: mouseX, y: mouseY });
+          gsap.to(ring, { x: mouseX, y: mouseY, duration: 0.35, ease: 'power2.out' });
+        });
+
+        // Hover state on interactive elements
+        document.querySelectorAll('a, button, [data-magnetic]').forEach(el => {
+          el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+          el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+
+        // Hide cursor when leaving window
+        document.addEventListener('mouseleave', () => {
+          gsap.to([dot, ring], { autoAlpha: 0, duration: 0.3 });
+        });
+        document.addEventListener('mouseenter', () => {
+          gsap.to([dot, ring], { autoAlpha: 1, duration: 0.3 });
+        });
+      }
+
+      // ─── Magnetic buttons ────────────────────────────────────────────────────────
+      document.querySelectorAll('.nav-cta, .hero-actions a, [data-magnetic]').forEach(el => {
+        const strength = 0.3;
+
+        el.addEventListener('mousemove', (e) => {
+          const rect = el.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          const deltaX = (e.clientX - centerX) * strength;
+          const deltaY = (e.clientY - centerY) * strength;
+          gsap.to(el, { x: deltaX, y: deltaY, duration: 0.3, ease: 'power2.out' });
+        });
+
+        el.addEventListener('mouseleave', () => {
+          gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
+        });
+      });
+
+      // ─── Hero parallax ──────────────────────────────────────────────────────────
+      const heroSection = document.querySelector('#hero');
+      if (heroSection) {
+        // Blobs move at different rates
+        gsap.to('.blob-1', {
+          y: -120,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.5,
+          },
+        });
+
+        gsap.to('.blob-2', {
+          y: -60,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 2,
+          },
+        });
+
+        // Card stack floats up slower (depth illusion)
+        gsap.to('.hero-card-stack', {
+          y: -80,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        });
+      }
+
+      // ─── Portfolio card 3D tilt ──────────────────────────────────────────────────
+      document.querySelectorAll('.pcard').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -8;
+          const rotateY = ((x - centerX) / centerX) * 8;
+
+          gsap.to(card, {
+            rotateX,
+            rotateY,
+            transformPerspective: 800,
+            ease: 'power1.out',
+            duration: 0.4,
+          });
+        });
+
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            rotateX: 0,
+            rotateY: 0,
+            duration: 0.6,
+            ease: 'elastic.out(1, 0.5)',
+          });
+        });
+      });
+
+      // ─── Footer letter drop ──────────────────────────────────────────────────────
+      const footerLetters = document.querySelectorAll('.footer-letter-inner');
+      if (footerLetters.length) {
+        gsap.from(footerLetters, {
+          y: '-110%',
+          duration: 1,
+          stagger: 0.06,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.footer',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        });
+      }
+
+      // ─── Number counters ────────────────────────────────────────────────────────
+      document.querySelectorAll('[data-counter]').forEach(el => {
+        const target = parseInt(el.getAttribute('data-counter') || '0', 10);
+        const suffix = el.textContent?.replace(/[0-9]/g, '') || '';
+        const obj = { val: 0 };
+
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 85%',
+          once: true,
+          onEnter: () => {
+            gsap.to(obj, {
+              val: target,
+              duration: 1.5,
+              ease: 'power2.out',
+              onUpdate: () => {
+                el.textContent = Math.round(obj.val) + suffix;
+              },
+            });
+          },
+        });
+      });
+
+
+      // ─── Horizontal Journey scroll (desktop only) ────────────────────────────────
+      const mmJourney = gsap.matchMedia();
+
+      mmJourney.add('(min-width: 1025px)', () => {
+        const section = document.querySelector('.hj-section') as HTMLElement;
+        const track = document.querySelector('.hj-track') as HTMLElement;
+
+        if (!section || !track) return;
+
+        const getDistance = () => track.scrollWidth - window.innerWidth;
+
+        gsap.to(track, {
+          x: () => -getDistance(),
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            pin: true,
+            scrub: 1,
+            end: () => `+=${getDistance()}`,
+            invalidateOnRefresh: true,
+          },
+        });
+      });
+
+    </script>
   </body>
 </html>
