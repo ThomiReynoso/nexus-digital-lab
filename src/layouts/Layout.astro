@@ -8,12 +8,12 @@ interface Props {
 }
 
 const {
-  title = 'Nexus Digital Labs — Agencia Digital en Barcelona',
-  description = 'Ayudamos a negocios de Barcelona a crecer online con diseño web, redes sociales y fotografía profesional.',
+  title = 'Calax Studio — Agencia Digital en Barcelona',
+  description = 'Diseño web, contenido visual y automatización para negocios en Barcelona. Trabajás directamente con quienes hacen el trabajo.',
   image = '/og-image.jpg',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://nexusdigitallabs.com');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstudio.com');
 ---
 
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://nexusdig
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
     <meta property="og:locale" content="es_ES" />
-    <meta property="og:site_name" content="Nexus Digital Labs" />
+    <meta property="og:site_name" content="Calax Studio" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -103,14 +103,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://nexusdig
       }
 
       /* Hero content hidden until preloader exits */
-      .hero-left,
-      .hero-right {
+      .hero-left {
         opacity: 0;
         transform: translateY(18px);
         transition: opacity 0.5s ease-out, transform 0.5s ease-out;
       }
-      .hero-left.hero-revealed,
-      .hero-right.hero-revealed {
+      .hero-left.hero-revealed {
         opacity: 1;
         transform: translateY(0);
       }
@@ -242,6 +240,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://nexusdig
         });
         gsap.ticker.lagSmoothing(0);
 
+        // Refresh ScrollTrigger after Lenis takes over so pin spacers
+        // are calculated against the correct total document height.
+        ScrollTrigger.refresh();
+
         // ─── Preloader ────────────────────────────────────────────────────────────
         const preloader = document.getElementById('preloader');
         const chars = document.querySelectorAll('.slide-up-char');
@@ -329,7 +331,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://nexusdig
           const splitTargets = document.querySelectorAll('[data-split-text]');
 
           splitTargets.forEach((el) => {
-            const split = new SplitType(el as HTMLElement, { types: 'chars' });
+            const split = new SplitType(el as HTMLElement, { types: 'chars,words' });
 
             gsap.fromTo(
               split.chars,
@@ -431,17 +433,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://nexusdig
           },
         });
 
-        // Card stack floats up slower (depth illusion)
-        gsap.to('.hero-card-stack', {
-          y: -80,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '#hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 1,
-          },
-        });
       }
 
       // ─── Portfolio card 3D tilt ──────────────────────────────────────────────────
@@ -538,6 +529,34 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://nexusdig
           },
         });
       });
+
+      // ─── Hero image mouse parallax ────────────────────────────────────────────────
+      const heroBgWrapper = document.querySelector('.hero-bg-wrapper') as HTMLElement;
+      const heroEl = document.querySelector('#hero') as HTMLElement;
+
+      if (heroBgWrapper && heroEl) {
+        heroEl.addEventListener('mousemove', (e: MouseEvent) => {
+          const rect = heroEl.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width - 0.5) * 18;
+          const y = ((e.clientY - rect.top) / rect.height - 0.5) * 12;
+          gsap.to(heroBgWrapper, {
+            x,
+            y,
+            duration: 1.8,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+        });
+
+        heroEl.addEventListener('mouseleave', () => {
+          gsap.to(heroBgWrapper, {
+            x: 0,
+            y: 0,
+            duration: 2,
+            ease: 'power3.out',
+          });
+        });
+      }
 
     </script>
   </body>

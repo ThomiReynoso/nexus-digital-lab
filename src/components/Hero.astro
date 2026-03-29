@@ -2,49 +2,28 @@
 ---
 
 <section class="hero" id="hero">
-  <!-- Background video -->
-  <video class="hero-bg" id="hero-video" muted loop playsinline disablepictureinpicture>
-    <source src="/hero-video.mp4" type="video/mp4" />
-  </video>
+  <!-- Background image -->
+  <div class="hero-bg-wrapper">
+    <img class="hero-bg-img" src="/hero2.jpeg" alt="" aria-hidden="true" />
+  </div>
   <div class="hero-bg-overlay"></div>
 
   <!-- Background blobs -->
   <div class="hero-blob blob-1"></div>
   <div class="hero-blob blob-2"></div>
 
-  <!-- Left content -->
+  <!-- Content -->
   <div class="hero-left">
     <div class="hero-tag">Agencia digital · Barcelona</div>
     <h1 class="hero-title split-text" data-split-text>
-      Ayudamos a tu negocio a <em>conectar</em> con más <span class="green">clientes</span>
+      Tu negocio merece una <span class="text-purple">presencia digital</span> que lo <em>represente</em> de verdad
     </h1>
     <p class="hero-sub">
-      Diseñamos tu presencia digital, gestionamos tus redes y creamos contenido que convierte. Todo en un solo lugar.
+      Creamos tu web, producimos tu contenido visual y automatizamos tus procesos. Un equipo pequeño, resultados concretos, sin intermediarios.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">Empieza ahora</a>
-      <a href="#servicios" class="btn-secondary">Ver servicios</a>
-    </div>
-  </div>
-
-  <!-- Right visual -->
-  <div class="hero-right">
-    <div class="hero-card-stack">
-      <div class="hcard hcard-1">
-        <div class="hcard-icon">🌐</div>
-        <div class="hcard-title">Desarrollo web profesional</div>
-        <div class="hcard-desc">Páginas rápidas, modernas y pensadas para convertir visitas en clientes reales.</div>
-      </div>
-      <div class="hcard hcard-2">
-        <div class="hcard-icon">📱</div>
-        <div class="hcard-title">Gestión de redes</div>
-        <div class="hcard-desc">Contenido que construye comunidad y genera ventas.</div>
-      </div>
-      <div class="hcard hcard-3">
-        <div class="hcard-label">PROYECTOS</div>
-        <div class="hcard-num">12+</div>
-        <div class="hcard-sub">negocios creciendo</div>
-      </div>
+      <a href="#contacto" class="btn-primary">Solicitar auditoría gratuita →</a>
+      <a href="#proceso" class="btn-secondary">Ver cómo trabajamos</a>
     </div>
   </div>
 </section>
@@ -52,22 +31,36 @@
 <style>
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    align-items: center;
     padding-top: 80px;
     position: relative;
-    overflow: hidden;
+    overflow: clip; /* clip decorative blobs/bg without clipping text in child stacking contexts */
   }
 
-  .hero-bg {
+  .hero-bg-wrapper {
     position: absolute;
-    inset: 0;
+    inset: -8%;
+    z-index: 0;
+    will-change: transform;
+  }
+
+  .hero-bg-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.8;
-    z-index: 0;
-    pointer-events: none;
+    object-position: center;
+    display: block;
+    animation: kenburns 18s ease-in-out infinite alternate;
+    transform-origin: center center;
+    will-change: transform;
+  }
+
+  @keyframes kenburns {
+    0%   { transform: scale(1.0) translate(0%, 0%); }
+    33%  { transform: scale(1.07) translate(-1.5%, 0.5%); }
+    66%  { transform: scale(1.04) translate(1%, -1%); }
+    100% { transform: scale(1.09) translate(-0.5%, 1%); }
   }
 
   .hero-bg-overlay {
@@ -111,6 +104,8 @@
     padding: 80px 48px;
     position: relative;
     z-index: 2;
+    max-width: 720px;
+    width: 100%;
   }
 
   .hero-tag {
@@ -140,21 +135,30 @@
 
   .hero-title {
     font-family: var(--font-serif);
-    font-size: clamp(42px, 5vw, 68px);
-    line-height: 1.05;
+    font-size: clamp(36px, 5vw, 68px);
+    line-height: 1.1;
     letter-spacing: -0.03em;
     color: var(--color-ink);
     margin-bottom: 28px;
     animation: fadeUp 0.6s ease 0.1s both;
+    overflow: visible;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  /* SplitType char/word wrappers must not clip */
+  .hero-title .char,
+  .hero-title .word {
+    overflow: visible;
   }
 
   .hero-title em {
     font-style: italic;
-    color: var(--color-purple-deep);
+    color: rgba(134, 239, 172, 0.9); /* green — matches .btn-secondary text */
   }
 
-  .hero-title .green {
-    color: var(--color-green-deep);
+  .hero-title .text-purple {
+    color: var(--color-purple-deep); /* #7B6BB0 */
   }
 
   .hero-sub {
@@ -174,170 +178,16 @@
     animation: fadeUp 0.6s ease 0.3s both;
   }
 
-  .hero-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 80px 48px 80px 0;
-    position: relative;
-    z-index: 2;
-    animation: fadeUp 0.8s ease 0.2s both;
-  }
-
-  /* Card stack */
-  .hero-card-stack {
-    position: relative;
-    width: 360px;
-    height: 420px;
-  }
-
-  .hcard {
-    position: absolute;
-    background: #1C1C1A;
-    border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  /* Main card — dark with pulsing glow */
-  .hcard-1 {
-    width: 280px;
-    top: 0;
-    left: 0;
-    transform: rotate(-3deg);
-    background: var(--color-ink-soft);
-    color: var(--color-cream);
-    animation: pulse-ring 3s ease-out infinite;
-  }
-
-  .hcard-1 .hcard-icon {
-    font-size: 28px;
-    margin-bottom: 12px;
-  }
-
-  .hcard-1 .hcard-title {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    margin-bottom: 8px;
-    line-height: 1.2;
-  }
-
-  .hcard-1 .hcard-desc {
-    font-size: 12px;
-    color: rgba(247, 244, 239, 0.55);
-    line-height: 1.6;
-  }
-
-  .hcard-2 {
-    width: 240px;
-    bottom: 40px;
-    right: 0;
-    transform: rotate(2deg);
-    background: #2A2340;
-    border-color: rgba(123, 107, 176, 0.25);
-  }
-
-  .hcard-2 .hcard-icon {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  .hcard-2 .hcard-title {
-    font-family: var(--font-serif);
-    font-size: 16px;
-    color: #FFFFFF;
-    margin-bottom: 6px;
-  }
-
-  .hcard-2 .hcard-desc {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.55);
-    line-height: 1.6;
-  }
-
-  .hcard-3 {
-    width: 200px;
-    bottom: 0;
-    left: 20px;
-    transform: rotate(-1deg);
-    background: #1A2B18;
-    border-color: rgba(90, 138, 82, 0.25);
-  }
-
-  .hcard-3 .hcard-label {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--color-green-deep);
-    letter-spacing: 0.06em;
-    margin-bottom: 8px;
-  }
-
-  .hcard-3 .hcard-num {
-    font-family: var(--font-serif);
-    font-size: 36px;
-    color: #FFFFFF;
-    line-height: 1;
-  }
-
-  .hcard-3 .hcard-sub {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.55);
-    margin-top: 4px;
-  }
-
   /* Responsive */
   @media (max-width: 768px) {
     .hero {
-      grid-template-columns: 1fr;
       min-height: auto;
       padding-top: 80px;
     }
 
     .hero-left {
-      padding: 60px 24px 40px;
-    }
-
-    .hero-right {
-      padding: 0 24px 60px;
-      justify-content: flex-start;
-    }
-
-    .hero-card-stack {
-      width: 300px;
-      height: 360px;
-    }
-
-    .hcard-1 {
-      width: 240px;
-    }
-
-    .hcard-2 {
-      width: 200px;
-    }
-
-    .hcard-3 {
-      width: 170px;
+      padding: 60px 24px 60px;
     }
   }
 </style>
 
-<script>
-  function startHeroVideo() {
-    const v = document.getElementById('hero-video') as HTMLVideoElement;
-    if (!v) return;
-    v.muted = true;
-    v.volume = 0;
-    v.play().catch(() => {
-      // fallback: try again on first user interaction
-      document.addEventListener('click', () => v.play(), { once: true });
-      document.addEventListener('touchstart', () => v.play(), { once: true });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', startHeroVideo);
-  } else {
-    startHeroVideo();
-  }
-</script>

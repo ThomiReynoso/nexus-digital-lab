@@ -46,6 +46,12 @@ body {
   transform: translateY(0);
 }
 
+/* SplitType word containers — prevent mid-word line breaks */
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 /* Section utilities */
 .section-label {
   font-size: 11px;
@@ -58,8 +64,8 @@ body {
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: clamp(32px, 4vw, 52px);
-  line-height: 1.1;
+  font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--color-ink);
   margin-bottom: 64px;
@@ -91,23 +97,25 @@ body {
 }
 
 .btn-secondary {
-  background: var(--color-purple-deep);
-  color: #FFFFFF;
+  background: rgba(34, 197, 94, 0.12);
+  color: rgba(134, 239, 172, 0.9);
   font-size: 14px;
   font-weight: 500;
   padding: 14px 28px;
   border-radius: 100px;
+  border: 1px solid rgba(34, 197, 94, 0.25);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s, border-color 0.2s;
 }
 
 .btn-secondary:hover {
-  background: #6B5BA0;
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.45);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(123, 107, 176, 0.35);
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.15);
 }
 
 .btn-secondary::after {

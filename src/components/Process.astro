@@ -3,29 +3,29 @@ const steps = [
   {
     num: '01',
     name: 'Auditoría gratuita',
-    desc: 'Analizamos tu presencia digital actual y te decimos exactamente qué mejorar y por qué.',
+    desc: 'Analizamos tu presencia digital actual — web, redes, Google — y te decimos exactamente qué está frenando tu crecimiento y cómo resolverlo.',
     badge: 'Sin costo',
     badgeType: 'purple',
   },
   {
     num: '02',
     name: 'Propuesta a medida',
-    desc: 'Diseñamos una solución específica para tu negocio, con precios claros y plazos reales.',
-    badge: 'Personalizado',
+    desc: 'Diseñamos una solución específica para tu negocio. Precios claros, plazos reales y sin letra chica.',
+    badge: '100% personalizado',
     badgeType: 'green',
   },
   {
     num: '03',
-    name: 'Ejecución rápida',
-    desc: 'Ejecutamos en tiempo récord usando las mejores herramientas. Tu web en días, no meses.',
-    badge: 'Ágil',
+    name: 'Producción en paralelo',
+    desc: 'Thomas desarrolla tu web mientras Mai produce el contenido visual. Todo avanza al mismo tiempo — entregás antes, gastás menos.',
+    badge: 'Ágil y coordinado',
     badgeType: 'purple',
   },
   {
     num: '04',
-    name: 'Crecimiento continuo',
-    desc: 'Seguimiento, métricas y optimización constante. No desaparecemos tras la entrega.',
-    badge: 'Recurrente',
+    name: 'Entrega y seguimiento',
+    desc: 'Tu web en vivo, tu contenido listo para publicar. Y seguimos disponibles — no desaparecemos después de la entrega.',
+    badge: 'Compromiso real',
     badgeType: 'green',
   },
 ];
@@ -35,7 +35,7 @@ const steps = [
   <div class="process-bg"></div>
   <div class="process-inner">
     <p class="section-label process-label" data-animate>Cómo trabajamos</p>
-    <h2 class="section-title process-title" data-split-text>Un proceso <em>simple</em> que funciona</h2>
+    <h2 class="section-title process-title" data-split-text>Simple, <em>transparente</em> y sin sorpresas</h2>
 
     <div class="process-steps">
       {steps.map((step, i) => (
@@ -56,7 +56,7 @@ const steps = [
     padding: 120px 48px;
     color: var(--color-cream);
     position: relative;
-    overflow: hidden;
+    overflow: clip; /* clip decorative bg without clipping text in child stacking contexts */
   }
 
   .process-bg {
