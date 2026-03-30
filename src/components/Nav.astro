@@ -50,6 +50,34 @@
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition:
+      top 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      left 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      right 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      border-radius 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      padding 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      background 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav.island {
+    top: 16px;
+    left: 50%;
+    right: auto;
+    width: min(740px, calc(100vw - 32px));
+    transform: translateX(-50%);
+    border-radius: 60px;
+    padding: 10px 16px 10px 28px;
+    background: rgba(12, 12, 12, 0.55);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border-bottom: none;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .logo {
@@ -306,4 +334,12 @@
       closeMenu();
     }
   });
+
+  // ─── Floating Island navbar ────────────────────────────────────────────────
+  const navEl = document.querySelector('.nav') as HTMLElement;
+  if (navEl) {
+    window.addEventListener('scroll', () => {
+      navEl.classList.toggle('island', window.scrollY > 80);
+    }, { passive: true });
+  }
 </script>

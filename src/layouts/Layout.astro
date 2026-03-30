@@ -237,6 +237,34 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=block"
       rel="stylesheet"
     />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Calax Studio",
+  "url": "https://calaxstudio.com",
+  "logo": "https://calaxstudio.com/logo.jpg",
+  "description": "Agencia digital especializada en diseño web, contenido visual y automatización para negocios.",
+  "email": "calaxstudio@gmail.com",
+  "sameAs": [
+    "https://instagram.com/calaxstudio"
+  ],
+  "areaServed": {
+    "@type": "Place",
+    "name": "Argentina"
+  },
+  "priceRange": "$$",
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+54-9-11-6658-7697",
+    "contactType": "customer service",
+    "availableLanguage": ["Spanish"]
+  }
+}
+</script>
   </head>
   <body>
     <!-- Page entry preloader -->

@@ -4,7 +4,7 @@
 <section class="hero" id="hero">
   <!-- Background image -->
   <div class="hero-bg-wrapper">
-    <img class="hero-bg-img" src="/hero3.webp" alt="" aria-hidden="true" />
+    <img class="hero-bg-img" src="/hero3.webp" alt="" aria-hidden="true" fetchpriority="high" loading="eager" />
   </div>
   <div class="hero-bg-overlay"></div>
 
@@ -55,6 +55,7 @@
     animation: kenburns 18s ease-in-out infinite alternate;
     transform-origin: center center;
     will-change: transform;
+    opacity: 0.65;
   }
 
   @keyframes kenburns {
@@ -212,6 +213,7 @@
       font-size: 13px;
       padding: 11px 22px;
     }
+
   }
 </style>
 
