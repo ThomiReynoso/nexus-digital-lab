@@ -2,81 +2,110 @@
 ---
 
 <section class="about" id="nosotros">
+  <!-- Spotlight canvas -->
+  <div class="about-spotlight" aria-hidden="true"></div>
+
   <div class="about-inner">
     <!-- Left: text + team cards -->
-    <div class="about-text reveal">
-      <p class="section-label">Quiénes somos</p>
-      <h2 class="section-title">Dos personas, <em>un equipo</em> completo</h2>
-      <p class="about-desc">
-        Somos Thomas y [nombre], una pareja con una misión clara: ayudar a los negocios del Eixample y Barcelona a brillar online. Unimos tecnología, diseño y estrategia en un equipo ágil que ejecuta rápido y bien.
-      </p>
-      <div class="about-team">
-        <div class="team-card">
-          <div class="team-avatar team-avatar-1">👨‍💻</div>
-          <div class="team-name">Thomas</div>
-          <div class="team-role">Desarrollo & Automatización</div>
-          <div class="team-skills">
-            <span class="team-skill">Next.js</span>
-            <span class="team-skill">React</span>
-            <span class="team-skill">n8n</span>
-            <span class="team-skill">IA</span>
+    <div class="about-text">
+      <p class="section-label about-label" data-about-reveal>Dos personas. Un equipo completo.</p>
+      <h2 class="section-title about-title" data-about-title>Somos Thom y Mai. Y nos gusta hacer que <em>las cosas pasen</em></h2>
+      <div class="about-desc-wrapper" data-about-reveal>
+        <p class="about-desc">
+          Él desarrolla, automatiza y hace que las cosas funcionen. Ella crea, fotografía y hace que las cosas se vean bien. Juntos ofrecemos lo que normalmente requeriría contratar a tres personas distintas — con la ventaja de que siempre hablás con quien realmente hace el trabajo.
+        </p>
+      </div>
+      <div class="about-desc-wrapper" data-about-reveal>
+        <p class="about-desc">
+          No hay cuentas ni coordinadores. Cuando hablás con nosotros, hablás directamente con quien va a hacer tu trabajo — sin filtros ni intermediarios.
+        </p>
+      </div>
+
+      <!-- Decorative element between cards -->
+      <div class="about-team-wrapper">
+        <div class="team-deco-line"></div>
+        <div class="about-team">
+          <div class="team-card team-card-thomas" data-about-card="left" data-card-color="purple">
+            <div class="team-card-glow team-card-glow-purple"></div>
+            <!-- Animated border glow ring (activated on hover via JS) -->
+            <div class="team-card-border-ring team-card-border-ring-purple"></div>
+            <div class="team-avatar team-avatar-thomas">
+              <span class="team-initial">T</span>
+            </div>
+            <div class="team-name">Thom</div>
+            <div class="team-role"><span class="team-role-icon">💻</span> Desarrollo & Automatización</div>
+            <div class="team-bio">Sitios web modernos, integraciones con tus herramientas y flujos automatizados a medida — para que tu negocio opere más rápido sin depender de procesos manuales.</div>
+            <div class="team-skills team-skills-purple">
+              <span class="team-skill">Astro</span>
+              <span class="team-skill">React</span>
+              <span class="team-skill">n8n</span>
+              <span class="team-skill">IA</span>
+            </div>
           </div>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar team-avatar-2">👩‍🎨</div>
-          <div class="team-name">[Tu novia]</div>
-          <div class="team-role">Diseño & Contenido</div>
-          <div class="team-skills">
-            <span class="team-skill">Instagram</span>
-            <span class="team-skill">Reels</span>
-            <span class="team-skill">Fotografía</span>
-            <span class="team-skill">Video</span>
+          <div class="team-card team-card-mai" data-about-card="right" data-card-color="green">
+            <div class="team-card-glow team-card-glow-green"></div>
+            <!-- Animated border glow ring (activated on hover via JS) -->
+            <div class="team-card-border-ring team-card-border-ring-green"></div>
+            <div class="team-avatar team-avatar-mai">
+              <span class="team-initial">M</span>
+            </div>
+            <div class="team-name">Mai</div>
+            <div class="team-role"><span class="team-role-icon">📸</span> Contenido Visual & Estrategia</div>
+            <div class="team-bio">Producción fotográfica y de video, edición de reels y estrategia de contenido que conecta con tu audiencia.</div>
+            <div class="team-skills team-skills-green">
+              <span class="team-skill">Fotografía</span>
+              <span class="team-skill">Video</span>
+              <span class="team-skill">Reels</span>
+              <span class="team-skill">Estrategia de contenido</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Right: stat cards -->
-    <div class="about-visual reveal">
-      <!-- Card 1: Active clients -->
-      <div class="av-card av-1">
-        <div class="av-label">CLIENTES ACTIVOS</div>
-        <div class="av-val">12+</div>
-        <div class="av-sub">negocios en Barcelona</div>
-        <div class="av-bar-row">
-          <div class="av-bar">
-            <div class="av-bar-fill av-bar-fill-purple" style="width: 85%"></div>
-          </div>
-          <div class="av-bar">
-            <div class="av-bar-fill av-bar-fill-green" style="width: 70%"></div>
-          </div>
-          <div class="av-bar">
-            <div class="av-bar-fill av-bar-fill-light" style="width: 92%"></div>
-          </div>
-        </div>
+    <!-- Right: team values -->
+    <div class="about-values" data-about-values>
+      <div class="value-item">
+        <span class="value-num">01</span>
+        <h4 class="value-title">Nos importa el detalle</h4>
+        <p class="value-desc">No entregamos algo funcional. Entregamos algo de lo que nos sentimos orgullosos.</p>
+        <div class="value-sep"></div>
       </div>
-
-      <!-- Card 2: Delivery time -->
-      <div class="av-card av-2">
-        <div class="av-label av-label-dark">TIEMPO DE ENTREGA</div>
-        <div class="av-val av-val-purple">3–5</div>
-        <div class="av-sub av-sub-dark">días para tu web</div>
+      <div class="value-item">
+        <span class="value-num">02</span>
+        <h4 class="value-title">Tu éxito es nuestro portfolio</h4>
+        <p class="value-desc">Cada cliente nuevo es una oportunidad de mostrar lo que podemos hacer. Eso nos obliga a dar lo mejor siempre.</p>
+        <div class="value-sep"></div>
       </div>
-
-      <!-- Card 3: Free audit -->
-      <div class="av-card av-3">
-        <div class="av-label av-label-purple">AUDITORÍA</div>
-        <div class="av-val-sm">Gratis</div>
-        <div class="av-sub-sm">Analizamos tu presencia digital sin costo</div>
+      <div class="value-item">
+        <span class="value-num">03</span>
+        <h4 class="value-title">Equipo pequeño, compromiso grande</h4>
+        <p class="value-desc">Dos personas que ponen su nombre en cada proyecto.</p>
       </div>
     </div>
   </div>
 </section>
 
 <style>
+  /* ─── Spotlight overlay ──────────────────────────────────────────── */
   .about {
-    background: var(--color-cream-dark);
+    background: #0A0A0A;
     padding: 120px 48px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .about-spotlight {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+      400px circle at var(--spotlight-x, -9999px) var(--spotlight-y, -9999px),
+      rgba(123, 107, 176, 0.15),
+      transparent 70%
+    );
+    transition: background 0.05s linear;
   }
 
   .about-inner {
@@ -86,10 +115,27 @@
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
+    position: relative;
+    z-index: 1;
   }
 
   .about-text .section-title {
     margin-bottom: 24px;
+  }
+
+  /* About label colour override */
+  .about-label {
+    color: var(--color-purple-deep);
+  }
+
+  /* About title headline */
+  .about-title {
+    color: var(--color-ink);
+  }
+
+  /* Desc wrapper for clip-path reveal */
+  .about-desc-wrapper {
+    overflow: hidden;
   }
 
   .about-desc {
@@ -100,36 +146,240 @@
     margin-bottom: 40px;
   }
 
+  /* ─── Team wrapper with decorative line ─────────────────────────── */
+  .about-team-wrapper {
+    position: relative;
+  }
+
+  .team-deco-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1px;
+    height: 80%;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(123, 107, 176, 0.4) 30%,
+      rgba(134, 239, 172, 0.4) 70%,
+      transparent 100%
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+
   .about-team {
     display: flex;
     gap: 16px;
+    position: relative;
+    z-index: 1;
+    /* Perspective for 3D flip entrance */
+    perspective: 1000px;
   }
 
+  /* ─── Premium team cards ─────────────────────────────────────────── */
   .team-card {
     flex: 1;
-    background: var(--color-cream);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     border-radius: 16px;
     padding: 24px;
-    border: 1px solid var(--color-cream-dark);
+    border: 1px solid rgba(123, 107, 176, 0.15);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.45s cubic-bezier(0.23, 1, 0.32, 1),
+                border-color 0.45s ease;
+    will-change: transform;
+    transform-style: preserve-3d;
+    /* backface hidden so reverse side is invisible during flip */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
+  /* Asymmetric vertical offset */
+  .team-card-thomas {
+    transform: translateY(0);
+  }
+
+  .team-card-mai {
+    transform: translateY(20px);
+  }
+
+  /* Glow overlay */
+  .team-card-glow {
+    position: absolute;
+    inset: -1px;
+    border-radius: 16px;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .team-card-glow-purple {
+    box-shadow: 0 0 30px rgba(123, 107, 176, 0.3),
+                inset 0 0 30px rgba(123, 107, 176, 0.05);
+  }
+
+  .team-card-glow-green {
+    box-shadow: 0 0 30px rgba(134, 239, 172, 0.25),
+                inset 0 0 30px rgba(134, 239, 172, 0.05);
+  }
+
+  /* ─── Animated border ring (hover glow) ─────────────────────────── */
+  /*
+   * Technique: absolute pseudo-element with a rotating conic-gradient
+   * clipped by mask to show only the border edge.
+   * Activated by adding .hovered class via JS.
+   */
+  .team-card-border-ring {
+    position: absolute;
+    inset: -2px;
+    border-radius: 18px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 1;
+    /* Clip to border only using mask */
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 2px;
+  }
+
+  .team-card-border-ring-purple {
+    background: conic-gradient(
+      from var(--ring-angle, 0deg),
+      transparent 0%,
+      #7B6BB0 15%,
+      #b8a9d9 30%,
+      #7B6BB0 45%,
+      transparent 60%,
+      transparent 100%
+    );
+    animation: none;
+  }
+
+  .team-card-border-ring-green {
+    background: conic-gradient(
+      from var(--ring-angle, 0deg),
+      transparent 0%,
+      #6FCF5A 15%,
+      #a8e89a 30%,
+      #6FCF5A 45%,
+      transparent 60%,
+      transparent 100%
+    );
+    animation: none;
+  }
+
+  /* Ring spin animation — triggered by .hovered class */
+  .team-card.hovered .team-card-border-ring-purple {
+    opacity: 1;
+    animation: ringSpinPurple 2s linear infinite;
+  }
+
+  .team-card.hovered .team-card-border-ring-green {
+    opacity: 1;
+    animation: ringSpinGreen 2s linear infinite;
+  }
+
+  @property --ring-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes ringSpinPurple {
+    from { --ring-angle: 0deg; }
+    to   { --ring-angle: 360deg; }
+  }
+
+  @keyframes ringSpinGreen {
+    from { --ring-angle: 0deg; }
+    to   { --ring-angle: 360deg; }
+  }
+
+  /* Subtle permanent border gradient (non-hover) */
+  .team-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(
+      var(--border-angle, 0deg),
+      rgba(123, 107, 176, 0.3),
+      transparent 40%,
+      transparent 60%,
+      rgba(134, 239, 172, 0.3)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+    animation: borderRotate 6s linear infinite;
+  }
+
+  @keyframes borderRotate {
+    to { --border-angle: 360deg; }
+  }
+
+  @property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  /* Hover states — CSS fallback (GSAP overrides tilt) */
+  .team-card:hover .team-card-glow {
+    opacity: 1;
+  }
+
+  .team-card-thomas:hover {
+    border-color: rgba(123, 107, 176, 0.35);
+  }
+
+  .team-card-mai:hover {
+    border-color: rgba(134, 239, 172, 0.3);
+  }
+
+  /* ─── Avatar with initials ───────────────────────────────────────── */
   .team-avatar {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    position: relative;
+    z-index: 2;
   }
 
-  .team-avatar-1 {
-    background: var(--color-purple-light);
+  .team-avatar-thomas {
+    background: linear-gradient(135deg, #7B6BB0 0%, #5A4A8A 100%);
+    box-shadow: 0 4px 15px rgba(123, 107, 176, 0.4);
   }
 
-  .team-avatar-2 {
-    background: var(--color-green-light);
+  .team-avatar-mai {
+    background: linear-gradient(135deg, #6FCF5A 0%, #3A8A2E 100%);
+    box-shadow: 0 4px 15px rgba(111, 207, 90, 0.35);
+  }
+
+  .team-initial {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    color: #FFFFFF;
+    font-weight: 400;
+    line-height: 1;
   }
 
   .team-name {
@@ -137,18 +387,54 @@
     font-size: 18px;
     margin-bottom: 4px;
     color: var(--color-ink);
+    position: relative;
+    z-index: 2;
   }
 
   .team-role {
     font-size: 12px;
     color: var(--color-ink-muted);
     margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 
+  .team-role-icon {
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .team-bio {
+    font-size: 12px;
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ─── Skill pills with color ──────────────────────────────────── */
   .team-skills {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .team-skills-purple .team-skill {
+    background: rgba(123, 107, 176, 0.15);
+    color: var(--color-purple);
+    border: 1px solid rgba(123, 107, 176, 0.25);
+  }
+
+  .team-skills-green .team-skill {
+    background: rgba(134, 239, 172, 0.1);
+    color: rgba(134, 239, 172, 0.9);
+    border: 1px solid rgba(134, 239, 172, 0.2);
   }
 
   .team-skill {
@@ -157,167 +443,68 @@
     letter-spacing: 0.04em;
     padding: 3px 10px;
     border-radius: 100px;
-    background: var(--color-cream);
-    color: var(--color-ink-muted);
-    border: 1px solid var(--color-cream-dark);
+    transition: transform 0.2s ease;
   }
 
-  /* Visual stat cards */
-  .about-visual {
-    position: relative;
-    height: 480px;
-  }
-
-  .av-card {
-    position: absolute;
-    background: var(--color-cream);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 30px rgba(17, 17, 16, 0.08);
-    border: 1px solid var(--color-cream-dark);
-  }
-
-  .av-1 {
-    width: 260px;
-    top: 0;
-    left: 0;
-  }
-
-  .av-2 {
-    width: 220px;
-    top: 120px;
-    right: 0;
-    background: var(--color-ink-soft);
-    color: var(--color-cream);
-    border-color: transparent;
-  }
-
-  .av-3 {
-    width: 200px;
-    bottom: 0;
-    left: 40px;
-    background: var(--color-purple-light);
-    border-color: transparent;
-  }
-
-  .av-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    opacity: 0.5;
-    margin-bottom: 8px;
-  }
-
-  .av-label-dark {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    color: rgba(247, 244, 239, 0.4);
-    margin-bottom: 8px;
-  }
-
-  .av-label-purple {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    color: var(--color-purple-deep);
-    opacity: 0.7;
-    margin-bottom: 8px;
-  }
-
-  .av-val {
-    font-family: var(--font-serif);
-    font-size: 28px;
-    line-height: 1;
-    margin-bottom: 4px;
-    color: var(--color-ink);
-  }
-
-  .av-val-purple {
-    font-family: var(--font-serif);
-    font-size: 28px;
-    line-height: 1;
-    margin-bottom: 4px;
-    color: var(--color-purple);
-  }
-
-  .av-val-sm {
-    font-family: var(--font-serif);
-    font-size: 20px;
-    color: var(--color-ink);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .av-sub {
-    font-size: 12px;
-    opacity: 0.5;
-  }
-
-  .av-sub-dark {
-    font-size: 12px;
-    color: rgba(247, 244, 239, 0.4);
-  }
-
-  .av-sub-sm {
-    font-size: 11px;
-    color: var(--color-ink-muted);
-    margin-top: 4px;
-  }
-
-  .av-bar-row {
+  /* ─── Team values block ─────────────────────────────────────────── */
+  .about-values {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 12px;
-  }
-
-  .av-bar {
-    height: 4px;
-    border-radius: 2px;
-    background: var(--color-cream-dark);
-    overflow: hidden;
-  }
-
-  .av-bar-fill {
+    justify-content: center;
     height: 100%;
-    border-radius: 2px;
+    gap: 0;
   }
 
-  .av-bar-fill-purple {
-    background: var(--color-purple);
+  .value-item {
+    padding: 32px 0;
+    position: relative;
   }
 
-  .av-bar-fill-green {
-    background: var(--color-green);
+  .value-num {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--color-purple-deep);
+    margin-bottom: 12px;
   }
 
-  .av-bar-fill-light {
-    background: var(--color-purple-light);
+  .value-title {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-cream);
+    margin: 0 0 10px 0;
+    line-height: 1.3;
   }
 
-  /* Responsive */
+  .value-desc {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: rgba(247, 244, 239, 0.5);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .value-sep {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(184, 169, 217, 0.2), transparent);
+  }
+
+  /* ─── Responsive ────────────────────────────────────────────────── */
   @media (max-width: 900px) {
     .about-inner {
       grid-template-columns: 1fr;
       gap: 48px;
     }
 
-    .about-visual {
-      height: 360px;
-    }
-
-    .av-1 {
-      width: 220px;
-    }
-
-    .av-2 {
-      width: 180px;
-      top: 100px;
-    }
-
-    .av-3 {
-      width: 160px;
+    .team-card-mai {
+      transform: translateY(0);
     }
   }
 
@@ -329,5 +516,277 @@
     .about-team {
       flex-direction: column;
     }
+
+    .team-card-thomas,
+    .team-card-mai {
+      transform: translateY(0);
+    }
+
+    .team-deco-line {
+      display: none;
+    }
+  }
+
+  /* ─── Reduced motion: disable animations ───────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .team-card-border-ring,
+    .team-card::before {
+      animation: none !important;
+    }
   }
 </style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    // ─── 0. About title: simple fade-up on the whole heading ────────
+    const aboutTitle = document.querySelector<HTMLElement>('[data-about-title]');
+    if (aboutTitle) {
+      gsap.set('[data-about-title]', { opacity: 0, y: 20 });
+      ScrollTrigger.create({
+        trigger: aboutTitle,
+        start: 'top 82%',
+        once: true,
+        onEnter: () => {
+          gsap.to(aboutTitle, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power2.out',
+          });
+        },
+      });
+    }
+
+    // ─── 1. Spotlight cursor effect ─────────────────────────────────
+    const aboutSection = document.querySelector('.about') as HTMLElement;
+    const spotlightEl  = document.querySelector('.about-spotlight') as HTMLElement;
+
+    if (aboutSection && spotlightEl) {
+      const setX = gsap.quickTo(spotlightEl, '--spotlight-x', { duration: 0.4, ease: 'power2.out' });
+      const setY = gsap.quickTo(spotlightEl, '--spotlight-y', { duration: 0.4, ease: 'power2.out' });
+
+      aboutSection.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect = aboutSection.getBoundingClientRect();
+        setX(e.clientX - rect.left);
+        setY(e.clientY - rect.top);
+      });
+
+      aboutSection.addEventListener('mouseleave', () => {
+        setX(-9999);
+        setY(-9999);
+      });
+    }
+
+    // ─── 2. Left-column sequential fade-up ──────────────────────────
+    // Elements: label → heading → desc wrappers (× 2)
+    // Set initial state immediately (synchronously) so elements are
+    // never visible before the ScrollTrigger fires.
+    const leftRevealItems = document.querySelectorAll<HTMLElement>('[data-about-reveal]');
+
+    gsap.set(leftRevealItems, { autoAlpha: 0, y: 24 });
+
+    if (leftRevealItems.length) {
+      ScrollTrigger.create({
+        trigger: leftRevealItems[0],
+        start: 'top 75%',
+        once: true,
+        onEnter: () => {
+          gsap.to(leftRevealItems, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.15,
+            ease: 'power2.out',
+          });
+        },
+      });
+    }
+
+    // ─── 3. Team cards: smooth fade-up entrance ──────────────────────
+    // Set initial hidden state synchronously — before any scroll event
+    // could fire — so cards never flash in before the trigger.
+    const cardLeft  = document.querySelector<HTMLElement>('[data-about-card="left"]');
+    const cardRight = document.querySelector<HTMLElement>('[data-about-card="right"]');
+    const skillsThomas = document.querySelectorAll<HTMLElement>('.team-skills-purple .team-skill');
+    const skillsMai    = document.querySelectorAll<HTMLElement>('.team-skills-green .team-skill');
+
+    gsap.set([cardLeft, cardRight].filter(Boolean), { autoAlpha: 0, y: 24 });
+    gsap.set([...skillsThomas, ...skillsMai], { autoAlpha: 0, y: 8, scale: 0.9 });
+
+    const teamSection = document.querySelector('.about-team-wrapper');
+    if (teamSection) {
+      ScrollTrigger.create({
+        trigger: teamSection,
+        start: 'top 75%',
+        once: true,
+        onEnter: () => {
+          const tl = gsap.timeline();
+
+          if (cardLeft) {
+            tl.to(cardLeft, {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.7,
+              ease: 'power2.out',
+            }, 0);
+          }
+          if (cardRight) {
+            tl.to(cardRight, {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.7,
+              ease: 'power2.out',
+            }, 0.15);
+          }
+
+          // Skills tags stagger in after the cards have mostly settled
+          if (skillsThomas.length) {
+            tl.to(skillsThomas, {
+              autoAlpha: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.35,
+              stagger: 0.06,
+              ease: 'power2.out',
+            }, 0.55);
+          }
+
+          if (skillsMai.length) {
+            tl.to(skillsMai, {
+              autoAlpha: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.35,
+              stagger: 0.06,
+              ease: 'power2.out',
+            }, 0.70);
+          }
+        },
+      });
+    }
+
+    // ─── 4. Right column — value items staggered fade-up ────────────
+    // data-about-values on the wrapper is NOT a data-animate target so
+    // Layout.astro's batch won't touch it. Animate each item individually.
+    const valueItems = document.querySelectorAll<HTMLElement>('[data-about-values] .value-item');
+
+    gsap.set(valueItems, { autoAlpha: 0, y: 24 });
+
+    if (valueItems.length) {
+      ScrollTrigger.create({
+        trigger: '[data-about-values]',
+        start: 'top 75%',
+        once: true,
+        onEnter: () => {
+          gsap.to(valueItems, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.15,
+            ease: 'power2.out',
+          });
+        },
+      });
+    }
+
+    // ─── 5. Premium hover: tilt + border glow + skills pop ──────────
+    const teamCards = document.querySelectorAll<HTMLElement>('.team-card');
+
+    teamCards.forEach((card) => {
+      const skills = card.querySelectorAll<HTMLElement>('.team-skill');
+
+      card.addEventListener('mouseenter', () => {
+        card.classList.add('hovered');
+
+        if (skills.length) {
+          gsap.fromTo(skills,
+            { scale: 1 },
+            {
+              scale: 1.1,
+              duration: 0.25,
+              stagger: 0.04,
+              ease: 'back.out(2)',
+              yoyo: true,
+              repeat: 1,
+            }
+          );
+        }
+      });
+
+      card.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect    = card.getBoundingClientRect();
+        const x       = e.clientX - rect.left;
+        const y       = e.clientY - rect.top;
+        const centerX = rect.width  / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -8;
+        const rotateY = ((x - centerX) / centerX) *  8;
+
+        gsap.to(card, {
+          rotateX,
+          rotateY,
+          transformPerspective: 1000,
+          ease: 'power1.out',
+          duration: 0.35,
+          overwrite: 'auto',
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('hovered');
+
+        gsap.to(card, {
+          rotateX: 0,
+          rotateY: 0,
+          duration: 0.6,
+          ease: 'elastic.out(1, 0.5)',
+          overwrite: 'auto',
+        });
+      });
+    });
+
+    // ─── 6. Parallax: cards drift at different rates on scroll ───────
+    // These run independently of the entrance animation — they operate
+    // on the element's current transform and will compose correctly with
+    // the y:0 final state from the entrance tween.
+    if (cardLeft) {
+      gsap.to(cardLeft, {
+        y: -30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.about-team-wrapper',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+      });
+    }
+    if (cardRight) {
+      gsap.to(cardRight, {
+        y: -15,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.about-team-wrapper',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 2,
+        },
+      });
+    }
+
+  } else {
+    // Reduced motion: make everything visible immediately, no transforms
+    gsap.set('[data-about-reveal]', { autoAlpha: 1, y: 0 });
+    gsap.set('[data-about-title]', { autoAlpha: 1, y: 0 });
+    gsap.set('[data-about-card]', { autoAlpha: 1, y: 0 });
+    gsap.set('[data-about-values] .value-item', { autoAlpha: 1, y: 0 });
+    gsap.set('.team-skill', { autoAlpha: 1, y: 0, scale: 1 });
+  }
+</script>

@@ -2,14 +2,14 @@
 ---
 
 <section class="portfolio" id="portfolio">
-  <div class="reveal">
-    <p class="section-label">Portfolio</p>
-    <h2 class="section-title">Proyectos que <em>hablan</em> por sí solos</h2>
+  <div>
+    <p class="section-label" data-animate>Trabajo real</p>
+    <h2 class="section-title" data-split-text>Proyectos que <em>hablan</em> por sí solos</h2>
   </div>
 
-  <div class="portfolio-grid reveal">
+  <div class="portfolio-grid">
     <!-- Card 1 — with browser mockup -->
-    <div class="pcard pcard-1">
+    <div class="pcard pcard-1" data-animate>
       <div class="pcard-mockup">
         <div class="mock-bar">
           <div class="mock-dot mock-dot-red"></div>
@@ -30,7 +30,7 @@
     </div>
 
     <!-- Card 2 — with browser mockup -->
-    <div class="pcard pcard-2">
+    <div class="pcard pcard-2" data-animate>
       <div class="pcard-mockup">
         <div class="mock-bar">
           <div class="mock-dot mock-dot-red"></div>
@@ -51,7 +51,7 @@
     </div>
 
     <!-- Card 3 — no mockup, with hover overlay -->
-    <div class="pcard pcard-3">
+    <div class="pcard pcard-3" data-animate>
       <div class="pcard-hover-overlay">
         <span>Ver proyecto →</span>
       </div>
@@ -62,7 +62,7 @@
     </div>
 
     <!-- Card 4 — no mockup, with hover overlay -->
-    <div class="pcard pcard-4">
+    <div class="pcard pcard-4" data-animate>
       <div class="pcard-hover-overlay">
         <span>Ver proyecto →</span>
       </div>
@@ -110,11 +110,11 @@
   }
 
   .pcard-3 {
-    background: linear-gradient(135deg, var(--color-cream-dark) 0%, #D4C8B8 100%);
+    background: linear-gradient(135deg, #1E1A14 0%, #2E2820 100%);
   }
 
   .pcard-4 {
-    background: linear-gradient(135deg, #E8E0F0 0%, var(--color-purple-light) 100%);
+    background: linear-gradient(135deg, #1A1622 0%, #2A2340 100%);
   }
 
   .pcard-inner {
@@ -149,10 +149,11 @@
     left: 50%;
     transform: translate(-50%, -60%);
     width: 65%;
-    background: var(--color-cream);
+    background: #1C1C1A;
     border-radius: 10px;
     padding: 16px;
-    box-shadow: 0 20px 60px rgba(17, 17, 16, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .mock-bar {
@@ -182,7 +183,7 @@
   .mock-line {
     height: 6px;
     border-radius: 3px;
-    background: var(--color-cream-dark);
+    background: rgba(255, 255, 255, 0.1);
     margin-bottom: 8px;
   }
 
@@ -212,15 +213,15 @@
   .mock-block {
     height: 40px;
     border-radius: 6px;
-    background: var(--color-cream-dark);
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .mock-block-purple {
-    background: var(--color-purple-light);
+    background: #2A2340;
   }
 
   .mock-block-green {
-    background: var(--color-green-light);
+    background: #1A2B18;
   }
 
   /* Hover overlay for cards without mockup */

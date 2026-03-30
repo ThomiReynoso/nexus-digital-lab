@@ -1,0 +1,245 @@
+---
+---
+
+<section class="hj-section" id="portfolio">
+
+  <!-- Sticky header (stays fixed at top while track scrolls) -->
+  <div class="hj-header">
+    <p class="section-label" data-animate>Portfolio</p>
+    <h2 class="section-title" data-split-text>Proyectos que <em>hablan</em> por sí solos</h2>
+  </div>
+
+  <!-- Pinned wrapper -->
+  <div class="hj-track-wrapper">
+    <div class="hj-track">
+
+      <!-- ── PORTFOLIO CARDS ──────────────────────────── -->
+
+      <!-- Card 1 -->
+      <div class="hj-panel pcard pcard-1" data-animate>
+        <div class="pcard-mockup">
+          <div class="mock-bar">
+            <div class="mock-dot mock-dot-red"></div>
+            <div class="mock-dot mock-dot-yellow"></div>
+            <div class="mock-dot mock-dot-green"></div>
+          </div>
+          <div class="mock-line mock-line-medium mock-line-purple"></div>
+          <div class="mock-line mock-line-short"></div>
+          <div class="mock-grid">
+            <div class="mock-block mock-block-purple"></div>
+            <div class="mock-block"></div>
+          </div>
+        </div>
+        <div class="pcard-inner">
+          <div class="pcard-cat">Desarrollo web</div>
+          <div class="pcard-name">Restaurante El Gato</div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="hj-panel pcard pcard-2" data-animate>
+        <div class="pcard-mockup">
+          <div class="mock-bar">
+            <div class="mock-dot mock-dot-red"></div>
+            <div class="mock-dot mock-dot-yellow"></div>
+            <div class="mock-dot mock-dot-green"></div>
+          </div>
+          <div class="mock-line mock-line-medium mock-line-green"></div>
+          <div class="mock-line mock-line-short"></div>
+          <div class="mock-grid">
+            <div class="mock-block mock-block-green"></div>
+            <div class="mock-block"></div>
+          </div>
+        </div>
+        <div class="pcard-inner">
+          <div class="pcard-cat">Redes sociales</div>
+          <div class="pcard-name">Studio Bloom</div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="hj-panel pcard pcard-3" data-animate>
+        <div class="pcard-hover-overlay">
+          <span>Ver proyecto →</span>
+        </div>
+        <div class="pcard-inner">
+          <div class="pcard-cat">Fotografía de producto</div>
+          <div class="pcard-name">Tienda Orígenes</div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="hj-panel pcard pcard-4" data-animate>
+        <div class="pcard-hover-overlay">
+          <span>Ver proyecto →</span>
+        </div>
+        <div class="pcard-inner">
+          <div class="pcard-cat">Web + Redes</div>
+          <div class="pcard-name">Clínica Nova</div>
+        </div>
+      </div>
+
+    </div><!-- /.hj-track -->
+  </div><!-- /.hj-track-wrapper -->
+
+</section>
+
+<style>
+  /* ── Section shell ─────────────────────────────────────── */
+  .hj-section {
+    background: #0A0A0A;
+    padding-top: 120px;
+    overflow: hidden;
+  }
+
+  .hj-header {
+    max-width: 1200px;
+    margin: 0 auto 64px;
+    padding: 0 48px;
+  }
+
+  .hj-header .section-title {
+    max-width: 800px;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  /* ── Track ─────────────────────────────────────────────── */
+  .hj-track-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .hj-track {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 24px;
+    padding: 0 48px 100px;
+    width: max-content;
+  }
+
+  /* ── Portfolio panels ───────────────────────────────────── */
+  .hj-panel {
+    flex-shrink: 0;
+  }
+
+  .pcard {
+    width: calc(50vw - 36px);
+    height: calc(100vh - 420px);
+    min-height: 340px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.25s;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  .pcard:hover { transform: scale(1.02); }
+
+  .pcard-1 { background: linear-gradient(135deg, var(--color-purple-light) 0%, var(--color-purple) 100%); }
+  .pcard-2 { background: linear-gradient(135deg, var(--color-green-light) 0%, var(--color-green) 100%); }
+  .pcard-3 { background: linear-gradient(135deg, #1E1A14 0%, #2E2820 100%); }
+  .pcard-4 { background: linear-gradient(135deg, #1A1622 0%, #2A2340 100%); }
+
+  .pcard-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+    background: linear-gradient(to top, rgba(17,17,16,0.6) 0%, transparent 60%);
+  }
+
+  .pcard-cat {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: rgba(247,244,239,0.7);
+    margin-bottom: 6px;
+  }
+
+  .pcard-name {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    color: white;
+    line-height: 1.2;
+  }
+
+  /* Browser mockup */
+  .pcard-mockup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 65%;
+    background: #1C1C1A;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .mock-bar { display: flex; gap: 5px; margin-bottom: 12px; }
+  .mock-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .mock-dot-red { background: #FF6058; }
+  .mock-dot-yellow { background: #FFBD2E; }
+  .mock-dot-green { background: #28C840; }
+  .mock-line { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); margin-bottom: 8px; }
+  .mock-line-short { width: 60%; }
+  .mock-line-medium { width: 80%; }
+  .mock-line-purple { background: var(--color-purple); }
+  .mock-line-green { background: var(--color-green); }
+  .mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
+  .mock-block { height: 40px; border-radius: 6px; background: rgba(255,255,255,0.08); }
+  .mock-block-purple { background: #2A2340; }
+  .mock-block-green { background: #1A2B18; }
+
+  .pcard-hover-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+  }
+  .pcard-hover-overlay span {
+    background: rgba(17,17,16,0.75);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    letter-spacing: 0.02em;
+    transform: translateY(8px);
+    transition: transform 0.3s ease;
+  }
+  .pcard:hover .pcard-hover-overlay { opacity: 1; }
+  .pcard:hover .pcard-hover-overlay span { transform: translateY(0); }
+
+  /* ── Mobile: vertical stack ─────────────────────────────── */
+  @media (max-width: 1024px) {
+    .hj-section { padding: 80px 24px; }
+    .hj-header { padding: 0; margin-bottom: 40px; }
+    .hj-track-wrapper { overflow: visible; }
+    .hj-track {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      padding: 0;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .pcard { width: 100%; height: 280px; }
+  }
+
+  @media (max-width: 600px) {
+    .hj-track { grid-template-columns: 1fr; }
+  }
+</style>

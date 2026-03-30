@@ -3,15 +3,15 @@
 @theme {
   --color-cream: #F7F4EF;
   --color-cream-dark: #EDE9E1;
-  --color-ink: #111110;
+  --color-ink: #FFFFFF;
   --color-ink-soft: #1C1C1A;
-  --color-ink-muted: #7A7870;
+  --color-ink-muted: #A8A49C;
   --color-purple: #B8A9D9;
-  --color-purple-light: #DDD6F0;
+  --color-purple-light: #2A2340;
   --color-purple-deep: #7B6BB0;
-  --color-green: #A8C5A0;
-  --color-green-light: #D4E8D0;
-  --color-green-deep: #5A8A52;
+  --color-green: #B8E8AE;
+  --color-green-light: #1A2B18;
+  --color-green-deep: #6FCF5A;
   --font-serif: "DM Serif Display", Georgia, serif;
   --font-sans: "DM Sans", sans-serif;
 }
@@ -29,7 +29,7 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: var(--color-cream);
+  background: #0A0A0A;
   color: var(--color-ink);
   overflow-x: hidden;
 }
@@ -46,6 +46,12 @@ body {
   transform: translateY(0);
 }
 
+/* SplitType word containers — prevent mid-word line breaks */
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 /* Section utilities */
 .section-label {
   font-size: 11px;
@@ -58,8 +64,8 @@ body {
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: clamp(32px, 4vw, 52px);
-  line-height: 1.1;
+  font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--color-ink);
   margin-bottom: 64px;
@@ -73,34 +79,48 @@ body {
 
 /* Button utilities */
 .btn-primary {
-  background: var(--color-ink);
-  color: var(--color-cream);
+  background: var(--color-purple-deep);
+  color: #FFFFFF;
   font-size: 14px;
   font-weight: 500;
   padding: 14px 28px;
   border-radius: 100px;
+  border: 1px solid transparent;
   text-decoration: none;
   display: inline-block;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.25s, border-color 0.25s;
 }
 
 .btn-primary:hover {
+  background: #111;
+  border-color: var(--color-purple);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(17, 17, 16, 0.15);
+  box-shadow:
+    0 0 8px rgba(184, 169, 217, 0.9),
+    0 0 22px rgba(184, 169, 217, 0.5),
+    0 0 45px rgba(184, 169, 217, 0.2);
 }
 
 .btn-secondary {
+  background: rgba(34, 197, 94, 0.12);
+  color: rgba(134, 239, 172, 0.9);
   font-size: 14px;
-  color: var(--color-ink-muted);
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 1px solid rgba(34, 197, 94, 0.25);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.2s;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s, border-color 0.2s;
 }
 
 .btn-secondary:hover {
-  color: var(--color-ink);
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.15);
 }
 
 .btn-secondary::after {
