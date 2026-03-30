@@ -13,18 +13,7 @@ const links = [
 
   <div class="footer-inner">
     <div class="footer-logo">
-      <span class="footer-letter" style="overflow: hidden; display: inline-block;"><span class="footer-letter-inner" style="display: inline-block;">C</span></span>
-      <span class="footer-letter" style="overflow: hidden; display: inline-block;"><span class="footer-letter-inner" style="display: inline-block;">a</span></span>
-      <span class="footer-letter" style="overflow: hidden; display: inline-block;"><span class="footer-letter-inner" style="display: inline-block;">l</span></span>
-      <span class="footer-letter" style="overflow: hidden; display: inline-block;"><span class="footer-letter-inner" style="display: inline-block;">a</span></span>
-      <span class="footer-letter" style="overflow: hidden; display: inline-block; color: var(--color-purple);"><span class="footer-letter-inner" style="display: inline-block;">x</span></span>
-      <span style="display: inline-block; width: 0.3em;"> </span>
-      <span class="footer-letter" style="overflow: hidden; display: inline-block;"><span class="footer-letter-inner" style="display: inline-block;">S</span></span>
-      <span class="footer-letter" style="overflow: hidden; display: inline-block;"><span class="footer-letter-inner" style="display: inline-block;">t</span></span>
-      <span class="footer-letter" style="overflow: hidden; display: inline-block;"><span class="footer-letter-inner" style="display: inline-block;">u</span></span>
-      <span class="footer-letter" style="overflow: hidden; display: inline-block;"><span class="footer-letter-inner" style="display: inline-block;">d</span></span>
-      <span class="footer-letter" style="overflow: hidden; display: inline-block;"><span class="footer-letter-inner" style="display: inline-block;">i</span></span>
-      <span class="footer-letter" style="overflow: hidden; display: inline-block;"><span class="footer-letter-inner" style="display: inline-block;">o</span></span>
+      <img src="/logo.jpg" alt="Calax Studio" class="footer-logo-img" />
     </div>
 
     <nav class="footer-links">
@@ -33,7 +22,6 @@ const links = [
       ))}
     </nav>
 
-    <div class="footer-center">Hecho con 💜 en Barcelona · Eixample</div>
     <div class="footer-copy">© 2026 Calax Studio. Todos los derechos reservados.</div>
   </div>
 </footer>
@@ -69,26 +57,22 @@ const links = [
     margin: 0 auto;
   }
 
-  /* ─── Logo with per-letter hover ─── */
+  /* ─── Logo ─── */
   .footer-logo {
-    font-family: var(--font-serif);
-    font-size: 24px;
-    color: var(--color-cream);
     margin-bottom: 8px;
   }
 
-  .footer-letter {
-    transition: color 0.3s ease, transform 0.3s ease;
-    cursor: default;
+  .footer-logo-img {
+    height: 64px;
+    width: auto;
+    display: block;
+    mix-blend-mode: screen;
+    opacity: 0.9;
+    transition: opacity 0.2s;
   }
 
-  .footer-letter:hover {
-    color: var(--color-purple) !important;
-  }
-
-  .footer-letter:hover .footer-letter-inner {
-    transform: translateY(-3px);
-    transition: transform 0.3s ease;
+  .footer-logo-img:hover {
+    opacity: 1;
   }
 
   /* ─── Footer links with animated underline ─── */

@@ -41,7 +41,7 @@ const steps = [
 
     <div class="process-steps">
       {steps.map((step, i) => (
-        <div class="step">
+        <div class="step" data-process-card>
           <div class="step-num">{step.num}</div>
           <div class="step-name">{step.name}</div>
           <div class="step-desc">{step.desc}</div>
@@ -194,3 +194,85 @@ const steps = [
     }
   }
 </style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    const cards = gsap.utils.toArray<HTMLElement>('[data-process-card]');
+
+    // Initial state: fold down from above (rotateX perspective fold)
+    gsap.set(cards, {
+      autoAlpha: 0,
+      y: 70,
+      rotateX: -18,
+      transformPerspective: 700,
+      transformOrigin: 'top center',
+    });
+    gsap.set('[data-process-card] .step-num', { autoAlpha: 0, scale: 0.4 });
+    gsap.set('[data-process-card] .step-badge', { autoAlpha: 0, x: -12 });
+
+    ScrollTrigger.create({
+      trigger: '.process-steps',
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        // Cards fold in sequentially
+        gsap.to(cards, {
+          autoAlpha: 1,
+          y: 0,
+          rotateX: 0,
+          duration: 0.75,
+          stagger: 0.18,
+          ease: 'power3.out',
+        });
+
+        // Numbers pop in with bounce after each card
+        cards.forEach((card, i) => {
+          const num = card.querySelector('.step-num');
+          const badge = card.querySelector('.step-badge');
+
+          gsap.to(num, {
+            autoAlpha: 1,
+            scale: 1,
+            duration: 0.5,
+            delay: i * 0.18 + 0.35,
+            ease: 'back.out(2)',
+          });
+
+          // Badge slides in last
+          gsap.to(badge, {
+            autoAlpha: 1,
+            x: 0,
+            duration: 0.4,
+            delay: i * 0.18 + 0.55,
+            ease: 'power2.out',
+          });
+
+          // Brief border glow after card lands
+          gsap.fromTo(
+            card,
+            { boxShadow: '0 0 0px rgba(90, 138, 82, 0)' },
+            {
+              boxShadow: '0 0 24px rgba(90, 138, 82, 0.25)',
+              duration: 0.4,
+              delay: i * 0.18 + 0.65,
+              yoyo: true,
+              repeat: 1,
+              ease: 'power2.inOut',
+            }
+          );
+        });
+      },
+    });
+  } else {
+    gsap.set('[data-process-card]', { autoAlpha: 1, y: 0, rotateX: 0 });
+    gsap.set('[data-process-card] .step-num', { autoAlpha: 1, scale: 1 });
+    gsap.set('[data-process-card] .step-badge', { autoAlpha: 1, x: 0 });
+  }
+</script>

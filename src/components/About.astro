@@ -9,7 +9,7 @@
     <!-- Left: text + team cards -->
     <div class="about-text">
       <p class="section-label about-label" data-about-reveal>Dos personas. Un equipo completo.</p>
-      <h2 class="section-title about-title" data-split-text>Somos Thomas y Mai. <em>El equipo</em> que ejecuta.</h2>
+      <h2 class="section-title about-title" data-split-text>Somos Thom y Mai. <em>Un equipo</em> que ejecuta.</h2>
       <div class="about-desc-wrapper" data-about-reveal>
         <p class="about-desc">
           Él desarrolla, automatiza y hace que las cosas funcionen. Ella crea, fotografía y hace que las cosas se vean bien. Juntos ofrecemos lo que normalmente requeriría contratar a tres personas distintas — con la ventaja de que siempre hablás con quien realmente hace el trabajo.
@@ -17,7 +17,7 @@
       </div>
       <div class="about-desc-wrapper" data-about-reveal>
         <p class="about-desc">
-          No somos una agencia grande con cuentas y coordinadores. Somos el equipo que ejecuta, y eso se nota en los resultados.
+          No hay cuentas ni coordinadores. Cuando hablás con nosotros, hablás directamente con quien va a hacer tu trabajo — sin filtros ni intermediarios.
         </p>
       </div>
 
@@ -32,9 +32,9 @@
             <div class="team-avatar team-avatar-thomas">
               <span class="team-initial">T</span>
             </div>
-            <div class="team-name">Thomas</div>
+            <div class="team-name">Thom</div>
             <div class="team-role"><span class="team-role-icon">💻</span> Desarrollo & Automatización</div>
-            <div class="team-bio">Desarrollo web moderno, integraciones y flujos automatizados para que tu negocio opere más eficientemente.</div>
+            <div class="team-bio">Sitios web modernos, integraciones con tus herramientas y flujos automatizados a medida — para que tu negocio opere más rápido sin depender de procesos manuales.</div>
             <div class="team-skills team-skills-purple">
               <span class="team-skill">Astro</span>
               <span class="team-skill">React</span>
@@ -63,38 +63,24 @@
       </div>
     </div>
 
-    <!-- Right: stat cards -->
-    <div class="about-visual">
-      <!-- Card 1: Active clients -->
-      <div class="av-card av-1" data-about-reveal>
-        <div class="av-label">PROYECTOS COMPLETADOS</div>
-        <div class="av-val"><span class="av-counter" data-about-counter="6">0</span>+</div>
-        <div class="av-sub">negocios que ya crecen con nosotros</div>
-        <div class="av-bar-row">
-          <div class="av-bar">
-            <div class="av-bar-fill av-bar-fill-purple" style="width: 85%"></div>
-          </div>
-          <div class="av-bar">
-            <div class="av-bar-fill av-bar-fill-green" style="width: 70%"></div>
-          </div>
-          <div class="av-bar">
-            <div class="av-bar-fill av-bar-fill-light" style="width: 92%"></div>
-          </div>
-        </div>
+    <!-- Right: team values -->
+    <div class="about-values" data-animate>
+      <div class="value-item">
+        <span class="value-num">01</span>
+        <h4 class="value-title">Nos importa el detalle</h4>
+        <p class="value-desc">No entregamos algo funcional. Entregamos algo de lo que nos sentimos orgullosos.</p>
+        <div class="value-sep"></div>
       </div>
-
-      <!-- Card 2: Delivery time -->
-      <div class="av-card av-2" data-about-reveal>
-        <div class="av-label av-label-dark">ENTREGA</div>
-        <div class="av-val av-val-purple" style="font-size:18px;line-height:1.3;">Tu web lista</div>
-        <div class="av-sub av-sub-dark">en días, no en semanas</div>
+      <div class="value-item">
+        <span class="value-num">02</span>
+        <h4 class="value-title">Tu éxito es nuestro portfolio</h4>
+        <p class="value-desc">Cada cliente nuevo es una oportunidad de mostrar lo que podemos hacer. Eso nos obliga a dar lo mejor siempre.</p>
+        <div class="value-sep"></div>
       </div>
-
-      <!-- Card 3: Free audit -->
-      <div class="av-card av-3" data-about-reveal>
-        <div class="av-label av-label-purple">AUDITORÍA</div>
-        <div class="av-val-sm">Gratis</div>
-        <div class="av-sub-sm">Analizamos tu presencia digital sin costo</div>
+      <div class="value-item">
+        <span class="value-num">03</span>
+        <h4 class="value-title">Equipo pequeño, compromiso grande</h4>
+        <p class="value-desc">Dos personas que ponen su nombre en cada proyecto.</p>
       </div>
     </div>
   </div>
@@ -450,148 +436,54 @@
     transition: transform 0.2s ease;
   }
 
-  /* ─── Visual stat cards ─────────────────────────────────────────── */
-  .about-visual {
-    position: relative;
-    height: 480px;
-  }
-
-  .av-card {
-    position: absolute;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .av-1 {
-    width: 260px;
-    top: 0;
-    left: 0;
-  }
-
-  .av-2 {
-    width: 220px;
-    top: 120px;
-    right: 0;
-    background: linear-gradient(135deg, #1C1C1A 0%, #2a2a28 100%);
-    color: var(--color-cream);
-    border-color: rgba(255, 255, 255, 0.06);
-  }
-
-  .av-3 {
-    width: 200px;
-    bottom: 0;
-    left: 40px;
-    background: linear-gradient(135deg, #2A2340 0%, #1a1a2e 100%);
-    border-color: rgba(123, 107, 176, 0.2);
-  }
-
-  .av-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    opacity: 0.5;
-    margin-bottom: 8px;
-  }
-
-  .av-label-dark {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    color: rgba(247, 244, 239, 0.4);
-    margin-bottom: 8px;
-  }
-
-  .av-label-purple {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    color: var(--color-purple-deep);
-    opacity: 0.7;
-    margin-bottom: 8px;
-  }
-
-  .av-val {
-    font-family: var(--font-serif);
-    font-size: 28px;
-    line-height: 1;
-    margin-bottom: 4px;
-    color: #FFFFFF;
-  }
-
-  /* Counter number gradient accent */
-  .av-counter {
-    background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-green) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-size: 42px;
-    font-weight: 700;
-  }
-
-  .av-val-purple {
-    font-family: var(--font-serif);
-    font-size: 28px;
-    line-height: 1;
-    margin-bottom: 4px;
-    color: var(--color-purple);
-  }
-
-  .av-val-sm {
-    font-family: var(--font-serif);
-    font-size: 20px;
-    color: #FFFFFF;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .av-sub {
-    font-size: 12px;
-    opacity: 0.5;
-  }
-
-  .av-sub-dark {
-    font-size: 12px;
-    color: rgba(247, 244, 239, 0.4);
-  }
-
-  .av-sub-sm {
-    font-size: 11px;
-    color: var(--color-ink-muted);
-    margin-top: 4px;
-  }
-
-  .av-bar-row {
+  /* ─── Team values block ─────────────────────────────────────────── */
+  .about-values {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 12px;
-  }
-
-  .av-bar {
-    height: 4px;
-    border-radius: 2px;
-    background: rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-  }
-
-  .av-bar-fill {
+    justify-content: center;
     height: 100%;
-    border-radius: 2px;
+    gap: 0;
   }
 
-  .av-bar-fill-purple {
-    background: var(--color-purple);
+  .value-item {
+    padding: 32px 0;
+    position: relative;
   }
 
-  .av-bar-fill-green {
-    background: var(--color-green);
+  .value-num {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--color-purple-deep);
+    margin-bottom: 12px;
   }
 
-  .av-bar-fill-light {
-    background: rgba(184, 169, 217, 0.5);
+  .value-title {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-cream);
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+  }
+
+  .value-desc {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: rgba(247, 244, 239, 0.5);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .value-sep {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(184, 169, 217, 0.2), transparent);
   }
 
   /* ─── Responsive ────────────────────────────────────────────────── */
@@ -599,23 +491,6 @@
     .about-inner {
       grid-template-columns: 1fr;
       gap: 48px;
-    }
-
-    .about-visual {
-      height: 360px;
-    }
-
-    .av-1 {
-      width: 220px;
-    }
-
-    .av-2 {
-      width: 180px;
-      top: 100px;
-    }
-
-    .av-3 {
-      width: 160px;
     }
 
     .team-card-mai {
@@ -862,73 +737,6 @@
       });
     });
 
-    // ─── Stat cards reveal ─────────────────────────────────────────
-    const avCards = document.querySelectorAll('.about-visual .av-card');
-    avCards.forEach((card, i) => {
-      gsap.set(card, { autoAlpha: 0, y: 50, scale: 0.95 });
-      ScrollTrigger.create({
-        trigger: card,
-        start: 'top 90%',
-        once: true,
-        onEnter: () => {
-          gsap.to(card, {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.8,
-            delay: i * 0.15,
-            ease: 'power3.out',
-          });
-        },
-      });
-    });
-
-    // ─── 4. Slot machine counter (6+) ──────────────────────────────
-    const counterEl = document.querySelector('.about .av-counter[data-about-counter]') as HTMLElement | null;
-    if (counterEl) {
-      const targetValue = parseInt(counterEl.getAttribute('data-about-counter') || '6', 10);
-
-      ScrollTrigger.create({
-        trigger: counterEl,
-        start: 'top 85%',
-        once: true,
-        onEnter: () => {
-          const duration    = 1500; // ms total slot machine spin
-          const interval    = 60;   // ms between number flips
-          const startTime   = performance.now();
-          let   rafId: number;
-
-          const tick = (now: number) => {
-            const elapsed = now - startTime;
-
-            if (elapsed < duration) {
-              // Rapid random number cycling — slot machine feel
-              const randomNum = Math.floor(Math.random() * 20);
-              counterEl.textContent = String(randomNum);
-              rafId = requestAnimationFrame((t) => {
-                // Only update at ~interval ms pace to create the "tick" feel
-                setTimeout(() => tick(performance.now()), interval);
-              });
-            } else {
-              // Land on target with a short GSAP bounce
-              counterEl.textContent = String(targetValue);
-              gsap.fromTo(counterEl,
-                { y: -10, scale: 1.3 },
-                {
-                  y: 0,
-                  scale: 1,
-                  duration: 0.5,
-                  ease: 'elastic.out(1.2, 0.4)',
-                }
-              );
-            }
-          };
-
-          tick(performance.now());
-        },
-      });
-    }
-
     // ─── Parallax: cards move at different rates ─────────────────────
     if (cardLeft) {
       gsap.to(cardLeft, {
@@ -955,48 +763,6 @@
       });
     }
 
-    // Stat cards subtle parallax
-    const av1 = document.querySelector('.av-1');
-    const av2 = document.querySelector('.av-2');
-    const av3 = document.querySelector('.av-3');
-
-    if (av1) {
-      gsap.to(av1, {
-        y: -25,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.about-visual',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1.5,
-        },
-      });
-    }
-    if (av2) {
-      gsap.to(av2, {
-        y: -40,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.about-visual',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 2,
-        },
-      });
-    }
-    if (av3) {
-      gsap.to(av3, {
-        y: -15,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.about-visual',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-        },
-      });
-    }
-
   } else {
     // Reduced motion: ensure everything is visible
     gsap.set('[data-about-reveal], [data-about-card], .about-desc-wrapper', {
@@ -1007,12 +773,5 @@
       clipPath: 'none',
     });
     gsap.set('.team-skill', { autoAlpha: 1, y: 0, scale: 1 });
-    gsap.set('.av-card', { autoAlpha: 1, y: 0, scale: 1 });
-
-    // Show counter final value immediately
-    const counterEl = document.querySelector('.about .av-counter[data-about-counter]') as HTMLElement | null;
-    if (counterEl) {
-      counterEl.textContent = counterEl.getAttribute('data-about-counter') || '6';
-    }
   }
 </script>

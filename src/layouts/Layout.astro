@@ -21,6 +21,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>if ('scrollRestoration' in history) history.scrollRestoration = 'manual';</script>
     <meta name="generator" content={Astro.generator} />
 
     <!-- Primary Meta -->
@@ -119,14 +120,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
 
       #cursor-dot {
         position: fixed;
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
         background: var(--color-cream);
         border-radius: 50%;
         pointer-events: none;
         z-index: 99999;
         transform: translate(-50%, -50%);
-        transition: width 0.2s, height 0.2s, background 0.2s;
+        opacity: 0.68;
+        transition: width 0.2s, height 0.2s, background 0.2s, opacity 0.2s;
       }
 
       #cursor-ring {
@@ -138,6 +140,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
         pointer-events: none;
         z-index: 99998;
         transform: translate(-50%, -50%);
+        opacity: 0.55;
       }
 
       body.cursor-hover #cursor-ring {
@@ -231,7 +234,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=block"
       rel="stylesheet"
     />
   </head>
@@ -330,6 +333,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
           clearTimeout(preloaderFallback);
           removePreloader();
         } else {
+          // Wait for fonts before exiting — prevents FOUT flash on preloader exit
+          await document.fonts.ready;
+
           const tl = gsap.timeline({
             onComplete: () => {
               clearTimeout(preloaderFallback);
@@ -381,6 +387,47 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
               duration: 0.2,
               ease: 'power1.out',
             });
+        }
+
+        // ─── CTA sparkle on hover ────────────────────────────────────────────────
+        if (!prefersReducedMotion) {
+          document.querySelectorAll<HTMLElement>('.btn-primary, .nav-cta, .form-submit').forEach((btn) => {
+            btn.addEventListener('mouseenter', (e) => {
+              const rect = btn.getBoundingClientRect();
+              const cx = rect.left + rect.width / 2;
+              const cy = rect.top + rect.height / 2;
+
+              for (let i = 0; i < 7; i++) {
+                const star = document.createElement('span');
+                star.textContent = '✦';
+                star.style.cssText = `
+                  position: fixed;
+                  pointer-events: none;
+                  z-index: 99999;
+                  font-size: ${8 + Math.random() * 6}px;
+                  color: #C4B4E8;
+                  left: ${cx}px;
+                  top: ${cy}px;
+                  transform: translate(-50%, -50%);
+                  user-select: none;
+                `;
+                document.body.appendChild(star);
+
+                const angle = (i / 7) * Math.PI * 2 + Math.random() * 0.4;
+                const dist = 28 + Math.random() * 22;
+
+                gsap.to(star, {
+                  x: Math.cos(angle) * dist,
+                  y: Math.sin(angle) * dist,
+                  opacity: 0,
+                  scale: 0.2,
+                  duration: 0.55 + Math.random() * 0.2,
+                  ease: 'power2.out',
+                  onComplete: () => star.remove(),
+                });
+              }
+            });
+          });
         }
 
         // ─── Section entrance animations (ScrollTrigger.batch) ────────────────────

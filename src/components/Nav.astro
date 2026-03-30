@@ -2,7 +2,7 @@
 ---
 
 <nav class="nav">
-  <div class="logo">Calax Studio</div>
+  <a href="#hero" class="logo"><img src="/logo.jpg" alt="Calax Studio" class="logo-img" /></a>
 
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
@@ -10,7 +10,7 @@
     <li><a href="#nosotros">Nosotros</a></li>
   </ul>
 
-  <a href="#contacto" class="nav-cta">Hablemos →</a>
+  <a href="#contacto" class="nav-cta">Hablemos</a>
 
   <!-- Hamburger button (mobile only) -->
   <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -28,7 +28,7 @@
       <li><a href="#portfolio" class="mobile-link">Portfolio</a></li>
       <li><a href="#nosotros" class="mobile-link">Nosotros</a></li>
     </ul>
-    <a href="#contacto" class="mobile-cta">Hablemos →</a>
+    <a href="#contacto" class="mobile-cta">Hablemos</a>
   </div>
 </div>
 
@@ -53,15 +53,16 @@
   }
 
   .logo {
-    font-family: var(--font-serif);
-    font-size: 20px;
-    color: #FFFFFF;
-    letter-spacing: -0.02em;
     text-decoration: none;
+    display: flex;
+    align-items: center;
   }
 
-  .logo span {
-    color: var(--color-purple-deep);
+  .logo-img {
+    height: 44px;
+    width: auto;
+    display: block;
+    mix-blend-mode: screen;
   }
 
   .nav-links {
@@ -77,10 +78,27 @@
     text-decoration: none;
     letter-spacing: 0.04em;
     transition: color 0.2s;
+    position: relative;
+    padding-bottom: 3px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-purple), var(--color-green));
+    transition: width 0.4s ease;
   }
 
   .nav-links a:hover {
     color: #FFFFFF;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
   }
 
   .nav-cta {
@@ -90,14 +108,20 @@
     font-weight: 500;
     padding: 10px 22px;
     border-radius: 100px;
+    border: 1px solid transparent;
     text-decoration: none;
     letter-spacing: 0.02em;
-    transition: background 0.2s, transform 0.15s;
+    transition: background 0.25s, transform 0.25s, box-shadow 0.25s, border-color 0.25s;
   }
 
   .nav-cta:hover {
-    background: #6B5BA0;
+    background: #111;
+    border-color: var(--color-purple);
     transform: translateY(-1px);
+    box-shadow:
+      0 0 8px rgba(184, 169, 217, 0.9),
+      0 0 22px rgba(184, 169, 217, 0.5),
+      0 0 45px rgba(184, 169, 217, 0.2);
   }
 
   /* Hamburger */
@@ -274,6 +298,8 @@
   mobileLinks.forEach((link) => {
     link.addEventListener('click', closeMenu);
   });
+
+  document.querySelector('.mobile-cta')?.addEventListener('click', closeMenu);
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {

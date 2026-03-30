@@ -14,7 +14,7 @@
 
   <!-- Content -->
   <div class="hero-left">
-    <div class="hero-tag">Agencia digital · Barcelona</div>
+    <div class="hero-tag">Agencia digital</div>
     <h1 class="hero-title">
       Tu negocio merece una <span class="text-purple">presencia digital</span> que lo <em>represente</em> de verdad
     </h1>
@@ -110,6 +110,7 @@
   }
 
   .hero-tag {
+    margin-bottom: 32px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -120,7 +121,6 @@
     letter-spacing: 0.06em;
     padding: 6px 14px;
     border-radius: 100px;
-    margin-bottom: 32px;
     width: fit-content;
   }
 
@@ -132,6 +132,7 @@
     background: var(--color-purple-deep);
     display: inline-block;
   }
+
 
   .hero-title {
     font-family: var(--font-serif);
@@ -194,6 +195,11 @@
       padding: 60px 24px 60px;
     }
 
+    .hero-sub {
+      color: rgba(247, 244, 239, 0.82);
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8);
+    }
+
     .btn-secondary {
       display: none;
     }
@@ -203,8 +209,8 @@
     }
 
     .btn-primary {
-      width: 100%;
-      justify-content: center;
+      font-size: 13px;
+      padding: 11px 22px;
     }
   }
 </style>
