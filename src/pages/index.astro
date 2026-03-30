@@ -2,44 +2,29 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
-import Strip from '../components/Strip.astro';
+import Marquee from '../components/Marquee.astro';
 import Services from '../components/Services.astro';
 import Process from '../components/Process.astro';
-import Portfolio from '../components/Portfolio.astro';
+import HorizontalJourney from '../components/HorizontalJourney.astro';
 import About from '../components/About.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout
-  title="Nexus Digital Labs — Agencia Digital en Barcelona"
-  description="Ayudamos a negocios de Barcelona a crecer online con diseño web, redes sociales y fotografía profesional."
+  title="Calax Studio — Agencia Digital en Barcelona"
+  description="Diseño web, contenido visual y automatización para negocios en Barcelona. Trabajás directamente con quienes hacen el trabajo."
 >
   <Nav />
-  <main>
+  <main style="position: relative; z-index: 1;">
     <Hero />
-    <Strip />
+    <Marquee />
     <Services />
     <Process />
-    <Portfolio />
+    <HorizontalJourney />
     <About />
     <Contact />
   </main>
   <Footer />
 
-  <script>
-    // Scroll reveal animation
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-  </script>
 </Layout>

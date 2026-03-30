@@ -1,44 +1,29 @@
 ---
 ---
 
-<section class="hero">
+<section class="hero" id="hero">
+  <!-- Background image -->
+  <div class="hero-bg-wrapper">
+    <img class="hero-bg-img" src="/hero3.webp" alt="" aria-hidden="true" fetchpriority="high" loading="eager" />
+  </div>
+  <div class="hero-bg-overlay"></div>
+
   <!-- Background blobs -->
   <div class="hero-blob blob-1"></div>
   <div class="hero-blob blob-2"></div>
 
-  <!-- Left content -->
+  <!-- Content -->
   <div class="hero-left">
-    <div class="hero-tag">Agencia digital · Barcelona</div>
+    <div class="hero-tag">Agencia digital</div>
     <h1 class="hero-title">
-      Ayudamos a tu negocio a <em>conectar</em> con más <span class="green">clientes</span>
+      Tu negocio merece una <span class="text-purple">presencia digital</span> que lo <em>represente</em> de verdad
     </h1>
     <p class="hero-sub">
-      Diseñamos tu presencia digital, gestionamos tus redes y creamos contenido que convierte. Todo en un solo lugar.
+      Creamos tu web, producimos tu contenido visual y automatizamos tus procesos. Un equipo pequeño, resultados concretos, sin intermediarios.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">Empieza ahora</a>
-      <a href="#servicios" class="btn-secondary">Ver servicios</a>
-    </div>
-  </div>
-
-  <!-- Right visual -->
-  <div class="hero-right">
-    <div class="hero-card-stack">
-      <div class="hcard hcard-1">
-        <div class="hcard-icon">🌐</div>
-        <div class="hcard-title">Desarrollo web profesional</div>
-        <div class="hcard-desc">Páginas rápidas, modernas y pensadas para convertir visitas en clientes reales.</div>
-      </div>
-      <div class="hcard hcard-2">
-        <div class="hcard-icon">📱</div>
-        <div class="hcard-title">Gestión de redes</div>
-        <div class="hcard-desc">Contenido que construye comunidad y genera ventas.</div>
-      </div>
-      <div class="hcard hcard-3">
-        <div class="hcard-label">PROYECTOS</div>
-        <div class="hcard-num">12+</div>
-        <div class="hcard-sub">negocios creciendo</div>
-      </div>
+      <a href="#contacto" class="btn-primary">Solicitar auditoría gratuita →</a>
+      <a href="#proceso" class="btn-secondary">Ver cómo trabajamos</a>
     </div>
   </div>
 </section>
@@ -46,14 +31,49 @@
 <style>
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    align-items: center;
     padding-top: 80px;
     position: relative;
-    overflow: hidden;
+    overflow: clip; /* clip decorative blobs/bg without clipping text in child stacking contexts */
   }
 
-  .hero-blob {
+  .hero-bg-wrapper {
+    position: absolute;
+    inset: -8%;
+    z-index: 0;
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    animation: kenburns 18s ease-in-out infinite alternate;
+    transform-origin: center center;
+    will-change: transform;
+    opacity: 0.65;
+  }
+
+  @keyframes kenburns {
+    0%   { transform: scale(1.0) translate(0%, 0%); }
+    33%  { transform: scale(1.07) translate(-1.5%, 0.5%); }
+    66%  { transform: scale(1.04) translate(1%, -1%); }
+    100% { transform: scale(1.09) translate(-0.5%, 1%); }
+  }
+
+  .hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 50%, transparent 0%, #0A0A0A 70%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+.hero-blob {
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
@@ -64,7 +84,7 @@
   .blob-1 {
     width: 500px;
     height: 500px;
-    background: var(--color-purple-light);
+    background: rgba(123, 107, 176, 0.35);
     top: -100px;
     right: -100px;
     animation: float 8s ease-in-out infinite;
@@ -73,7 +93,7 @@
   .blob-2 {
     width: 400px;
     height: 400px;
-    background: var(--color-green-light);
+    background: rgba(90, 138, 82, 0.25);
     bottom: -80px;
     left: 10%;
     animation: float 10s ease-in-out infinite 2s;
@@ -86,9 +106,12 @@
     padding: 80px 48px;
     position: relative;
     z-index: 2;
+    max-width: 720px;
+    width: 100%;
   }
 
   .hero-tag {
+    margin-bottom: 32px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -99,9 +122,7 @@
     letter-spacing: 0.06em;
     padding: 6px 14px;
     border-radius: 100px;
-    margin-bottom: 32px;
     width: fit-content;
-    animation: fadeUp 0.6s ease both;
   }
 
   .hero-tag::before {
@@ -113,23 +134,40 @@
     display: inline-block;
   }
 
+
   .hero-title {
     font-family: var(--font-serif);
-    font-size: clamp(42px, 5vw, 68px);
-    line-height: 1.05;
+    font-size: clamp(36px, 5vw, 68px);
+    line-height: 1.1;
     letter-spacing: -0.03em;
     color: var(--color-ink);
     margin-bottom: 28px;
-    animation: fadeUp 0.6s ease 0.1s both;
+    overflow: visible;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  /* SplitType char/word wrappers must not clip */
+  .hero-title .char,
+  .hero-title .word {
+    overflow: visible;
+  }
+
+  /* Char hover interaction base */
+  .hero-title .char {
+    display: inline-block;
+    transition: color 0.1s ease;
+    will-change: transform, color;
+    transform-style: preserve-3d;
   }
 
   .hero-title em {
     font-style: italic;
-    color: var(--color-purple-deep);
+    color: rgba(134, 239, 172, 0.9); /* green — matches .btn-secondary text */
   }
 
-  .hero-title .green {
-    color: var(--color-green-deep);
+  .hero-title .text-purple {
+    color: var(--color-purple-deep); /* #7B6BB0 */
   }
 
   .hero-sub {
@@ -139,158 +177,214 @@
     line-height: 1.7;
     max-width: 400px;
     margin-bottom: 44px;
-    animation: fadeUp 0.6s ease 0.2s both;
   }
 
   .hero-actions {
     display: flex;
     gap: 14px;
     align-items: center;
-    animation: fadeUp 0.6s ease 0.3s both;
-  }
-
-  .hero-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 80px 48px 80px 0;
-    position: relative;
-    z-index: 2;
-    animation: fadeUp 0.8s ease 0.2s both;
-  }
-
-  /* Card stack */
-  .hero-card-stack {
-    position: relative;
-    width: 360px;
-    height: 420px;
-  }
-
-  .hcard {
-    position: absolute;
-    background: var(--color-cream);
-    border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 2px 20px rgba(17, 17, 16, 0.08);
-    border: 1px solid var(--color-cream-dark);
-  }
-
-  /* Main card — dark with pulsing glow */
-  .hcard-1 {
-    width: 280px;
-    top: 0;
-    left: 0;
-    transform: rotate(-3deg);
-    background: var(--color-ink-soft);
-    color: var(--color-cream);
-    animation: pulse-ring 3s ease-out infinite;
-  }
-
-  .hcard-1 .hcard-icon {
-    font-size: 28px;
-    margin-bottom: 12px;
-  }
-
-  .hcard-1 .hcard-title {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    margin-bottom: 8px;
-    line-height: 1.2;
-  }
-
-  .hcard-1 .hcard-desc {
-    font-size: 12px;
-    color: rgba(247, 244, 239, 0.55);
-    line-height: 1.6;
-  }
-
-  .hcard-2 {
-    width: 240px;
-    bottom: 40px;
-    right: 0;
-    transform: rotate(2deg);
-    background: var(--color-purple-light);
-  }
-
-  .hcard-2 .hcard-icon {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  .hcard-2 .hcard-title {
-    font-family: var(--font-serif);
-    font-size: 16px;
-    color: var(--color-ink);
-    margin-bottom: 6px;
-  }
-
-  .hcard-2 .hcard-desc {
-    font-size: 11px;
-    color: var(--color-ink-muted);
-    line-height: 1.6;
-  }
-
-  .hcard-3 {
-    width: 200px;
-    bottom: 0;
-    left: 20px;
-    transform: rotate(-1deg);
-    background: var(--color-green-light);
-  }
-
-  .hcard-3 .hcard-label {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--color-green-deep);
-    letter-spacing: 0.06em;
-    margin-bottom: 8px;
-  }
-
-  .hcard-3 .hcard-num {
-    font-family: var(--font-serif);
-    font-size: 36px;
-    color: var(--color-ink);
-    line-height: 1;
-  }
-
-  .hcard-3 .hcard-sub {
-    font-size: 12px;
-    color: var(--color-ink-muted);
-    margin-top: 4px;
   }
 
   /* Responsive */
   @media (max-width: 768px) {
     .hero {
-      grid-template-columns: 1fr;
       min-height: auto;
       padding-top: 80px;
     }
 
     .hero-left {
-      padding: 60px 24px 40px;
+      padding: 60px 24px 60px;
     }
 
-    .hero-right {
-      padding: 0 24px 60px;
-      justify-content: flex-start;
+    .hero-sub {
+      color: rgba(247, 244, 239, 0.82);
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8);
     }
 
-    .hero-card-stack {
-      width: 300px;
-      height: 360px;
+    .btn-secondary {
+      display: none;
     }
 
-    .hcard-1 {
-      width: 240px;
+    .hero-actions {
+      width: 100%;
     }
 
-    .hcard-2 {
-      width: 200px;
+    .btn-primary {
+      font-size: 13px;
+      padding: 11px 22px;
     }
 
-    .hcard-3 {
-      width: 170px;
-    }
   }
 </style>
+
+<script>
+  import gsap from 'gsap';
+  import SplitType from 'split-type';
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ─── Wait for preloader to finish, then run hero choreography ──────────────
+  function initHeroAnimations() {
+    const heroTitle = document.querySelector('.hero-title') as HTMLElement;
+    const heroTag = document.querySelector('.hero-tag') as HTMLElement;
+    const heroSub = document.querySelector('.hero-sub') as HTMLElement;
+    const heroActions = document.querySelector('.hero-actions') as HTMLElement;
+    const ctaButtons = document.querySelectorAll('.hero-actions a');
+    const blobs = document.querySelectorAll('.hero-blob');
+
+    if (!heroTitle) return;
+
+    // SplitType on the title for char-level animation
+    const split = new SplitType(heroTitle, { types: 'chars,words' });
+    const chars = split.chars || [];
+
+    if (prefersReducedMotion) {
+      // Make everything visible immediately
+      gsap.set(heroTitle, { opacity: 1, y: 0 });
+      gsap.set(chars, { opacity: 1 });
+      return;
+    }
+
+    // ─── Set initial hidden states ────────────────────────────────────────────
+    // heroTag is visible immediately — no hidden state set
+    // Title (chars), subtitle, and CTA buttons are visible immediately — no hidden state set
+    gsap.set(blobs, { scale: 0.5, opacity: 0 });
+
+    // ─── Choreographed entrance timeline ──────────────────────────────────────
+    const tl = gsap.timeline({ delay: 0.1 });
+
+    // 1. heroTag appears immediately — no entrance tween needed
+
+    // 2. Title, subtitle, and CTA buttons are already visible — no entrance tweens needed
+
+    // 3. Blobs fade in with scale
+    tl.to(blobs, {
+      scale: 1,
+      opacity: 0.45,
+      duration: 1.2,
+      stagger: 0.2,
+      ease: 'power2.out',
+    }, '-=0.6');
+
+    // ─── Color wave + scale hover effect on title chars ───────────────────────
+    const originalColors: string[] = [];
+    chars.forEach((char) => {
+      originalColors.push(window.getComputedStyle(char).color);
+    });
+
+    let isHovering = false;
+    let rafId: number | null = null;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    const waveColor = '#FFFFFF';
+    const maxDistance = 120; // px radius of influence
+
+    function updateCharEffects() {
+      if (!isHovering) return;
+
+      chars.forEach((char, i) => {
+        const rect = char.getBoundingClientRect();
+        const charCenterX = rect.left + rect.width / 2;
+        const charCenterY = rect.top + rect.height / 2;
+        const dx = mouseX - charCenterX;
+        const dy = mouseY - charCenterY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const proximity = Math.max(0, 1 - distance / maxDistance);
+
+        if (proximity > 0) {
+          // Color wave: blend towards white based on proximity
+          const scaleFactor = 1 + proximity * 0.15; // up to 15% scale
+          gsap.to(char, {
+            color: waveColor,
+            scale: scaleFactor,
+            duration: 0.2,
+            ease: 'power1.out',
+            overwrite: 'auto',
+          });
+        } else {
+          // Return to original color
+          gsap.to(char, {
+            color: originalColors[i],
+            scale: 1,
+            duration: 0.5,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+        }
+      });
+
+      rafId = requestAnimationFrame(updateCharEffects);
+    }
+
+    heroTitle.addEventListener('mousemove', (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!isHovering) {
+        isHovering = true;
+        rafId = requestAnimationFrame(updateCharEffects);
+      }
+    });
+
+    heroTitle.addEventListener('mouseleave', () => {
+      isHovering = false;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      // Reset all chars to original state
+      chars.forEach((char, i) => {
+        gsap.to(char, {
+          color: originalColors[i],
+          scale: 1,
+          duration: 0.6,
+          ease: 'elastic.out(1, 0.5)',
+          overwrite: 'auto',
+        });
+      });
+    });
+
+    // ─── Parallax on blobs via mousemove ──────────────────────────────────────
+    const heroEl = document.querySelector('#hero') as HTMLElement;
+    const blob1 = document.querySelector('.blob-1') as HTMLElement;
+    const blob2 = document.querySelector('.blob-2') as HTMLElement;
+
+    if (heroEl && blob1 && blob2) {
+      heroEl.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect = heroEl.getBoundingClientRect();
+        const normX = (e.clientX - rect.left) / rect.width - 0.5;
+        const normY = (e.clientY - rect.top) / rect.height - 0.5;
+
+        gsap.to(blob1, {
+          x: normX * 40,
+          y: normY * 30,
+          duration: 1.5,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+        gsap.to(blob2, {
+          x: normX * -25,
+          y: normY * -20,
+          duration: 2,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+      });
+    }
+  }
+
+  // Listen for the preloader-done event dispatched from Layout.astro,
+  // or run immediately if preloader already finished / doesn't exist.
+  if (document.getElementById('preloader')) {
+    document.addEventListener('preloader-done', initHeroAnimations, { once: true });
+    // Fallback: if preloader takes too long, init after 5s
+    setTimeout(() => {
+      document.removeEventListener('preloader-done', initHeroAnimations);
+      initHeroAnimations();
+    }, 5000);
+  } else {
+    initHeroAnimations();
+  }
+</script>
+

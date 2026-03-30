@@ -3,44 +3,45 @@ const steps = [
   {
     num: '01',
     name: 'Auditoría gratuita',
-    desc: 'Analizamos tu presencia digital actual y te decimos exactamente qué mejorar y por qué.',
+    desc: 'Analizamos tu presencia digital actual — web, redes, Google — y te decimos exactamente qué está frenando tu crecimiento y cómo resolverlo.',
     badge: 'Sin costo',
     badgeType: 'purple',
   },
   {
     num: '02',
     name: 'Propuesta a medida',
-    desc: 'Diseñamos una solución específica para tu negocio, con precios claros y plazos reales.',
-    badge: 'Personalizado',
+    desc: 'Diseñamos una solución específica para tu negocio. Precios claros, plazos reales y sin letra chica.',
+    badge: '100% personalizado',
     badgeType: 'green',
   },
   {
     num: '03',
-    name: 'Ejecución rápida',
-    desc: 'Ejecutamos en tiempo récord usando las mejores herramientas. Tu web en días, no meses.',
-    badge: 'Ágil',
+    name: 'Producción en paralelo',
+    desc: 'Thomas desarrolla tu web mientras Mai produce el contenido visual. Todo avanza al mismo tiempo — entregás antes, gastás menos.',
+    badge: 'Ágil y coordinado',
     badgeType: 'purple',
   },
   {
     num: '04',
-    name: 'Crecimiento continuo',
-    desc: 'Seguimiento, métricas y optimización constante. No desaparecemos tras la entrega.',
-    badge: 'Recurrente',
+    name: 'Entrega y seguimiento',
+    desc: 'Tu web en vivo, tu contenido listo para publicar. Y seguimos disponibles — no desaparecemos después de la entrega.',
+    badge: 'Compromiso real',
     badgeType: 'green',
   },
 ];
 ---
 
 <section class="process" id="proceso">
+  <div class="process-bg"></div>
   <div class="process-inner">
-    <div class="reveal">
-      <p class="section-label process-label">Cómo trabajamos</p>
-      <h2 class="section-title process-title">Un proceso <em>simple</em> que funciona</h2>
+    <div>
+      <p class="section-label process-label" data-animate>Cómo trabajamos</p>
+      <h2 class="section-title process-title" data-split-text>Simple, <em>transparente</em> y sin sorpresas</h2>
     </div>
 
-    <div class="process-steps reveal">
+    <div class="process-steps">
       {steps.map((step, i) => (
-        <div class="step">
+        <div class="step" data-process-card>
           <div class="step-num">{step.num}</div>
           <div class="step-name">{step.name}</div>
           <div class="step-desc">{step.desc}</div>
@@ -53,12 +54,26 @@ const steps = [
 
 <style>
   .process {
-    background: var(--color-ink);
+    background: #0E0E0E;
     padding: 120px 48px;
     color: var(--color-cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .process-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/neuronas.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    pointer-events: none;
   }
 
   .process-inner {
+    position: relative;
+    z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -73,46 +88,30 @@ const steps = [
   }
 
   .process-title em {
-    color: var(--color-purple);
+    color: var(--color-green);
   }
 
   .process-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
+    gap: 20px;
     margin-top: 64px;
     position: relative;
   }
 
-  /* Connecting line between steps (desktop) */
-  .process-steps::before {
-    content: '';
-    position: absolute;
-    top: 44px;
-    left: calc(25% - 8px);
-    right: calc(25% - 8px);
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(247, 244, 239, 0.15) 10%,
-      rgba(247, 244, 239, 0.15) 90%,
-      transparent
-    );
-    pointer-events: none;
-  }
 
   .step {
-    background: rgba(247, 244, 239, 0.04);
-    border: 1px solid rgba(247, 244, 239, 0.08);
+    background: rgba(247, 244, 239, 0.10);
+    border: 2px solid rgba(90, 138, 82, 0.35);
     border-radius: 16px;
     padding: 32px 28px;
     position: relative;
-    transition: background 0.25s;
+    transition: background 0.25s, border-color 0.25s;
   }
 
   .step:hover {
-    background: rgba(247, 244, 239, 0.07);
+    background: rgba(247, 244, 239, 0.15);
+    border-color: rgba(90, 138, 82, 0.6);
   }
 
   /* Arrow connector between steps */
@@ -133,7 +132,7 @@ const steps = [
     font-family: var(--font-serif);
     font-size: 48px;
     font-style: italic;
-    color: rgba(247, 244, 239, 0.12);
+    color: var(--color-green);
     line-height: 1;
     margin-bottom: 24px;
   }
@@ -148,7 +147,7 @@ const steps = [
 
   .step-desc {
     font-size: 13px;
-    color: rgba(247, 244, 239, 0.45);
+    color: rgba(247, 244, 239, 0.68);
     line-height: 1.7;
     font-weight: 300;
   }
@@ -179,10 +178,6 @@ const steps = [
       grid-template-columns: 1fr 1fr;
     }
 
-    .process-steps::before {
-      display: none;
-    }
-
     .step:not(:last-child)::after {
       display: none;
     }
@@ -199,3 +194,85 @@ const steps = [
     }
   }
 </style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    const cards = gsap.utils.toArray<HTMLElement>('[data-process-card]');
+
+    // Initial state: fold down from above (rotateX perspective fold)
+    gsap.set(cards, {
+      autoAlpha: 0,
+      y: 70,
+      rotateX: -18,
+      transformPerspective: 700,
+      transformOrigin: 'top center',
+    });
+    gsap.set('[data-process-card] .step-num', { autoAlpha: 0, scale: 0.4 });
+    gsap.set('[data-process-card] .step-badge', { autoAlpha: 0, x: -12 });
+
+    ScrollTrigger.create({
+      trigger: '.process-steps',
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        // Cards fold in sequentially
+        gsap.to(cards, {
+          autoAlpha: 1,
+          y: 0,
+          rotateX: 0,
+          duration: 0.75,
+          stagger: 0.18,
+          ease: 'power3.out',
+        });
+
+        // Numbers pop in with bounce after each card
+        cards.forEach((card, i) => {
+          const num = card.querySelector('.step-num');
+          const badge = card.querySelector('.step-badge');
+
+          gsap.to(num, {
+            autoAlpha: 1,
+            scale: 1,
+            duration: 0.5,
+            delay: i * 0.18 + 0.35,
+            ease: 'back.out(2)',
+          });
+
+          // Badge slides in last
+          gsap.to(badge, {
+            autoAlpha: 1,
+            x: 0,
+            duration: 0.4,
+            delay: i * 0.18 + 0.55,
+            ease: 'power2.out',
+          });
+
+          // Brief border glow after card lands
+          gsap.fromTo(
+            card,
+            { boxShadow: '0 0 0px rgba(90, 138, 82, 0)' },
+            {
+              boxShadow: '0 0 24px rgba(90, 138, 82, 0.25)',
+              duration: 0.4,
+              delay: i * 0.18 + 0.65,
+              yoyo: true,
+              repeat: 1,
+              ease: 'power2.inOut',
+            }
+          );
+        });
+      },
+    });
+  } else {
+    gsap.set('[data-process-card]', { autoAlpha: 1, y: 0, rotateX: 0 });
+    gsap.set('[data-process-card] .step-num', { autoAlpha: 1, scale: 1 });
+    gsap.set('[data-process-card] .step-badge', { autoAlpha: 1, x: 0 });
+  }
+</script>

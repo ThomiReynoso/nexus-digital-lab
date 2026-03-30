@@ -1,24 +1,55 @@
 ---
+const links = [
+  { text: 'Servicios', href: '#servicios' },
+  { text: 'Portfolio', href: '#portfolio' },
+  { text: 'Proceso', href: '#proceso' },
+  { text: 'Contacto', href: '#contacto' },
+];
 ---
 
 <footer class="footer">
+  <!-- Gradient separator line -->
+  <div class="footer-gradient-line"></div>
+
   <div class="footer-inner">
-    <div class="footer-logo">Nexus<span>.</span>Digital Labs</div>
-    <div class="footer-center">Hecho con 💜 en Barcelona · Eixample</div>
-    <div class="footer-copy">© 2025 Nexus Digital Labs</div>
+    <div class="footer-logo">
+      <img src="/logo.jpg" alt="Calax Studio" class="footer-logo-img" />
+    </div>
+
+    <nav class="footer-links">
+      {links.map((link) => (
+        <a class="footer-link" href={link.href}>{link.text}</a>
+      ))}
+    </nav>
+
+    <div class="footer-copy">© 2026 Calax Studio. Todos los derechos reservados.</div>
   </div>
 </footer>
 
 <style>
   .footer {
-    background: var(--color-ink);
-    border-top: 1px solid rgba(247, 244, 239, 0.08);
+    background: #0A0A0A;
+    position: relative;
+  }
+
+  /* ─── Gradient separator ─── */
+  .footer-gradient-line {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-purple) 30%,
+      var(--color-green) 70%,
+      transparent 100%
+    );
+    opacity: 0.5;
   }
 
   .footer-inner {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 24px;
     padding: 48px;
     color: rgba(247, 244, 239, 0.35);
     font-size: 13px;
@@ -26,23 +57,78 @@
     margin: 0 auto;
   }
 
+  /* ─── Logo ─── */
   .footer-logo {
-    font-family: var(--font-serif);
-    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .footer-logo-img {
+    height: 64px;
+    width: auto;
+    display: block;
+    mix-blend-mode: screen;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+  }
+
+  .footer-logo-img:hover {
+    opacity: 1;
+  }
+
+  /* ─── Footer links with animated underline ─── */
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-link {
+    color: rgba(247, 244, 239, 0.55);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
+  }
+
+  .footer-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-purple), var(--color-green));
+    transition: width 0.4s ease;
+  }
+
+  .footer-link:hover {
     color: var(--color-cream);
   }
 
-  .footer-logo span {
-    color: var(--color-purple);
+  .footer-link:hover::after {
+    width: 100%;
   }
 
-  /* Responsive */
+  .footer-center {
+    font-size: 13px;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    opacity: 0.6;
+  }
+
+  /* ─── Responsive ─── */
   @media (max-width: 600px) {
     .footer-inner {
-      flex-direction: column;
-      gap: 16px;
-      text-align: center;
       padding: 40px 24px;
+      gap: 20px;
+    }
+    .footer-links {
+      gap: 20px;
     }
   }
 </style>

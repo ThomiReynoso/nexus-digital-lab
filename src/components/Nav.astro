@@ -2,7 +2,7 @@
 ---
 
 <nav class="nav">
-  <div class="logo">Nexus<span>.</span>Digital</div>
+  <a href="#hero" class="logo"><img src="/logo.jpg" alt="Calax Studio" class="logo-img" /></a>
 
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
@@ -10,7 +10,7 @@
     <li><a href="#nosotros">Nosotros</a></li>
   </ul>
 
-  <a href="#contacto" class="nav-cta">Hablemos →</a>
+  <a href="#contacto" class="nav-cta">Hablemos</a>
 
   <!-- Hamburger button (mobile only) -->
   <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -28,7 +28,7 @@
       <li><a href="#portfolio" class="mobile-link">Portfolio</a></li>
       <li><a href="#nosotros" class="mobile-link">Nosotros</a></li>
     </ul>
-    <a href="#contacto" class="mobile-cta">Hablemos →</a>
+    <a href="#contacto" class="mobile-cta">Hablemos</a>
   </div>
 </div>
 
@@ -46,20 +46,51 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 48px;
-    background: var(--color-cream);
-    border-bottom: 1px solid var(--color-cream-dark);
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition:
+      top 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      left 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      right 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      border-radius 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      padding 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      background 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav.island {
+    top: 16px;
+    left: 50%;
+    right: auto;
+    width: min(740px, calc(100vw - 32px));
+    transform: translateX(-50%);
+    border-radius: 60px;
+    padding: 10px 16px 10px 28px;
+    background: rgba(12, 12, 12, 0.55);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border-bottom: none;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .logo {
-    font-family: var(--font-serif);
-    font-size: 20px;
-    color: var(--color-ink);
-    letter-spacing: -0.02em;
     text-decoration: none;
+    display: flex;
+    align-items: center;
   }
 
-  .logo span {
-    color: var(--color-purple-deep);
+  .logo-img {
+    height: 44px;
+    width: auto;
+    display: block;
+    mix-blend-mode: screen;
   }
 
   .nav-links {
@@ -71,31 +102,54 @@
   .nav-links a {
     font-size: 13px;
     font-weight: 400;
-    color: var(--color-ink-muted);
+    color: rgba(255, 255, 255, 0.55);
     text-decoration: none;
     letter-spacing: 0.04em;
     transition: color 0.2s;
+    position: relative;
+    padding-bottom: 3px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-purple), var(--color-green));
+    transition: width 0.4s ease;
   }
 
   .nav-links a:hover {
-    color: var(--color-ink);
+    color: #FFFFFF;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
   }
 
   .nav-cta {
-    background: var(--color-ink);
-    color: var(--color-cream);
+    background: var(--color-purple-deep);
+    color: #FFFFFF;
     font-size: 13px;
     font-weight: 500;
     padding: 10px 22px;
     border-radius: 100px;
+    border: 1px solid transparent;
     text-decoration: none;
     letter-spacing: 0.02em;
-    transition: background 0.2s, transform 0.15s;
+    transition: background 0.25s, transform 0.25s, box-shadow 0.25s, border-color 0.25s;
   }
 
   .nav-cta:hover {
-    background: var(--color-ink-soft);
+    background: #111;
+    border-color: var(--color-purple);
     transform: translateY(-1px);
+    box-shadow:
+      0 0 8px rgba(184, 169, 217, 0.9),
+      0 0 22px rgba(184, 169, 217, 0.5),
+      0 0 45px rgba(184, 169, 217, 0.2);
   }
 
   /* Hamburger */
@@ -116,7 +170,7 @@
     display: block;
     width: 22px;
     height: 2px;
-    background: var(--color-ink);
+    background: #FFFFFF;
     border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.3s ease;
     transform-origin: center;
@@ -141,11 +195,11 @@
     right: 0;
     bottom: 0;
     width: 280px;
-    background: var(--color-cream);
+    background: #111111;
     z-index: 200;
     transform: translateX(100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -4px 0 40px rgba(17, 17, 16, 0.1);
+    box-shadow: -4px 0 40px rgba(0, 0, 0, 0.5);
   }
 
   .mobile-menu.open {
@@ -171,10 +225,10 @@
     display: block;
     font-size: 24px;
     font-family: var(--font-serif);
-    color: var(--color-ink);
+    color: #FFFFFF;
     text-decoration: none;
     padding: 12px 0;
-    border-bottom: 1px solid var(--color-cream-dark);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     transition: color 0.2s, padding-left 0.2s;
   }
 
@@ -185,8 +239,8 @@
 
   .mobile-cta {
     display: block;
-    background: var(--color-ink);
-    color: var(--color-cream);
+    background: var(--color-purple-deep);
+    color: #FFFFFF;
     text-align: center;
     padding: 16px;
     border-radius: 100px;
@@ -197,7 +251,7 @@
   }
 
   .mobile-cta:hover {
-    background: var(--color-ink-soft);
+    background: #6B5BA0;
   }
 
   /* Overlay */
@@ -208,11 +262,13 @@
     background: rgba(17, 17, 16, 0.4);
     z-index: 150;
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.35s ease;
   }
 
   .mobile-overlay.visible {
     opacity: 1;
+    pointer-events: auto;
   }
 
   /* Responsive */
@@ -271,9 +327,19 @@
     link.addEventListener('click', closeMenu);
   });
 
+  document.querySelector('.mobile-cta')?.addEventListener('click', closeMenu);
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
       closeMenu();
     }
   });
+
+  // ─── Floating Island navbar ────────────────────────────────────────────────
+  const navEl = document.querySelector('.nav') as HTMLElement;
+  if (navEl) {
+    window.addEventListener('scroll', () => {
+      navEl.classList.toggle('island', window.scrollY > 80);
+    }, { passive: true });
+  }
 </script>
