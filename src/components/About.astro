@@ -2,40 +2,62 @@
 ---
 
 <section class="about" id="nosotros">
+  <!-- Spotlight canvas -->
+  <div class="about-spotlight" aria-hidden="true"></div>
+
   <div class="about-inner">
     <!-- Left: text + team cards -->
     <div class="about-text">
-      <p class="section-label" data-animate>Dos personas. Un equipo completo.</p>
-      <h2 class="section-title" data-split-text>Somos Thomas y Mai. <em>El equipo</em> que ejecuta.</h2>
-      <p class="about-desc" data-animate>
-        Él desarrolla, automatiza y hace que las cosas funcionen. Ella crea, fotografía y hace que las cosas se vean bien. Juntos ofrecemos lo que normalmente requeriría contratar a tres personas distintas — con la ventaja de que siempre hablás con quien realmente hace el trabajo.
-      </p>
-      <p class="about-desc" data-animate>
-        No somos una agencia grande con cuentas y coordinadores. Somos el equipo que ejecuta, y eso se nota en los resultados.
-      </p>
-      <div class="about-team">
-        <div class="team-card" data-animate>
-          <div class="team-avatar team-avatar-1">👨‍💻</div>
-          <div class="team-name">Thomas</div>
-          <div class="team-role">Desarrollo & Automatización</div>
-          <div class="team-bio" style="font-size:12px;color:var(--color-ink-muted);line-height:1.6;margin-bottom:10px;">Desarrollo web moderno, integraciones y flujos automatizados para que tu negocio opere más eficientemente.</div>
-          <div class="team-skills">
-            <span class="team-skill">Astro</span>
-            <span class="team-skill">React</span>
-            <span class="team-skill">n8n</span>
-            <span class="team-skill">IA</span>
+      <p class="section-label about-label" data-about-reveal>Dos personas. Un equipo completo.</p>
+      <h2 class="section-title about-title" data-split-text>Somos Thomas y Mai. <em>El equipo</em> que ejecuta.</h2>
+      <div class="about-desc-wrapper" data-about-reveal>
+        <p class="about-desc">
+          Él desarrolla, automatiza y hace que las cosas funcionen. Ella crea, fotografía y hace que las cosas se vean bien. Juntos ofrecemos lo que normalmente requeriría contratar a tres personas distintas — con la ventaja de que siempre hablás con quien realmente hace el trabajo.
+        </p>
+      </div>
+      <div class="about-desc-wrapper" data-about-reveal>
+        <p class="about-desc">
+          No somos una agencia grande con cuentas y coordinadores. Somos el equipo que ejecuta, y eso se nota en los resultados.
+        </p>
+      </div>
+
+      <!-- Decorative element between cards -->
+      <div class="about-team-wrapper">
+        <div class="team-deco-line"></div>
+        <div class="about-team">
+          <div class="team-card team-card-thomas" data-about-card="left" data-card-color="purple">
+            <div class="team-card-glow team-card-glow-purple"></div>
+            <!-- Animated border glow ring (activated on hover via JS) -->
+            <div class="team-card-border-ring team-card-border-ring-purple"></div>
+            <div class="team-avatar team-avatar-thomas">
+              <span class="team-initial">T</span>
+            </div>
+            <div class="team-name">Thomas</div>
+            <div class="team-role"><span class="team-role-icon">💻</span> Desarrollo & Automatización</div>
+            <div class="team-bio">Desarrollo web moderno, integraciones y flujos automatizados para que tu negocio opere más eficientemente.</div>
+            <div class="team-skills team-skills-purple">
+              <span class="team-skill">Astro</span>
+              <span class="team-skill">React</span>
+              <span class="team-skill">n8n</span>
+              <span class="team-skill">IA</span>
+            </div>
           </div>
-        </div>
-        <div class="team-card" data-animate>
-          <div class="team-avatar team-avatar-2">👩‍🎨</div>
-          <div class="team-name">Mai</div>
-          <div class="team-role">Contenido Visual & Estrategia</div>
-          <div class="team-bio" style="font-size:12px;color:var(--color-ink-muted);line-height:1.6;margin-bottom:10px;">Producción fotográfica y de video, edición de reels y estrategia de contenido que conecta con tu audiencia.</div>
-          <div class="team-skills">
-            <span class="team-skill">Fotografía</span>
-            <span class="team-skill">Video</span>
-            <span class="team-skill">Reels</span>
-            <span class="team-skill">Estrategia de contenido</span>
+          <div class="team-card team-card-mai" data-about-card="right" data-card-color="green">
+            <div class="team-card-glow team-card-glow-green"></div>
+            <!-- Animated border glow ring (activated on hover via JS) -->
+            <div class="team-card-border-ring team-card-border-ring-green"></div>
+            <div class="team-avatar team-avatar-mai">
+              <span class="team-initial">M</span>
+            </div>
+            <div class="team-name">Mai</div>
+            <div class="team-role"><span class="team-role-icon">📸</span> Contenido Visual & Estrategia</div>
+            <div class="team-bio">Producción fotográfica y de video, edición de reels y estrategia de contenido que conecta con tu audiencia.</div>
+            <div class="team-skills team-skills-green">
+              <span class="team-skill">Fotografía</span>
+              <span class="team-skill">Video</span>
+              <span class="team-skill">Reels</span>
+              <span class="team-skill">Estrategia de contenido</span>
+            </div>
           </div>
         </div>
       </div>
@@ -44,9 +66,9 @@
     <!-- Right: stat cards -->
     <div class="about-visual">
       <!-- Card 1: Active clients -->
-      <div class="av-card av-1" data-animate>
+      <div class="av-card av-1" data-about-reveal>
         <div class="av-label">PROYECTOS COMPLETADOS</div>
-        <div class="av-val"><span data-counter="6">0</span>+</div>
+        <div class="av-val"><span class="av-counter" data-about-counter="6">0</span>+</div>
         <div class="av-sub">negocios que ya crecen con nosotros</div>
         <div class="av-bar-row">
           <div class="av-bar">
@@ -62,14 +84,14 @@
       </div>
 
       <!-- Card 2: Delivery time -->
-      <div class="av-card av-2" data-animate>
+      <div class="av-card av-2" data-about-reveal>
         <div class="av-label av-label-dark">ENTREGA</div>
         <div class="av-val av-val-purple" style="font-size:18px;line-height:1.3;">Tu web lista</div>
         <div class="av-sub av-sub-dark">en días, no en semanas</div>
       </div>
 
       <!-- Card 3: Free audit -->
-      <div class="av-card av-3" data-animate>
+      <div class="av-card av-3" data-about-reveal>
         <div class="av-label av-label-purple">AUDITORÍA</div>
         <div class="av-val-sm">Gratis</div>
         <div class="av-sub-sm">Analizamos tu presencia digital sin costo</div>
@@ -79,9 +101,25 @@
 </section>
 
 <style>
+  /* ─── Spotlight overlay ──────────────────────────────────────────── */
   .about {
     background: #0A0A0A;
     padding: 120px 48px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .about-spotlight {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+      400px circle at var(--spotlight-x, -9999px) var(--spotlight-y, -9999px),
+      rgba(123, 107, 176, 0.15),
+      transparent 70%
+    );
+    transition: background 0.05s linear;
   }
 
   .about-inner {
@@ -91,10 +129,17 @@
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
+    position: relative;
+    z-index: 1;
   }
 
   .about-text .section-title {
     margin-bottom: 24px;
+  }
+
+  /* Desc wrapper for clip-path reveal */
+  .about-desc-wrapper {
+    overflow: hidden;
   }
 
   .about-desc {
@@ -105,36 +150,240 @@
     margin-bottom: 40px;
   }
 
+  /* ─── Team wrapper with decorative line ─────────────────────────── */
+  .about-team-wrapper {
+    position: relative;
+  }
+
+  .team-deco-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1px;
+    height: 80%;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(123, 107, 176, 0.4) 30%,
+      rgba(134, 239, 172, 0.4) 70%,
+      transparent 100%
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+
   .about-team {
     display: flex;
     gap: 16px;
+    position: relative;
+    z-index: 1;
+    /* Perspective for 3D flip entrance */
+    perspective: 1000px;
   }
 
+  /* ─── Premium team cards ─────────────────────────────────────────── */
   .team-card {
     flex: 1;
-    background: #1C1C1A;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     border-radius: 16px;
     padding: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(123, 107, 176, 0.15);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.45s cubic-bezier(0.23, 1, 0.32, 1),
+                border-color 0.45s ease;
+    will-change: transform;
+    transform-style: preserve-3d;
+    /* backface hidden so reverse side is invisible during flip */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
+  /* Asymmetric vertical offset */
+  .team-card-thomas {
+    transform: translateY(0);
+  }
+
+  .team-card-mai {
+    transform: translateY(20px);
+  }
+
+  /* Glow overlay */
+  .team-card-glow {
+    position: absolute;
+    inset: -1px;
+    border-radius: 16px;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .team-card-glow-purple {
+    box-shadow: 0 0 30px rgba(123, 107, 176, 0.3),
+                inset 0 0 30px rgba(123, 107, 176, 0.05);
+  }
+
+  .team-card-glow-green {
+    box-shadow: 0 0 30px rgba(134, 239, 172, 0.25),
+                inset 0 0 30px rgba(134, 239, 172, 0.05);
+  }
+
+  /* ─── Animated border ring (hover glow) ─────────────────────────── */
+  /*
+   * Technique: absolute pseudo-element with a rotating conic-gradient
+   * clipped by mask to show only the border edge.
+   * Activated by adding .hovered class via JS.
+   */
+  .team-card-border-ring {
+    position: absolute;
+    inset: -2px;
+    border-radius: 18px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 1;
+    /* Clip to border only using mask */
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 2px;
+  }
+
+  .team-card-border-ring-purple {
+    background: conic-gradient(
+      from var(--ring-angle, 0deg),
+      transparent 0%,
+      #7B6BB0 15%,
+      #b8a9d9 30%,
+      #7B6BB0 45%,
+      transparent 60%,
+      transparent 100%
+    );
+    animation: none;
+  }
+
+  .team-card-border-ring-green {
+    background: conic-gradient(
+      from var(--ring-angle, 0deg),
+      transparent 0%,
+      #6FCF5A 15%,
+      #a8e89a 30%,
+      #6FCF5A 45%,
+      transparent 60%,
+      transparent 100%
+    );
+    animation: none;
+  }
+
+  /* Ring spin animation — triggered by .hovered class */
+  .team-card.hovered .team-card-border-ring-purple {
+    opacity: 1;
+    animation: ringSpinPurple 2s linear infinite;
+  }
+
+  .team-card.hovered .team-card-border-ring-green {
+    opacity: 1;
+    animation: ringSpinGreen 2s linear infinite;
+  }
+
+  @property --ring-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes ringSpinPurple {
+    from { --ring-angle: 0deg; }
+    to   { --ring-angle: 360deg; }
+  }
+
+  @keyframes ringSpinGreen {
+    from { --ring-angle: 0deg; }
+    to   { --ring-angle: 360deg; }
+  }
+
+  /* Subtle permanent border gradient (non-hover) */
+  .team-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(
+      var(--border-angle, 0deg),
+      rgba(123, 107, 176, 0.3),
+      transparent 40%,
+      transparent 60%,
+      rgba(134, 239, 172, 0.3)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+    animation: borderRotate 6s linear infinite;
+  }
+
+  @keyframes borderRotate {
+    to { --border-angle: 360deg; }
+  }
+
+  @property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  /* Hover states — CSS fallback (GSAP overrides tilt) */
+  .team-card:hover .team-card-glow {
+    opacity: 1;
+  }
+
+  .team-card-thomas:hover {
+    border-color: rgba(123, 107, 176, 0.35);
+  }
+
+  .team-card-mai:hover {
+    border-color: rgba(134, 239, 172, 0.3);
+  }
+
+  /* ─── Avatar with initials ───────────────────────────────────────── */
   .team-avatar {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    position: relative;
+    z-index: 2;
   }
 
-  .team-avatar-1 {
-    background: var(--color-purple-light);
+  .team-avatar-thomas {
+    background: linear-gradient(135deg, #7B6BB0 0%, #5A4A8A 100%);
+    box-shadow: 0 4px 15px rgba(123, 107, 176, 0.4);
   }
 
-  .team-avatar-2 {
-    background: var(--color-green-light);
+  .team-avatar-mai {
+    background: linear-gradient(135deg, #6FCF5A 0%, #3A8A2E 100%);
+    box-shadow: 0 4px 15px rgba(111, 207, 90, 0.35);
+  }
+
+  .team-initial {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    color: #FFFFFF;
+    font-weight: 400;
+    line-height: 1;
   }
 
   .team-name {
@@ -142,18 +391,54 @@
     font-size: 18px;
     margin-bottom: 4px;
     color: var(--color-ink);
+    position: relative;
+    z-index: 2;
   }
 
   .team-role {
     font-size: 12px;
     color: var(--color-ink-muted);
     margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 
+  .team-role-icon {
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .team-bio {
+    font-size: 12px;
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ─── Skill pills with color ──────────────────────────────────── */
   .team-skills {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .team-skills-purple .team-skill {
+    background: rgba(123, 107, 176, 0.15);
+    color: var(--color-purple);
+    border: 1px solid rgba(123, 107, 176, 0.25);
+  }
+
+  .team-skills-green .team-skill {
+    background: rgba(134, 239, 172, 0.1);
+    color: rgba(134, 239, 172, 0.9);
+    border: 1px solid rgba(134, 239, 172, 0.2);
   }
 
   .team-skill {
@@ -162,12 +447,10 @@
     letter-spacing: 0.04em;
     padding: 3px 10px;
     border-radius: 100px;
-    background: rgba(255, 255, 255, 0.07);
-    color: var(--color-ink-muted);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s ease;
   }
 
-  /* Visual stat cards */
+  /* ─── Visual stat cards ─────────────────────────────────────────── */
   .about-visual {
     position: relative;
     height: 480px;
@@ -175,7 +458,7 @@
 
   .av-card {
     position: absolute;
-    background: #1C1C1A;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     border-radius: 16px;
     padding: 24px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
@@ -192,16 +475,16 @@
     width: 220px;
     top: 120px;
     right: 0;
-    background: var(--color-ink-soft);
+    background: linear-gradient(135deg, #1C1C1A 0%, #2a2a28 100%);
     color: var(--color-cream);
-    border-color: transparent;
+    border-color: rgba(255, 255, 255, 0.06);
   }
 
   .av-3 {
     width: 200px;
     bottom: 0;
     left: 40px;
-    background: #2A2340;
+    background: linear-gradient(135deg, #2A2340 0%, #1a1a2e 100%);
     border-color: rgba(123, 107, 176, 0.2);
   }
 
@@ -236,6 +519,16 @@
     line-height: 1;
     margin-bottom: 4px;
     color: #FFFFFF;
+  }
+
+  /* Counter number gradient accent */
+  .av-counter {
+    background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 42px;
+    font-weight: 700;
   }
 
   .av-val-purple {
@@ -301,7 +594,7 @@
     background: rgba(184, 169, 217, 0.5);
   }
 
-  /* Responsive */
+  /* ─── Responsive ────────────────────────────────────────────────── */
   @media (max-width: 900px) {
     .about-inner {
       grid-template-columns: 1fr;
@@ -324,6 +617,10 @@
     .av-3 {
       width: 160px;
     }
+
+    .team-card-mai {
+      transform: translateY(0);
+    }
   }
 
   @media (max-width: 600px) {
@@ -334,5 +631,388 @@
     .about-team {
       flex-direction: column;
     }
+
+    .team-card-thomas,
+    .team-card-mai {
+      transform: translateY(0);
+    }
+
+    .team-deco-line {
+      display: none;
+    }
+  }
+
+  /* ─── Reduced motion: disable animations ───────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .team-card-border-ring,
+    .team-card::before {
+      animation: none !important;
+    }
   }
 </style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    // ─── 1. Spotlight cursor effect ────────────────────────────────────
+    const aboutSection = document.querySelector('.about') as HTMLElement;
+    const spotlightEl = document.querySelector('.about-spotlight') as HTMLElement;
+
+    if (aboutSection && spotlightEl) {
+      // Use quickTo for silky smooth cursor tracking
+      const setX = gsap.quickTo(spotlightEl, '--spotlight-x', { duration: 0.4, ease: 'power2.out' });
+      const setY = gsap.quickTo(spotlightEl, '--spotlight-y', { duration: 0.4, ease: 'power2.out' });
+
+      aboutSection.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect = aboutSection.getBoundingClientRect();
+        setX(e.clientX - rect.left);
+        setY(e.clientY - rect.top);
+      });
+
+      aboutSection.addEventListener('mouseleave', () => {
+        // Move spotlight off-screen when cursor leaves
+        setX(-9999);
+        setY(-9999);
+      });
+    }
+
+    // ─── Label reveal ───────────────────────────────────────────────
+    const aboutLabel = document.querySelector('.about-label');
+    if (aboutLabel) {
+      gsap.set(aboutLabel, { autoAlpha: 0, y: 30 });
+      ScrollTrigger.create({
+        trigger: aboutLabel,
+        start: 'top 88%',
+        once: true,
+        onEnter: () => {
+          gsap.to(aboutLabel, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+          });
+        },
+      });
+    }
+
+    // ─── 5. Diagonal clip-path text reveal ──────────────────────────
+    // Diagonal: left edge starts offset to create a skewed reveal
+    const descWrappers = document.querySelectorAll('.about-desc-wrapper');
+    descWrappers.forEach((wrapper, i) => {
+      // Diagonal start: bottom-left corner lagged by 20% creating a slant
+      gsap.set(wrapper, {
+        clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 20% 100%)',
+      });
+      ScrollTrigger.create({
+        trigger: wrapper,
+        start: 'top 88%',
+        once: true,
+        onEnter: () => {
+          gsap.to(wrapper, {
+            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+            duration: 1.1,
+            delay: i * 0.15,
+            ease: 'power3.out',
+          });
+        },
+      });
+    });
+
+    // ─── 2. Card flip 3D entrance ───────────────────────────────────
+    const cardLeft  = document.querySelector('[data-about-card="left"]')  as HTMLElement | null;
+    const cardRight = document.querySelector('[data-about-card="right"]') as HTMLElement | null;
+
+    if (cardLeft) {
+      gsap.set(cardLeft, {
+        rotationY: 180,
+        autoAlpha: 0,
+        transformPerspective: 1000,
+      });
+    }
+    if (cardRight) {
+      gsap.set(cardRight, {
+        rotationY: 180,
+        autoAlpha: 0,
+        transformPerspective: 1000,
+      });
+    }
+
+    const teamSection = document.querySelector('.about-team-wrapper');
+    if (teamSection) {
+      ScrollTrigger.create({
+        trigger: teamSection,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+          const tl = gsap.timeline();
+
+          // Thomas flips first
+          if (cardLeft) {
+            tl.to(cardLeft, {
+              rotationY: 0,
+              autoAlpha: 1,
+              duration: 0.9,
+              ease: 'power3.out',
+            }, 0);
+          }
+          // Mai flips 0.3s later
+          if (cardRight) {
+            tl.to(cardRight, {
+              rotationY: 0,
+              autoAlpha: 1,
+              duration: 0.9,
+              ease: 'power3.out',
+            }, 0.3);
+          }
+
+          // Skills tags stagger after cards
+          const skillsThomas = document.querySelectorAll('.team-skills-purple .team-skill');
+          const skillsMai    = document.querySelectorAll('.team-skills-green .team-skill');
+
+          if (skillsThomas.length) {
+            gsap.set(skillsThomas, { autoAlpha: 0, y: 10, scale: 0.8 });
+            tl.to(skillsThomas, {
+              autoAlpha: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.4,
+              stagger: 0.06,
+              ease: 'back.out(1.5)',
+            }, 0.7);
+          }
+
+          if (skillsMai.length) {
+            gsap.set(skillsMai, { autoAlpha: 0, y: 10, scale: 0.8 });
+            tl.to(skillsMai, {
+              autoAlpha: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.4,
+              stagger: 0.06,
+              ease: 'back.out(1.5)',
+            }, 1.0);
+          }
+        },
+      });
+    }
+
+    // ─── 3. Premium hover: tilt + border glow + skills pop ──────────
+    const teamCards = document.querySelectorAll<HTMLElement>('.team-card');
+
+    teamCards.forEach((card) => {
+      const skills = card.querySelectorAll<HTMLElement>('.team-skill');
+
+      card.addEventListener('mouseenter', () => {
+        card.classList.add('hovered');
+
+        // Pop each skill badge with stagger
+        if (skills.length) {
+          gsap.fromTo(skills,
+            { scale: 1 },
+            {
+              scale: 1.1,
+              duration: 0.25,
+              stagger: 0.04,
+              ease: 'back.out(2)',
+              yoyo: true,
+              repeat: 1,
+            }
+          );
+        }
+      });
+
+      card.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width  / 2;
+        const centerY = rect.height / 2;
+
+        // Max ±8° tilt
+        const rotateX = ((y - centerY) / centerY) * -8;
+        const rotateY = ((x - centerX) / centerX) *  8;
+
+        gsap.to(card, {
+          rotateX,
+          rotateY,
+          transformPerspective: 1000,
+          ease: 'power1.out',
+          duration: 0.35,
+          overwrite: 'auto',
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('hovered');
+
+        // Reset tilt with spring bounce
+        gsap.to(card, {
+          rotateX: 0,
+          rotateY: 0,
+          duration: 0.6,
+          ease: 'elastic.out(1, 0.5)',
+          overwrite: 'auto',
+        });
+      });
+    });
+
+    // ─── Stat cards reveal ─────────────────────────────────────────
+    const avCards = document.querySelectorAll('.about-visual .av-card');
+    avCards.forEach((card, i) => {
+      gsap.set(card, { autoAlpha: 0, y: 50, scale: 0.95 });
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top 90%',
+        once: true,
+        onEnter: () => {
+          gsap.to(card, {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            delay: i * 0.15,
+            ease: 'power3.out',
+          });
+        },
+      });
+    });
+
+    // ─── 4. Slot machine counter (6+) ──────────────────────────────
+    const counterEl = document.querySelector('.about .av-counter[data-about-counter]') as HTMLElement | null;
+    if (counterEl) {
+      const targetValue = parseInt(counterEl.getAttribute('data-about-counter') || '6', 10);
+
+      ScrollTrigger.create({
+        trigger: counterEl,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+          const duration    = 1500; // ms total slot machine spin
+          const interval    = 60;   // ms between number flips
+          const startTime   = performance.now();
+          let   rafId: number;
+
+          const tick = (now: number) => {
+            const elapsed = now - startTime;
+
+            if (elapsed < duration) {
+              // Rapid random number cycling — slot machine feel
+              const randomNum = Math.floor(Math.random() * 20);
+              counterEl.textContent = String(randomNum);
+              rafId = requestAnimationFrame((t) => {
+                // Only update at ~interval ms pace to create the "tick" feel
+                setTimeout(() => tick(performance.now()), interval);
+              });
+            } else {
+              // Land on target with a short GSAP bounce
+              counterEl.textContent = String(targetValue);
+              gsap.fromTo(counterEl,
+                { y: -10, scale: 1.3 },
+                {
+                  y: 0,
+                  scale: 1,
+                  duration: 0.5,
+                  ease: 'elastic.out(1.2, 0.4)',
+                }
+              );
+            }
+          };
+
+          tick(performance.now());
+        },
+      });
+    }
+
+    // ─── Parallax: cards move at different rates ─────────────────────
+    if (cardLeft) {
+      gsap.to(cardLeft, {
+        y: -30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.about-team-wrapper',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+      });
+    }
+    if (cardRight) {
+      gsap.to(cardRight, {
+        y: -15,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.about-team-wrapper',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 2,
+        },
+      });
+    }
+
+    // Stat cards subtle parallax
+    const av1 = document.querySelector('.av-1');
+    const av2 = document.querySelector('.av-2');
+    const av3 = document.querySelector('.av-3');
+
+    if (av1) {
+      gsap.to(av1, {
+        y: -25,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.about-visual',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+      });
+    }
+    if (av2) {
+      gsap.to(av2, {
+        y: -40,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.about-visual',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 2,
+        },
+      });
+    }
+    if (av3) {
+      gsap.to(av3, {
+        y: -15,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.about-visual',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+    }
+
+  } else {
+    // Reduced motion: ensure everything is visible
+    gsap.set('[data-about-reveal], [data-about-card], .about-desc-wrapper', {
+      autoAlpha: 1,
+      y: 0,
+      x: 0,
+      rotationY: 0,
+      clipPath: 'none',
+    });
+    gsap.set('.team-skill', { autoAlpha: 1, y: 0, scale: 1 });
+    gsap.set('.av-card', { autoAlpha: 1, y: 0, scale: 1 });
+
+    // Show counter final value immediately
+    const counterEl = document.querySelector('.about .av-counter[data-about-counter]') as HTMLElement | null;
+    if (counterEl) {
+      counterEl.textContent = counterEl.getAttribute('data-about-counter') || '6';
+    }
+  }
+</script>

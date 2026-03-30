@@ -4,7 +4,7 @@
 <section class="hero" id="hero">
   <!-- Background image -->
   <div class="hero-bg-wrapper">
-    <img class="hero-bg-img" src="/hero2.jpeg" alt="" aria-hidden="true" />
+    <img class="hero-bg-img" src="/hero3.webp" alt="" aria-hidden="true" />
   </div>
   <div class="hero-bg-overlay"></div>
 
@@ -15,7 +15,7 @@
   <!-- Content -->
   <div class="hero-left">
     <div class="hero-tag">Agencia digital · Barcelona</div>
-    <h1 class="hero-title split-text" data-split-text>
+    <h1 class="hero-title">
       Tu negocio merece una <span class="text-purple">presencia digital</span> que lo <em>represente</em> de verdad
     </h1>
     <p class="hero-sub">
@@ -43,6 +43,7 @@
     inset: -8%;
     z-index: 0;
     will-change: transform;
+    pointer-events: none;
   }
 
   .hero-bg-img {
@@ -121,7 +122,6 @@
     border-radius: 100px;
     margin-bottom: 32px;
     width: fit-content;
-    animation: fadeUp 0.6s ease both;
   }
 
   .hero-tag::before {
@@ -140,7 +140,6 @@
     letter-spacing: -0.03em;
     color: var(--color-ink);
     margin-bottom: 28px;
-    animation: fadeUp 0.6s ease 0.1s both;
     overflow: visible;
     word-break: normal;
     overflow-wrap: break-word;
@@ -150,6 +149,14 @@
   .hero-title .char,
   .hero-title .word {
     overflow: visible;
+  }
+
+  /* Char hover interaction base */
+  .hero-title .char {
+    display: inline-block;
+    transition: color 0.1s ease;
+    will-change: transform, color;
+    transform-style: preserve-3d;
   }
 
   .hero-title em {
@@ -168,14 +175,12 @@
     line-height: 1.7;
     max-width: 400px;
     margin-bottom: 44px;
-    animation: fadeUp 0.6s ease 0.2s both;
   }
 
   .hero-actions {
     display: flex;
     gap: 14px;
     align-items: center;
-    animation: fadeUp 0.6s ease 0.3s both;
   }
 
   /* Responsive */
@@ -188,6 +193,190 @@
     .hero-left {
       padding: 60px 24px 60px;
     }
+
+    .btn-secondary {
+      display: none;
+    }
+
+    .hero-actions {
+      width: 100%;
+    }
+
+    .btn-primary {
+      width: 100%;
+      justify-content: center;
+    }
   }
 </style>
+
+<script>
+  import gsap from 'gsap';
+  import SplitType from 'split-type';
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ─── Wait for preloader to finish, then run hero choreography ──────────────
+  function initHeroAnimations() {
+    const heroTitle = document.querySelector('.hero-title') as HTMLElement;
+    const heroTag = document.querySelector('.hero-tag') as HTMLElement;
+    const heroSub = document.querySelector('.hero-sub') as HTMLElement;
+    const heroActions = document.querySelector('.hero-actions') as HTMLElement;
+    const ctaButtons = document.querySelectorAll('.hero-actions a');
+    const blobs = document.querySelectorAll('.hero-blob');
+
+    if (!heroTitle) return;
+
+    // SplitType on the title for char-level animation
+    const split = new SplitType(heroTitle, { types: 'chars,words' });
+    const chars = split.chars || [];
+
+    if (prefersReducedMotion) {
+      // Make everything visible immediately
+      gsap.set(heroTitle, { opacity: 1, y: 0 });
+      gsap.set(chars, { opacity: 1 });
+      return;
+    }
+
+    // ─── Set initial hidden states ────────────────────────────────────────────
+    // heroTag is visible immediately — no hidden state set
+    // Title (chars), subtitle, and CTA buttons are visible immediately — no hidden state set
+    gsap.set(blobs, { scale: 0.5, opacity: 0 });
+
+    // ─── Choreographed entrance timeline ──────────────────────────────────────
+    const tl = gsap.timeline({ delay: 0.1 });
+
+    // 1. heroTag appears immediately — no entrance tween needed
+
+    // 2. Title, subtitle, and CTA buttons are already visible — no entrance tweens needed
+
+    // 3. Blobs fade in with scale
+    tl.to(blobs, {
+      scale: 1,
+      opacity: 0.45,
+      duration: 1.2,
+      stagger: 0.2,
+      ease: 'power2.out',
+    }, '-=0.6');
+
+    // ─── Color wave + scale hover effect on title chars ───────────────────────
+    const originalColors: string[] = [];
+    chars.forEach((char) => {
+      originalColors.push(window.getComputedStyle(char).color);
+    });
+
+    let isHovering = false;
+    let rafId: number | null = null;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    const waveColor = '#FFFFFF';
+    const maxDistance = 120; // px radius of influence
+
+    function updateCharEffects() {
+      if (!isHovering) return;
+
+      chars.forEach((char, i) => {
+        const rect = char.getBoundingClientRect();
+        const charCenterX = rect.left + rect.width / 2;
+        const charCenterY = rect.top + rect.height / 2;
+        const dx = mouseX - charCenterX;
+        const dy = mouseY - charCenterY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const proximity = Math.max(0, 1 - distance / maxDistance);
+
+        if (proximity > 0) {
+          // Color wave: blend towards white based on proximity
+          const scaleFactor = 1 + proximity * 0.15; // up to 15% scale
+          gsap.to(char, {
+            color: waveColor,
+            scale: scaleFactor,
+            duration: 0.2,
+            ease: 'power1.out',
+            overwrite: 'auto',
+          });
+        } else {
+          // Return to original color
+          gsap.to(char, {
+            color: originalColors[i],
+            scale: 1,
+            duration: 0.5,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+        }
+      });
+
+      rafId = requestAnimationFrame(updateCharEffects);
+    }
+
+    heroTitle.addEventListener('mousemove', (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!isHovering) {
+        isHovering = true;
+        rafId = requestAnimationFrame(updateCharEffects);
+      }
+    });
+
+    heroTitle.addEventListener('mouseleave', () => {
+      isHovering = false;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      // Reset all chars to original state
+      chars.forEach((char, i) => {
+        gsap.to(char, {
+          color: originalColors[i],
+          scale: 1,
+          duration: 0.6,
+          ease: 'elastic.out(1, 0.5)',
+          overwrite: 'auto',
+        });
+      });
+    });
+
+    // ─── Parallax on blobs via mousemove ──────────────────────────────────────
+    const heroEl = document.querySelector('#hero') as HTMLElement;
+    const blob1 = document.querySelector('.blob-1') as HTMLElement;
+    const blob2 = document.querySelector('.blob-2') as HTMLElement;
+
+    if (heroEl && blob1 && blob2) {
+      heroEl.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect = heroEl.getBoundingClientRect();
+        const normX = (e.clientX - rect.left) / rect.width - 0.5;
+        const normY = (e.clientY - rect.top) / rect.height - 0.5;
+
+        gsap.to(blob1, {
+          x: normX * 40,
+          y: normY * 30,
+          duration: 1.5,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+        gsap.to(blob2, {
+          x: normX * -25,
+          y: normY * -20,
+          duration: 2,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+      });
+    }
+  }
+
+  // Listen for the preloader-done event dispatched from Layout.astro,
+  // or run immediately if preloader already finished / doesn't exist.
+  if (document.getElementById('preloader')) {
+    document.addEventListener('preloader-done', initHeroAnimations, { once: true });
+    // Fallback: if preloader takes too long, init after 5s
+    setTimeout(() => {
+      document.removeEventListener('preloader-done', initHeroAnimations);
+      initHeroAnimations();
+    }, 5000);
+  } else {
+    initHeroAnimations();
+  }
+</script>
 

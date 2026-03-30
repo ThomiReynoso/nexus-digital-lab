@@ -1,34 +1,42 @@
 ---
 ---
 
-<div class="marquee-strip" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-text">
-      DISEÑO WEB <span class="dot">·</span> BARCELONA <span class="dot">·</span> CONTENIDO VISUAL <span class="dot">·</span> FOTOGRAFÍA <span class="dot">·</span> AUTOMATIZACIÓN <span class="dot">·</span> ESTRATEGIA DIGITAL <span class="dot">·</span>&nbsp;
-    </span>
-    <span class="marquee-text" aria-hidden="true">
-      DISEÑO WEB <span class="dot">·</span> BARCELONA <span class="dot">·</span> CONTENIDO VISUAL <span class="dot">·</span> FOTOGRAFÍA <span class="dot">·</span> AUTOMATIZACIÓN <span class="dot">·</span> ESTRATEGIA DIGITAL <span class="dot">·</span>&nbsp;
-    </span>
+<div class="marquee-wrap">
+  <!-- Primary marquee -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-text">
+        DISEÑO WEB <span class="dot">·</span> BARCELONA <span class="dot">·</span> CONTENIDO VISUAL <span class="dot">·</span> FOTOGRAFÍA <span class="dot">·</span> AUTOMATIZACIÓN <span class="dot">·</span> ESTRATEGIA DIGITAL <span class="dot">·</span>&nbsp;
+      </span>
+      <span class="marquee-text" aria-hidden="true">
+        DISEÑO WEB <span class="dot">·</span> BARCELONA <span class="dot">·</span> CONTENIDO VISUAL <span class="dot">·</span> FOTOGRAFÍA <span class="dot">·</span> AUTOMATIZACIÓN <span class="dot">·</span> ESTRATEGIA DIGITAL <span class="dot">·</span>&nbsp;
+      </span>
+    </div>
   </div>
 </div>
 
 <style>
-  .marquee-strip {
+  .marquee-wrap {
+    position: relative;
     background: #0A0A0A;
+    overflow: hidden;
+  }
+
+  .marquee-strip {
     overflow: hidden;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     padding: 18px 0;
+    position: relative;
+    /* Fade masks on edges */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
 
   .marquee-track {
     display: flex;
     width: max-content;
     animation: marquee 30s linear infinite;
-  }
-
-  .marquee-strip:hover .marquee-track {
-    animation-play-state: paused;
   }
 
   .marquee-text {
@@ -55,6 +63,10 @@
     100% {
       transform: translateX(-50%);
     }
+  }
+
+  .marquee-wrap:hover .marquee-track {
+    animation-play-state: paused;
   }
 
   @media (prefers-reduced-motion: reduce) {
