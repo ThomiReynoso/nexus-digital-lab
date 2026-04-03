@@ -1,0 +1,152 @@
+---
+---
+
+<section class="why-calax" id="por-que-calax">
+  <div class="why-inner">
+    <p class="why-label" data-animate>Por qué Calax</p>
+    <h2 class="why-title" data-split-text>No somos una <em>agencia más</em></h2>
+    <p class="why-subtitle">Cada negocio tiene problemas únicos. Nosotros los resolvemos de forma única.</p>
+
+    <div class="why-grid">
+
+      <div class="why-card" data-animate="fade-up">
+        <div class="why-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
+            <text x="14" y="19" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="13" font-style="italic" fill="currentColor">1</text>
+          </svg>
+        </div>
+        <h3 class="why-card-title">Tu problema primero</h3>
+        <p class="why-card-desc">Antes de proponer cualquier solución, entendemos tu negocio: qué funciona, qué traba y qué oportunidad estás perdiendo.</p>
+      </div>
+
+      <div class="why-card" data-animate="fade-up">
+        <div class="why-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
+            <text x="14" y="19" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="13" font-style="italic" fill="currentColor">2</text>
+          </svg>
+        </div>
+        <h3 class="why-card-title">Sin intermediarios</h3>
+        <p class="why-card-desc">Trabajás directamente con quienes hacen el trabajo. Sin account managers, sin cadena de teléfono roto.</p>
+      </div>
+
+      <div class="why-card" data-animate="fade-up">
+        <div class="why-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
+            <text x="14" y="19" text-anchor="middle" font-family="DM Serif Display, Georgia, serif" font-size="13" font-style="italic" fill="currentColor">3</text>
+          </svg>
+        </div>
+        <h3 class="why-card-title">Soluciones a medida</h3>
+        <p class="why-card-desc">No tenemos paquetes estándar. Lo que construimos existe porque tu negocio lo necesita específicamente.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-calax {
+    background: #0A0A0A;
+    padding: 6rem 2rem;
+  }
+
+  .why-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .why-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 230, 0.5);
+    margin-bottom: 16px;
+  }
+
+  .why-title {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 4vw, 44px);
+    color: var(--color-cream);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .why-title em {
+    font-style: italic;
+    color: var(--color-purple-deep);
+  }
+
+  .why-subtitle {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+    max-width: 520px;
+    margin-bottom: 4rem;
+    font-weight: 300;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .why-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .why-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(184, 169, 217, 0.25);
+  }
+
+  .why-icon {
+    color: var(--color-purple);
+    flex-shrink: 0;
+  }
+
+  .why-card-title {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--color-cream);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .why-card-desc {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: rgba(247, 244, 239, 0.65);
+    line-height: 1.65;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .why-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .why-calax {
+      padding: 4rem 1.25rem;
+    }
+
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

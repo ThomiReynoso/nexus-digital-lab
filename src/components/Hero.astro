@@ -14,12 +14,12 @@
 
   <!-- Content -->
   <div class="hero-left">
-    <div class="hero-tag">Agencia digital</div>
+    <div class="hero-tag">Agencia boutique</div>
     <h1 class="hero-title">
       Tu negocio merece una <span class="text-purple">presencia digital</span> que lo <em>represente</em> de verdad
     </h1>
     <p class="hero-sub">
-      Creamos tu web, producimos tu contenido visual y automatizamos tus procesos. Un equipo pequeño, resultados concretos, sin intermediarios.
+      No ofrecemos paquetes genéricos. Nos metemos en tu negocio, entendemos tus problemas reales y construimos exactamente lo que necesitás.
     </p>
     <div class="hero-actions">
       <a href="#contacto" class="btn-primary">Solicitar auditoría gratuita →</a>
@@ -241,23 +241,57 @@
     if (prefersReducedMotion) {
       // Make everything visible immediately
       gsap.set(heroTitle, { opacity: 1, y: 0 });
-      gsap.set(chars, { opacity: 1 });
+      gsap.set(chars, { opacity: 1, y: 0 });
+      gsap.set([heroTag, heroSub, ctaButtons], { opacity: 1, y: 0 });
+      gsap.set(blobs, { scale: 1, opacity: 0.45 });
       return;
     }
 
     // ─── Set initial hidden states ────────────────────────────────────────────
-    // heroTag is visible immediately — no hidden state set
-    // Title (chars), subtitle, and CTA buttons are visible immediately — no hidden state set
+    gsap.set(chars, { opacity: 0, y: 30 });
+    gsap.set(heroSub, { opacity: 0, y: 20 });
+    gsap.set(heroTag, { opacity: 0, y: -10 });
+    gsap.set(ctaButtons, { opacity: 0, scale: 0.92 });
     gsap.set(blobs, { scale: 0.5, opacity: 0 });
 
     // ─── Choreographed entrance timeline ──────────────────────────────────────
     const tl = gsap.timeline({ delay: 0.1 });
 
-    // 1. heroTag appears immediately — no entrance tween needed
+    // 1. Badge drops in from above
+    tl.to(heroTag, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    });
 
-    // 2. Title, subtitle, and CTA buttons are already visible — no entrance tweens needed
+    // 2. Title chars stagger up
+    tl.to(chars, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      stagger: 0.02,
+      ease: 'power3.out',
+    }, '-=0.2');
 
-    // 3. Blobs fade in with scale
+    // 3. Subtitle fades up
+    tl.to(heroSub, {
+      opacity: 1,
+      y: 0,
+      duration: 0.55,
+      ease: 'power2.out',
+    }, '-=0.3');
+
+    // 4. CTA buttons scale in
+    tl.to(ctaButtons, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.45,
+      stagger: 0.08,
+      ease: 'back.out(1.5)',
+    }, '-=0.25');
+
+    // 5. Blobs fade in with scale
     tl.to(blobs, {
       scale: 1,
       opacity: 0.45,
