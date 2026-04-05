@@ -4,7 +4,7 @@
 <section class="contact" id="contacto" style="background: #0A0A0A;">
   <!-- Left: contact info -->
   <div data-animate>
-    <h2 class="contact-title">¿Tu negocio merece más <em>visibilidad</em> online?</h2>
+    <h2 class="contact-title">¿Sentís que tu negocio pordría estar <em class="em-green">dando más</em>, pero no sabes por <em class="em-purple">donde empezar?</em></h2>
     <p class="contact-sub">
       Contanos sobre tu proyecto. Te hacemos una auditoría gratuita de tu presencia digital y te mostramos exactamente qué mejoraría — sin vueltas y sin compromiso.
     </p>
@@ -117,12 +117,12 @@
 
 <style>
   .contact {
-    padding: 120px 48px;
+    padding: clamp(60px, 8vw, 120px) clamp(24px, 4vw, 80px);
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: clamp(40px, 6vw, 80px);
     align-items: stretch;
   }
 
@@ -135,13 +135,18 @@
     color: var(--color-ink);
   }
 
-  .contact-title em {
+  .contact-title .em-green {
     font-style: italic;
+    color: var(--color-green);
+  }
+
+  .contact-title .em-purple {
+    font-style: normal;
     color: var(--color-purple-deep);
   }
 
   .contact-sub {
-    font-size: 16px;
+    font-size: clamp(14px, 1.1vw, 16px);
     color: var(--color-ink-muted);
     line-height: 1.7;
     font-weight: 300;

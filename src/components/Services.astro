@@ -4,7 +4,7 @@
 <section class="services" id="servicios">
   <div class="services-inner">
     <p class="services-label" data-animate>Lo que hacemos</p>
-    <h2 class="services-title" data-split-text>Todo lo que necesitás para <em>crecer online</em>, en un solo equipo</h2>
+    <h2 class="services-title" data-split-text>Todo lo que tu negocio necesita para <em>crecer online</em>, en un solo equipo</h2>
 
     <div class="services-grid">
 
@@ -46,7 +46,7 @@
             </svg>
           </span>
           <h3 class="svc-title">Producción de contenido visual</h3>
-          <p class="svc-desc">Hacemos la sesión de fotos y video, editamos tus reels y posts, y te entregamos un calendario con el contenido listo para publicar. Vos solo subís. Nosotros nos encargamos del resto.</p>
+          <p class="svc-desc">Creamos el contenido, lo organizamos y te lo dejamos listo para publicar. Si preferís subirlo vos, perfecto. Y si querés que nos encarguemos de todo, también. Vos elegís hasta dónde involucrarte. Nosotros hacemos que funcione.</p>
           <div class="svc-tags">
             <span class="svc-tag">Fotografía</span>
             <span class="svc-tag">Reels</span>
@@ -71,7 +71,7 @@
             </svg>
           </span>
           <h3 class="svc-title">Foto y video profesional</h3>
-          <p class="svc-desc">Producción visual de alta calidad para tu marca o negocio. Fotografía de producto con luz profesional, sesiones en el negocio y video que comunica quién sos antes de que digas una palabra. Ideal para Instagram, web y catálogos.</p>
+          <p class="svc-desc">Producción visual que comunica quién sos antes de que digas una palabra. Fotografía de producto con luz profesional, sesiones en tu negocio y video que refleja la identidad de tu marca — para Instagram, web y catálogos.</p>
           <div class="svc-tags">
             <span class="svc-tag">Fotografía de producto</span>
             <span class="svc-tag">Contenido para web</span>
@@ -82,7 +82,7 @@
 
       <!-- Card 4 — Automatización de procesos -->
       <div class="svc svc-4" data-svc style="background:#3a2f1e;" data-svc-card>
-        <img src="/images/svc-4.webp" alt="Automatización de procesos" class="svc-img">
+        <img src="/images/svc-4.jpg" alt="Automatización de procesos" class="svc-img">
         <div class="svc-content">
           <span class="svc-badge">
             04
@@ -95,7 +95,7 @@
             </svg>
           </span>
           <h3 class="svc-title">Automatización de procesos</h3>
-          <p class="svc-desc">Conectamos tus herramientas para que trabajen solas: respuestas automáticas, gestión de leads, pedidos, notificaciones. Nos enfocamos en resolver tus cuello de botella para que ganes horas para tu negocio.</p>
+          <p class="svc-desc">Si hoy tu negocio depende de que estés en todo… algo no está funcionando bien. Automatizamos procesos para que ganes tiempo, orden y tranquilidad.</p>
           <div class="svc-tags">
             <span class="svc-tag">n8n</span>
             <span class="svc-tag">Integraciones</span>
@@ -117,11 +117,11 @@
             </svg>
           </span>
           <h3 class="svc-title">Estrategia digital</h3>
-          <p class="svc-desc">Definimos qué comunicar, a quién y cómo — para que cada acción tenga un propósito claro y resultados medibles. Analizamos tu competencia, tu posicionamiento actual y trazamos un plan concreto para destacarte.</p>
+          <p class="svc-desc">Antes de hablar de qué publicar, queremos entenderte. De dónde viene tu negocio, qué lo hace diferente de verdad. Porque la mejor estrategia no sale de un análisis de competencia — sale de conocerte en profundidad. Con eso como base, definimos qué comunicar, a quién y cómo, para que cada acción tenga un propósito real.</p>
           <div class="svc-tags">
-            <span class="svc-tag">Competencia</span>
+            <span class="svc-tag">Identidad de marca</span>
             <span class="svc-tag">Plan de contenidos</span>
-            <span class="svc-tag">Identidad marca</span>
+            <span class="svc-tag">Posicionamiento</span>
           </div>
         </div>
       </div>
@@ -132,7 +132,7 @@
 
 <style>
   .services {
-    padding: 120px 40px;
+    padding: clamp(60px, 8vw, 120px) clamp(24px, 4vw, 80px);
     background: #0a0a0a;
   }
 
@@ -147,7 +147,7 @@
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(240, 237, 230, 0.5);
+    color: var(--color-purple-deep);
     margin-bottom: 16px;
   }
 
@@ -233,8 +233,8 @@
   .svc-1 .svc-img { height: 50%; }
   .svc-2 .svc-img,
   .svc-3 .svc-img,
-  .svc-4 .svc-img,
   .svc-5 .svc-img { height: 40%; }
+  .svc-4 .svc-img { height: 55%; object-fit: contain; object-position: center center; background: transparent; }
 
   /* Image gradient fade */
   .svc::before {
@@ -297,7 +297,7 @@
   .svc-2 .svc-title,
   .svc-3 .svc-title,
   .svc-4 .svc-title,
-  .svc-5 .svc-title { font-size: 20px; }
+  .svc-5 .svc-title { font-size: clamp(16px, 1.5vw, 20px); }
 
   /* Desc */
   .svc-desc {

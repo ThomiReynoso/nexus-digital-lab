@@ -13,7 +13,7 @@ const links = [
 
   <div class="footer-inner">
     <div class="footer-logo">
-      <img src="/logo.jpg" alt="Calax Studio" class="footer-logo-img" />
+      <img src="/logo1.png" alt="Calax Studio" class="footer-logo-img" />
     </div>
 
     <nav class="footer-links">
@@ -50,7 +50,7 @@ const links = [
     flex-direction: column;
     align-items: center;
     gap: 24px;
-    padding: 48px;
+    padding: clamp(32px, 4vw, 48px) clamp(24px, 4vw, 80px);
     color: rgba(247, 244, 239, 0.35);
     font-size: 13px;
     max-width: 1400px;
@@ -63,7 +63,7 @@ const links = [
   }
 
   .footer-logo-img {
-    height: 64px;
+    height: 80px;
     width: auto;
     display: block;
     mix-blend-mode: screen;
