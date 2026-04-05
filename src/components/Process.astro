@@ -59,7 +59,7 @@ const steps = [
 <style>
   .process {
     background: #0E0E0E;
-    padding: 120px 48px;
+    padding: clamp(60px, 8vw, 120px) clamp(24px, 4vw, 80px);
     color: var(--color-cream);
     position: relative;
     overflow: hidden;
@@ -134,7 +134,7 @@ const steps = [
 
   .step-num {
     font-family: var(--font-serif);
-    font-size: 48px;
+    font-size: clamp(32px, 3.5vw, 48px);
     font-style: italic;
     color: var(--color-green);
     line-height: 1;
@@ -143,7 +143,7 @@ const steps = [
 
   .step-name {
     font-family: var(--font-serif);
-    font-size: 20px;
+    font-size: clamp(16px, 1.5vw, 20px);
     color: var(--color-cream);
     margin-bottom: 12px;
     line-height: 1.2;

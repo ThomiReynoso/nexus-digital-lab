@@ -4,12 +4,12 @@
 <section class="why-calax" id="por-que-calax">
   <div class="why-inner">
     <p class="why-label" data-animate>Por qué Calax</p>
-    <h2 class="why-title" data-split-text>No somos una <em>agencia más</em></h2>
-    <p class="why-subtitle">Antes de construir cualquier cosa, necesitamos entender cuáles son tus procesos y que falla.</p>
+    <h2 class="why-title" data-why-split-text>No somos una <em>agencia más.</em></h2>
+    <p class="why-subtitle" data-why-subtitle>Antes de construir cualquier cosa, necesitamos entender cuáles son tus procesos y que falla.</p>
 
     <div class="why-grid">
 
-      <div class="why-card" data-animate="fade-up">
+      <div class="why-card" data-why-card>
         <div class="why-icon">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
@@ -20,7 +20,7 @@
         <p class="why-card-desc">No arrancamos proponiendo cosas. Primero entendemos qué te está pasando, qué no está funcionando y qué necesitás de verdad.</p>
       </div>
 
-      <div class="why-card" data-animate="fade-up">
+      <div class="why-card" data-why-card>
         <div class="why-icon">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
@@ -31,7 +31,7 @@
         <p class="why-card-desc">Con esa base, construimos la web, el contenido y los sistemas que tu negocio necesita. Sin soluciones genéricas.</p>
       </div>
 
-      <div class="why-card" data-animate="fade-up">
+      <div class="why-card" data-why-card>
         <div class="why-icon">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
@@ -42,7 +42,7 @@
         <p class="why-card-desc">Trabajás directamente con quienes hacen el trabajo. Thomas en tecnología, Mai en contenido. Sin account managers ni cadena de teléfono roto.</p>
       </div>
 
-      <div class="why-card" data-animate="fade-up">
+      <div class="why-card" data-why-card>
         <div class="why-icon">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
@@ -60,7 +60,7 @@
 <style>
   .why-calax {
     background: #0A0A0A;
-    padding: 6rem 2rem;
+    padding: clamp(60px, 8vw, 120px) clamp(24px, 4vw, 80px);
   }
 
   .why-inner {
@@ -88,12 +88,12 @@
 
   .why-title em {
     font-style: italic;
-    color: var(--color-purple-deep);
+    color: var(--color-green);
   }
 
   .why-subtitle {
     font-family: var(--font-sans);
-    font-size: 16px;
+    font-size: clamp(14px, 1.1vw, 16px);
     color: var(--color-ink-muted);
     line-height: 1.6;
     max-width: 520px;
@@ -130,7 +130,7 @@
 
   .why-card-title {
     font-family: var(--font-serif);
-    font-size: 20px;
+    font-size: clamp(17px, 1.5vw, 20px);
     color: var(--color-cream);
     line-height: 1.2;
     margin: 0;
@@ -160,4 +160,93 @@
       grid-template-columns: 1fr;
     }
   }
+
+  /* Cards start hidden — GSAP sets this immediately via JS.
+     This fallback prevents a FOUC if the script is slightly delayed. */
+  [data-why-card] {
+    will-change: transform, opacity;
+  }
+
+  [data-why-subtitle] {
+    will-change: filter, opacity, transform;
+  }
 </style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import SplitType from 'split-type';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ─── Set initial hidden states immediately (prevents flash) ──────
+  if (!prefersReducedMotion) {
+    const whyTitle = document.querySelector<HTMLElement>('.why-title[data-why-split-text]');
+    if (whyTitle) {
+      const split = new SplitType(whyTitle, { types: 'chars,words' });
+      gsap.set(split.chars, { y: 30, opacity: 0 });
+    }
+    const whySubtitle = document.querySelector<HTMLElement>('[data-why-subtitle]');
+    if (whySubtitle) gsap.set(whySubtitle, { opacity: 0, y: 18, filter: 'blur(6px)' });
+    const whyCards = document.querySelectorAll<HTMLElement>('[data-why-card]');
+    if (whyCards.length) gsap.set(whyCards, { autoAlpha: 0, scale: 0.94, y: 20 });
+  }
+
+  // ─── Init scroll triggers after Lenis + ScrollTrigger are ready ──
+  function initWhyAnimations() {
+    if (prefersReducedMotion) {
+      gsap.set('[data-why-subtitle]', { opacity: 1, filter: 'blur(0px)', y: 0 });
+      gsap.set('[data-why-card]', { autoAlpha: 1, scale: 1, y: 0 });
+      gsap.set('.why-title .char', { opacity: 1, y: 0 });
+      return;
+    }
+
+    // 1. Title chars
+    const whyTitle = document.querySelector<HTMLElement>('.why-title[data-why-split-text]');
+    if (whyTitle) {
+      const chars = whyTitle.querySelectorAll<HTMLElement>('.char');
+      ScrollTrigger.create({
+        trigger: whyTitle,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+          gsap.to(chars, { y: 0, opacity: 1, duration: 0.55, stagger: 0.03, ease: 'power3.out' });
+        },
+      });
+    }
+
+    // 2. Subtitle blur + fade-up
+    const whySubtitle = document.querySelector<HTMLElement>('[data-why-subtitle]');
+    if (whySubtitle) {
+      ScrollTrigger.create({
+        trigger: whySubtitle,
+        start: 'top 88%',
+        once: true,
+        onEnter: () => {
+          gsap.to(whySubtitle, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.9, ease: 'power2.out' });
+        },
+      });
+    }
+
+    // 3. Cards scale-in with stagger
+    const whyCards = document.querySelectorAll<HTMLElement>('[data-why-card]');
+    if (whyCards.length) {
+      ScrollTrigger.create({
+        trigger: '.why-grid',
+        start: 'top 82%',
+        once: true,
+        onEnter: () => {
+          gsap.to(whyCards, { autoAlpha: 1, scale: 1, y: 0, duration: 0.7, stagger: 0.14, ease: 'power3.out' });
+        },
+      });
+    }
+  }
+
+  if (document.getElementById('preloader')) {
+    document.addEventListener('preloader-done', initWhyAnimations, { once: true });
+  } else {
+    initWhyAnimations();
+  }
+</script>

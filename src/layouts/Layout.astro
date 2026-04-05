@@ -66,6 +66,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
         align-items: center;
         gap: 4px;
       }
+      #preloader-img {
+        width: clamp(160px, 26vw, 260px);
+        height: auto;
+        margin-bottom: 24px;
+        opacity: 0;
+        transform: scale(0.75);
+      }
       #preloader-brand {
         font-family: 'DM Serif Display', serif;
         font-size: clamp(3rem, 8vw, 6rem);
@@ -245,7 +252,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
   "@type": "ProfessionalService",
   "name": "Calax Studio",
   "url": "https://calaxstudio.com",
-  "logo": "https://calaxstudio.com/logo.jpg",
+  "logo": "https://calaxstudio.com/logo1.png",
   "description": "Agencia digital especializada en diseño web, contenido visual y automatización para negocios.",
   "email": "calaxstudio@gmail.com",
   "sameAs": [
@@ -270,6 +277,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
     <!-- Page entry preloader -->
     <div id="preloader" aria-hidden="true">
       <div id="preloader-logo">
+        <img id="preloader-img" src="/logo-simple.png" alt="Calax Studio logo" />
         <div id="preloader-brand">
           <span class="slide-up-char">C</span>
           <span class="slide-up-char">a</span>
@@ -364,6 +372,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
           // Wait for fonts before exiting — prevents FOUT flash on preloader exit
           await document.fonts.ready;
 
+          const preloaderImg = document.getElementById('preloader-img');
+
           const tl = gsap.timeline({
             onComplete: () => {
               clearTimeout(preloaderFallback);
@@ -374,13 +384,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
           });
 
           tl
+            // Logo appears first: scale + fade in
+            .to(preloaderImg, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.55,
+              ease: 'back.out(1.8)',
+            })
+            // Subtle pulse on logo while letters prepare
+            .to(preloaderImg, {
+              scale: 1.04,
+              duration: 0.22,
+              ease: 'power1.inOut',
+              yoyo: true,
+              repeat: 1,
+            }, '-=0.05')
             // Letters slide up
             .to(chars, {
               y: '0%',
               duration: 0.5,
               stagger: 0.045,
               ease: 'power3.out',
-            })
+            }, '-=0.1')
             // "studio" fades in
             .to('#preloader-studio', {
               opacity: 1,
@@ -389,14 +414,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
               ease: 'power2.out',
             }, '-=0.2')
             // Brief hold
-            .to({}, { duration: 0.15 })
-            // Letters exit upward
+            .to({}, { duration: 0.2 })
+            // Logo + letters exit together
+            .to(preloaderImg, {
+              opacity: 0,
+              scale: 0.8,
+              duration: 0.28,
+              ease: 'power2.in',
+            }, '+=0')
             .to(chars, {
               y: '-120%',
               duration: 0.32,
               stagger: 0.03,
               ease: 'power3.in',
-            }, '-=0.05')
+            }, '<0.05')
             // Green horizontal wipe
             .to(greenWipe, {
               width: '100vw',
