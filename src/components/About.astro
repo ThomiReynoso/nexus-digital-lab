@@ -9,15 +9,10 @@
     <!-- Left: text + team cards -->
     <div class="about-text">
       <p class="section-label about-label" data-about-reveal>Dos personas. Un equipo completo.</p>
-      <h2 class="section-title about-title" data-about-title>Somos Thom y Mai. Y nos gusta hacer que <em>las cosas pasen</em></h2>
+      <h2 class="section-title about-title" data-about-title>Somos Thom y Mai, nos gusta acompañar a otros a <em>hacer crecer</em> sus proyectos.</h2>
       <div class="about-desc-wrapper" data-about-reveal>
         <p class="about-desc">
-          Él desarrolla, automatiza y hace que las cosas funcionen. Ella crea, fotografía y hace que las cosas se vean bien. Juntos ofrecemos lo que normalmente requeriría contratar a tres personas distintas — con la ventaja de que siempre hablás con quien realmente hace el trabajo.
-        </p>
-      </div>
-      <div class="about-desc-wrapper" data-about-reveal>
-        <p class="about-desc">
-          No hay cuentas ni coordinadores. Cuando hablás con nosotros, hablás directamente con quien va a hacer tu trabajo — sin filtros ni intermediarios.
+          Él resuelve lo externo: la tecnología, la web, los procesos que hacen que tu negocio funcione. Ella resuelve lo interno: la identidad, el mensaje, el contenido que conecta con quienes importan. Por eso decidimos emprender juntos. Unir nuestras formas de ver y hacer las cosas… y transformar eso en algo que ayude a otros a crecer de verdad.
         </p>
       </div>
 
@@ -29,12 +24,13 @@
             <div class="team-card-glow team-card-glow-purple"></div>
             <!-- Animated border glow ring (activated on hover via JS) -->
             <div class="team-card-border-ring team-card-border-ring-purple"></div>
-            <div class="team-avatar team-avatar-thomas">
-              <span class="team-initial">T</span>
+            <div class="team-card-photo">
+              <img src="/Thom.webp" alt="Thom" class="team-photo" />
+              <div class="team-photo-fade team-photo-fade-purple"></div>
             </div>
             <div class="team-name">Thom</div>
             <div class="team-role"><span class="team-role-icon">💻</span> Desarrollo & Automatización</div>
-            <div class="team-bio">Sitios web modernos, integraciones con tus herramientas y flujos automatizados a medida — para que tu negocio opere más rápido sin depender de procesos manuales.</div>
+            <div class="team-bio">Sitios web modernos, integraciones entre herramientas y automatizaciones a medida. Para que tu negocio opere más rápido sin depender de procesos manuales — y para que la tecnología trabaje para vos, no al revés.</div>
             <div class="team-skills team-skills-purple">
               <span class="team-skill">Astro</span>
               <span class="team-skill">React</span>
@@ -46,12 +42,13 @@
             <div class="team-card-glow team-card-glow-green"></div>
             <!-- Animated border glow ring (activated on hover via JS) -->
             <div class="team-card-border-ring team-card-border-ring-green"></div>
-            <div class="team-avatar team-avatar-mai">
-              <span class="team-initial">M</span>
+            <div class="team-card-photo">
+              <img src="/Mai.webp" alt="Mai" class="team-photo" />
+              <div class="team-photo-fade team-photo-fade-green"></div>
             </div>
             <div class="team-name">Mai</div>
             <div class="team-role"><span class="team-role-icon">📸</span> Contenido Visual & Estrategia</div>
-            <div class="team-bio">Producción fotográfica y de video, edición de reels y estrategia de contenido que conecta con tu audiencia.</div>
+            <div class="team-bio">Antes de grabar o fotografiar, escucho. Entiendo tu historia, tu voz y lo que querés transmitir. Después lo construimos juntas — el contenido que resulta se parece a vos, no a una agencia.</div>
             <div class="team-skills team-skills-green">
               <span class="team-skill">Fotografía</span>
               <span class="team-skill">Video</span>
@@ -90,7 +87,7 @@
   /* ─── Spotlight overlay ──────────────────────────────────────────── */
   .about {
     background: #0A0A0A;
-    padding: 120px 48px;
+    padding: clamp(60px, 8vw, 120px) clamp(24px, 4vw, 80px);
     overflow: hidden;
     position: relative;
   }
@@ -113,7 +110,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: clamp(40px, 6vw, 80px);
     align-items: center;
     position: relative;
     z-index: 1;
@@ -139,7 +136,7 @@
   }
 
   .about-desc {
-    font-size: 16px;
+    font-size: clamp(14px, 1.1vw, 16px);
     color: var(--color-ink-muted);
     line-height: 1.8;
     font-weight: 300;
@@ -183,7 +180,7 @@
     flex: 1;
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     border-radius: 16px;
-    padding: 24px;
+    padding: 0;
     border: 1px solid rgba(123, 107, 176, 0.15);
     position: relative;
     overflow: hidden;
@@ -194,6 +191,73 @@
     /* backface hidden so reverse side is invisible during flip */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+  }
+
+  /* ─── Photo header ───────────────────────────────────────────────── */
+  .team-card-photo {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .team-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    filter: grayscale(20%);
+    transition: filter 0.45s ease, transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .team-card:hover .team-photo {
+    filter: grayscale(0%);
+    transform: scale(1.04);
+  }
+
+  /* Gradient fade from photo into card background */
+  .team-photo-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70%;
+    pointer-events: none;
+  }
+
+  .team-photo-fade-purple {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(22, 18, 48, 0.6) 40%,
+      #1a1a2e 100%
+    );
+  }
+
+  .team-photo-fade-green {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(18, 32, 22, 0.6) 40%,
+      #16213e 100%
+    );
+  }
+
+  /* Card content padding (below the photo) */
+  .team-name,
+  .team-role,
+  .team-bio,
+  .team-skills {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .team-name {
+    padding-top: 16px;
+  }
+
+  .team-skills {
+    padding-bottom: 20px;
   }
 
   /* Asymmetric vertical offset */
@@ -472,7 +536,7 @@
 
   .value-title {
     font-family: var(--font-sans);
-    font-size: 18px;
+    font-size: clamp(15px, 1.3vw, 18px);
     font-weight: 600;
     color: var(--color-cream);
     margin: 0 0 10px 0;
@@ -525,6 +589,14 @@
     .team-deco-line {
       display: none;
     }
+
+    .team-card-photo {
+      height: 260px;
+    }
+
+    .team-photo {
+      object-position: center 10%;
+    }
   }
 
   /* ─── Reduced motion: disable animations ───────────────────────── */
@@ -539,88 +611,90 @@
 <script>
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import SplitType from 'split-type';
 
   gsap.registerPlugin(ScrollTrigger);
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // ─── Set initial hidden states immediately (prevents flash) ──────
   if (!prefersReducedMotion) {
-    // ─── 0. About title: simple fade-up on the whole heading ────────
     const aboutTitle = document.querySelector<HTMLElement>('[data-about-title]');
     if (aboutTitle) {
-      gsap.set('[data-about-title]', { opacity: 0, y: 20 });
+      const split = new SplitType(aboutTitle, { types: 'words' });
+      gsap.set(split.words, { y: 32, opacity: 0, clipPath: 'inset(0 0 100% 0)' });
+    }
+    const leftRevealItems = document.querySelectorAll<HTMLElement>('[data-about-reveal]');
+    if (leftRevealItems.length) gsap.set(leftRevealItems, { autoAlpha: 0, y: 24 });
+
+    const cardLeft  = document.querySelector<HTMLElement>('[data-about-card="left"]');
+    const cardRight = document.querySelector<HTMLElement>('[data-about-card="right"]');
+    gsap.set([cardLeft, cardRight].filter(Boolean), { autoAlpha: 0, y: 24 });
+    gsap.set(document.querySelectorAll('.team-skill'), { autoAlpha: 0, y: 8, scale: 0.9 });
+
+    const valueItems = document.querySelectorAll<HTMLElement>('[data-about-values] .value-item');
+    if (valueItems.length) gsap.set(valueItems, { autoAlpha: 0, x: 60 });
+  }
+
+  // ─── Init scroll triggers after Lenis + ScrollTrigger are ready ──
+  function initAboutAnimations() {
+    if (prefersReducedMotion) {
+      gsap.set('[data-about-reveal]', { autoAlpha: 1, y: 0 });
+      gsap.set('[data-about-title] .word', { autoAlpha: 1, y: 0, clipPath: 'inset(0 0 0% 0)' });
+      gsap.set('[data-about-card]', { autoAlpha: 1, y: 0 });
+      gsap.set('[data-about-values] .value-item', { autoAlpha: 1, x: 0 });
+      gsap.set('.team-skill', { autoAlpha: 1, y: 0, scale: 1 });
+      return;
+    }
+
+    // 0. Title: word-by-word wipe rise
+    const aboutTitle = document.querySelector<HTMLElement>('[data-about-title]');
+    if (aboutTitle) {
+      const words = aboutTitle.querySelectorAll<HTMLElement>('.word');
       ScrollTrigger.create({
         trigger: aboutTitle,
         start: 'top 82%',
         once: true,
         onEnter: () => {
-          gsap.to(aboutTitle, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: 'power2.out',
-          });
+          gsap.to(words, { y: 0, opacity: 1, clipPath: 'inset(0 0 0% 0)', duration: 0.65, stagger: 0.07, ease: 'power3.out' });
         },
       });
     }
 
-    // ─── 1. Spotlight cursor effect ─────────────────────────────────
+    // 1. Spotlight cursor
     const aboutSection = document.querySelector('.about') as HTMLElement;
     const spotlightEl  = document.querySelector('.about-spotlight') as HTMLElement;
-
     if (aboutSection && spotlightEl) {
       const setX = gsap.quickTo(spotlightEl, '--spotlight-x', { duration: 0.4, ease: 'power2.out' });
       const setY = gsap.quickTo(spotlightEl, '--spotlight-y', { duration: 0.4, ease: 'power2.out' });
-
       aboutSection.addEventListener('mousemove', (e: MouseEvent) => {
         const rect = aboutSection.getBoundingClientRect();
         setX(e.clientX - rect.left);
         setY(e.clientY - rect.top);
       });
-
-      aboutSection.addEventListener('mouseleave', () => {
-        setX(-9999);
-        setY(-9999);
-      });
+      aboutSection.addEventListener('mouseleave', () => { setX(-9999); setY(-9999); });
     }
 
-    // ─── 2. Left-column sequential fade-up ──────────────────────────
-    // Elements: label → heading → desc wrappers (× 2)
-    // Set initial state immediately (synchronously) so elements are
-    // never visible before the ScrollTrigger fires.
+    // 2. Left-column fade-up
     const leftRevealItems = document.querySelectorAll<HTMLElement>('[data-about-reveal]');
-
-    gsap.set(leftRevealItems, { autoAlpha: 0, y: 24 });
-
     if (leftRevealItems.length) {
       ScrollTrigger.create({
         trigger: leftRevealItems[0],
         start: 'top 75%',
         once: true,
         onEnter: () => {
-          gsap.to(leftRevealItems, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.7,
-            stagger: 0.15,
-            ease: 'power2.out',
-          });
+          gsap.to(leftRevealItems, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.15, ease: 'power2.out' });
         },
       });
     }
 
-    // ─── 3. Team cards: smooth fade-up entrance ──────────────────────
-    // Set initial hidden state synchronously — before any scroll event
-    // could fire — so cards never flash in before the trigger.
+    // 3. Team cards + skills
     const cardLeft  = document.querySelector<HTMLElement>('[data-about-card="left"]');
     const cardRight = document.querySelector<HTMLElement>('[data-about-card="right"]');
     const skillsThomas = document.querySelectorAll<HTMLElement>('.team-skills-purple .team-skill');
     const skillsMai    = document.querySelectorAll<HTMLElement>('.team-skills-green .team-skill');
+    const teamSection  = document.querySelector('.about-team-wrapper');
 
-    gsap.set([cardLeft, cardRight].filter(Boolean), { autoAlpha: 0, y: 24 });
-    gsap.set([...skillsThomas, ...skillsMai], { autoAlpha: 0, y: 8, scale: 0.9 });
-
-    const teamSection = document.querySelector('.about-team-wrapper');
     if (teamSection) {
       ScrollTrigger.create({
         trigger: teamSection,
@@ -628,165 +702,55 @@
         once: true,
         onEnter: () => {
           const tl = gsap.timeline();
-
-          if (cardLeft) {
-            tl.to(cardLeft, {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.7,
-              ease: 'power2.out',
-            }, 0);
-          }
-          if (cardRight) {
-            tl.to(cardRight, {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.7,
-              ease: 'power2.out',
-            }, 0.15);
-          }
-
-          // Skills tags stagger in after the cards have mostly settled
-          if (skillsThomas.length) {
-            tl.to(skillsThomas, {
-              autoAlpha: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.35,
-              stagger: 0.06,
-              ease: 'power2.out',
-            }, 0.55);
-          }
-
-          if (skillsMai.length) {
-            tl.to(skillsMai, {
-              autoAlpha: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.35,
-              stagger: 0.06,
-              ease: 'power2.out',
-            }, 0.70);
-          }
+          if (cardLeft)  tl.to(cardLeft,  { autoAlpha: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 0);
+          if (cardRight) tl.to(cardRight, { autoAlpha: 1, y: 0, duration: 0.7, ease: 'power2.out' }, 0.15);
+          if (skillsThomas.length) tl.to(skillsThomas, { autoAlpha: 1, y: 0, scale: 1, duration: 0.35, stagger: 0.06, ease: 'power2.out' }, 0.55);
+          if (skillsMai.length)    tl.to(skillsMai,    { autoAlpha: 1, y: 0, scale: 1, duration: 0.35, stagger: 0.06, ease: 'power2.out' }, 0.70);
         },
       });
     }
 
-    // ─── 4. Right column — value items staggered fade-up ────────────
-    // data-about-values on the wrapper is NOT a data-animate target so
-    // Layout.astro's batch won't touch it. Animate each item individually.
+    // 4. Value items slide-in from right
     const valueItems = document.querySelectorAll<HTMLElement>('[data-about-values] .value-item');
-
-    gsap.set(valueItems, { autoAlpha: 0, y: 24 });
-
     if (valueItems.length) {
       ScrollTrigger.create({
         trigger: '[data-about-values]',
         start: 'top 75%',
         once: true,
         onEnter: () => {
-          gsap.to(valueItems, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.7,
-            stagger: 0.15,
-            ease: 'power2.out',
-          });
+          gsap.to(valueItems, { autoAlpha: 1, x: 0, duration: 0.75, stagger: 0.18, ease: 'power3.out' });
         },
       });
     }
 
-    // ─── 5. Premium hover: tilt + border glow + skills pop ──────────
+    // 5. Hover: tilt + border glow + skills pop
     const teamCards = document.querySelectorAll<HTMLElement>('.team-card');
-
     teamCards.forEach((card) => {
       const skills = card.querySelectorAll<HTMLElement>('.team-skill');
-
       card.addEventListener('mouseenter', () => {
         card.classList.add('hovered');
-
-        if (skills.length) {
-          gsap.fromTo(skills,
-            { scale: 1 },
-            {
-              scale: 1.1,
-              duration: 0.25,
-              stagger: 0.04,
-              ease: 'back.out(2)',
-              yoyo: true,
-              repeat: 1,
-            }
-          );
-        }
+        if (skills.length) gsap.fromTo(skills, { scale: 1 }, { scale: 1.1, duration: 0.25, stagger: 0.04, ease: 'back.out(2)', yoyo: true, repeat: 1 });
       });
-
       card.addEventListener('mousemove', (e: MouseEvent) => {
-        const rect    = card.getBoundingClientRect();
-        const x       = e.clientX - rect.left;
-        const y       = e.clientY - rect.top;
-        const centerX = rect.width  / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -8;
-        const rotateY = ((x - centerX) / centerX) *  8;
-
-        gsap.to(card, {
-          rotateX,
-          rotateY,
-          transformPerspective: 1000,
-          ease: 'power1.out',
-          duration: 0.35,
-          overwrite: 'auto',
-        });
+        const rect = card.getBoundingClientRect();
+        const rotateX = ((e.clientY - rect.top  - rect.height / 2) / (rect.height / 2)) * -8;
+        const rotateY = ((e.clientX - rect.left - rect.width  / 2) / (rect.width  / 2)) *  8;
+        gsap.to(card, { rotateX, rotateY, transformPerspective: 1000, ease: 'power1.out', duration: 0.35, overwrite: 'auto' });
       });
-
       card.addEventListener('mouseleave', () => {
         card.classList.remove('hovered');
-
-        gsap.to(card, {
-          rotateX: 0,
-          rotateY: 0,
-          duration: 0.6,
-          ease: 'elastic.out(1, 0.5)',
-          overwrite: 'auto',
-        });
+        gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.6, ease: 'elastic.out(1, 0.5)', overwrite: 'auto' });
       });
     });
 
-    // ─── 6. Parallax: cards drift at different rates on scroll ───────
-    // These run independently of the entrance animation — they operate
-    // on the element's current transform and will compose correctly with
-    // the y:0 final state from the entrance tween.
-    if (cardLeft) {
-      gsap.to(cardLeft, {
-        y: -30,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.about-team-wrapper',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1.5,
-        },
-      });
-    }
-    if (cardRight) {
-      gsap.to(cardRight, {
-        y: -15,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.about-team-wrapper',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 2,
-        },
-      });
-    }
+    // 6. Parallax scroll drift
+    if (cardLeft)  gsap.to(cardLeft,  { y: -30, ease: 'none', scrollTrigger: { trigger: '.about-team-wrapper', start: 'top bottom', end: 'bottom top', scrub: 1.5 } });
+    if (cardRight) gsap.to(cardRight, { y: -15, ease: 'none', scrollTrigger: { trigger: '.about-team-wrapper', start: 'top bottom', end: 'bottom top', scrub: 2 } });
+  }
 
+  if (document.getElementById('preloader')) {
+    document.addEventListener('preloader-done', initAboutAnimations, { once: true });
   } else {
-    // Reduced motion: make everything visible immediately, no transforms
-    gsap.set('[data-about-reveal]', { autoAlpha: 1, y: 0 });
-    gsap.set('[data-about-title]', { autoAlpha: 1, y: 0 });
-    gsap.set('[data-about-card]', { autoAlpha: 1, y: 0 });
-    gsap.set('[data-about-values] .value-item', { autoAlpha: 1, y: 0 });
-    gsap.set('.team-skill', { autoAlpha: 1, y: 0, scale: 1 });
+    initAboutAnimations();
   }
 </script>

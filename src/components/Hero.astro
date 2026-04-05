@@ -14,12 +14,12 @@
 
   <!-- Content -->
   <div class="hero-left">
-    <div class="hero-tag">Agencia digital</div>
+    <div class="hero-tag">Agencia Digital Boutique</div>
     <h1 class="hero-title">
-      Tu negocio merece una <span class="text-purple">presencia digital</span> que lo <em>represente</em> de verdad
+      Tu negocio tiene una <em>historia.</em> Nosotros la convertimos en <em class="text-purple">presencia digital.</em>
     </h1>
     <p class="hero-sub">
-      Creamos tu web, producimos tu contenido visual y automatizamos tus procesos. Un equipo pequeño, resultados concretos, sin intermediarios.
+      Primero te entendemos: quién sos, qué hacés y por qué lo hacés. Después construimos el contenido, la web o las automatizaciones que tu negocio necesita. Sin paquetes genéricos.
     </p>
     <div class="hero-actions">
       <a href="#contacto" class="btn-primary">Solicitar auditoría gratuita →</a>
@@ -68,7 +68,7 @@
   .hero-bg-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 60% 50%, transparent 0%, #0A0A0A 70%);
+    background: radial-gradient(ellipse at 60% 50%, transparent 20%, rgba(10,10,10,0.55) 60%, #0A0A0A 90%);
     z-index: 1;
     pointer-events: none;
   }
@@ -103,11 +103,25 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 80px 48px;
+    padding: clamp(60px, 8vw, 120px) clamp(24px, 4vw, 80px);
     position: relative;
     z-index: 2;
     max-width: 720px;
     width: 100%;
+  }
+
+  /* Hide hero content until GSAP animates it in — prevents flash */
+  .hero-tag,
+  .hero-sub {
+    opacity: 0;
+  }
+
+  .hero-actions a {
+    opacity: 0;
+  }
+
+  .hero-title {
+    visibility: hidden;
   }
 
   .hero-tag {
@@ -163,15 +177,17 @@
 
   .hero-title em {
     font-style: italic;
-    color: rgba(134, 239, 172, 0.9); /* green — matches .btn-secondary text */
+    color: var(--color-green);
   }
 
   .hero-title .text-purple {
     color: var(--color-purple-deep); /* #7B6BB0 */
+    font-style: italic;
+    font-weight: 700;
   }
 
   .hero-sub {
-    font-size: 16px;
+    font-size: clamp(14px, 1.1vw, 16px);
     font-weight: 300;
     color: var(--color-ink-muted);
     line-height: 1.7;
@@ -192,8 +208,24 @@
       padding-top: 80px;
     }
 
+    .hero-bg-overlay {
+      background:
+        radial-gradient(ellipse at 50% 38%, transparent 8%, rgba(10,10,10,0.42) 52%, rgba(10,10,10,0.82) 92%),
+        linear-gradient(to bottom, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.38) 100%);
+    }
+
     .hero-left {
       padding: 60px 24px 60px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-sub {
+      max-width: 100%;
+    }
+
+    .hero-tag {
+      margin-bottom: 24px;
     }
 
     .hero-sub {
@@ -207,6 +239,7 @@
 
     .hero-actions {
       width: 100%;
+      justify-content: center;
     }
 
     .btn-primary {
@@ -240,24 +273,59 @@
 
     if (prefersReducedMotion) {
       // Make everything visible immediately
-      gsap.set(heroTitle, { opacity: 1, y: 0 });
-      gsap.set(chars, { opacity: 1 });
+      gsap.set(heroTitle, { visibility: 'visible', opacity: 1, y: 0 });
+      gsap.set(chars, { opacity: 1, y: 0 });
+      gsap.set([heroTag, heroSub, ctaButtons], { opacity: 1, y: 0 });
+      gsap.set(blobs, { scale: 1, opacity: 0.45 });
       return;
     }
 
     // ─── Set initial hidden states ────────────────────────────────────────────
-    // heroTag is visible immediately — no hidden state set
-    // Title (chars), subtitle, and CTA buttons are visible immediately — no hidden state set
+    gsap.set(heroTitle, { visibility: 'visible' }); // reveal wrapper so chars can animate
+    gsap.set(chars, { opacity: 0, y: 30 });
+    gsap.set(heroSub, { opacity: 0, y: 20 });
+    gsap.set(heroTag, { opacity: 0, y: -10 });
+    gsap.set(ctaButtons, { opacity: 0, scale: 0.92 });
     gsap.set(blobs, { scale: 0.5, opacity: 0 });
 
     // ─── Choreographed entrance timeline ──────────────────────────────────────
     const tl = gsap.timeline({ delay: 0.1 });
 
-    // 1. heroTag appears immediately — no entrance tween needed
+    // 1. Badge drops in from above
+    tl.to(heroTag, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    });
 
-    // 2. Title, subtitle, and CTA buttons are already visible — no entrance tweens needed
+    // 2. Title chars stagger up
+    tl.to(chars, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      stagger: 0.02,
+      ease: 'power3.out',
+    }, '-=0.2');
 
-    // 3. Blobs fade in with scale
+    // 3. Subtitle fades up
+    tl.to(heroSub, {
+      opacity: 1,
+      y: 0,
+      duration: 0.55,
+      ease: 'power2.out',
+    }, '-=0.3');
+
+    // 4. CTA buttons scale in
+    tl.to(ctaButtons, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.45,
+      stagger: 0.08,
+      ease: 'back.out(1.5)',
+    }, '-=0.25');
+
+    // 5. Blobs fade in with scale
     tl.to(blobs, {
       scale: 1,
       opacity: 0.45,
@@ -377,12 +445,11 @@
   // Listen for the preloader-done event dispatched from Layout.astro,
   // or run immediately if preloader already finished / doesn't exist.
   if (document.getElementById('preloader')) {
-    document.addEventListener('preloader-done', initHeroAnimations, { once: true });
-    // Fallback: if preloader takes too long, init after 5s
-    setTimeout(() => {
-      document.removeEventListener('preloader-done', initHeroAnimations);
+    const fallback = setTimeout(initHeroAnimations, 5000);
+    document.addEventListener('preloader-done', () => {
+      clearTimeout(fallback);
       initHeroAnimations();
-    }, 5000);
+    }, { once: true });
   } else {
     initHeroAnimations();
   }

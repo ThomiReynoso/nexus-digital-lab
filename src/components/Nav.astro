@@ -2,7 +2,7 @@
 ---
 
 <nav class="nav">
-  <a href="#hero" class="logo"><img src="/logo.jpg" alt="Calax Studio" class="logo-img" /></a>
+  <a href="#hero" class="logo"><img src="/logo1.png" alt="Calax Studio" class="logo-img" /></a>
 
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
@@ -39,35 +39,34 @@
   .nav {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 48px;
+    padding: 20px clamp(24px, 4vw, 80px);
     background: rgba(10, 10, 10, 0.6);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0px;
+    box-shadow: none;
+    will-change: width, top, border-radius;
     transition:
-      top 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-      left 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-      right 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-      width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-      transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-      border-radius 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-      padding 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-      background 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-      box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      top 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      width 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      border-radius 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      padding 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      background 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      border-color 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .nav.island {
     top: 16px;
-    left: 50%;
-    right: auto;
     width: min(740px, calc(100vw - 32px));
-    transform: translateX(-50%);
     border-radius: 60px;
     padding: 10px 16px 10px 28px;
     background: rgba(12, 12, 12, 0.55);
@@ -87,7 +86,7 @@
   }
 
   .logo-img {
-    height: 44px;
+    height: 56px;
     width: auto;
     display: block;
     mix-blend-mode: screen;
