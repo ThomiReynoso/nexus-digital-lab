@@ -226,6 +226,7 @@
     height: 46%;
     border-radius: 12px 12px 0 0;
     object-position: center 65%;
+    object-fit: cover;
   }
 
   /* Badge + título en la misma línea */
@@ -426,6 +427,12 @@
       height: 180px !important;
       width: 100% !important;
       border-radius: 12px 12px 0 0;
+    }
+
+    .svc-2 .svc-img {
+      object-fit: contain !important;
+      object-position: center center !important;
+      height: 160px !important;
     }
 
     .svc::before { display: none !important; }
