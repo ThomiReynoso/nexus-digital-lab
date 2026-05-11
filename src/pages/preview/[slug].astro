@@ -1,0 +1,33 @@
+---
+import negocios from '../../data/negocios.json';
+import LayoutPeluqueria from '../../layouts/preview/LayoutPeluqueria.astro';
+import LayoutFisioterapia from '../../layouts/preview/LayoutFisioterapia.astro';
+import LayoutEstetica from '../../layouts/preview/LayoutEstetica.astro';
+import LayoutWellness from '../../layouts/preview/LayoutWellness.astro';
+import LayoutNutricion from '../../layouts/preview/LayoutNutricion.astro';
+
+export function getStaticPaths() {
+  return negocios.map((n) => ({
+    params: { slug: n.slug },
+    props: { negocio: n },
+  }));
+}
+
+const { negocio } = Astro.props;
+
+const layouts: Record<string, any> = {
+  peluqueria: LayoutPeluqueria,
+  fisioterapia: LayoutFisioterapia,
+  estetica: LayoutEstetica,
+  wellness: LayoutWellness,
+  nutricion: LayoutNutricion,
+};
+
+const SelectedLayout = layouts[negocio.categoria];
+
+if (!SelectedLayout) {
+  return Astro.redirect('/404');
+}
+---
+
+<SelectedLayout negocio={negocio} isPreview={true} />

@@ -1,0 +1,29 @@
+---
+import PreviewBase from './PreviewBase.astro';
+
+interface Props {
+  negocio: any;
+  isPreview?: boolean;
+}
+
+const { negocio, isPreview = true } = Astro.props;
+
+const theme = {
+  name: 'estetica',
+  bg: '#FDFBF9',
+  bgAlt: '#F6F0EB',
+  text: '#2D2428',
+  textMuted: '#8A7B80',
+  accent: '#C4918A',
+  accentGlow: 'rgba(196, 145, 138, 0.3)',
+  accentSoft: 'rgba(196, 145, 138, 0.08)',
+  gradient: 'radial-gradient(ellipse at 50% 0%, rgba(196, 145, 138, 0.06) 0%, transparent 70%)',
+  cardBg: '#FFFFFF',
+  cardBorder: 'rgba(196, 145, 138, 0.12)',
+  fontHeading: "'Cormorant Garamond', Georgia, serif",
+  fontBody: "'DM Sans', sans-serif",
+  fontImport: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap',
+};
+---
+
+<PreviewBase negocio={negocio} theme={theme} isPreview={isPreview} />

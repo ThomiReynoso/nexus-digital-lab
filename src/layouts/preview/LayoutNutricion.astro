@@ -1,0 +1,29 @@
+---
+import PreviewBase from './PreviewBase.astro';
+
+interface Props {
+  negocio: any;
+  isPreview?: boolean;
+}
+
+const { negocio, isPreview = true } = Astro.props;
+
+const theme = {
+  name: 'nutricion',
+  bg: '#F7FAF7',
+  bgAlt: '#EBF2EB',
+  text: '#1A2E1A',
+  textMuted: '#5E7A5E',
+  accent: '#4AA564',
+  accentGlow: 'rgba(74, 165, 100, 0.3)',
+  accentSoft: 'rgba(74, 165, 100, 0.08)',
+  gradient: 'radial-gradient(ellipse at 50% 0%, rgba(74, 165, 100, 0.06) 0%, transparent 70%)',
+  cardBg: '#FFFFFF',
+  cardBorder: 'rgba(74, 165, 100, 0.1)',
+  fontHeading: "'DM Serif Display', Georgia, serif",
+  fontBody: "'Inter', sans-serif",
+  fontImport: 'https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap',
+};
+---
+
+<PreviewBase negocio={negocio} theme={theme} isPreview={isPreview} />

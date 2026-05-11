@@ -1,0 +1,272 @@
+[
+  {
+    "slug": "j-balaguer-peluquerias-barcelona",
+    "nombre": "J. Balaguer - Peluquerías Barcelona",
+    "categoria": "peluqueria",
+    "tagline": "Barbería premium en el corazón del Eixample",
+    "barrio": "Eixample",
+    "direccion": "Carrer de Balmes, 45, 08007 Barcelona",
+    "telefono": "+34 933 001 234",
+    "whatsapp": "34933001234",
+    "google_maps_embed": "https://maps.google.com/maps?q=J.+Balaguer+Peluquerias+Barcelona+Eixample&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 9:00 – 20:00 | Sábados: 9:00 – 14:00",
+    "resenas_count": 150,
+    "rating": 4.5,
+    "servicios": [
+      { "nombre": "Corte caballero", "precio": "22 €", "descripcion": "Corte personalizado con consulta de estilo, lavado y secado" },
+      { "nombre": "Corte + Barba", "precio": "32 €", "descripcion": "Combo completo: corte de cabello y arreglo de barba con navaja" },
+      { "nombre": "Afeitado clásico", "precio": "15 €", "descripcion": "Afeitado tradicional con toalla caliente y productos premium" },
+      { "nombre": "Coloración", "precio": "35 €", "descripcion": "Tinte profesional con productos de primera calidad" },
+      { "nombre": "Tratamiento capilar", "precio": "25 €", "descripcion": "Hidratación profunda y tratamiento anticaída personalizado" },
+      { "nombre": "Corte infantil", "precio": "14 €", "descripcion": "Corte para niños hasta 12 años en un ambiente relajado" }
+    ],
+    "resenas": [
+      { "autor": "Carlos M.", "texto": "Llevo más de 10 años viniendo y nunca me han fallado. Profesionalismo de otra época.", "rating": 5 },
+      { "autor": "David R.", "texto": "El mejor afeitado clásico de Barcelona, sin duda. Te tratan como en casa.", "rating": 5 },
+      { "autor": "Marc P.", "texto": "Excelente atención y resultado impecable. Siempre recomiendo a Balaguer.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "the-barber-club-barcelona",
+    "nombre": "The Barber Club",
+    "categoria": "peluqueria",
+    "tagline": "Tu barbería urbana en Gràcia",
+    "barrio": "Gràcia",
+    "direccion": "Carrer de Verdi, 78, 08012 Barcelona",
+    "telefono": "+34 931 456 789",
+    "whatsapp": "34931456789",
+    "google_maps_embed": "https://maps.google.com/maps?q=The+Barber+Club+Barcelona+Gracia&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 10:00 – 21:00 | Sábados: 10:00 – 18:00",
+    "resenas_count": 210,
+    "rating": 4.7,
+    "servicios": [
+      { "nombre": "Corte urbano", "precio": "20 €", "descripcion": "Fade, degradado o clásico — el estilo que quieras" },
+      { "nombre": "Barba completa", "precio": "14 €", "descripcion": "Perfilado y arreglo de barba con navaja y productos naturales" },
+      { "nombre": "Corte + Barba", "precio": "30 €", "descripcion": "El combo que más piden: corte a tu medida más barba perfecta" },
+      { "nombre": "Tratamiento capilar", "precio": "25 €", "descripcion": "Keratina, hidratación o anticaída según tu necesidad" },
+      { "nombre": "Diseño de cejas", "precio": "8 €", "descripcion": "Perfilado de cejas para un look limpio y definido" },
+      { "nombre": "Tinte barba", "precio": "12 €", "descripcion": "Cobertura de canas o cambio de tono en barba" }
+    ],
+    "resenas": [
+      { "autor": "Jordi L.", "texto": "Ambiente increíble, buena música y el mejor fade que me han hecho nunca.", "rating": 5 },
+      { "autor": "Pau G.", "texto": "Siempre salgo contento. Los chicos saben lo que hacen y te asesoran genial.", "rating": 5 },
+      { "autor": "Alex T.", "texto": "Mi barbería de referencia en Gràcia. Relación calidad-precio imbatible.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "duo-fisioterapia",
+    "nombre": "DUO Fisa",
+    "categoria": "fisioterapia",
+    "tagline": "Fisioterapia deportiva y rehabilitación en Sant Gervasi",
+    "barrio": "Sant Gervasi",
+    "direccion": "Carrer de Muntaner, 312, 08021 Barcelona",
+    "telefono": "+34 934 567 890",
+    "whatsapp": "34934567890",
+    "google_maps_embed": "https://maps.google.com/maps?q=DUO+Fisa+Barcelona+Sant+Gervasi&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 8:00 – 21:00 | Sábados: 9:00 – 14:00",
+    "resenas_count": 89,
+    "rating": 4.8,
+    "servicios": [
+      { "nombre": "Fisioterapia deportiva", "precio": "55 €", "descripcion": "Tratamiento especializado para lesiones deportivas y recuperación funcional" },
+      { "nombre": "Rehabilitación postquirúrgica", "precio": "60 €", "descripcion": "Programa personalizado de recuperación tras cirugía" },
+      { "nombre": "Masaje terapéutico", "precio": "45 €", "descripcion": "Masaje profundo para aliviar tensión muscular y dolor crónico" },
+      { "nombre": "Punción seca", "precio": "50 €", "descripcion": "Tratamiento de puntos gatillo con aguja para dolor miofascial" },
+      { "nombre": "Valoración inicial", "precio": "40 €", "descripcion": "Evaluación completa, diagnóstico funcional y plan de tratamiento" },
+      { "nombre": "Drenaje linfático", "precio": "50 €", "descripcion": "Masaje especializado para mejorar la circulación linfática" }
+    ],
+    "resenas": [
+      { "autor": "Elena S.", "texto": "Me recuperé de una rotura de ligamento en tiempo récord. Profesionales de verdad.", "rating": 5 },
+      { "autor": "Roberto F.", "texto": "Después de probar 3 fisios distintos, por fin encontré a alguien que entiende mi lesión.", "rating": 5 },
+      { "autor": "Laura M.", "texto": "Atención personalizada y resultados desde la primera sesión. Muy recomendable.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "movement-lab-bcn",
+    "nombre": "Movement Lab Bcn",
+    "categoria": "fisioterapia",
+    "tagline": "Fisioterapia avanzada y movimiento funcional en Poblenou",
+    "barrio": "Poblenou",
+    "direccion": "Carrer de Pallars, 185, 08005 Barcelona",
+    "telefono": "+34 932 345 678",
+    "whatsapp": "34932345678",
+    "google_maps_embed": "https://maps.google.com/maps?q=Movement+Lab+Bcn+Poblenou&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 8:00 – 20:00 | Sábados: 9:00 – 13:00",
+    "resenas_count": 67,
+    "rating": 4.9,
+    "servicios": [
+      { "nombre": "Valoración funcional", "precio": "65 €", "descripcion": "Análisis biomecánico completo con plan de acción personalizado" },
+      { "nombre": "Sesión de fisioterapia", "precio": "55 €", "descripcion": "Terapia manual y ejercicio terapéutico adaptado a tu caso" },
+      { "nombre": "Movilidad funcional", "precio": "50 €", "descripcion": "Trabajo específico de rangos articulares y patrones de movimiento" },
+      { "nombre": "Readaptación deportiva", "precio": "60 €", "descripcion": "Programa de vuelta al deporte tras lesión con criterios objetivos" },
+      { "nombre": "Terapia manual avanzada", "precio": "55 €", "descripcion": "Técnicas de tejido blando, articulación y neurodinámica" },
+      { "nombre": "Sesión online", "precio": "40 €", "descripcion": "Seguimiento y ejercicios guiados por videollamada" }
+    ],
+    "resenas": [
+      { "autor": "Sergio C.", "texto": "Un enfoque completamente diferente. No te ponen parches, te enseñan a moverte bien.", "rating": 5 },
+      { "autor": "Ana B.", "texto": "Volví a correr después de 6 meses parada. Profesionalismo y cercanía.", "rating": 5 },
+      { "autor": "Miguel A.", "texto": "El mejor fisio de Barcelona para deportistas. Sin comparación.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "clinica-novum",
+    "nombre": "Clínica Novum",
+    "categoria": "estetica",
+    "tagline": "Medicina estética de alta gama en Sarrià",
+    "barrio": "Sarrià",
+    "direccion": "Carrer Major de Sarrià, 126, 08017 Barcelona",
+    "telefono": "+34 935 678 901",
+    "whatsapp": "34935678901",
+    "google_maps_embed": "https://maps.google.com/maps?q=Clinica+Novum+Barcelona+Sarria&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 10:00 – 20:00 | Sábados: 10:00 – 14:00",
+    "resenas_count": 124,
+    "rating": 4.6,
+    "servicios": [
+      { "nombre": "Tratamiento antiaging", "precio": "120 €", "descripcion": "Protocolo facial personalizado con tecnología de última generación" },
+      { "nombre": "Mesoterapia facial", "precio": "90 €", "descripcion": "Microinyecciones de vitaminas y ácido hialurónico para luminosidad" },
+      { "nombre": "Peeling químico", "precio": "85 €", "descripcion": "Renovación celular para textura uniforme y piel radiante" },
+      { "nombre": "Bótox", "precio": "250 €", "descripcion": "Tratamiento de arrugas de expresión con resultados naturales" },
+      { "nombre": "Ácido hialurónico", "precio": "300 €", "descripcion": "Relleno de labios, surcos y volúmenes faciales" },
+      { "nombre": "Consulta personalizada", "precio": "50 €", "descripcion": "Diagnóstico facial completo y plan de tratamiento a medida" }
+    ],
+    "resenas": [
+      { "autor": "Marta V.", "texto": "Resultados naturales y un trato exquisito. No cambio de clínica por nada.", "rating": 5 },
+      { "autor": "Cristina L.", "texto": "Por fin una clínica donde te escuchan antes de proponerte tratamientos. Muy profesional.", "rating": 5 },
+      { "autor": "Isabel R.", "texto": "El peeling me dejó la piel increíble. Se nota que usan productos de calidad.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "nm-aesthetics",
+    "nombre": "NM Aesthetics",
+    "categoria": "estetica",
+    "tagline": "Estética avanzada con enfoque personalizado en Eixample",
+    "barrio": "Eixample",
+    "direccion": "Passeig de Gràcia, 56, 08007 Barcelona",
+    "telefono": "+34 936 789 012",
+    "whatsapp": "34936789012",
+    "google_maps_embed": "https://maps.google.com/maps?q=NM+Aesthetics+Barcelona+Eixample&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 9:00 – 20:00 | Sábados: 10:00 – 15:00",
+    "resenas_count": 95,
+    "rating": 4.4,
+    "servicios": [
+      { "nombre": "Limpieza facial profunda", "precio": "75 €", "descripcion": "Limpieza completa con extracción, mascarilla y sérum personalizado" },
+      { "nombre": "Radiofrecuencia facial", "precio": "95 €", "descripcion": "Reafirmación cutánea no invasiva con tecnología de radiofrecuencia" },
+      { "nombre": "Tratamiento corporal", "precio": "110 €", "descripcion": "Reducción, reafirmación o drenaje según tus objetivos" },
+      { "nombre": "Láser depilación", "precio": "Desde 40 €", "descripcion": "Depilación definitiva con láser de última generación" },
+      { "nombre": "Microblading cejas", "precio": "180 €", "descripcion": "Cejas pelo a pelo con resultado hiperrealista" },
+      { "nombre": "Asesoría de imagen", "precio": "60 €", "descripcion": "Consulta integral de imagen personal y plan de tratamientos" }
+    ],
+    "resenas": [
+      { "autor": "Sofía D.", "texto": "El microblading me quedó perfecto. Manos de artista, de verdad.", "rating": 5 },
+      { "autor": "Andrea G.", "texto": "Me encanta el enfoque personalizado. No te venden lo que no necesitás.", "rating": 4 },
+      { "autor": "Paula N.", "texto": "La radiofrecuencia me cambió la cara, literalmente. Muy contenta con los resultados.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "introyoga-barcelona",
+    "nombre": "INTROYOGA BARCELONA",
+    "categoria": "wellness",
+    "tagline": "Tu espacio de yoga y bienestar en el Born",
+    "barrio": "Born",
+    "direccion": "Carrer del Comerç, 36, 08003 Barcelona",
+    "telefono": "+34 937 890 123",
+    "whatsapp": "34937890123",
+    "google_maps_embed": "https://maps.google.com/maps?q=INTROYOGA+Barcelona+Born&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 7:30 – 21:30 | Sábados y Domingos: 9:00 – 14:00",
+    "resenas_count": 178,
+    "rating": 4.8,
+    "servicios": [
+      { "nombre": "Hatha Yoga", "precio": "15 €", "descripcion": "Clase de 60 minutos ideal para principiantes y nivel intermedio" },
+      { "nombre": "Vinyasa Flow", "precio": "15 €", "descripcion": "Secuencias dinámicas que conectan movimiento y respiración" },
+      { "nombre": "Yin Yoga", "precio": "15 €", "descripcion": "Práctica suave y restaurativa con posturas sostenidas" },
+      { "nombre": "Meditación guiada", "precio": "12 €", "descripcion": "Sesión de 45 minutos de mindfulness y meditación" },
+      { "nombre": "Bono 10 clases", "precio": "120 €", "descripcion": "Ahorrá un 20% con el bono mensual de 10 clases" },
+      { "nombre": "Clase privada", "precio": "50 €", "descripcion": "Sesión personalizada de 75 minutos adaptada a tus necesidades" }
+    ],
+    "resenas": [
+      { "autor": "María J.", "texto": "El mejor estudio de yoga de Barcelona. Las profes son increíbles y el espacio es mágico.", "rating": 5 },
+      { "autor": "Lucas H.", "texto": "Empecé sin saber nada y ahora no puedo vivir sin mi clase de Vinyasa. Gracias INTROYOGA.", "rating": 5 },
+      { "autor": "Carmen F.", "texto": "Un oasis de paz en pleno Born. Las clases de Yin son un regalo para el cuerpo.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "nuna-pilates-studio",
+    "nombre": "Nuna Pilates Studio",
+    "categoria": "wellness",
+    "tagline": "Pilates reformer y mat en grupos reducidos en Sant Antoni",
+    "barrio": "Sant Antoni",
+    "direccion": "Carrer del Comte Borrell, 68, 08015 Barcelona",
+    "telefono": "+34 938 901 234",
+    "whatsapp": "34938901234",
+    "google_maps_embed": "https://maps.google.com/maps?q=Nuna+Pilates+Studio+Barcelona+Sant+Antoni&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 8:00 – 21:00 | Sábados: 9:00 – 14:00",
+    "resenas_count": 112,
+    "rating": 4.7,
+    "servicios": [
+      { "nombre": "Pilates Reformer grupo", "precio": "22 €", "descripcion": "Clase en grupos de máximo 6 personas con reformer Balanced Body" },
+      { "nombre": "Pilates Mat", "precio": "15 €", "descripcion": "Clase de suelo con accesorios en grupos reducidos" },
+      { "nombre": "Reformer + Mat combo", "precio": "18 €", "descripcion": "Clase mixta que combina reformer y trabajo de suelo" },
+      { "nombre": "Bono 10 sesiones", "precio": "180 €", "descripcion": "10 clases de Reformer con flexibilidad horaria" },
+      { "nombre": "Sesión privada", "precio": "55 €", "descripcion": "Clase individual adaptada a tus objetivos y nivel" },
+      { "nombre": "Clase de prueba", "precio": "10 €", "descripcion": "Primera clase a precio reducido para que pruebes sin compromiso" }
+    ],
+    "resenas": [
+      { "autor": "Beatriz S.", "texto": "Los grupos reducidos hacen toda la diferencia. La profe te corrige y se nota.", "rating": 5 },
+      { "autor": "Núria P.", "texto": "Llevo 2 años y mi espalda cambió por completo. No me pierdo ni una clase.", "rating": 5 },
+      { "autor": "Raquel E.", "texto": "El mejor estudio de pilates de la zona. Equipamiento de primera y trato cercano.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "clinica-nutricion-ramon-de-cangas",
+    "nombre": "Clínica de Nutrición Ramón De Cangas",
+    "categoria": "nutricion",
+    "tagline": "Nutrición clínica basada en evidencia científica en Les Corts",
+    "barrio": "Les Corts",
+    "direccion": "Travessera de les Corts, 180, 08028 Barcelona",
+    "telefono": "+34 939 012 345",
+    "whatsapp": "34939012345",
+    "google_maps_embed": "https://maps.google.com/maps?q=Clinica+Nutricion+Ramon+De+Cangas+Barcelona&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 9:00 – 20:00",
+    "resenas_count": 203,
+    "rating": 4.9,
+    "servicios": [
+      { "nombre": "Primera consulta", "precio": "70 €", "descripcion": "Evaluación nutricional completa con antropometría y analítica" },
+      { "nombre": "Seguimiento mensual", "precio": "50 €", "descripcion": "Revisión de avances, ajustes de plan y resolución de dudas" },
+      { "nombre": "Plan nutricional completo", "precio": "120 €", "descripcion": "Plan semanal personalizado con recetas y lista de la compra" },
+      { "nombre": "Nutrición deportiva", "precio": "75 €", "descripcion": "Plan alimentario específico para rendimiento deportivo" },
+      { "nombre": "Consulta online", "precio": "55 €", "descripcion": "Atención por videollamada con el mismo nivel de detalle" },
+      { "nombre": "Taller grupal", "precio": "25 €", "descripcion": "Taller práctico de cocina saludable o lectura de etiquetas" }
+    ],
+    "resenas": [
+      { "autor": "Fernando A.", "texto": "Por fin un nutricionista que te explica el porqué de todo. Basado en ciencia, no en modas.", "rating": 5 },
+      { "autor": "Patricia M.", "texto": "Bajé 12 kg sin pasar hambre. El plan era tan realista que ni sentí que estaba a dieta.", "rating": 5 },
+      { "autor": "Javier R.", "texto": "Excelente para nutrición deportiva. Mejoré mis tiempos de carrera notablemente.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "juana-prada-nutricion",
+    "nombre": "Juana Prada",
+    "categoria": "nutricion",
+    "tagline": "Nutrición integrativa y holística en Gràcia",
+    "barrio": "Gràcia",
+    "direccion": "Carrer de l'Or, 22, 08012 Barcelona",
+    "telefono": "+34 930 123 456",
+    "whatsapp": "34930123456",
+    "google_maps_embed": "https://maps.google.com/maps?q=Juana+Prada+Nutricion+Barcelona+Gracia&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 9:00 – 19:00 | Sábados: 10:00 – 13:00",
+    "resenas_count": 76,
+    "rating": 4.6,
+    "servicios": [
+      { "nombre": "Consulta inicial", "precio": "65 €", "descripcion": "Entrevista detallada, historial clínico y primeras pautas" },
+      { "nombre": "Plan personalizado", "precio": "90 €", "descripcion": "Plan nutricional completo adaptado a tu estilo de vida" },
+      { "nombre": "Seguimiento quincenal", "precio": "45 €", "descripcion": "Control de evolución y ajustes continuos del plan" },
+      { "nombre": "Nutrición hormonal", "precio": "75 €", "descripcion": "Alimentación adaptada al ciclo hormonal y menopausia" },
+      { "nombre": "Consulta online", "precio": "55 €", "descripcion": "Sesión por videollamada con envío del plan por email" },
+      { "nombre": "Taller grupal", "precio": "30 €", "descripcion": "Talleres de batch cooking y alimentación consciente" }
+    ],
+    "resenas": [
+      { "autor": "Laura C.", "texto": "Juana te escucha de verdad. No es solo dieta, es un cambio de vida completo.", "rating": 5 },
+      { "autor": "Carmen B.", "texto": "Mejoré mi relación con la comida gracias a su enfoque integrativo. Muy recomendable.", "rating": 5 },
+      { "autor": "Silvia G.", "texto": "El taller de batch cooking me cambió la semana. Práctico y muy bien explicado.", "rating": 4 }
+    ]
+  }
+]

@@ -1,0 +1,1227 @@
+---
+interface Servicio {
+  nombre: string;
+  precio: string;
+  descripcion: string;
+}
+
+interface Resena {
+  autor: string;
+  texto: string;
+  rating: number;
+}
+
+interface Negocio {
+  slug: string;
+  nombre: string;
+  categoria: string;
+  tagline: string;
+  barrio: string;
+  direccion: string;
+  telefono: string;
+  whatsapp: string;
+  google_maps_embed: string;
+  horario: string;
+  resenas_count: number;
+  rating: number;
+  servicios: Servicio[];
+  resenas: Resena[];
+}
+
+interface Theme {
+  name: string;
+  bg: string;
+  bgAlt: string;
+  text: string;
+  textMuted: string;
+  accent: string;
+  accentGlow: string;
+  accentSoft: string;
+  gradient: string;
+  cardBg: string;
+  cardBorder: string;
+  fontHeading: string;
+  fontBody: string;
+  fontImport: string;
+}
+
+interface Props {
+  negocio: Negocio;
+  theme: Theme;
+  isPreview?: boolean;
+}
+
+const { negocio, theme, isPreview = true } = Astro.props;
+
+const whatsappUrl = `https://wa.me/${negocio.whatsapp}`;
+const callUrl = `tel:${negocio.telefono.replace(/\s/g, '')}`;
+const stars = (rating: number) => '★'.repeat(Math.floor(rating)) + (rating % 1 >= 0.5 ? '☆' : '');
+const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Hola Calax, vi la preview de ${negocio.nombre} y me interesa una web así para mi negocio.`);
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>{negocio.nombre} — {negocio.barrio}, Barcelona</title>
+  <meta name="description" content={`${negocio.tagline}. ${negocio.direccion}`} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href={theme.fontImport} rel="stylesheet" />
+
+  <style define:vars={{
+    bg: theme.bg,
+    bgAlt: theme.bgAlt,
+    text: theme.text,
+    textMuted: theme.textMuted,
+    accent: theme.accent,
+    accentGlow: theme.accentGlow,
+    accentSoft: theme.accentSoft,
+    gradient: theme.gradient,
+    cardBg: theme.cardBg,
+    cardBorder: theme.cardBorder,
+    fontHeading: theme.fontHeading,
+    fontBody: theme.fontBody,
+  }}>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: auto; }
+
+    body {
+      font-family: var(--fontBody);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ═══ GRAIN OVERLAY ═══ */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px;
+    }
+
+    /* ═══ PREVIEW BANNER ═══ */
+    .preview-banner {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 10px 20px;
+      font-size: 13px;
+      color: #e0e0e0;
+      transform: translateY(-100%);
+      flex-wrap: wrap;
+    }
+
+    .preview-banner span { opacity: 0.8; }
+
+    .preview-banner a {
+      background: #7B6BB0;
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 12px;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .preview-banner a:hover {
+      background: #9484c9;
+      transform: scale(1.05);
+    }
+
+    /* ═══ NAV ═══ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, padding 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
+    }
+
+    .nav.scrolled {
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(16px);
+      padding: 12px 28px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    }
+
+    .nav.has-banner { top: 40px; }
+
+    .nav-brand {
+      font-family: var(--fontHeading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0;
+    }
+
+    .nav-actions {
+      display: flex; gap: 10px; align-items: center;
+      opacity: 0;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-btn:hover { transform: translateY(-1px); }
+
+    .nav-btn-outline {
+      border: 1px solid var(--cardBorder);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .nav-btn-outline:hover { border-color: var(--accent); }
+
+    .nav-btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+    }
+
+    .nav-btn-primary:hover { box-shadow: 0 8px 24px var(--accentGlow); }
+
+    .nav-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    @media (max-width: 480px) {
+      .nav-btn span { display: none; }
+      .nav-btn { padding: 10px 14px; }
+    }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient);
+      opacity: 0.7;
+    }
+
+    /* Animated gradient orb behind hero */
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 60vw;
+      height: 60vw;
+      max-width: 700px;
+      max-height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      opacity: 0.04;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: orbPulse 6s ease-in-out infinite;
+    }
+
+    @keyframes orbPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.04; }
+      50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.07; }
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+    .hero-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .hero-location svg { width: 16px; height: 16px; fill: var(--accent); }
+
+    .hero h1 {
+      font-family: var(--fontHeading);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    /* SplitType chars start hidden */
+    .hero h1 .char {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(60px) rotateX(-40deg);
+    }
+
+    /* Keep word containers inline for wrapping */
+    .hero h1 .word { display: inline-block; white-space: nowrap; }
+
+    .hero-tagline {
+      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+      color: var(--textMuted);
+      line-height: 1.5;
+      max-width: 550px;
+      margin: 0 auto 16px;
+      opacity: 0;
+      transform: translateY(25px);
+    }
+
+    .hero-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: color-mix(in srgb, var(--accent) 8%, transparent);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--cardBorder);
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-size: 14px;
+      margin-bottom: 36px;
+      opacity: 0;
+      transform: translateY(20px) scale(0.9);
+    }
+
+    .hero-rating .rating-stars { color: var(--accent); letter-spacing: 2px; }
+    .hero-rating .rating-text { color: var(--textMuted); }
+    .hero-rating strong { color: var(--text); }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(25px);
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 100px;
+      font-family: var(--fontBody);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+
+    .hero-btn:hover::after { transform: translateX(100%); }
+    .hero-btn:hover { transform: translateY(-3px); }
+
+    .hero-btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .hero-btn-primary:hover {
+      box-shadow: 0 16px 40px var(--accentGlow), 0 0 0 1px var(--accent);
+    }
+
+    .hero-btn-ghost {
+      border: 1px solid var(--cardBorder);
+      color: var(--text);
+      background: color-mix(in srgb, var(--bg) 50%, transparent);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-btn-ghost:hover { border-color: var(--accent); }
+
+    .hero-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* ═══ FLOATING SHAPES ═══ */
+    .floating-shapes { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .shape { position: absolute; border-radius: 50%; background: var(--accent); filter: blur(80px); }
+    .shape-1 { width: 500px; height: 500px; top: -15%; right: -15%; opacity: 0.06; }
+    .shape-2 { width: 350px; height: 350px; bottom: -10%; left: -10%; opacity: 0.05; }
+    .shape-3 { width: 250px; height: 250px; top: 50%; left: 60%; opacity: 0.04; }
+    .shape-4 { width: 180px; height: 180px; top: 20%; left: 15%; opacity: 0.03; background: var(--textMuted); filter: blur(60px); }
+
+    /* ═══ SCROLL INDICATOR ═══ */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0;
+    }
+    .scroll-indicator span { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--textMuted); }
+    .scroll-line { width: 1px; height: 40px; background: var(--cardBorder); position: relative; overflow: hidden; }
+    .scroll-line::after { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: var(--accent); animation: scrollAnim 2s ease-in-out infinite; }
+    @keyframes scrollAnim { 0% { top: -100%; } 100% { top: 100%; } }
+
+    /* ═══ DIVIDER ═══ */
+    .section-divider {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      height: 1px;
+    }
+
+    .section-divider .line {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transform: scaleX(0);
+    }
+
+    /* ═══ SECTIONS ═══ */
+    .section { padding: 120px 24px; position: relative; overflow: hidden; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-alt { background: var(--bgAlt); }
+
+    .section-header { text-align: center; margin-bottom: 72px; }
+
+    .section-label {
+      font-size: 12px; font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 16px;
+      opacity: 0; transform: translateY(20px);
+    }
+
+    .section-title {
+      font-family: var(--fontHeading);
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      line-height: 1.12; letter-spacing: -0.03em;
+      opacity: 0; transform: translateY(40px);
+    }
+
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ═══ SERVICES ═══ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .service-card {
+      background: color-mix(in srgb, var(--cardBg) 80%, transparent);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--cardBorder);
+      border-radius: 20px;
+      padding: 32px 28px;
+      opacity: 0;
+      transform: translateY(50px) rotateX(-5deg);
+      transition: border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Accent top line on cards */
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { border-color: var(--accent); }
+
+    .service-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      gap: 12px;
+    }
+
+    .service-card h3 {
+      font-family: var(--fontHeading);
+      font-size: 1.15rem;
+      line-height: 1.3;
+    }
+
+    .service-price {
+      font-family: var(--fontHeading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .service-card p {
+      color: var(--textMuted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ═══ REVIEWS ═══ */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) { .reviews-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .review-card {
+      background: color-mix(in srgb, var(--cardBg) 80%, transparent);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--cardBorder);
+      border-radius: 20px;
+      padding: 32px 28px;
+      opacity: 0;
+      transform: translateY(50px) scale(0.92);
+      position: relative;
+    }
+
+    /* Big quote mark */
+    .review-card::before {
+      content: '"';
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      font-family: var(--fontHeading);
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .review-stars {
+      color: var(--accent);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .review-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .review-author {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--textMuted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .review-author::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .reviews-badge {
+      text-align: center;
+      margin-top: 48px;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+
+    .reviews-badge-inner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: color-mix(in srgb, var(--accent) 6%, transparent);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--cardBorder);
+      border-radius: 100px;
+      padding: 14px 28px;
+      font-size: 14px;
+    }
+
+    .reviews-badge-inner .g-icon {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .reviews-badge-inner strong { color: var(--accent); }
+
+    /* ═══ LOCATION ═══ */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    @media (min-width: 768px) { .location-grid { grid-template-columns: 1.5fr 1fr; } }
+
+    .map-wrapper {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--cardBorder);
+      aspect-ratio: 16/10;
+      opacity: 0;
+      transform: translateX(-60px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: grayscale(0.2) contrast(1.05);
+    }
+
+    .location-info {
+      opacity: 0;
+      transform: translateX(60px);
+    }
+
+    .location-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--cardBorder);
+    }
+
+    .location-item:first-child { padding-top: 0; }
+    .location-item:last-child { border-bottom: none; }
+
+    .location-item-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .location-item-value {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .location-item-value a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .location-item-value a:hover { opacity: 0.8; }
+
+    /* ═══ CTA ═══ */
+    .cta-section {
+      padding: 140px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--gradient);
+      opacity: 0.5;
+    }
+
+    /* CTA floating orbs */
+    .cta-orb {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--accent);
+      filter: blur(100px);
+      pointer-events: none;
+    }
+    .cta-orb-1 { width: 300px; height: 300px; top: -20%; left: -10%; opacity: 0.06; }
+    .cta-orb-2 { width: 400px; height: 400px; bottom: -30%; right: -15%; opacity: 0.05; }
+
+    .cta-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+
+    .cta-title {
+      font-family: var(--fontHeading);
+      font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      opacity: 0; transform: translateY(40px);
+    }
+
+    .cta-subtitle {
+      color: var(--textMuted);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      opacity: 0; transform: translateY(25px);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0; transform: translateY(25px);
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 40px;
+      border-radius: 100px;
+      font-family: var(--fontBody);
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+
+    .cta-btn:hover::after { transform: translateX(100%); }
+    .cta-btn:hover { transform: translateY(-3px); }
+
+    .cta-btn-wa { background: #25D366; color: #fff; }
+    .cta-btn-wa:hover { box-shadow: 0 16px 40px rgba(37, 211, 102, 0.35); }
+
+    .cta-btn-call { background: var(--accent); color: var(--bg); }
+    .cta-btn-call:hover { box-shadow: 0 16px 40px var(--accentGlow); }
+
+    .cta-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* Glow ring pulse on WA button */
+    .cta-btn-wa { animation: waPulse 3s ease-in-out infinite; }
+
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.25); }
+      50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+    }
+
+    /* ═══ FOOTER ═══ */
+    .footer {
+      text-align: center;
+      padding: 48px 24px;
+      border-top: 1px solid var(--cardBorder);
+    }
+
+    .footer-brand {
+      font-family: var(--fontHeading);
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .footer-info {
+      font-size: 13px;
+      color: var(--textMuted);
+      line-height: 1.7;
+    }
+
+    .footer-credit {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--cardBorder);
+      font-size: 12px;
+      color: var(--textMuted);
+      opacity: 0.5;
+    }
+
+    .footer-credit a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 767px) {
+      .hero { padding: 110px 20px 60px; }
+      .section { padding: 80px 20px; }
+      .cta-section { padding: 80px 20px; }
+      .hero h1 { font-size: clamp(2rem, 9vw, 3.2rem); }
+    }
+  </style>
+</head>
+<body>
+  <!-- PREVIEW BANNER -->
+  {isPreview && (
+    <div class="preview-banner">
+      <span>Vista previa creada por <strong>Calax Studio</strong></span>
+      <a href={calaxWhatsapp} target="_blank" rel="noopener noreferrer">
+        ¿Querés esta web? Hablemos
+      </a>
+    </div>
+  )}
+
+  <!-- NAV -->
+  <nav class={`nav ${isPreview ? 'has-banner' : ''}`}>
+    <a href="#" class="nav-brand">{negocio.nombre}</a>
+    <div class="nav-actions">
+      <a href={callUrl} class="nav-btn nav-btn-outline">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <span>Llamar</span>
+      </a>
+      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="nav-btn nav-btn-primary">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-location">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        {negocio.barrio}, Barcelona
+      </div>
+
+      <h1 data-split>{negocio.nombre}</h1>
+
+      <p class="hero-tagline">{negocio.tagline}</p>
+
+      <div class="hero-rating">
+        <span class="rating-stars">{stars(negocio.rating)}</span>
+        <span class="rating-text"><strong>{negocio.rating}</strong> · <span data-count={negocio.resenas_count}>0</span> reseñas en Google</span>
+      </div>
+
+      <div class="hero-ctas">
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn-primary">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir cita
+        </a>
+        <a href={callUrl} class="hero-btn hero-btn-ghost">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Llamar ahora
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Descubrí más</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="section-divider"><div class="line"></div></div>
+
+  <!-- SERVICES -->
+  <section class="section section-alt" id="servicios">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-label">Servicios</p>
+        <h2 class="section-title" data-reveal>Nuestros <em>servicios</em></h2>
+      </div>
+
+      <div class="services-grid">
+        {negocio.servicios.map((s) => (
+          <div class="service-card">
+            <div class="service-top">
+              <h3>{s.nombre}</h3>
+              <span class="service-price">{s.precio}</span>
+            </div>
+            <p>{s.descripcion}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="section-divider"><div class="line"></div></div>
+
+  <!-- REVIEWS -->
+  <section class="section" id="resenas">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-label">Reseñas</p>
+        <h2 class="section-title" data-reveal>Lo que dicen nuestros <em>clientes</em></h2>
+      </div>
+
+      <div class="reviews-grid">
+        {negocio.resenas.map((r) => (
+          <div class="review-card">
+            <div class="review-stars">{stars(r.rating)}</div>
+            <p class="review-text">{r.texto}</p>
+            <span class="review-author">{r.autor}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="reviews-badge">
+        <div class="reviews-badge-inner">
+          <span class="g-icon">G</span>
+          <span><strong>{negocio.rating}</strong> de 5 · {negocio.resenas_count} reseñas en Google</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="section-divider"><div class="line"></div></div>
+
+  <!-- LOCATION -->
+  <section class="section section-alt" id="ubicacion">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-label">Ubicación</p>
+        <h2 class="section-title" data-reveal>Dónde <em>encontrarnos</em></h2>
+      </div>
+
+      <div class="location-grid">
+        <div class="map-wrapper">
+          <iframe
+            src={negocio.google_maps_embed}
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={`Mapa de ${negocio.nombre}`}
+          ></iframe>
+        </div>
+
+        <div class="location-info">
+          <div class="location-item">
+            <p class="location-item-label">Dirección</p>
+            <p class="location-item-value">{negocio.direccion}</p>
+          </div>
+          <div class="location-item">
+            <p class="location-item-label">Teléfono</p>
+            <p class="location-item-value">
+              <a href={callUrl}>{negocio.telefono}</a>
+            </p>
+          </div>
+          <div class="location-item">
+            <p class="location-item-label">Horario</p>
+            <p class="location-item-value">{negocio.horario}</p>
+          </div>
+          <div class="location-item">
+            <p class="location-item-label">WhatsApp</p>
+            <p class="location-item-value">
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Escribinos por WhatsApp</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-orb cta-orb-1"></div>
+    <div class="cta-orb cta-orb-2"></div>
+    <div class="cta-content">
+      <h2 class="cta-title">¿Listo para reservar?</h2>
+      <p class="cta-subtitle">Contactanos y te atendemos al instante.</p>
+
+      <div class="cta-buttons">
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href={callUrl} class="cta-btn cta-btn-call">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Llamar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-brand">{negocio.nombre}</p>
+    <p class="footer-info">
+      {negocio.direccion}<br />
+      {negocio.telefono} · {negocio.horario}
+    </p>
+    <p class="footer-credit">
+      Diseñado por <a href="https://calaxstudio.com" target="_blank" rel="noopener noreferrer">Calax Studio</a>
+    </p>
+  </footer>
+
+  <!-- GSAP + SplitType Animations -->
+  <script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    import SplitType from 'split-type';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ── SplitType on hero h1 ──
+    const heroTitle = document.querySelector('[data-split]') as HTMLElement;
+    let splitInstance: SplitType | null = null;
+
+    if (heroTitle) {
+      splitInstance = new SplitType(heroTitle, { types: 'words,chars' });
+    }
+
+    // ── Preview banner ──
+    gsap.to('.preview-banner', { y: 0, duration: 0.5, delay: 0.6, ease: 'power3.out',
+      onStart: () => {
+        const el = document.querySelector('.preview-banner') as HTMLElement;
+        if (el) el.style.transform = 'translateY(-100%)';
+      },
+    });
+
+    // ── Nav entrance ──
+    const navTl = gsap.timeline({ delay: 0.3 });
+    navTl
+      .to('.nav-brand', { opacity: 1, duration: 0.6, ease: 'power3.out' })
+      .to('.nav-actions', { opacity: 1, duration: 0.6, ease: 'power3.out' }, '<0.15');
+
+    // ── Hero entrance timeline ──
+    const heroTl = gsap.timeline({
+      defaults: { ease: 'power3.out' },
+      delay: 0.4,
+    });
+
+    heroTl
+      .to('.hero-location', { opacity: 1, y: 0, duration: 0.7 })
+      // SplitType char-by-char reveal
+      .to(splitInstance?.chars || [], {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        duration: 0.8,
+        stagger: { amount: 0.6, from: 'start' },
+        ease: 'back.out(1.5)',
+      }, '-=0.3')
+      .to('.hero-tagline', { opacity: 1, y: 0, duration: 0.8 }, '-=0.3')
+      .to('.hero-rating', { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'back.out(1.7)' }, '-=0.4')
+      .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.7 }, '-=0.3')
+      .to('.scroll-indicator', { opacity: 1, duration: 0.8 }, '-=0.2');
+
+    // ── Counter animation ──
+    const counterEl = document.querySelector('[data-count]');
+    if (counterEl) {
+      const target = parseInt(counterEl.getAttribute('data-count') || '0');
+      gsap.to({ val: 0 }, {
+        val: target,
+        duration: 2.5,
+        delay: 1.6,
+        ease: 'power2.out',
+        onUpdate: function () {
+          counterEl.textContent = Math.round(this.targets()[0].val).toString();
+        },
+      });
+    }
+
+    // ── Nav scroll effect ──
+    const nav = document.querySelector('.nav');
+    ScrollTrigger.create({
+      trigger: '.hero',
+      start: 'top top',
+      end: 'bottom top',
+      onLeave: () => nav?.classList.add('scrolled'),
+      onEnterBack: () => nav?.classList.remove('scrolled'),
+    });
+
+    // ── Section divider lines — animate scaleX on scroll ──
+    gsap.utils.toArray('.section-divider .line').forEach((el: any) => {
+      gsap.to(el, {
+        scaleX: 1,
+        duration: 1.2,
+        ease: 'power3.inOut',
+        scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
+      });
+    });
+
+    // ── Section labels ──
+    gsap.utils.toArray('.section-label').forEach((el: any) => {
+      gsap.to(el, {
+        opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+      });
+    });
+
+    // ── Section titles — SplitType word reveal ──
+    gsap.utils.toArray('[data-reveal]').forEach((el: any) => {
+      const split = new SplitType(el, { types: 'words' });
+      gsap.fromTo(
+        split.words || [],
+        { opacity: 0, y: 30, rotateX: -20 },
+        {
+          opacity: 1, y: 0, rotateX: 0,
+          duration: 0.7,
+          stagger: 0.06,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+        }
+      );
+    });
+
+    // ── Service cards — stagger with 3D rotation ──
+    ScrollTrigger.batch('.service-card', {
+      onEnter: (elements) => {
+        gsap.to(elements, {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          duration: 0.8,
+          stagger: 0.08,
+          ease: 'power3.out',
+        });
+      },
+      start: 'top 88%',
+    });
+
+    // ── Review cards — dramatic scale + rotate entrance ──
+    ScrollTrigger.batch('.review-card', {
+      onEnter: (elements) => {
+        gsap.to(elements, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: 'back.out(1.2)',
+        });
+      },
+      start: 'top 88%',
+    });
+
+    // ── Reviews badge ──
+    gsap.to('.reviews-badge', {
+      opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'back.out(1.5)',
+      scrollTrigger: { trigger: '.reviews-badge', start: 'top 90%', toggleActions: 'play none none none' },
+    });
+
+    // ── Map — slide in from left ──
+    gsap.to('.map-wrapper', {
+      opacity: 1, x: 0, duration: 1, ease: 'power3.out',
+      scrollTrigger: { trigger: '.map-wrapper', start: 'top 82%', toggleActions: 'play none none none' },
+    });
+
+    // ── Location info — slide in from right ──
+    gsap.to('.location-info', {
+      opacity: 1, x: 0, duration: 1, delay: 0.15, ease: 'power3.out',
+      scrollTrigger: { trigger: '.location-info', start: 'top 82%', toggleActions: 'play none none none' },
+    });
+
+    // ── CTA section — timeline ──
+    const ctaTl = gsap.timeline({
+      defaults: { ease: 'power3.out' },
+      scrollTrigger: { trigger: '.cta-section', start: 'top 70%', toggleActions: 'play none none none' },
+    });
+    ctaTl
+      .to('.cta-title', { opacity: 1, y: 0, duration: 0.9 })
+      .to('.cta-subtitle', { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
+      .to('.cta-buttons', { opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.5)' }, '-=0.3');
+
+    // ── CTA orbs parallax ──
+    gsap.to('.cta-orb-1', {
+      y: -80, x: 30,
+      scrollTrigger: { trigger: '.cta-section', start: 'top bottom', end: 'bottom top', scrub: 1 },
+    });
+    gsap.to('.cta-orb-2', {
+      y: 60, x: -40,
+      scrollTrigger: { trigger: '.cta-section', start: 'top bottom', end: 'bottom top', scrub: 1 },
+    });
+
+    // ── Hero floating shapes parallax ──
+    gsap.to('.shape-1', {
+      y: -150, rotation: 10,
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
+    });
+    gsap.to('.shape-2', {
+      y: -80, x: 50,
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
+    });
+    gsap.to('.shape-3', {
+      y: -120, x: -30, scale: 0.7,
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
+    });
+    gsap.to('.shape-4', {
+      y: -60, x: 40, scale: 1.3,
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
+    });
+
+    // ── 3D tilt on service cards (desktop only) ──
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.querySelectorAll('.service-card').forEach((card) => {
+        card.addEventListener('mousemove', (e: Event) => {
+          const ev = e as MouseEvent;
+          const rect = (card as HTMLElement).getBoundingClientRect();
+          const x = (ev.clientX - rect.left) / rect.width - 0.5;
+          const y = (ev.clientY - rect.top) / rect.height - 0.5;
+          gsap.to(card, {
+            rotateY: x * 8,
+            rotateX: -y * 8,
+            duration: 0.4,
+            ease: 'power2.out',
+            transformPerspective: 800,
+          });
+        });
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.6, ease: 'elastic.out(1, 0.5)' });
+        });
+      });
+    }
+  </script>
+</body>
+</html>
