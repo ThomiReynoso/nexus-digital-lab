@@ -4,6 +4,8 @@
     "nombre": "J. Balaguer - Peluquerías Barcelona",
     "categoria": "peluqueria",
     "tagline": "Barbería premium en el corazón del Eixample",
+    "descripcion": "Barbería con más de 20 años de historia en el Eixample. Especialistas en corte masculino clásico, afeitado con navaja y tratamientos capilares. Un espacio donde el detalle y el buen oficio siempre son la prioridad.",
+    "especialidades": ["Corte masculino clásico", "Afeitado con navaja", "Tratamientos capilares"],
     "barrio": "Eixample",
     "direccion": "Carrer de Balmes, 45, 08007 Barcelona",
     "telefono": "+34 933 001 234",
@@ -31,6 +33,8 @@
     "nombre": "The Barber Club",
     "categoria": "peluqueria",
     "tagline": "Tu barbería urbana en Gràcia",
+    "descripcion": "Barbería urbana con estilo propio en el barrio de Gràcia. Cortes modernos, degradados y tratamientos de barba para quienes cuidan su imagen. Ambiente relajado, música buena y profesionales que saben lo que hacen.",
+    "especialidades": ["Cortes & degradados", "Barba perfecta", "Ambiente urbano"],
     "barrio": "Gràcia",
     "direccion": "Carrer de Verdi, 78, 08012 Barcelona",
     "telefono": "+34 931 456 789",
@@ -58,6 +62,8 @@
     "nombre": "DUO Fisa",
     "categoria": "fisioterapia",
     "tagline": "Fisioterapia deportiva y rehabilitación en Sant Gervasi",
+    "descripcion": "Clínica de fisioterapia especializada en lesiones deportivas y recuperación funcional. Tratan desde contracturas puntuales hasta rehabilitaciones postquirúrgicas con un abordaje personalizado y basado en evidencia.",
+    "especialidades": ["Fisioterapia deportiva", "Rehabilitación", "Punción seca"],
     "barrio": "Sant Gervasi",
     "direccion": "Carrer de Muntaner, 312, 08021 Barcelona",
     "telefono": "+34 934 567 890",
@@ -85,6 +91,8 @@
     "nombre": "Movement Lab Bcn",
     "categoria": "fisioterapia",
     "tagline": "Fisioterapia avanzada y movimiento funcional en Poblenou",
+    "descripcion": "Centro de fisioterapia y movimiento funcional en el corazón de Poblenou. No solo tratan el dolor — te enseñan a moverte bien para que no vuelva. Ideal para deportistas y personas activas que quieren resultados reales.",
+    "especialidades": ["Movimiento funcional", "Readaptación deportiva", "Terapia manual"],
     "barrio": "Poblenou",
     "direccion": "Carrer de Pallars, 185, 08005 Barcelona",
     "telefono": "+34 932 345 678",
@@ -112,6 +120,8 @@
     "nombre": "Clínica Novum",
     "categoria": "estetica",
     "tagline": "Medicina estética de alta gama en Sarrià",
+    "descripcion": "Clínica de medicina estética con un enfoque discreto y natural en Sarrià. Especialistas en tratamientos faciales, ácido hialurónico y protocolos antiaging. Antes de cualquier tratamiento, te escuchan.",
+    "especialidades": ["Medicina estética", "Antiaging", "Ácido hialurónico"],
     "barrio": "Sarrià",
     "direccion": "Carrer Major de Sarrià, 126, 08017 Barcelona",
     "telefono": "+34 935 678 901",
@@ -139,6 +149,8 @@
     "nombre": "NM Aesthetics",
     "categoria": "estetica",
     "tagline": "Estética avanzada con enfoque personalizado en Eixample",
+    "descripcion": "Centro de estética avanzada en el Passeig de Gràcia especializado en tratamientos faciales, corporales y semipermanentes. Sin protocolos genéricos: cada tratamiento se diseña según tu piel y tus objetivos.",
+    "especialidades": ["Tratamientos faciales", "Láser depilación", "Microblading"],
     "barrio": "Eixample",
     "direccion": "Passeig de Gràcia, 56, 08007 Barcelona",
     "telefono": "+34 936 789 012",
@@ -166,6 +178,8 @@
     "nombre": "INTROYOGA BARCELONA",
     "categoria": "wellness",
     "tagline": "Tu espacio de yoga y bienestar en el Born",
+    "descripcion": "Estudio de yoga en el corazón del Born con clases para todos los niveles: desde Hatha suave hasta Vinyasa dinámico. Un espacio para desconectar, respirar y reconectar con vos mismo. Sin competencia, sin juicios.",
+    "especialidades": ["Hatha & Vinyasa", "Meditación guiada", "Todos los niveles"],
     "barrio": "Born",
     "direccion": "Carrer del Comerç, 36, 08003 Barcelona",
     "telefono": "+34 937 890 123",
@@ -193,6 +207,8 @@
     "nombre": "Nuna Pilates Studio",
     "categoria": "wellness",
     "tagline": "Pilates reformer y mat en grupos reducidos en Sant Antoni",
+    "descripcion": "Estudio de Pilates en Sant Antoni con grupos de máximo 6 personas para garantizar atención real a cada alumno. Reformer Balanced Body, instructoras certificadas y un ambiente que da ganas de volver cada semana.",
+    "especialidades": ["Pilates Reformer", "Grupos reducidos", "Instructoras certificadas"],
     "barrio": "Sant Antoni",
     "direccion": "Carrer del Comte Borrell, 68, 08015 Barcelona",
     "telefono": "+34 938 901 234",
@@ -220,6 +236,8 @@
     "nombre": "Clínica de Nutrición Ramón De Cangas",
     "categoria": "nutricion",
     "tagline": "Nutrición clínica basada en evidencia científica en Les Corts",
+    "descripcion": "Clínica de nutrición dirigida por el Dr. Ramón De Cangas, referente en nutrición clínica basada en evidencia. Sin dietas milagro ni modas — solo ciencia, seguimiento real y resultados que duran.",
+    "especialidades": ["Nutrición clínica", "Basada en evidencia", "Nutrición deportiva"],
     "barrio": "Les Corts",
     "direccion": "Travessera de les Corts, 180, 08028 Barcelona",
     "telefono": "+34 939 012 345",
@@ -247,6 +265,8 @@
     "nombre": "Juana Prada",
     "categoria": "nutricion",
     "tagline": "Nutrición integrativa y holística en Gràcia",
+    "descripcion": "Nutricionista integrativa en Gràcia que combina evidencia científica con un enfoque holístico de la alimentación. Especializada en salud hormonal, relación con la comida y cambios de hábitos sostenibles en el tiempo.",
+    "especialidades": ["Nutrición integrativa", "Salud hormonal", "Hábitos sostenibles"],
     "barrio": "Gràcia",
     "direccion": "Carrer de l'Or, 22, 08012 Barcelona",
     "telefono": "+34 930 123 456",
@@ -267,6 +287,847 @@
       { "autor": "Laura C.", "texto": "Juana te escucha de verdad. No es solo dieta, es un cambio de vida completo.", "rating": 5 },
       { "autor": "Carmen B.", "texto": "Mejoré mi relación con la comida gracias a su enfoque integrativo. Muy recomendable.", "rating": 5 },
       { "autor": "Silvia G.", "texto": "El taller de batch cooking me cambió la semana. Práctico y muy bien explicado.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "lgestilistes-salo-unisex",
+    "nombre": "LGEstilistes Saló Unisex",
+    "categoria": "peluqueria",
+    "tagline": "Salón unisex de autor en el Eixample",
+    "descripcion": "Salón unisex con años de trayectoria en el Eixample. Especialistas en coloración de autor y cortes personalizados para todos los géneros. Un espacio donde el cabello se trata como lo que es: tu mejor accesorio.",
+    "especialidades": ["Cortes unisex", "Coloración de autor", "Tratamientos capilares"],
+    "barrio": "Eixample",
+    "direccion": "Carrer d'Enric Granados, 38, 08008 Barcelona",
+    "telefono": "+34 934 10 95 61",
+    "whatsapp": "34934109561",
+    "google_maps_embed": "https://maps.google.com/maps?q=LGEstilistes+Barcelona+Eixample&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 9:00 – 20:00 | Sábados: 9:00 – 14:00",
+    "resenas_count": 87,
+    "rating": 4.6,
+    "servicios": [
+      { "nombre": "Corte mujer", "precio": "28 €", "descripcion": "Corte personalizado con diagnóstico capilar, lavado y secado incluido" },
+      { "nombre": "Corte hombre", "precio": "20 €", "descripcion": "Corte a medida con consulta de estilo y acabado profesional" },
+      { "nombre": "Coloración completa", "precio": "55 €", "descripcion": "Tinte de raíz a puntas con opción sin amoníaco" },
+      { "nombre": "Mechas & Balayage", "precio": "70 €", "descripcion": "Iluminación natural con técnicas de degradado y fusión de tonos" },
+      { "nombre": "Tratamiento keratina", "precio": "80 €", "descripcion": "Alisado y nutrición profunda con keratina profesional" },
+      { "nombre": "Peinado & recogido", "precio": "35 €", "descripcion": "Peinados para eventos, bodas y celebraciones especiales" }
+    ],
+    "resenas": [
+      { "autor": "Marta F.", "texto": "Llevo años viniendo y siempre salgo encantada. Conocen mi cabello perfectamente.", "rating": 5 },
+      { "autor": "Jordi M.", "texto": "Uno de los pocos salones unisex donde me siento cómodo. Corte impecable.", "rating": 5 },
+      { "autor": "Sara B.", "texto": "El balayage me quedó precioso. Dominan la coloración como nadie.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "umair-qamar-barberia",
+    "nombre": "Peluquería UMAIR QAMAR Barberia",
+    "categoria": "peluqueria",
+    "tagline": "Barbería de precisión en el Raval",
+    "descripcion": "Barbería de precisión en el Raval con un estilo propio y contemporáneo. Especialistas en cortes modernos y arreglo de barba con técnicas detallistas. El lugar donde vas una vez y no cambiás más.",
+    "especialidades": ["Cortes de precisión", "Arreglo de barba", "Fade & degradado"],
+    "barrio": "El Raval",
+    "direccion": "Carrer de Sant Pau, 52, 08001 Barcelona",
+    "telefono": "+34 662 29 85 44",
+    "whatsapp": "34662298544",
+    "google_maps_embed": "https://maps.google.com/maps?q=UMAIR+QAMAR+Barberia+Barcelona+Raval&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Domingo: 9:00 – 21:00",
+    "resenas_count": 134,
+    "rating": 4.7,
+    "servicios": [
+      { "nombre": "Corte + Barba", "precio": "25 €", "descripcion": "Combo corte y barba con navaja y acabado perfecto" },
+      { "nombre": "Fade completo", "precio": "18 €", "descripcion": "Degradado skin fade, low o mid con el detalle que merecés" },
+      { "nombre": "Arreglo barba", "precio": "10 €", "descripcion": "Perfilado, arreglo y definición de barba con navaja" },
+      { "nombre": "Corte infantil", "precio": "12 €", "descripcion": "Corte para niños en ambiente relajado y sin prisas" },
+      { "nombre": "Afeitado clásico", "precio": "14 €", "descripcion": "Afeitado tradicional con toalla caliente y aceites naturales" },
+      { "nombre": "Diseño de cejas", "precio": "7 €", "descripcion": "Perfilado y definición de cejas para un look limpio" }
+    ],
+    "resenas": [
+      { "autor": "Ahmed K.", "texto": "El mejor fade de Barcelona sin dudas. Vine de recomendación y no me decepcionó.", "rating": 5 },
+      { "autor": "Toni R.", "texto": "Rápido, preciso y muy buen precio. Mi barbería de cabecera en el Raval.", "rating": 5 },
+      { "autor": "Marc S.", "texto": "La barba me quedó perfecta. Sabe lo que hace y se nota.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "peluqueria-cut-cut",
+    "nombre": "Peluquería Cut Cut",
+    "categoria": "peluqueria",
+    "tagline": "Cortes modernos y buen rollo en Gràcia",
+    "descripcion": "Peluquería con personalidad propia en el barrio de Gràcia. Cortes modernos, colores creativos y un ambiente donde te sentís bienvenida desde el primer momento. Para quienes quieren algo más que un corte.",
+    "especialidades": ["Cortes modernos", "Colores creativos", "Ambiente cercano"],
+    "barrio": "Gràcia",
+    "direccion": "Carrer de Verdi, 22, 08012 Barcelona",
+    "telefono": "+34 934 51 08 10",
+    "whatsapp": "34934510810",
+    "google_maps_embed": "https://maps.google.com/maps?q=Peluqueria+Cut+Cut+Barcelona+Gracia&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Martes a Sábado: 10:00 – 20:00",
+    "resenas_count": 62,
+    "rating": 4.5,
+    "servicios": [
+      { "nombre": "Corte & styling", "precio": "30 €", "descripcion": "Corte personalizado con consulta previa y styling final incluido" },
+      { "nombre": "Color fantasía", "precio": "Desde 60 €", "descripcion": "Colores vibrantes, pasteles o degradados creativos" },
+      { "nombre": "Tinte natural", "precio": "45 €", "descripcion": "Coloración con tintes orgánicos y sin parabenos" },
+      { "nombre": "Decoloración", "precio": "50 €", "descripcion": "Preparación del cabello para coloraciones especiales" },
+      { "nombre": "Mascarilla nutritiva", "precio": "20 €", "descripcion": "Tratamiento intensivo de hidratación y brillo" },
+      { "nombre": "Corte infantil", "precio": "15 €", "descripcion": "Corte para niños con paciencia y mucha creatividad" }
+    ],
+    "resenas": [
+      { "autor": "Paula V.", "texto": "Vine con una foto y me hicieron exactamente lo que quería. Talentosas de verdad.", "rating": 5 },
+      { "autor": "Iria M.", "texto": "El color fantasía me quedó increíble. Muy cuidadosas con el proceso.", "rating": 5 },
+      { "autor": "Bea C.", "texto": "Buen corte y ambiente agradable. Definitivamente vuelvo.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "la-pelu-alternativa",
+    "nombre": "La Pelu Alternativa",
+    "categoria": "peluqueria",
+    "tagline": "Peluquería consciente y sin géneros en Poble Sec",
+    "descripcion": "Peluquería sin géneros y con conciencia en Poble Sec. Trabajan con productos veganos y ecológicos, y cobran por tiempo de trabajo, no por género. Un espacio inclusivo donde todos son bienvenidos.",
+    "especialidades": ["Sin géneros", "Productos veganos", "Cortes conscientes"],
+    "barrio": "Poble Sec",
+    "direccion": "Carrer de Blai, 14, 08004 Barcelona",
+    "telefono": "+34 936 81 62 12",
+    "whatsapp": "34936816212",
+    "google_maps_embed": "https://maps.google.com/maps?q=La+Pelu+Alternativa+Barcelona+Poble+Sec&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Martes a Viernes: 10:00 – 19:00 | Sábados: 10:00 – 15:00",
+    "resenas_count": 48,
+    "rating": 4.8,
+    "servicios": [
+      { "nombre": "Corte cabello corto", "precio": "22 €", "descripcion": "Corte hasta el cuello con lavado y secado con productos eco" },
+      { "nombre": "Corte cabello largo", "precio": "32 €", "descripcion": "Corte para cabello por encima de los hombros con styling" },
+      { "nombre": "Coloración vegana", "precio": "55 €", "descripcion": "Tinte 100% vegano sin amoníaco ni PPD" },
+      { "nombre": "Mechas orgánicas", "precio": "65 €", "descripcion": "Iluminación con técnicas artesanales y productos naturales" },
+      { "nombre": "Tratamiento de proteínas", "precio": "25 €", "descripcion": "Nutrición capilar profunda sin siliconas ni sulfatos" },
+      { "nombre": "Consulta capilar", "precio": "15 €", "descripcion": "Diagnóstico del estado de tu cabello y recomendaciones personalizadas" }
+    ],
+    "resenas": [
+      { "autor": "Alex N.", "texto": "Por fin una pelu donde no te preguntan si sos chico o chica para cobrar. Genial el espacio.", "rating": 5 },
+      { "autor": "Carla P.", "texto": "Me encantaron los productos que usan. Mi cabello nunca quedó tan bien.", "rating": 5 },
+      { "autor": "Roque L.", "texto": "Ambiente muy bueno y resultado impecable. Totalmente recomendable.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "bella-salo-belleza-my-estilistas",
+    "nombre": "Bella - M&Y Estilistas",
+    "categoria": "peluqueria",
+    "tagline": "Salón de belleza integral en Sant Martí",
+    "descripcion": "Salón de belleza completo en Sant Martí con servicios de peluquería, manicura y tratamientos faciales básicos. Un equipo cercano que te atiende con tiempo y dedicación real en cada visita.",
+    "especialidades": ["Peluquería integral", "Manicura & nail art", "Tratamientos faciales"],
+    "barrio": "Sant Martí",
+    "direccion": "Carrer de Pallars, 90, 08018 Barcelona",
+    "telefono": "+34 932 28 97 06",
+    "whatsapp": "34932289706",
+    "google_maps_embed": "https://maps.google.com/maps?q=Bella+MY+Estilistas+Barcelona+Sant+Marti&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 9:30 – 19:30 | Sábados: 9:30 – 14:00",
+    "resenas_count": 73,
+    "rating": 4.4,
+    "servicios": [
+      { "nombre": "Corte & peinado", "precio": "25 €", "descripcion": "Corte con lavado, secado y peinado final incluido" },
+      { "nombre": "Coloración", "precio": "50 €", "descripcion": "Tinte completo con consulta de color personalizada" },
+      { "nombre": "Manicura clásica", "precio": "18 €", "descripcion": "Limado, cutículas y esmalte en color o francés" },
+      { "nombre": "Nail art", "precio": "30 €", "descripcion": "Decoración artística con gel y diseños personalizados" },
+      { "nombre": "Depilación facial", "precio": "15 €", "descripcion": "Depilación de labio, cejas o patillas con hilo o cera" },
+      { "nombre": "Tratamiento facial express", "precio": "35 €", "descripcion": "Limpieza, hidratación y masaje facial en 45 minutos" }
+    ],
+    "resenas": [
+      { "autor": "Lidia M.", "texto": "Muy buen servicio integral. Vine por el corte y me quedé con la manicura también.", "rating": 5 },
+      { "autor": "Rosa T.", "texto": "Precio justo y atención personalizada. Siempre con cita y sin esperas.", "rating": 4 },
+      { "autor": "Gemma C.", "texto": "El nail art me duró semanas. Trabajos muy bien terminados.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "queens-centro-de-belleza",
+    "nombre": "Queens Centro de Belleza",
+    "categoria": "estetica",
+    "tagline": "Centro de belleza y estética avanzada en Les Corts",
+    "descripcion": "Centro de belleza con tratamientos estéticos faciales y corporales en Les Corts. Especialistas en diseño de cejas, depilación láser y tratamientos de piel. Atención personalizada en un ambiente moderno y tranquilo.",
+    "especialidades": ["Diseño de cejas", "Depilación láser", "Tratamientos de piel"],
+    "barrio": "Les Corts",
+    "direccion": "Avinguda de Madrid, 108, 08028 Barcelona",
+    "telefono": "+34 656 76 68 91",
+    "whatsapp": "34656766891",
+    "google_maps_embed": "https://maps.google.com/maps?q=Queens+Centro+Belleza+Barcelona+Les+Corts&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 10:00 – 20:00 | Sábados: 10:00 – 15:00",
+    "resenas_count": 91,
+    "rating": 4.5,
+    "servicios": [
+      { "nombre": "Diseño de cejas", "precio": "25 €", "descripcion": "Perfilado, depilación y definición de forma personalizada" },
+      { "nombre": "Depilación láser (zona)", "precio": "Desde 35 €", "descripcion": "Láser diodo para depilación definitiva con resultados visibles" },
+      { "nombre": "Limpieza facial profunda", "precio": "60 €", "descripcion": "Exfoliación, extracción y mascarilla calmante en cabina" },
+      { "nombre": "Extensiones de pestañas", "precio": "55 €", "descripcion": "Extensión pelo a pelo con efecto natural o volumen" },
+      { "nombre": "Lifting de pestañas", "precio": "40 €", "descripcion": "Rizado y nutrición permanente de pestañas naturales" },
+      { "nombre": "Manicura semipermanente", "precio": "28 €", "descripcion": "Esmalte gel de larga duración con acabado perfecto" }
+    ],
+    "resenas": [
+      { "autor": "Neus F.", "texto": "Las extensiones me quedaron naturales y duraderas. Muy contenta con el resultado.", "rating": 5 },
+      { "autor": "Carla G.", "texto": "Excelente en el diseño de cejas. Saben leer tu cara y dan con la forma perfecta.", "rating": 5 },
+      { "autor": "Mireia S.", "texto": "La limpieza facial fue muy completa. Nota la diferencia desde la primera sesión.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "vitrine-tradicional-barber",
+    "nombre": "Vitrine Tradicional Barber",
+    "categoria": "peluqueria",
+    "tagline": "Barbería tradicional con alma contemporánea en El Born",
+    "descripcion": "Barbería de corte clásico en pleno Born que reivindica el oficio de toda la vida. Sillones vintage, navajas afiladas y una atención que no tiene prisa. Para el hombre que sabe lo que quiere.",
+    "especialidades": ["Afeitado con navaja", "Corte clásico", "Arreglo de bigote"],
+    "barrio": "El Born",
+    "direccion": "Carrer del Rec, 18, 08003 Barcelona",
+    "telefono": "+34 625 91 35 02",
+    "whatsapp": "34625913502",
+    "google_maps_embed": "https://maps.google.com/maps?q=Vitrine+Tradicional+Barber+Barcelona+Born&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Martes a Sábado: 10:00 – 20:00",
+    "resenas_count": 109,
+    "rating": 4.9,
+    "servicios": [
+      { "nombre": "Corte clásico", "precio": "22 €", "descripcion": "Corte con tijera y maquinilla al estilo tradicional de barbero" },
+      { "nombre": "Afeitado con navaja", "precio": "18 €", "descripcion": "Afeitado completo con paño caliente, aceite y navaja de precisión" },
+      { "nombre": "Corte + Afeitado", "precio": "35 €", "descripcion": "Combo completo con el ritual completo de barbería clásica" },
+      { "nombre": "Arreglo de bigote", "precio": "10 €", "descripcion": "Perfilado y definición del bigote con cera de acabado" },
+      { "nombre": "Tinte capilar", "precio": "30 €", "descripcion": "Cobertura de canas con tinte profesional para hombre" },
+      { "nombre": "Tratamiento cuero cabelludo", "precio": "25 €", "descripcion": "Masaje capilar con aceites esenciales para fortalecer el cabello" }
+    ],
+    "resenas": [
+      { "autor": "Ferran B.", "texto": "El mejor afeitado con navaja que me han hecho en mi vida. Un ritual de verdad.", "rating": 5 },
+      { "autor": "Nacho V.", "texto": "Ambiente increíble, atención sin prisa y resultado de lujo. Mi barbería definitiva.", "rating": 5 },
+      { "autor": "Guillem A.", "texto": "Trato exquisito y una navaja que no duele. Lo que busca uno en una barbería.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "gymis-barbershop",
+    "nombre": "Gymis Barbershop",
+    "categoria": "peluqueria",
+    "tagline": "Barbería de barrio con estilo en Sants",
+    "descripcion": "Barbería de barrio en Sants con precios honestos y calidad real. Sin citas previas, sin esperas largas, sin complicaciones. El sitio al que vas cuando querés salir bien sin pagar de más.",
+    "especialidades": ["Cortes rápidos", "Barba & bigote", "Sin cita previa"],
+    "barrio": "Sants",
+    "direccion": "Carrer de Sants, 94, 08014 Barcelona",
+    "telefono": "+34 931 94 82 18",
+    "whatsapp": "34931948218",
+    "google_maps_embed": "https://maps.google.com/maps?q=Gymis+Barbershop+Barcelona+Sants&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Sábado: 9:00 – 20:00",
+    "resenas_count": 156,
+    "rating": 4.3,
+    "servicios": [
+      { "nombre": "Corte de pelo", "precio": "14 €", "descripcion": "Corte a tijera o maquinilla con el estilo que vos elegís" },
+      { "nombre": "Arreglo de barba", "precio": "8 €", "descripcion": "Perfilado rápido y preciso de barba y cuello" },
+      { "nombre": "Corte + Barba", "precio": "20 €", "descripcion": "El combo completo para salir listo en menos de 40 minutos" },
+      { "nombre": "Fade", "precio": "16 €", "descripcion": "Degradado limpio con maquinilla en todos los niveles" },
+      { "nombre": "Corte infantil", "precio": "10 €", "descripcion": "Corte para los más pequeños rápido y sin dramas" },
+      { "nombre": "Tinte barba", "precio": "10 €", "descripcion": "Cobertura express de canas en barba y bigote" }
+    ],
+    "resenas": [
+      { "autor": "Pep M.", "texto": "Sin cita y sin espera. En 20 minutos salí perfecto. Repito seguro.", "rating": 5 },
+      { "autor": "Raül T.", "texto": "El mejor precio-calidad de la zona. Hay que reconocerlo.", "rating": 4 },
+      { "autor": "Sergi F.", "texto": "Corte limpio, trato amable y rapidez. Qué más se puede pedir.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "brown-studio-barbershop",
+    "nombre": "Brown Studio - Barbershop",
+    "categoria": "peluqueria",
+    "tagline": "Barbershop premium con esencia americana en Sant Gervasi",
+    "descripcion": "Barbershop de estética americana en Sant Gervasi. Cuero, madera y jazz de fondo — el marco perfecto para un corte y afeitado de nivel. Ven con tiempo y salí con actitud.",
+    "especialidades": ["Estilo americano", "Corte & afeitado premium", "Experiencia completa"],
+    "barrio": "Sant Gervasi",
+    "direccion": "Carrer de Santaló, 42, 08021 Barcelona",
+    "telefono": "+34 634 19 64 12",
+    "whatsapp": "34634196412",
+    "google_maps_embed": "https://maps.google.com/maps?q=Brown+Studio+Barbershop+Barcelona+Sant+Gervasi&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Martes a Sábado: 10:00 – 21:00",
+    "resenas_count": 98,
+    "rating": 4.7,
+    "servicios": [
+      { "nombre": "The Full Experience", "precio": "45 €", "descripcion": "Corte, afeitado, mascarilla facial y masaje capilar" },
+      { "nombre": "Corte signature", "precio": "28 €", "descripcion": "Corte con técnica Brown: tijera, degradado y acabado con pomada" },
+      { "nombre": "Afeitado clásico", "precio": "20 €", "descripcion": "Ritual completo con espuma caliente, navaja y loción aftershave" },
+      { "nombre": "Barba sculpt", "precio": "18 €", "descripcion": "Esculpido de barba con líneas precisas y definición total" },
+      { "nombre": "Coloración hombre", "precio": "35 €", "descripcion": "Tinte capilar o de barba con resultado natural" },
+      { "nombre": "Tratamiento capilar", "precio": "30 €", "descripcion": "Hidratación intensiva con masaje incluido de 20 minutos" }
+    ],
+    "resenas": [
+      { "autor": "Oriol B.", "texto": "El ambiente te transporta a otra época. Y el corte está a la altura del lugar.", "rating": 5 },
+      { "autor": "Christian M.", "texto": "The Full Experience vale cada céntimo. Salí como nuevo de verdad.", "rating": 5 },
+      { "autor": "Andreu F.", "texto": "Barbershop de calidad real en Sant Gervasi. Muy recomendable.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "flow-la-barber",
+    "nombre": "Flow La Barber",
+    "categoria": "peluqueria",
+    "tagline": "Barbería con flow en Poblenou",
+    "descripcion": "Barbería con identidad propia en Poblenou. Fades limpios, barba trabajada y un equipo que entiende de tendencias sin perder el dominio del oficio. El lugar donde el estilo y la técnica van de la mano.",
+    "especialidades": ["Fades & degradados", "Barba trabajada", "Tendencias actuales"],
+    "barrio": "Poblenou",
+    "direccion": "Rambla del Poblenou, 35, 08005 Barcelona",
+    "telefono": "+34 643 98 14 20",
+    "whatsapp": "34643981420",
+    "google_maps_embed": "https://maps.google.com/maps?q=Flow+La+Barber+Barcelona+Poblenou&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Sábado: 10:00 – 21:00",
+    "resenas_count": 122,
+    "rating": 4.6,
+    "servicios": [
+      { "nombre": "Fade premium", "precio": "22 €", "descripcion": "Skin, low o mid fade con líneas limpias y transiciones perfectas" },
+      { "nombre": "Corte + Fade", "precio": "26 €", "descripcion": "Corte en arriba con fade personalizado en los laterales" },
+      { "nombre": "Barba completa", "precio": "15 €", "descripcion": "Arreglo, perfilado y definición de barba con productos naturales" },
+      { "nombre": "Combo total", "precio": "35 €", "descripcion": "Corte, fade y barba completa en una sola sesión" },
+      { "nombre": "Tinte barba", "precio": "12 €", "descripcion": "Cobertura de canas o cambio de tono en barba" },
+      { "nombre": "Diseño personalizado", "precio": "30 €", "descripcion": "Diseño de imagen con asesoría de estilo incluida" }
+    ],
+    "resenas": [
+      { "autor": "Daniel C.", "texto": "El fade más limpio de Barcelona. Lo recomiendo a todos mis colegas.", "rating": 5 },
+      { "autor": "Victor P.", "texto": "Ambiente increíble y una atención excelente. Ya no voy a ningún otro lado.", "rating": 5 },
+      { "autor": "Arnau S.", "texto": "Muy buena técnica y siempre puntual con la cita. Diez puntos.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "oussman-barber-shop",
+    "nombre": "Oussman Barber Shop",
+    "categoria": "peluqueria",
+    "tagline": "La barbería de referencia del Raval",
+    "descripcion": "Barbería referente en el Raval con una clientela fiel y creciente. Oussman combina técnica africana y europea para fades y cortes únicos. Accesible, auténtico y con una calidad que no necesita publicidad.",
+    "especialidades": ["Técnica africana & europea", "Fades únicos", "Cortes personalizados"],
+    "barrio": "El Raval",
+    "direccion": "Carrer de la Cera, 8, 08001 Barcelona",
+    "telefono": "+34 674 34 50 26",
+    "whatsapp": "34674345026",
+    "google_maps_embed": "https://maps.google.com/maps?q=Oussman+Barber+Shop+Barcelona+Raval&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Domingo: 9:00 – 21:00",
+    "resenas_count": 287,
+    "rating": 4.8,
+    "servicios": [
+      { "nombre": "Corte signature", "precio": "18 €", "descripcion": "El corte de autor de Oussman: técnica mixta con resultado único" },
+      { "nombre": "Fade limpio", "precio": "15 €", "descripcion": "Degradado preciso en cualquier nivel con acabado impecable" },
+      { "nombre": "Arreglo barba", "precio": "8 €", "descripcion": "Perfilado y definición de barba rápido y exacto" },
+      { "nombre": "Corte + Barba", "precio": "22 €", "descripcion": "El combo más pedido: corte a medida con barba perfecta" },
+      { "nombre": "Trenzas & rastas", "precio": "Desde 40 €", "descripcion": "Especialidad: trenzas africanas, box braids y mantenimiento de rastas" },
+      { "nombre": "Tinte & color", "precio": "20 €", "descripcion": "Coloración para todos los tipos de cabello y texturas" }
+    ],
+    "resenas": [
+      { "autor": "Moussa D.", "texto": "Oussman es el mejor. Nadie trabaja el cabello rizado como él en Barcelona.", "rating": 5 },
+      { "autor": "Ferran N.", "texto": "Vine una vez de casualidad y ahora no cambio. Precio justo y trabajo de lujo.", "rating": 5 },
+      { "autor": "Javi P.", "texto": "Las trenzas son una obra de arte. Tardó dos horas y valió cada minuto.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "clinisport-barcelona",
+    "nombre": "Clinisport Barcelona",
+    "categoria": "fisioterapia",
+    "tagline": "Fisioterapia y medicina deportiva de alto rendimiento en Eixample",
+    "descripcion": "Clínica especializada en medicina deportiva y fisioterapia de alto rendimiento en el Eixample. Trabajan con deportistas amateur y profesionales que necesitan más que un masaje: quieren volver a rendir.",
+    "especialidades": ["Medicina deportiva", "Alto rendimiento", "Readaptación física"],
+    "barrio": "Eixample",
+    "direccion": "Carrer de Muntaner, 180, 08036 Barcelona",
+    "telefono": "+34 930 09 22 83",
+    "whatsapp": "34930092283",
+    "google_maps_embed": "https://maps.google.com/maps?q=Clinisport+Barcelona+Eixample&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 8:00 – 21:00 | Sábados: 9:00 – 14:00",
+    "resenas_count": 143,
+    "rating": 4.6,
+    "servicios": [
+      { "nombre": "Valoración deportiva", "precio": "70 €", "descripcion": "Evaluación biomecánica completa con plan de intervención" },
+      { "nombre": "Fisioterapia deportiva", "precio": "60 €", "descripcion": "Tratamiento de lesiones agudas y crónicas en deportistas" },
+      { "nombre": "Readaptación funcional", "precio": "65 €", "descripcion": "Programa de vuelta al deporte con criterios objetivos de alta" },
+      { "nombre": "Ecografía músculo-esquelética", "precio": "55 €", "descripcion": "Diagnóstico por imagen para lesiones musculares y tendinosas" },
+      { "nombre": "Electrolisis percutánea", "precio": "50 €", "descripcion": "Tratamiento de tendinopatías y fascitis con EPI" },
+      { "nombre": "Vendaje neuromuscular", "precio": "25 €", "descripcion": "Aplicación de kinesiotaping para soporte y recuperación" }
+    ],
+    "resenas": [
+      { "autor": "Rubén A.", "texto": "Me operé la rodilla y Clinisport me devolvió al fútbol en tiempo récord.", "rating": 5 },
+      { "autor": "Laia P.", "texto": "La mejor clínica para triatletas de Barcelona. Saben de lo que hablan.", "rating": 5 },
+      { "autor": "Tomàs V.", "texto": "La ecografía fue determinante para mi diagnóstico. Muy profesionales.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "fisioterapeuta-gracia",
+    "nombre": "Fisioterapeuta Gràcia",
+    "categoria": "fisioterapia",
+    "tagline": "Fisioterapia cercana y efectiva en el barrio de Gràcia",
+    "descripcion": "Consulta de fisioterapia de trato cercano en Gràcia. Sin listas de espera interminables ni protocolos genéricos. Cada paciente es escuchado, valorado y tratado como merece. Fisioterapia de las de verdad.",
+    "especialidades": ["Terapia manual", "Dolor cervical & lumbar", "Atención personalizada"],
+    "barrio": "Gràcia",
+    "direccion": "Carrer de les Carolines, 12, 08012 Barcelona",
+    "telefono": "+34 616 69 08 89",
+    "whatsapp": "34616690889",
+    "google_maps_embed": "https://maps.google.com/maps?q=Fisioterapeuta+Gracia+Barcelona&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 9:00 – 20:00",
+    "resenas_count": 55,
+    "rating": 4.9,
+    "servicios": [
+      { "nombre": "Primera consulta", "precio": "50 €", "descripcion": "Evaluación completa, anamnesis y primera sesión de tratamiento" },
+      { "nombre": "Sesión de fisioterapia", "precio": "45 €", "descripcion": "Terapia manual y técnicas específicas según tu dolencia" },
+      { "nombre": "Tratamiento cervical", "precio": "45 €", "descripcion": "Movilización, estiramientos y ejercicio terapéutico para el cuello" },
+      { "nombre": "Tratamiento lumbar", "precio": "45 €", "descripcion": "Abordaje completo del dolor de espalda baja y ciática" },
+      { "nombre": "Masaje terapéutico", "precio": "40 €", "descripcion": "Masaje profundo enfocado en la zona de mayor tensión" },
+      { "nombre": "Bono 5 sesiones", "precio": "195 €", "descripcion": "5 sesiones con un 15% de descuento respecto al precio individual" }
+    ],
+    "resenas": [
+      { "autor": "Anna R.", "texto": "Tiene magia en las manos. Llevo 3 años yendo y nunca me ha fallado.", "rating": 5 },
+      { "autor": "Pol M.", "texto": "Me resolvió en 3 sesiones lo que otro fisio no logró en dos meses.", "rating": 5 },
+      { "autor": "Clara V.", "texto": "Muy atento y explica muy bien qué hace y por qué. Genial la cercanía.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "centro-fisioterapia-tu-salud",
+    "nombre": "Centro Fisioterapia Tu Salud",
+    "categoria": "fisioterapia",
+    "tagline": "Fisioterapia para toda la familia en Horta-Guinardó",
+    "descripcion": "Centro de fisioterapia familiar en Horta-Guinardó con tratamientos para todas las edades. Desde pediatría hasta geriatría, pasando por lesiones deportivas y dolor crónico. Un equipo con experiencia y vocación de servicio.",
+    "especialidades": ["Fisioterapia familiar", "Dolor crónico", "Fisio pediátrica"],
+    "barrio": "Horta-Guinardó",
+    "direccion": "Carrer d'Horta, 55, 08032 Barcelona",
+    "telefono": "+34 933 58 42 89",
+    "whatsapp": "34933584289",
+    "google_maps_embed": "https://maps.google.com/maps?q=Centro+Fisioterapia+Tu+Salud+Barcelona+Horta&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 8:30 – 20:30 | Sábados: 9:00 – 13:00",
+    "resenas_count": 78,
+    "rating": 4.5,
+    "servicios": [
+      { "nombre": "Valoración inicial", "precio": "45 €", "descripcion": "Diagnóstico funcional completo y diseño del plan terapéutico" },
+      { "nombre": "Fisioterapia adulto", "precio": "40 €", "descripcion": "Tratamiento de lesiones músculo-esqueléticas en adultos" },
+      { "nombre": "Fisioterapia pediátrica", "precio": "45 €", "descripcion": "Tratamiento especializado para bebés, niños y adolescentes" },
+      { "nombre": "Fisioterapia geriátrica", "precio": "40 €", "descripcion": "Mantenimiento de la movilidad y calidad de vida en mayores" },
+      { "nombre": "Punción seca", "precio": "45 €", "descripcion": "Tratamiento de puntos gatillo activos con aguja" },
+      { "nombre": "Rehabilitación postquirúrgica", "precio": "50 €", "descripcion": "Programa de recuperación tras cirugía ortopédica" }
+    ],
+    "resenas": [
+      { "autor": "Montse P.", "texto": "Llevan años tratando a toda mi familia. Profesionales y muy cercanos.", "rating": 5 },
+      { "autor": "Joan M.", "texto": "La fisio pediátrica es excelente. Muy buena con los niños y muy comunicativa.", "rating": 5 },
+      { "autor": "Teresa C.", "texto": "Resolvieron mi dolor de espalda crónico en pocas sesiones. Muy agradecida.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "sofia-guerra-medicina-estetica",
+    "nombre": "Sofía Guerra Medicina Estética",
+    "categoria": "estetica",
+    "tagline": "Especialista en postquirúrgicos y estética avanzada en Eixample",
+    "descripcion": "Doctora especializada en medicina estética y recuperación postquirúrgica. Referente en Barcelona para pacientes que buscan resultados naturales tras intervenciones o que quieren prevenir el envejecimiento sin cirugía.",
+    "especialidades": ["Postquirúrgicos", "Antiaging sin cirugía", "Resultados naturales"],
+    "barrio": "Eixample",
+    "direccion": "Carrer de Còrsega, 288, 08008 Barcelona",
+    "telefono": "+34 935 19 60 00",
+    "whatsapp": "34935196000",
+    "google_maps_embed": "https://maps.google.com/maps?q=Sofia+Guerra+Medicina+Estetica+Barcelona+Eixample&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 10:00 – 19:00",
+    "resenas_count": 68,
+    "rating": 4.8,
+    "servicios": [
+      { "nombre": "Consulta inicial", "precio": "60 €", "descripcion": "Diagnóstico facial y corporal con plan de tratamiento personalizado" },
+      { "nombre": "Protocolo postquirúrgico", "precio": "95 €", "descripcion": "Tratamiento de cicatrices, fibrosis y recuperación tras cirugía" },
+      { "nombre": "Bioestimulación con PRP", "precio": "180 €", "descripcion": "Plasma rico en plaquetas para regeneración celular y antiaging" },
+      { "nombre": "Hilos tensores", "precio": "350 €", "descripcion": "Lifting no quirúrgico con hilos reabsorbibles de última generación" },
+      { "nombre": "Armonización facial", "precio": "Desde 250 €", "descripcion": "Conjunto de tratamientos para un resultado global equilibrado" },
+      { "nombre": "Skinbooster", "precio": "220 €", "descripcion": "Hidratación profunda con microinyecciones de ácido hialurónico" }
+    ],
+    "resenas": [
+      { "autor": "Verónica M.", "texto": "Me operé de abdominoplastia y la Dra. Guerra me trató el postoperatorio. Resultados increíbles.", "rating": 5 },
+      { "autor": "Elena S.", "texto": "Los hilos tensores son naturales y duraderos. Se nota que conoce la anatomía.", "rating": 5 },
+      { "autor": "Lorena T.", "texto": "Consulta muy completa y sin presión para comprar nada. Se lo agradezco mucho.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "sarasvati-estudio-yoga",
+    "nombre": "Sarasvati Estudio",
+    "categoria": "wellness",
+    "tagline": "Yoga y masaje terapéutico en Gràcia",
+    "descripcion": "Estudio de yoga y masaje terapéutico en Gràcia con un enfoque espiritual y holístico. Clases pequeñas, atención real y un espacio que parece un refugio. Para quienes buscan algo más profundo que una clase de fitness.",
+    "especialidades": ["Yoga holístico", "Masaje terapéutico", "Clases reducidas"],
+    "barrio": "Gràcia",
+    "direccion": "Carrer del Torrent de l'Olla, 144, 08012 Barcelona",
+    "telefono": "+34 685 01 99 02",
+    "whatsapp": "34685019902",
+    "google_maps_embed": "https://maps.google.com/maps?q=Sarasvati+Estudio+Yoga+Barcelona+Gracia&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 8:00 – 21:00 | Sábados: 9:00 – 14:00",
+    "resenas_count": 94,
+    "rating": 4.9,
+    "servicios": [
+      { "nombre": "Clase de yoga", "precio": "14 €", "descripcion": "Clase de 75 minutos en grupos de máximo 8 personas" },
+      { "nombre": "Kundalini yoga", "precio": "16 €", "descripcion": "Práctica energética con mantras, pranayama y meditación" },
+      { "nombre": "Masaje ayurvédico", "precio": "65 €", "descripcion": "Masaje tradicional indio con aceites calientes y técnicas ancestrales" },
+      { "nombre": "Masaje Thai", "precio": "60 €", "descripcion": "Estiramientos pasivos profundos sobre tatami, sin aceites" },
+      { "nombre": "Retiro de fin de semana", "precio": "180 €", "descripcion": "Retiro intensivo de 2 días con yoga, meditación y nutrición consciente" },
+      { "nombre": "Clase privada", "precio": "55 €", "descripcion": "Sesión individual con programa diseñado para tus necesidades" }
+    ],
+    "resenas": [
+      { "autor": "Núria C.", "texto": "Un espacio que te transforma. La energía que hay dentro es única.", "rating": 5 },
+      { "autor": "Sofía L.", "texto": "El masaje ayurvédico fue la experiencia más relajante de mi vida.", "rating": 5 },
+      { "autor": "Pau B.", "texto": "El Kundalini me abrió la mente de verdad. Profesoras con mucha profundidad.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "sala-b-yoga-club",
+    "nombre": "Sala B del Yoga Club",
+    "categoria": "wellness",
+    "tagline": "Yoga contemporáneo para cuerpos activos en El Born",
+    "descripcion": "Espacio de yoga contemporáneo en El Born orientado a personas activas que quieren unir el movimiento con la calma. Clases dinámicas, instructores formados internacionalmente y horarios flexibles para el día a día.",
+    "especialidades": ["Yoga contemporáneo", "Ashtanga & Power", "Horarios flexibles"],
+    "barrio": "El Born",
+    "direccion": "Carrer de l'Argenteria, 62, 08003 Barcelona",
+    "telefono": "+34 666 31 06 56",
+    "whatsapp": "34666310656",
+    "google_maps_embed": "https://maps.google.com/maps?q=Sala+B+Yoga+Club+Barcelona+Born&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Domingo: 7:00 – 22:00",
+    "resenas_count": 118,
+    "rating": 4.7,
+    "servicios": [
+      { "nombre": "Ashtanga yoga", "precio": "16 €", "descripcion": "Práctica dinámica con secuencias fijas de asanas" },
+      { "nombre": "Power yoga", "precio": "15 €", "descripcion": "Yoga vigoroso orientado a la fuerza y el equilibrio" },
+      { "nombre": "Yoga restaurativo", "precio": "14 €", "descripcion": "Práctica suave con props para la recuperación activa" },
+      { "nombre": "Workshop mensual", "precio": "35 €", "descripcion": "Taller temático de 3 horas con instructor invitado" },
+      { "nombre": "Bono mensual ilimitado", "precio": "95 €", "descripcion": "Clases ilimitadas durante el mes con acceso a todos los horarios" },
+      { "nombre": "Pack 10 clases", "precio": "130 €", "descripcion": "10 clases sin caducidad para usar a tu ritmo" }
+    ],
+    "resenas": [
+      { "autor": "Blanca V.", "texto": "Las clases de Power son exigentes pero muy bien guiadas. Noto el progreso.", "rating": 5 },
+      { "autor": "Hugo A.", "texto": "El bono ilimitado es imbatible. Vengo cada mañana y me cambia el día.", "rating": 5 },
+      { "autor": "Carla M.", "texto": "Instructores con mucho nivel y un espacio muy bien montado.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "maria-villa-pilates-sarria",
+    "nombre": "Maria Villa Pilates Sarrià",
+    "categoria": "wellness",
+    "tagline": "Pilates personalizado y cuidado del cuerpo en Sarrià",
+    "descripcion": "Estudio de Pilates en Sarrià de la mano de Maria Villa, instructora con más de 15 años de experiencia. Clases en grupos muy reducidos y sesiones privadas donde cada detalle importa. El Pilates que da resultados reales.",
+    "especialidades": ["Pilates personalizado", "Grupos ultra-reducidos", "15 años de experiencia"],
+    "barrio": "Sarrià",
+    "direccion": "Carrer de Calatrava, 28, 08017 Barcelona",
+    "telefono": "+34 600 000 000",
+    "whatsapp": "34600000000",
+    "google_maps_embed": "https://maps.google.com/maps?q=Maria+Villa+Pilates+Sarria+Barcelona&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 9:00 – 19:00",
+    "resenas_count": 42,
+    "rating": 5.0,
+    "servicios": [
+      { "nombre": "Clase privada", "precio": "60 €", "descripcion": "Sesión individual adaptada completamente a tus objetivos y nivel" },
+      { "nombre": "Clase duo", "precio": "40 €", "descripcion": "Clase para dos personas con programa semi-personalizado" },
+      { "nombre": "Grupo pequeño (3-4)", "precio": "28 €", "descripcion": "Clase en grupo ultra-reducido con atención muy personalizada" },
+      { "nombre": "Pilates embarazo", "precio": "55 €", "descripcion": "Programa adaptado para cada trimestre del embarazo" },
+      { "nombre": "Pilates postparto", "precio": "55 €", "descripcion": "Recuperación del suelo pélvico y la musculatura abdominal" },
+      { "nombre": "Pilates para espalda", "precio": "55 €", "descripcion": "Programa específico para escoliosis, hernia y dolor crónico" }
+    ],
+    "resenas": [
+      { "autor": "Inés M.", "texto": "Maria es una maestra en toda la extensión de la palabra. Transformó mi cuerpo y mi postura.", "rating": 5 },
+      { "autor": "Cristina F.", "texto": "El pilates de postparto con ella fue un regalo. Profesional, cercana y muy efectiva.", "rating": 5 },
+      { "autor": "Helena B.", "texto": "5 estrelllas sin dudar. Nadie como ella para el pilates terapéutico.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "tys-the-yleana-studio",
+    "nombre": "TYS - The Yleana Studio",
+    "categoria": "wellness",
+    "tagline": "Pilates Reformer de alta gama en el Eixample",
+    "descripcion": "Estudio boutique de Pilates Reformer en el Eixample con un enfoque premium y sesiones privadas o en parejas. Equipamiento de primera, metodología Stott y una experiencia diseñada para quienes exigen lo mejor.",
+    "especialidades": ["Pilates Reformer privado", "Metodología Stott", "Estudio boutique"],
+    "barrio": "Eixample",
+    "direccion": "Carrer de Provença, 248, 08008 Barcelona",
+    "telefono": "+34 621 08 54 62",
+    "whatsapp": "34621085462",
+    "google_maps_embed": "https://maps.google.com/maps?q=TYS+Yleana+Studio+Pilates+Barcelona+Eixample&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 8:00 – 20:00 | Sábados: 9:00 – 14:00",
+    "resenas_count": 57,
+    "rating": 4.9,
+    "servicios": [
+      { "nombre": "Sesión privada Reformer", "precio": "75 €", "descripcion": "Clase individual en Reformer Balanced Body con programa personalizado" },
+      { "nombre": "Sesión duo Reformer", "precio": "50 €", "descripcion": "Clase para dos en Reformer con programa compartido" },
+      { "nombre": "Bono 10 privadas", "precio": "650 €", "descripcion": "10 sesiones privadas con instructor dedicado" },
+      { "nombre": "Pilates prenatal", "precio": "70 €", "descripcion": "Sesión privada en Reformer adaptada al embarazo" },
+      { "nombre": "Pilates terapéutico", "precio": "75 €", "descripcion": "Programa de rehabilitación y corrección postural en Reformer" },
+      { "nombre": "Valoración inicial", "precio": "40 €", "descripcion": "Evaluación postural y diseño del programa personalizado" }
+    ],
+    "resenas": [
+      { "autor": "Paloma R.", "texto": "El estudio más premium de Barcelona para Pilates Reformer. No hay comparación.", "rating": 5 },
+      { "autor": "Rebeca M.", "texto": "Yleana es extraordinaria como instructora. Me cambió la espalda en 2 meses.", "rating": 5 },
+      { "autor": "Sonia L.", "texto": "Caro pero vale absolutamente todo. El nivel de atención es incomparable.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "pilates-classic-barcelona",
+    "nombre": "Pilates Classic Barcelona",
+    "categoria": "wellness",
+    "tagline": "El método Pilates en su forma más pura en Sant Antoni",
+    "descripcion": "Centro dedicado al método Pilates clásico en Sant Antoni. Fiel a la técnica original de Joseph Pilates, con Reformer, Cadillac y Wunda Chair. Para quienes quieren aprender Pilates de verdad, no una versión moderna.",
+    "especialidades": ["Método clásico", "Equipamiento completo", "Técnica original"],
+    "barrio": "Sant Antoni",
+    "direccion": "Carrer del Parlament, 38, 08015 Barcelona",
+    "telefono": "+34 636 57 38 80",
+    "whatsapp": "34636573880",
+    "google_maps_embed": "https://maps.google.com/maps?q=Pilates+Classic+Barcelona+Sant+Antoni&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 8:00 – 21:00 | Sábados: 9:00 – 13:00",
+    "resenas_count": 83,
+    "rating": 4.7,
+    "servicios": [
+      { "nombre": "Reformer clásico", "precio": "25 €", "descripcion": "Clase en Reformer siguiendo el repertorio clásico de Pilates" },
+      { "nombre": "Cadillac", "precio": "30 €", "descripcion": "Trabajo en Cadillac para movilidad, fuerza y corrección postural" },
+      { "nombre": "Equipamiento completo", "precio": "40 €", "descripcion": "Circuito rotatorio por todo el equipamiento del estudio" },
+      { "nombre": "Mat clásico", "precio": "18 €", "descripcion": "Los 34 ejercicios del método original sobre tapete" },
+      { "nombre": "Privada en Reformer", "precio": "60 €", "descripcion": "Sesión privada con instructor certificado en Reformer" },
+      { "nombre": "Bono 8 clases", "precio": "175 €", "descripcion": "8 clases sin caducidad para usar a tu ritmo" }
+    ],
+    "resenas": [
+      { "autor": "Mireia T.", "texto": "El único sitio en Barcelona donde aprendo Pilates de verdad. El clásico puro.", "rating": 5 },
+      { "autor": "Laia F.", "texto": "Las instructoras están formadas en el linaje original. Se nota la diferencia.", "rating": 5 },
+      { "autor": "Assumpta B.", "texto": "El Cadillac es una maravilla. Mi espalda mejoró notablemente.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "pilates-barcelona-les-corts",
+    "nombre": "Pilates Barcelona",
+    "categoria": "wellness",
+    "tagline": "Pilates Reformer accesible y de calidad en Les Corts",
+    "descripcion": "Centro de Pilates en Les Corts con clases en Reformer y Mat para todos los niveles. Un equipo comprometido con hacer el Pilates accesible sin rebajar la calidad. Ideal para empezar o para seguir mejorando.",
+    "especialidades": ["Todos los niveles", "Reformer & Mat", "Precios accesibles"],
+    "barrio": "Les Corts",
+    "direccion": "Carrer de Joan Güell, 116, 08028 Barcelona",
+    "telefono": "+34 936 94 00 00",
+    "whatsapp": "34936940000",
+    "google_maps_embed": "https://maps.google.com/maps?q=Pilates+Barcelona+Les+Corts&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 7:30 – 21:30 | Sábados: 9:00 – 14:00",
+    "resenas_count": 71,
+    "rating": 4.4,
+    "servicios": [
+      { "nombre": "Pilates Reformer", "precio": "20 €", "descripcion": "Clase en Reformer en grupos de hasta 8 personas" },
+      { "nombre": "Pilates Mat", "precio": "14 €", "descripcion": "Clase de suelo con accesorios para todos los niveles" },
+      { "nombre": "Clase de iniciación", "precio": "15 €", "descripcion": "Clase especial para quienes nunca han hecho Pilates" },
+      { "nombre": "Bono 10 clases", "precio": "170 €", "descripcion": "10 clases de Reformer o Mat con validez de 3 meses" },
+      { "nombre": "Mensualidad ilimitada", "precio": "80 €", "descripcion": "Clases ilimitadas de Mat durante el mes" },
+      { "nombre": "Sesión privada", "precio": "50 €", "descripcion": "Clase individual con atención exclusiva del instructor" }
+    ],
+    "resenas": [
+      { "autor": "Nora V.", "texto": "Empecé sin saber nada y en tres meses noto un cambio enorme. Muy contenta.", "rating": 5 },
+      { "autor": "Toni S.", "texto": "Los horarios de mañana temprano son perfectos para ir antes del trabajo.", "rating": 4 },
+      { "autor": "Merce B.", "texto": "Buen nivel a precio razonable. Los instructores explican con paciencia.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "patrick-eisenberg-pilates",
+    "nombre": "Patrick Eisenberg Pilates",
+    "categoria": "wellness",
+    "tagline": "Pilates con enfoque terapéutico en Sant Gervasi",
+    "descripcion": "Patrick Eisenberg es fisioterapeuta y instructor de Pilates con doble formación. Su enfoque único combina la rehabilitación con el movimiento funcional para resultados que van más allá del bienestar. Para casos complejos y cuerpos exigentes.",
+    "especialidades": ["Doble formación fisio+pilates", "Casos complejos", "Movimiento funcional"],
+    "barrio": "Sant Gervasi",
+    "direccion": "Carrer de Mandri, 50, 08022 Barcelona",
+    "telefono": "+34 620 08 21 22",
+    "whatsapp": "34620082122",
+    "google_maps_embed": "https://maps.google.com/maps?q=Patrick+Eisenberg+Pilates+Barcelona+Sant+Gervasi&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 8:00 – 19:00",
+    "resenas_count": 39,
+    "rating": 5.0,
+    "servicios": [
+      { "nombre": "Valoración fisio-Pilates", "precio": "80 €", "descripcion": "Evaluación física completa con plan de trabajo integrado" },
+      { "nombre": "Sesión privada", "precio": "70 €", "descripcion": "Clase individual que fusiona fisioterapia y Pilates según tus necesidades" },
+      { "nombre": "Pilates para lesionados", "precio": "70 €", "descripcion": "Programa seguro para personas con lesiones activas o crónicas" },
+      { "nombre": "Pilates postquirúrgico", "precio": "75 €", "descripcion": "Recuperación progresiva tras intervención quirúrgica" },
+      { "nombre": "Pilates para deportistas", "precio": "65 €", "descripcion": "Complemento al entrenamiento para mejorar rendimiento y prevenir lesiones" },
+      { "nombre": "Bono 5 sesiones", "precio": "320 €", "descripcion": "5 sesiones privadas con seguimiento continuo" }
+    ],
+    "resenas": [
+      { "autor": "Miquel A.", "texto": "Nadie como Patrick para entender el cuerpo desde dos ángulos a la vez. Extraordinario.", "rating": 5 },
+      { "autor": "Irene F.", "texto": "Me ayudó con una hernia que ningún fisio había podido resolver bien. Increíble.", "rating": 5 },
+      { "autor": "Joan B.", "texto": "Muy serio y muy efectivo. Cada sesión tiene un propósito claro y concreto.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "milart-pilates",
+    "nombre": "milart Pilates",
+    "categoria": "wellness",
+    "tagline": "Pilates creativo y funcional en Sants",
+    "descripcion": "Estudio de Pilates en Sants con un enfoque artístico y funcional. milart combina el método Pilates con movimiento somático y trabajo de respiración para una práctica que mejora el cuerpo y la consciencia corporal.",
+    "especialidades": ["Pilates somático", "Trabajo de respiración", "Consciencia corporal"],
+    "barrio": "Sants",
+    "direccion": "Carrer de la Gavà, 12, 08014 Barcelona",
+    "telefono": "+34 657 61 47 72",
+    "whatsapp": "34657614772",
+    "google_maps_embed": "https://maps.google.com/maps?q=milart+Pilates+Barcelona+Sants&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 9:00 – 20:00 | Sábados: 10:00 – 14:00",
+    "resenas_count": 51,
+    "rating": 4.8,
+    "servicios": [
+      { "nombre": "Pilates Mat flow", "precio": "16 €", "descripcion": "Práctica fluida sobre tapete con énfasis en la respiración" },
+      { "nombre": "Pilates Reformer", "precio": "24 €", "descripcion": "Clase en Reformer en grupos de 5 personas máximo" },
+      { "nombre": "Somático & movimiento", "precio": "18 €", "descripcion": "Integración de trabajo somático y consciencia corporal" },
+      { "nombre": "Clase privada", "precio": "58 €", "descripcion": "Sesión individual adaptada a tus objetivos creativos y físicos" },
+      { "nombre": "Taller de respiración", "precio": "25 €", "descripcion": "Taller de 2 horas sobre técnicas de respiración consciente" },
+      { "nombre": "Pack 8 clases", "precio": "110 €", "descripcion": "8 clases de Mat o Reformer con validez de 2 meses" }
+    ],
+    "resenas": [
+      { "autor": "Aida R.", "texto": "Es Pilates pero a otro nivel. El trabajo somático te conecta de una forma diferente.", "rating": 5 },
+      { "autor": "Olga M.", "texto": "Llevo 6 meses y he notado mejoras que van más allá del físico. Recomendadísimo.", "rating": 5 },
+      { "autor": "Biel P.", "texto": "El taller de respiración fue una revelación. Instructora con mucha profundidad.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "stream-pilates",
+    "nombre": "Stream Pilates",
+    "categoria": "wellness",
+    "tagline": "Pilates Reformer dinámico en el Eixample",
+    "descripcion": "Estudio de Pilates Reformer en el Eixample con clases dinámicas en grupos reducidos. Enfocados en la experiencia del alumno: música, ambiente y un nivel de exigencia que te hace volver. Pilates para gente activa.",
+    "especialidades": ["Reformer dinámico", "Grupos reducidos", "Ambiente motivador"],
+    "barrio": "Eixample",
+    "direccion": "Carrer de Rosselló, 148, 08036 Barcelona",
+    "telefono": "+34 934 10 61 12",
+    "whatsapp": "34934106112",
+    "google_maps_embed": "https://maps.google.com/maps?q=Stream+Pilates+Barcelona+Eixample&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 7:00 – 22:00 | Sábados y Domingos: 9:00 – 14:00",
+    "resenas_count": 167,
+    "rating": 4.6,
+    "servicios": [
+      { "nombre": "Reformer Express", "precio": "19 €", "descripcion": "Clase intensa de 45 minutos en Reformer para optimizar el tiempo" },
+      { "nombre": "Reformer Clásico", "precio": "22 €", "descripcion": "Clase de 60 minutos con secuencia completa de Reformer" },
+      { "nombre": "Stretch & Mobility", "precio": "16 €", "descripcion": "Clase de movilidad y flexibilidad sobre tapete" },
+      { "nombre": "Bono mensual ilimitado", "precio": "110 €", "descripcion": "Clases ilimitadas durante el mes en todos los horarios" },
+      { "nombre": "Pack 12 clases", "precio": "210 €", "descripcion": "12 clases de Reformer sin caducidad" },
+      { "nombre": "Clase de prueba", "precio": "10 €", "descripcion": "Primera clase en Reformer a precio reducido sin compromiso" }
+    ],
+    "resenas": [
+      { "autor": "Andrea P.", "texto": "La clase de 7am me cambió la rutina. Salgo cargada de energía para todo el día.", "rating": 5 },
+      { "autor": "Guillem M.", "texto": "El ambiente es muy motivador. Los profesores saben exigir sin agobiar.", "rating": 4 },
+      { "autor": "Laura B.", "texto": "Muy buena relación calidad-precio para el Eixample. Mis amigas ya se apuntaron.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "pilates-pedralbes",
+    "nombre": "Pilates Pedralbes",
+    "categoria": "wellness",
+    "tagline": "Pilates exclusivo y personalizado en Pedralbes",
+    "descripcion": "Centro de Pilates de alta gama en Pedralbes con sesiones mayoritariamente privadas y semi-privadas. Un espacio tranquilo y exclusivo donde la atención es siempre individual. Para quienes el bienestar es una prioridad real.",
+    "especialidades": ["Sesiones privadas", "Alta exclusividad", "Atención individual"],
+    "barrio": "Pedralbes",
+    "direccion": "Avinguda de Pedralbes, 44, 08034 Barcelona",
+    "telefono": "+34 932 52 49 20",
+    "whatsapp": "34932524920",
+    "google_maps_embed": "https://maps.google.com/maps?q=Pilates+Pedralbes+Barcelona&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 8:00 – 19:00",
+    "resenas_count": 44,
+    "rating": 4.9,
+    "servicios": [
+      { "nombre": "Sesión privada Reformer", "precio": "80 €", "descripcion": "Clase individual de 60 minutos con programa completamente personalizado" },
+      { "nombre": "Sesión semi-privada (2)", "precio": "55 €", "descripcion": "Clase para dos con programa adaptado a ambos" },
+      { "nombre": "Pilates terapéutico", "precio": "80 €", "descripcion": "Sesión orientada a la recuperación de lesiones y corrección postural" },
+      { "nombre": "Pilates embarazo", "precio": "75 €", "descripcion": "Programa prenatal individualizado en Reformer" },
+      { "nombre": "Paquete 10 privadas", "precio": "700 €", "descripcion": "10 sesiones privadas con descuento y seguimiento de progreso" },
+      { "nombre": "Evaluación postural", "precio": "50 €", "descripcion": "Análisis de postura y diseño del programa de trabajo" }
+    ],
+    "resenas": [
+      { "autor": "Isabel C.", "texto": "El sitio más tranquilo y profesional para hacer Pilates en Barcelona.", "rating": 5 },
+      { "autor": "Ana L.", "texto": "La atención es inigualable. Siempre adaptado a cómo llego ese día.", "rating": 5 },
+      { "autor": "Mercedes V.", "texto": "Llevo 4 años viniendo. No cambio este estudio por nada.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "maria-soledad-cervetti-pilates",
+    "nombre": "Maria Soledad Cervetti",
+    "categoria": "wellness",
+    "tagline": "Instructora de Pilates con método propio en Gràcia",
+    "descripcion": "Instructora de Pilates con formación internacional y más de 12 años de experiencia en Gràcia. Maria Soledad trabaja en sesiones individuales y grupos muy pequeños con un método propio basado en la escucha del cuerpo.",
+    "especialidades": ["Método propio", "Formación internacional", "Pilates terapéutico"],
+    "barrio": "Gràcia",
+    "direccion": "Carrer Gran de Gràcia, 120, 08012 Barcelona",
+    "telefono": "+34 603 41 40 91",
+    "whatsapp": "34603414091",
+    "google_maps_embed": "https://maps.google.com/maps?q=Maria+Soledad+Cervetti+Pilates+Barcelona+Gracia&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 9:00 – 18:00",
+    "resenas_count": 33,
+    "rating": 5.0,
+    "servicios": [
+      { "nombre": "Sesión privada", "precio": "65 €", "descripcion": "Clase individual con programa adaptado a tu cuerpo y objetivos" },
+      { "nombre": "Pilates terapéutico", "precio": "65 €", "descripcion": "Trabajo específico para dolor crónico, escoliosis o postoperatorio" },
+      { "nombre": "Grupo pequeño (4)", "precio": "30 €", "descripcion": "Clase en grupo de 4 personas con supervisión cercana" },
+      { "nombre": "Pilates para mayores", "precio": "55 €", "descripcion": "Programa adaptado para mantener movilidad y calidad de vida" },
+      { "nombre": "Pilates para corredores", "precio": "60 €", "descripcion": "Trabajo específico de core y cadera para mejorar la carrera" },
+      { "nombre": "Pack 5 privadas", "precio": "295 €", "descripcion": "5 sesiones privadas con seguimiento personalizado" }
+    ],
+    "resenas": [
+      { "autor": "Rosario M.", "texto": "María Soledad tiene un don especial para entender lo que tu cuerpo necesita.", "rating": 5 },
+      { "autor": "Sandra P.", "texto": "Llevo un año con ella y ha transformado mi relación con el movimiento.", "rating": 5 },
+      { "autor": "Claudia V.", "texto": "La mejor instructora privada de Pilates que he tenido. Sin duda.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "maria-pilar-senpau-jove-pilates",
+    "nombre": "María Pilar Senpau Jové",
+    "categoria": "wellness",
+    "tagline": "Pilates y bienestar femenino en Sant Andreu",
+    "descripcion": "Instructora de Pilates especializada en bienestar femenino en Sant Andreu. Trabajar con María Pilar es entrar en un espacio seguro donde se tiene en cuenta tu ciclo, tu historia y tu cuerpo. Pilates con perspectiva de género real.",
+    "especialidades": ["Bienestar femenino", "Ciclo menstrual", "Espacio seguro"],
+    "barrio": "Sant Andreu",
+    "direccion": "Passeig de Torras i Bages, 68, 08030 Barcelona",
+    "telefono": "+34 648 76 76 07",
+    "whatsapp": "34648767607",
+    "google_maps_embed": "https://maps.google.com/maps?q=Maria+Pilar+Senpau+Pilates+Barcelona+Sant+Andreu&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Martes a Sábado: 9:00 – 19:00",
+    "resenas_count": 28,
+    "rating": 5.0,
+    "servicios": [
+      { "nombre": "Clase grupal", "precio": "18 €", "descripcion": "Clase de Pilates Mat en grupos de 6 con atención personalizada" },
+      { "nombre": "Pilates y ciclo menstrual", "precio": "22 €", "descripcion": "Práctica adaptada a cada fase del ciclo para mayor bienestar" },
+      { "nombre": "Sesión privada", "precio": "60 €", "descripcion": "Clase individual con programa diseñado según tus necesidades" },
+      { "nombre": "Pilates postparto", "precio": "60 €", "descripcion": "Recuperación segura y progresiva del suelo pélvico y abdomen" },
+      { "nombre": "Taller de suelo pélvico", "precio": "35 €", "descripcion": "Taller grupal de 2 horas sobre salud del suelo pélvico" },
+      { "nombre": "Pack 8 clases grupales", "precio": "125 €", "descripcion": "8 clases grupales con validez de 2 meses" }
+    ],
+    "resenas": [
+      { "autor": "Laia T.", "texto": "Por fin una instructora que entiende el cuerpo femenino de verdad. Muy recomendada.", "rating": 5 },
+      { "autor": "Alba V.", "texto": "El taller de suelo pélvico debería ser obligatorio. Aprendí más en 2 horas que en años.", "rating": 5 },
+      { "autor": "Joana M.", "texto": "El Pilates adaptado al ciclo me cambió la vida. Gracias María Pilar.", "rating": 5 }
+    ]
+  },
+  {
+    "slug": "dr-canals-mestre-nutricionista",
+    "nombre": "Dr. José Mª Canals Mestre",
+    "categoria": "nutricion",
+    "tagline": "Nutricionista y dietista clínico en el Eixample",
+    "descripcion": "Consulta de nutrición y dietética clínica del Dr. José María Canals Mestre en el Eixample. Especializado en patologías digestivas, diabetes y pérdida de peso con criterio médico. Cuando necesitás más que una dieta.",
+    "especialidades": ["Nutrición clínica", "Patologías digestivas", "Diabetes & metabolismo"],
+    "barrio": "Eixample",
+    "direccion": "Carrer de Valencia, 225, 08007 Barcelona",
+    "telefono": "+34 932 37 87 60",
+    "whatsapp": "34932378760",
+    "google_maps_embed": "https://maps.google.com/maps?q=Dr+Canals+Mestre+Nutricionista+Barcelona+Eixample&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 9:00 – 19:00",
+    "resenas_count": 118,
+    "rating": 4.7,
+    "servicios": [
+      { "nombre": "Primera consulta", "precio": "75 €", "descripcion": "Anamnesis completa, analítica nutricional y plan inicial" },
+      { "nombre": "Plan nutricional médico", "precio": "130 €", "descripcion": "Plan adaptado a tu patología, analítica y estilo de vida" },
+      { "nombre": "Seguimiento mensual", "precio": "55 €", "descripcion": "Control de evolución, ajuste del plan y resolución de dudas" },
+      { "nombre": "Nutrición para diabetes", "precio": "80 €", "descripcion": "Plan nutricional específico para diabetes tipo 1 y tipo 2" },
+      { "nombre": "Nutrición digestiva", "precio": "80 €", "descripcion": "Protocolo para SII, Crohn, celiaquía y otras patologías digestivas" },
+      { "nombre": "Informe nutricional", "precio": "60 €", "descripcion": "Informe médico detallado para coordinación con otros especialistas" }
+    ],
+    "resenas": [
+      { "autor": "Ramón P.", "texto": "El Dr. Canals me ayudó a controlar mi diabetes tipo 2 con alimentación. Sin precedentes.", "rating": 5 },
+      { "autor": "Emilia F.", "texto": "Muy claro explicando y muy riguroso con los datos. Médico y nutricionista a la vez.", "rating": 5 },
+      { "autor": "Vicente M.", "texto": "Mejoré mi digestión y perdí 8kg en 4 meses. Seguimiento impecable.", "rating": 4 }
+    ]
+  },
+  {
+    "slug": "dra-miró-echevarne-nutricion",
+    "nombre": "Dra. María José Miró Echevarne",
+    "categoria": "nutricion",
+    "tagline": "Nutrición médica y psiconutrición en Sarrià",
+    "descripcion": "Doctora especializada en nutrición clínica y psiconutrición en Sarrià. Trabaja la relación con la comida desde un enfoque médico y psicológico integrado. Para personas que han probado dietas y saben que el problema es más profundo.",
+    "especialidades": ["Psiconutrición", "Relación con la comida", "Enfoque médico-psicológico"],
+    "barrio": "Sarrià",
+    "direccion": "Carrer de Rector Ubach, 12, 08021 Barcelona",
+    "telefono": "+34 660 12 88 46",
+    "whatsapp": "34660128846",
+    "google_maps_embed": "https://maps.google.com/maps?q=Dra+Miro+Echevarne+Nutricion+Barcelona+Sarria&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "horario": "Lunes a Viernes: 9:30 – 19:30",
+    "resenas_count": 59,
+    "rating": 4.8,
+    "servicios": [
+      { "nombre": "Primera consulta integrada", "precio": "85 €", "descripcion": "Evaluación nutricional y psicológica combinada en profundidad" },
+      { "nombre": "Programa psiconutrición", "precio": "110 €", "descripcion": "Trabajo de la relación con la comida desde dentro con herramientas clínicas" },
+      { "nombre": "Seguimiento quincenal", "precio": "60 €", "descripcion": "Control de evolución con acompañamiento psico-nutricional" },
+      { "nombre": "Nutrición para TCA", "precio": "95 €", "descripcion": "Abordaje especializado en trastornos de la conducta alimentaria" },
+      { "nombre": "Mindful eating", "precio": "70 €", "descripcion": "Programa de alimentación consciente para mejorar la relación con la comida" },
+      { "nombre": "Consulta online", "precio": "70 €", "descripcion": "Sesión por videollamada con el mismo nivel de profundidad y seguimiento" }
+    ],
+    "resenas": [
+      { "autor": "Cristina A.", "texto": "Por fin alguien que entiende que el problema no es la dieta sino la relación con la comida.", "rating": 5 },
+      { "autor": "Natalia R.", "texto": "Me ayudó a salir de un TCA con paciencia, conocimiento y mucha humanidad.", "rating": 5 },
+      { "autor": "Lucía M.", "texto": "El programa de mindful eating me cambió la vida. Lo recomiendo a todo el mundo.", "rating": 5 }
     ]
   }
 ]

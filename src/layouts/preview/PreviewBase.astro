@@ -16,6 +16,8 @@ interface Negocio {
   nombre: string;
   categoria: string;
   tagline: string;
+  descripcion: string;
+  especialidades: string[];
   barrio: string;
   direccion: string;
   telefono: string;
@@ -56,7 +58,98 @@ const { negocio, theme, isPreview = true } = Astro.props;
 const whatsappUrl = `https://wa.me/${negocio.whatsapp}`;
 const callUrl = `tel:${negocio.telefono.replace(/\s/g, '')}`;
 const stars = (rating: number) => '★'.repeat(Math.floor(rating)) + (rating % 1 >= 0.5 ? '☆' : '');
-const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Hola Calax, vi la preview de ${negocio.nombre} y me interesa una web así para mi negocio.`);
+const calaxWhatsapp = 'https://wa.me/34610085327?text=' + encodeURIComponent(`Hola Calax, vi la preview de ${negocio.nombre} y me interesa una web así para mi negocio.`);
+
+const categoryLabels: Record<string, string> = {
+  peluqueria: 'Peluquería & Estilismo',
+  fisioterapia: 'Fisioterapia & Salud',
+  estetica: 'Estética & Belleza',
+  wellness: 'Wellness & Bienestar',
+  nutricion: 'Nutrición & Dietética',
+};
+const categoryLabel = categoryLabels[negocio.categoria] ?? negocio.nombre;
+
+const ganchos: Record<string, string> = {
+  peluqueria: `Tu cabello, tu identidad. Ponete en las manos de los mejores estilistas del ${negocio.barrio} y descubrí la diferencia que hace el talento real.`,
+  fisioterapia: `Tu cuerpo merece más que aguantar el dolor. Vení a ${negocio.nombre} y empezá a moverte como querías.`,
+  estetica: `Tu mejor versión no es un lujo — es una decisión. En ${negocio.nombre} te esperamos para hacerla realidad.`,
+  wellness: `¿Cuándo fue la última vez que te diste tiempo para vos? En ${negocio.nombre} cada clase es un regalo que te hacés.`,
+  nutricion: `Comer bien no es una dieta, es un estilo de vida. En ${negocio.nombre} te acompañamos en cada paso del camino.`,
+};
+const gancho = ganchos[negocio.categoria] ?? ganchos['peluqueria'];
+
+const historias: Record<string, string[]> = {
+  peluqueria: [
+    `Cuando abrimos las puertas de ${negocio.nombre} en ${negocio.barrio}, teníamos una obsesión: que cada cliente saliera mejor de como entró. No solo hablamos de un buen corte — hablamos de cómo te sentís cuando te mirás al espejo.`,
+    `Con los años, construimos un equipo de estilistas que comparten la misma pasión por el detalle. Cada persona que entra tiene su historia, su tipo de cabello y un estilo que merece ser respetado y potenciado. No hay dos cortes iguales.`,
+    `Hoy somos un referente del barrio. No por casualidad, sino porque nunca dejamos de aprender y porque el cliente siempre estuvo primero.`,
+  ],
+  fisioterapia: [
+    `${negocio.nombre} nació porque creíamos que la fisioterapia en ${negocio.barrio} merecía algo mejor. Menos protocolos genéricos, más escucha real. Menos parches, más soluciones que duran.`,
+    `Desde el primer día, apostamos por una atención donde el paciente entiende qué tiene, por qué lo tiene y cómo vamos a trabajarlo juntos. La transparencia es parte del tratamiento.`,
+    `Hoy atendemos a personas de todas las edades con lesiones de todo tipo. Cada caso nos enseña algo nuevo y nos recuerda por qué elegimos esta profesión.`,
+  ],
+  estetica: [
+    `${negocio.nombre} abrió en ${negocio.barrio} con una premisa sencilla: los tratamientos estéticos tienen que partir de escuchar, no de vender. Antes de cualquier protocolo, hay una consulta real.`,
+    `Nuestro equipo combina formación médica con sensibilidad artística. Trabajamos para realzar lo que ya tenés, no para cambiarte. Los resultados naturales no son una tendencia — son nuestra filosofía.`,
+    `Cada cliente que sale satisfecho es la mejor prueba de que lo estamos haciendo bien. Y eso, con los años, construye algo que ninguna campaña publicitaria puede comprar: confianza.`,
+  ],
+  wellness: [
+    `${negocio.nombre} nació en ${negocio.barrio} de la convicción de que el bienestar no es un lujo — es una necesidad. Quisimos crear un espacio donde el cuerpo y la mente tuvieran la atención que merecen.`,
+    `Nuestros instructores se forman constantemente y traen lo mejor de distintas tradiciones y metodologías. No importa tu nivel ni tu punto de partida — hay un lugar para vos en cada clase.`,
+    `Con los años, lo que más nos enorgullece no son los certificados en la pared, sino ver a nuestros alumnos transformarse. El cambio se nota y eso lo vale todo.`,
+  ],
+  nutricion: [
+    `${negocio.nombre} surgió de una frustración: demasiadas personas siguiendo dietas que no funcionan a largo plazo. Decidimos apostar por un enfoque basado en evidencia y en el respeto al cuerpo de cada uno.`,
+    `Aquí no van a encontrar milagros ni soluciones rápidas. Van a encontrar un equipo que se toma el tiempo de entender su historia, su metabolismo y su estilo de vida antes de hacer cualquier recomendación.`,
+    `Porque la nutrición de verdad no es restrictiva — es liberadora. Y acompañar ese proceso es lo que le da sentido a nuestro trabajo cada día.`,
+  ],
+};
+const historia = historias[negocio.categoria] ?? historias['peluqueria'];
+
+const serviceImageSets: Record<string, string[]> = {
+  peluqueria: [
+    'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1503951914875-452162b0f408?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1200&q=80',
+  ],
+  fisioterapia: [
+    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1552693673-1bf795851eba?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80',
+  ],
+  estetica: [
+    'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1487412947147-5cebf100d293?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1519415510236-818d1c1a0f34?auto=format&fit=crop&w=1200&q=80',
+  ],
+  wellness: [
+    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1518611540400-6b85a66d0f3e?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1599058945522-cdee8a3e50c5?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1599901860904-17e6ed7083a1?auto=format&fit=crop&w=1200&q=80',
+  ],
+  nutricion: [
+    'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
+  ],
+};
+const serviceImages = serviceImageSets[negocio.categoria] ?? serviceImageSets['wellness'];
 ---
 
 <!DOCTYPE html>
@@ -65,7 +158,7 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>{negocio.nombre} — {negocio.barrio}, Barcelona</title>
+  <title>{negocio.nombre} — {negocio.barrio}</title>
   <meta name="description" content={`${negocio.tagline}. ${negocio.direccion}`} />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -112,10 +205,9 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
 
     /* ═══ PREVIEW BANNER ═══ */
     .preview-banner {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+      position: relative;
       z-index: 200;
-      background: rgba(26, 26, 46, 0.95);
+      background: rgba(26, 26, 46, 0.97);
       backdrop-filter: blur(12px);
       display: flex;
       align-items: center;
@@ -124,7 +216,6 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
       padding: 10px 20px;
       font-size: 13px;
       color: #e0e0e0;
-      transform: translateY(-100%);
       flex-wrap: wrap;
     }
 
@@ -159,21 +250,24 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
     }
 
     .nav.scrolled {
-      background: color-mix(in srgb, var(--bg) 85%, transparent);
-      backdrop-filter: blur(16px);
+      background: color-mix(in srgb, var(--bg) 95%, transparent);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       padding: 12px 28px;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+      box-shadow: 0 1px 0 var(--cardBorder), 0 4px 24px rgba(0,0,0,0.18);
     }
 
-    .nav.has-banner { top: 40px; }
+    .nav.has-banner { top: 0; }
 
     .nav-brand {
-      font-family: var(--fontHeading);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text);
+      font-family: var(--fontBody);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--textMuted);
       text-decoration: none;
       opacity: 0;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .nav-actions {
@@ -218,6 +312,72 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
       .nav-btn { padding: 10px 14px; }
     }
 
+    /* ═══ ABOUT ═══ */
+    .about-inner {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-label-col {
+      padding-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .about-accent-line {
+      width: 2px;
+      height: 60px;
+      background: var(--accent);
+      opacity: 0.4;
+    }
+
+    .about-title {
+      font-family: var(--fontHeading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+
+    .about-title em { font-style: italic; color: var(--accent); }
+
+    .about-para {
+      color: var(--textMuted);
+      line-height: 1.75;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--cardBorder);
+      flex-wrap: wrap;
+    }
+
+    .about-stat { display: flex; flex-direction: column; gap: 4px; }
+
+    .about-stat-number {
+      font-family: var(--fontHeading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .about-stat-label {
+      font-size: 12px;
+      color: var(--textMuted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
     /* ═══ HERO ═══ */
     .hero {
       min-height: 100vh;
@@ -227,7 +387,7 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 120px 24px 80px;
+      padding: 120px 24px 140px;
       position: relative;
       overflow: hidden;
     }
@@ -297,14 +457,75 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
     /* Keep word containers inline for wrapping */
     .hero h1 .word { display: inline-block; white-space: nowrap; }
 
-    .hero-tagline {
-      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
-      color: var(--textMuted);
-      line-height: 1.5;
-      max-width: 550px;
-      margin: 0 auto 16px;
+    .hero-desc-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
       opacity: 0;
-      transform: translateY(25px);
+      transform: translateY(18px);
+    }
+
+    .hero-desc-line {
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.6;
+    }
+
+    .hero-description {
+      font-family: var(--fontHeading);
+      font-style: italic;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: var(--textMuted);
+      line-height: 1.65;
+      max-width: 460px;
+      text-align: center;
+    }
+
+    .hero-gancho {
+      font-family: var(--fontHeading);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--textMuted);
+      line-height: 1.65;
+      max-width: 520px;
+      text-align: center;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 16px;
+      border-radius: 100px;
+      border: 1px solid var(--cardBorder);
+      background: var(--accentSoft);
+      color: var(--textMuted);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .hero-pill::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
     }
 
     .hero-rating {
@@ -444,68 +665,64 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
     .section-title em { font-style: italic; color: var(--accent); }
 
     /* ═══ SERVICES ═══ */
-    .services-grid {
+    .services-visual-list {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
     }
 
-    @media (min-width: 640px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 960px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
-
-    .service-card {
-      background: color-mix(in srgb, var(--cardBg) 80%, transparent);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--cardBorder);
-      border-radius: 20px;
-      padding: 32px 28px;
-      opacity: 0;
-      transform: translateY(50px) rotateX(-5deg);
-      transition: border-color 0.3s;
+    .service-visual-card {
       position: relative;
+      height: 340px;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .service-visual-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+      display: block;
+    }
+
+    .service-visual-card:hover img { transform: scale(1.06); }
+
+    .service-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+    }
+
+    .service-visual-content {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+    }
+
+    .service-visual-content h3 {
+      font-family: var(--fontHeading);
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .service-visual-content p {
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+      line-height: 1.45;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
       overflow: hidden;
     }
 
-    /* Accent top line on cards */
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      transform: scaleX(0);
-      transition: transform 0.5s ease;
-    }
-
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-card:hover { border-color: var(--accent); }
-
-    .service-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 12px;
-      gap: 12px;
-    }
-
-    .service-card h3 {
-      font-family: var(--fontHeading);
-      font-size: 1.15rem;
-      line-height: 1.3;
-    }
-
-    .service-price {
-      font-family: var(--fontHeading);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--accent);
-      white-space: nowrap;
-    }
-
-    .service-card p {
-      color: var(--textMuted);
-      font-size: 0.9rem;
-      line-height: 1.6;
+    @media (max-width: 600px) {
+      .services-visual-list { grid-template-columns: 1fr; }
+      .service-visual-card { height: 260px; }
     }
 
     /* ═══ REVIEWS ═══ */
@@ -663,100 +880,129 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
     .location-item-value a:hover { opacity: 0.8; }
 
     /* ═══ CTA ═══ */
-    .cta-section {
-      padding: 140px 24px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    /* ═══ CONTACT ═══ */
+    .contact-section { padding: 120px 24px; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 60px;
     }
 
-    .cta-section::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: var(--gradient);
-      opacity: 0.5;
-    }
-
-    /* CTA floating orbs */
-    .cta-orb {
-      position: absolute;
-      border-radius: 50%;
-      background: var(--accent);
-      filter: blur(100px);
-      pointer-events: none;
-    }
-    .cta-orb-1 { width: 300px; height: 300px; top: -20%; left: -10%; opacity: 0.06; }
-    .cta-orb-2 { width: 400px; height: 400px; bottom: -30%; right: -15%; opacity: 0.05; }
-
-    .cta-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
-
-    .cta-title {
-      font-family: var(--fontHeading);
-      font-size: clamp(2.2rem, 5.5vw, 3.5rem);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin-bottom: 18px;
-      opacity: 0; transform: translateY(40px);
-    }
-
-    .cta-subtitle {
+    .contact-intro {
       color: var(--textMuted);
-      font-size: 1.1rem;
-      line-height: 1.6;
+      line-height: 1.7;
       margin-bottom: 40px;
-      opacity: 0; transform: translateY(25px);
+      font-size: 1rem;
     }
 
-    .cta-buttons {
+    .contact-channels { display: flex; flex-direction: column; gap: 12px; }
+
+    .contact-channel {
       display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-      opacity: 0; transform: translateY(25px);
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--cardBorder);
+      background: var(--cardBg);
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
     }
 
-    .cta-btn {
+    .contact-channel:not(.contact-channel--static):hover {
+      border-color: var(--accent);
+      background: var(--accentSoft);
+    }
+
+    .contact-channel-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--accentSoft);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    .contact-channel-icon svg { width: 18px; height: 18px; }
+
+    .contact-channel-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--textMuted);
+      margin-bottom: 2px;
+    }
+
+    .contact-channel-val { font-size: 14px; font-weight: 500; color: var(--text); }
+
+    .contact-form-wrap {
+      background: var(--cardBg);
+      border: 1px solid var(--cardBorder);
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--textMuted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: color-mix(in srgb, var(--bg) 60%, transparent);
+      border: 1px solid var(--cardBorder);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: var(--text);
+      font-family: var(--fontBody);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--textMuted); opacity: 0.6; }
+
+    .form-submit {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      padding: 18px 40px;
+      padding: 16px 28px;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
       border-radius: 100px;
       font-family: var(--fontBody);
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.3s, box-shadow 0.3s;
-      position: relative;
-      overflow: hidden;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      width: 100%;
     }
 
-    .cta-btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
-      transform: translateX(-100%);
-      transition: transform 0.6s;
+    .form-submit:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px var(--accentGlow);
     }
 
-    .cta-btn:hover::after { transform: translateX(100%); }
-    .cta-btn:hover { transform: translateY(-3px); }
-
-    .cta-btn-wa { background: #25D366; color: #fff; }
-    .cta-btn-wa:hover { box-shadow: 0 16px 40px rgba(37, 211, 102, 0.35); }
-
-    .cta-btn-call { background: var(--accent); color: var(--bg); }
-    .cta-btn-call:hover { box-shadow: 0 16px 40px var(--accentGlow); }
-
-    .cta-btn svg { width: 20px; height: 20px; fill: currentColor; }
-
-    /* Glow ring pulse on WA button */
-    .cta-btn-wa { animation: waPulse 3s ease-in-out infinite; }
-
-    @keyframes waPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.25); }
-      50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
-    }
+    .form-submit svg { width: 18px; height: 18px; }
 
     /* ═══ FOOTER ═══ */
     .footer {
@@ -791,34 +1037,91 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
       text-decoration: none;
     }
 
+    /* ═══ CALAX BOTTOM CTA ═══ */
+    .calax-bottom-cta {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .calax-bottom-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .calax-bottom-eyebrow {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #7B6BB0;
+      font-weight: 600;
+    }
+
+    .calax-bottom-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .calax-bottom-sub {
+      color: rgba(255,255,255,0.55);
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    .calax-bottom-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: #7B6BB0;
+      color: #fff;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      margin-top: 8px;
+    }
+
+    .calax-bottom-btn:hover {
+      background: #9484c9;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(123,107,176,0.4);
+    }
+
+    .calax-bottom-btn svg { width: 20px; height: 20px; }
+
     /* ═══ RESPONSIVE ═══ */
     @media (max-width: 767px) {
       .hero { padding: 110px 20px 60px; }
       .section { padding: 80px 20px; }
-      .cta-section { padding: 80px 20px; }
+      .contact-section { padding: 80px 20px; }
       .hero h1 { font-size: clamp(2rem, 9vw, 3.2rem); }
+      .scroll-indicator { display: none; }
+      .about-inner { grid-template-columns: 1fr; gap: 24px; }
+      .about-label-col { flex-direction: row; align-items: center; }
+      .about-accent-line { display: none; }
+      .about-stats { gap: 24px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-form-wrap { padding: 24px; }
     }
   </style>
 </head>
 <body>
-  <!-- PREVIEW BANNER -->
-  {isPreview && (
-    <div class="preview-banner">
-      <span>Vista previa creada por <strong>Calax Studio</strong></span>
-      <a href={calaxWhatsapp} target="_blank" rel="noopener noreferrer">
-        ¿Querés esta web? Hablemos
-      </a>
-    </div>
-  )}
 
   <!-- NAV -->
   <nav class={`nav ${isPreview ? 'has-banner' : ''}`}>
-    <a href="#" class="nav-brand">{negocio.nombre}</a>
+    <a href="#" class="nav-brand">{categoryLabel}</a>
     <div class="nav-actions">
-      <a href={callUrl} class="nav-btn nav-btn-outline">
-        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-        <span>Llamar</span>
-      </a>
+      <a href="#servicios" class="nav-btn nav-btn-outline">Servicios</a>
       <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="nav-btn nav-btn-primary">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         <span>WhatsApp</span>
@@ -836,18 +1139,17 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
     </div>
 
     <div class="hero-content">
-      <div class="hero-location">
-        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        {negocio.barrio}, Barcelona
-      </div>
-
       <h1 data-split>{negocio.nombre}</h1>
 
-      <p class="hero-tagline">{negocio.tagline}</p>
+      <div class="hero-pills">
+        {negocio.especialidades.map((e) => (
+          <span class="hero-pill">{e}</span>
+        ))}
+      </div>
 
-      <div class="hero-rating">
-        <span class="rating-stars">{stars(negocio.rating)}</span>
-        <span class="rating-text"><strong>{negocio.rating}</strong> · <span data-count={negocio.resenas_count}>0</span> reseñas en Google</span>
+      <div class="hero-desc-block">
+        <div class="hero-desc-line"></div>
+        <p class="hero-gancho">{gancho}</p>
       </div>
 
       <div class="hero-ctas">
@@ -855,9 +1157,9 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Pedir cita
         </a>
-        <a href={callUrl} class="hero-btn hero-btn-ghost">
-          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-          Llamar ahora
+        <a href="#servicios" class="hero-btn hero-btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+          Nuestros servicios
         </a>
       </div>
     </div>
@@ -865,6 +1167,39 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
     <div class="scroll-indicator">
       <span>Descubrí más</span>
       <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="section-divider"><div class="line"></div></div>
+
+  <!-- ABOUT -->
+  <section class="section about-section" id="nosotros">
+    <div class="section-inner about-inner">
+      <div class="about-label-col">
+        <p class="section-label">Sobre nosotros</p>
+        <div class="about-accent-line"></div>
+      </div>
+      <div class="about-text-col">
+        <h2 class="about-title" data-reveal>Nuestra <em>historia</em></h2>
+        {historia.map((p) => (
+          <p class="about-para">{p}</p>
+        ))}
+        <div class="about-stats">
+          <div class="about-stat">
+            <span class="about-stat-number">{negocio.resenas_count}+</span>
+            <span class="about-stat-label">Clientes satisfechos</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-number">{negocio.rating}</span>
+            <span class="about-stat-label">Puntuación Google</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-number">{negocio.barrio}</span>
+            <span class="about-stat-label">Barcelona</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -879,14 +1214,19 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
         <h2 class="section-title" data-reveal>Nuestros <em>servicios</em></h2>
       </div>
 
-      <div class="services-grid">
-        {negocio.servicios.map((s) => (
-          <div class="service-card">
-            <div class="service-top">
+      <div class="services-visual-list">
+        {negocio.servicios.map((s, i) => (
+          <div class="service-visual-card">
+            <img
+              src={serviceImages[i % serviceImages.length]}
+              alt={s.nombre}
+              loading="lazy"
+            />
+            <div class="service-visual-overlay"></div>
+            <div class="service-visual-content">
               <h3>{s.nombre}</h3>
-              <span class="service-price">{s.precio}</span>
+              <p>{s.descripcion}</p>
             </div>
-            <p>{s.descripcion}</p>
           </div>
         ))}
       </div>
@@ -971,26 +1311,102 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="cta-orb cta-orb-1"></div>
-    <div class="cta-orb cta-orb-2"></div>
-    <div class="cta-content">
-      <h2 class="cta-title">¿Listo para reservar?</h2>
-      <p class="cta-subtitle">Contactanos y te atendemos al instante.</p>
+  <!-- DIVIDER -->
+  <div class="section-divider"><div class="line"></div></div>
 
-      <div class="cta-buttons">
-        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn-wa">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp
-        </a>
-        <a href={callUrl} class="cta-btn cta-btn-call">
-          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-          Llamar
-        </a>
+  <!-- CONTACT -->
+  <section class="contact-section section-alt" id="contacto">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-label">Contacto</p>
+        <h2 class="section-title" data-reveal>¿Hablamos?</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="contact-intro">Estamos para responder tus preguntas, confirmar turnos y lo que necesites. Elegí el canal que más te guste.</p>
+
+          <div class="contact-channels">
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="contact-channel">
+              <div class="contact-channel-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <div>
+                <p class="contact-channel-title">WhatsApp</p>
+                <p class="contact-channel-val">{negocio.telefono}</p>
+              </div>
+            </a>
+
+            <a href={callUrl} class="contact-channel">
+              <div class="contact-channel-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              </div>
+              <div>
+                <p class="contact-channel-title">Llamada</p>
+                <p class="contact-channel-val">{negocio.telefono}</p>
+              </div>
+            </a>
+
+            <div class="contact-channel contact-channel--static">
+              <div class="contact-channel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <p class="contact-channel-title">Ubicación</p>
+                <p class="contact-channel-val">{negocio.barrio}, Barcelona</p>
+              </div>
+            </div>
+
+            <div class="contact-channel contact-channel--static">
+              <div class="contact-channel-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div>
+                <p class="contact-channel-title">Horario</p>
+                <p class="contact-channel-val">{negocio.horario}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <form class="contact-form" id="contactForm" data-whatsapp={negocio.whatsapp}>
+            <div class="form-group">
+              <label for="cf-name">Tu nombre</label>
+              <input type="text" id="cf-name" name="name" placeholder="¿Cómo te llamás?" autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="cf-phone">Teléfono</label>
+              <input type="tel" id="cf-phone" name="phone" placeholder="+34 600 000 000" autocomplete="tel" />
+            </div>
+            <div class="form-group">
+              <label for="cf-msg">Mensaje</label>
+              <textarea id="cf-msg" name="message" rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
+            </div>
+            <button type="submit" class="form-submit">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Enviar por WhatsApp
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- CALAX BOTTOM CTA -->
+  {isPreview && (
+    <div class="calax-bottom-cta">
+      <div class="calax-bottom-inner">
+        <p class="calax-bottom-eyebrow">¿Tu negocio no tiene presencia online?</p>
+        <h3 class="calax-bottom-title">Esta web podría ser tuya</h3>
+        <p class="calax-bottom-sub">En Calax Studio diseñamos sitios web para negocios locales en Barcelona. Sin complicaciones, sin costos ocultos.</p>
+        <a href={calaxWhatsapp} target="_blank" rel="noopener noreferrer" class="calax-bottom-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Hablemos por WhatsApp
+        </a>
+      </div>
+    </div>
+  )}
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -1020,13 +1436,6 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
       splitInstance = new SplitType(heroTitle, { types: 'words,chars' });
     }
 
-    // ── Preview banner ──
-    gsap.to('.preview-banner', { y: 0, duration: 0.5, delay: 0.6, ease: 'power3.out',
-      onStart: () => {
-        const el = document.querySelector('.preview-banner') as HTMLElement;
-        if (el) el.style.transform = 'translateY(-100%)';
-      },
-    });
 
     // ── Nav entrance ──
     const navTl = gsap.timeline({ delay: 0.3 });
@@ -1041,7 +1450,6 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
     });
 
     heroTl
-      .to('.hero-location', { opacity: 1, y: 0, duration: 0.7 })
       // SplitType char-by-char reveal
       .to(splitInstance?.chars || [], {
         opacity: 1,
@@ -1051,8 +1459,8 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
         stagger: { amount: 0.6, from: 'start' },
         ease: 'back.out(1.5)',
       }, '-=0.3')
-      .to('.hero-tagline', { opacity: 1, y: 0, duration: 0.8 }, '-=0.3')
-      .to('.hero-rating', { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'back.out(1.7)' }, '-=0.4')
+      .to('.hero-pills', { opacity: 1, y: 0, duration: 0.7 }, '-=0.3')
+      .to('.hero-desc-block', { opacity: 1, y: 0, duration: 0.8 }, '-=0.3')
       .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.7 }, '-=0.3')
       .to('.scroll-indicator', { opacity: 1, duration: 0.8 }, '-=0.2');
 
@@ -1071,15 +1479,16 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
       });
     }
 
-    // ── Nav scroll effect ──
+    // ── Nav scroll effect — fondo sólido desde 80px ──
     const nav = document.querySelector('.nav');
-    ScrollTrigger.create({
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      onLeave: () => nav?.classList.add('scrolled'),
-      onEnterBack: () => nav?.classList.remove('scrolled'),
-    });
+    let navScrolled = false;
+    window.addEventListener('scroll', () => {
+      const shouldScroll = window.scrollY > 80;
+      if (shouldScroll !== navScrolled) {
+        navScrolled = shouldScroll;
+        nav?.classList.toggle('scrolled', shouldScroll);
+      }
+    }, { passive: true });
 
     // ── Section divider lines — animate scaleX on scroll ──
     gsap.utils.toArray('.section-divider .line').forEach((el: any) => {
@@ -1088,6 +1497,15 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
         duration: 1.2,
         ease: 'power3.inOut',
         scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
+      });
+    });
+
+    // ── About paragraphs ──
+    gsap.utils.toArray('.about-para').forEach((el: any, i: number) => {
+      gsap.to(el, {
+        opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+        delay: i * 0.12,
+        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
       });
     });
 
@@ -1115,19 +1533,16 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
       );
     });
 
-    // ── Service cards — stagger with 3D rotation ──
-    ScrollTrigger.batch('.service-card', {
-      onEnter: (elements) => {
-        gsap.to(elements, {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          duration: 0.8,
-          stagger: 0.08,
-          ease: 'power3.out',
-        });
-      },
-      start: 'top 88%',
+    // ── Service visual cards — subtle scale reveal ──
+    gsap.utils.toArray('.service-visual-card').forEach((el: any, i: number) => {
+      gsap.fromTo(el,
+        { opacity: 0, scale: 0.97 },
+        {
+          opacity: 1, scale: 1, duration: 0.7, ease: 'power3.out',
+          delay: (i % 2) * 0.1,
+          scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
+        }
+      );
     });
 
     // ── Review cards — dramatic scale + rotate entrance ──
@@ -1163,25 +1578,19 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
       scrollTrigger: { trigger: '.location-info', start: 'top 82%', toggleActions: 'play none none none' },
     });
 
-    // ── CTA section — timeline ──
-    const ctaTl = gsap.timeline({
-      defaults: { ease: 'power3.out' },
-      scrollTrigger: { trigger: '.cta-section', start: 'top 70%', toggleActions: 'play none none none' },
-    });
-    ctaTl
-      .to('.cta-title', { opacity: 1, y: 0, duration: 0.9 })
-      .to('.cta-subtitle', { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
-      .to('.cta-buttons', { opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.5)' }, '-=0.3');
-
-    // ── CTA orbs parallax ──
-    gsap.to('.cta-orb-1', {
-      y: -80, x: 30,
-      scrollTrigger: { trigger: '.cta-section', start: 'top bottom', end: 'bottom top', scrub: 1 },
-    });
-    gsap.to('.cta-orb-2', {
-      y: 60, x: -40,
-      scrollTrigger: { trigger: '.cta-section', start: 'top bottom', end: 'bottom top', scrub: 1 },
-    });
+    // ── Contact form — WhatsApp submit ──
+    const contactForm = document.getElementById('contactForm') as HTMLFormElement | null;
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = (contactForm.querySelector('#cf-name') as HTMLInputElement).value.trim();
+        const phone = (contactForm.querySelector('#cf-phone') as HTMLInputElement).value.trim();
+        const msg = (contactForm.querySelector('#cf-msg') as HTMLTextAreaElement).value.trim();
+        const whatsapp = contactForm.getAttribute('data-whatsapp') || '';
+        const text = `Hola, soy ${name || 'un cliente'}${phone ? ` (${phone})` : ''}. ${msg || 'Me gustaría más información.'}`;
+        window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(text)}`, '_blank');
+      });
+    }
 
     // ── Hero floating shapes parallax ──
     gsap.to('.shape-1', {
@@ -1201,27 +1610,6 @@ const calaxWhatsapp = 'https://wa.me/34600000000?text=' + encodeURIComponent(`Ho
       scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
     });
 
-    // ── 3D tilt on service cards (desktop only) ──
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      document.querySelectorAll('.service-card').forEach((card) => {
-        card.addEventListener('mousemove', (e: Event) => {
-          const ev = e as MouseEvent;
-          const rect = (card as HTMLElement).getBoundingClientRect();
-          const x = (ev.clientX - rect.left) / rect.width - 0.5;
-          const y = (ev.clientY - rect.top) / rect.height - 0.5;
-          gsap.to(card, {
-            rotateY: x * 8,
-            rotateX: -y * 8,
-            duration: 0.4,
-            ease: 'power2.out',
-            transformPerspective: 800,
-          });
-        });
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.6, ease: 'elastic.out(1, 0.5)' });
-        });
-      });
-    }
   </script>
 </body>
 </html>
