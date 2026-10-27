@@ -5,12 +5,15 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  /** Skips the preloader and the section dots (used by legal/secondary pages). */
+  minimal?: boolean;
 }
 
 const {
   title = 'Calax Studio | Agencia Digital',
   description = 'Diseño web, contenido visual y automatización para negocios en Barcelona. Trabajás directamente con quienes hacen el trabajo.',
   image = '/og-image.jpg',
+  minimal = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstudio.com');
@@ -275,34 +278,38 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
   </head>
   <body>
     <!-- Page entry preloader -->
-    <div id="preloader" aria-hidden="true">
-      <div id="preloader-logo">
-        <img id="preloader-img" src="/logo-simple.png" alt="Calax Studio logo" />
-        <div id="preloader-brand">
-          <span class="slide-up-char">C</span>
-          <span class="slide-up-char">a</span>
-          <span class="slide-up-char">l</span>
-          <span class="slide-up-char">a</span>
-          <span class="slide-up-char">X</span>
+    {!minimal && (
+      <div id="preloader" aria-hidden="true">
+        <div id="preloader-logo">
+          <img id="preloader-img" src="/logo-simple.png" alt="Calax Studio logo" />
+          <div id="preloader-brand">
+            <span class="slide-up-char">C</span>
+            <span class="slide-up-char">a</span>
+            <span class="slide-up-char">l</span>
+            <span class="slide-up-char">a</span>
+            <span class="slide-up-char">X</span>
+          </div>
+          <div id="preloader-studio">studio</div>
         </div>
-        <div id="preloader-studio">studio</div>
+        <div id="page-load-green"></div>
+        <div id="page-load-black"></div>
       </div>
-      <div id="page-load-green"></div>
-      <div id="page-load-black"></div>
-    </div>
+    )}
 
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
 
     <!-- Scroll section indicator -->
-    <nav id="scroll-indicator" aria-label="Navegación de secciones">
-      <a class="scroll-dot" href="#hero" data-section="hero"><span class="scroll-dot-label">Inicio</span></a>
-      <a class="scroll-dot" href="#servicios" data-section="servicios"><span class="scroll-dot-label">Servicios</span></a>
-      <a class="scroll-dot" href="#portfolio" data-section="portfolio"><span class="scroll-dot-label">Portfolio</span></a>
-      <a class="scroll-dot" href="#proceso" data-section="proceso"><span class="scroll-dot-label">Proceso</span></a>
-      <a class="scroll-dot" href="#nosotros" data-section="nosotros"><span class="scroll-dot-label">Nosotros</span></a>
-      <a class="scroll-dot" href="#contacto" data-section="contacto"><span class="scroll-dot-label">Contacto</span></a>
-    </nav>
+    {!minimal && (
+      <nav id="scroll-indicator" aria-label="Navegación de secciones">
+        <a class="scroll-dot" href="#hero" data-section="hero"><span class="scroll-dot-label">Inicio</span></a>
+        <a class="scroll-dot" href="#servicios" data-section="servicios"><span class="scroll-dot-label">Servicios</span></a>
+        <a class="scroll-dot" href="#portfolio" data-section="portfolio"><span class="scroll-dot-label">Portfolio</span></a>
+        <a class="scroll-dot" href="#proceso" data-section="proceso"><span class="scroll-dot-label">Proceso</span></a>
+        <a class="scroll-dot" href="#nosotros" data-section="nosotros"><span class="scroll-dot-label">Nosotros</span></a>
+        <a class="scroll-dot" href="#contacto" data-section="contacto"><span class="scroll-dot-label">Contacto</span></a>
+      </nav>
+    )}
 
     <slot />
 

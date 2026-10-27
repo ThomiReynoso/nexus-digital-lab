@@ -1,16 +1,22 @@
 ---
+interface Props {
+  /** Prefix for in-page anchors; use "/" on pages other than the home. */
+  base?: string;
+}
+
+const { base = '' } = Astro.props;
 ---
 
 <nav class="nav">
-  <a href="#hero" class="logo"><img src="/logo1.png" alt="Calax Studio" class="logo-img" /></a>
+  <a href={`${base}#hero`} class="logo"><img src="/logo1.png" alt="Calax Studio" class="logo-img" /></a>
 
   <ul class="nav-links">
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#proceso">Proceso</a></li>
-    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href={`${base}#servicios`}>Servicios</a></li>
+    <li><a href={`${base}#proceso`}>Proceso</a></li>
+    <li><a href={`${base}#nosotros`}>Nosotros</a></li>
   </ul>
 
-  <a href="#contacto" class="nav-cta">Hablemos</a>
+  <a href={`${base}#contacto`} class="nav-cta">Hablemos</a>
 
   <!-- Hamburger button (mobile only) -->
   <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -24,11 +30,11 @@
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
   <div class="mobile-menu-inner">
     <ul class="mobile-links">
-      <li><a href="#servicios" class="mobile-link">Servicios</a></li>
-      <li><a href="#proceso" class="mobile-link">Proceso</a></li>
-      <li><a href="#nosotros" class="mobile-link">Nosotros</a></li>
+      <li><a href={`${base}#servicios`} class="mobile-link">Servicios</a></li>
+      <li><a href={`${base}#proceso`} class="mobile-link">Proceso</a></li>
+      <li><a href={`${base}#nosotros`} class="mobile-link">Nosotros</a></li>
     </ul>
-    <a href="#contacto" class="mobile-cta">Hablemos</a>
+    <a href={`${base}#contacto`} class="mobile-cta">Hablemos</a>
   </div>
 </div>
 

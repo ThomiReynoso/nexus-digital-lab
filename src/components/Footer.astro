@@ -1,9 +1,17 @@
 ---
+interface Props {
+  /** Prefix for in-page anchors; use "/" on pages other than the home. */
+  base?: string;
+}
+
+const { base = '' } = Astro.props;
+
 const links = [
-  { text: 'Servicios', href: '#servicios' },
-  { text: 'Portfolio', href: '#portfolio' },
-  { text: 'Proceso', href: '#proceso' },
-  { text: 'Contacto', href: '#contacto' },
+  { text: 'Servicios', href: `${base}#servicios` },
+  { text: 'Portfolio', href: `${base}#portfolio` },
+  { text: 'Proceso', href: `${base}#proceso` },
+  { text: 'Contacto', href: `${base}#contacto` },
+  { text: 'Política de privacidad', href: '/politica-de-privacidad' },
 ];
 ---
 
