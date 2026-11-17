@@ -1,0 +1,143 @@
+{
+  "_instrucciones": "Mientras 'demo' sea true, la página muestra un aviso de contenido de ejemplo y no se indexa en Google. Cambialo a false cuando todo el contenido sea real. Videos: 'type' puede ser 'file' (mp4 en /public o URL directa), 'youtube' (ID del video) o 'vimeo' (ID del video). 'poster' es la imagen que se ve antes de reproducir.",
+  "demo": true,
+
+  "showreel": {
+    "type": "file",
+    "src": "/portfolio-contenido/demo/showreel.mp4",
+    "poster": "/portfolio-contenido/demo/showreel.jpg"
+  },
+
+  "stats": [
+    { "value": 350, "suffix": "+", "label": "Videos editados" },
+    { "value": 12, "suffix": "M", "label": "Vistas generadas para clientes" },
+    { "value": 25, "suffix": "+", "label": "Creadores y marcas" },
+    { "value": 48, "suffix": "h", "label": "Entrega promedio del primer corte" }
+  ],
+
+  "formats": [
+    { "id": "reels", "label": "Reels y Shorts" },
+    { "id": "youtube", "label": "YouTube" },
+    { "id": "podcast", "label": "Podcast" },
+    { "id": "ads", "label": "Anuncios" }
+  ],
+
+  "cases": [
+    {
+      "id": "coach-fitness",
+      "format": "reels",
+      "orientation": "vertical",
+      "client": "Laura Ferrer",
+      "niche": "Coach fitness",
+      "handle": "@laura.entrena",
+      "profileUrl": "https://instagram.com/",
+      "deliverable": "Reels · 4 por semana",
+      "challenge": "Grababa contenido de valor, pero los videos no retenían: la gente se iba en los primeros 3 segundos.",
+      "work": ["Hooks en los primeros 2 s", "Subtítulos dinámicos", "Ritmo y cortes", "B-roll", "Portadas"],
+      "results": [
+        { "value": "×3,4", "label": "vistas promedio por Reel" },
+        { "value": "62%", "label": "retención a 3 s (antes 31%)" },
+        { "value": "+8.200", "label": "seguidores en 90 días" }
+      ],
+      "quote": "Desde que Mai edita mis Reels dejé de pensar en la edición. Yo grabo y ellos lo convierten en algo que la gente mira hasta el final.",
+      "before": { "type": "file", "src": "/portfolio-contenido/demo/caso-1-crudo.mp4", "poster": "/portfolio-contenido/demo/caso-1-crudo.jpg" },
+      "after": { "type": "file", "src": "/portfolio-contenido/demo/caso-1-editado.mp4", "poster": "/portfolio-contenido/demo/caso-1-editado.jpg" }
+    },
+    {
+      "id": "finanzas-youtube",
+      "format": "youtube",
+      "orientation": "horizontal",
+      "client": "Martín Ríos",
+      "niche": "Educación financiera",
+      "handle": "Finanzas en Simple",
+      "profileUrl": "https://youtube.com/",
+      "deliverable": "YouTube largo · 1 por semana + 3 Shorts",
+      "challenge": "Videos de 20 minutos con mucha información y poco ritmo. El tiempo de visualización era bajo y el canal no despegaba.",
+      "work": ["Estructura y guion de edición", "Motion graphics", "Gráficos de datos", "Diseño de sonido", "Miniaturas"],
+      "results": [
+        { "value": "+71%", "label": "tiempo medio de visualización" },
+        { "value": "5,8%", "label": "CTR en miniaturas (antes 2,9%)" },
+        { "value": "1,2M", "label": "vistas en 6 meses" }
+      ],
+      "quote": "El canal cambió de nivel. Los videos se ven profesionales y los números lo confirman.",
+      "before": { "type": "file", "src": "/portfolio-contenido/demo/caso-2-crudo.mp4", "poster": "/portfolio-contenido/demo/caso-2-crudo.jpg" },
+      "after": { "type": "file", "src": "/portfolio-contenido/demo/caso-2-editado.mp4", "poster": "/portfolio-contenido/demo/caso-2-editado.jpg" }
+    },
+    {
+      "id": "podcast-clips",
+      "format": "podcast",
+      "orientation": "vertical",
+      "client": "Charlas de Oficio",
+      "niche": "Podcast de emprendedores",
+      "handle": "@charlasdeoficio",
+      "profileUrl": "https://instagram.com/",
+      "deliverable": "Clips verticales · 10 por episodio",
+      "challenge": "Episodios de una hora con momentos muy buenos que nadie veía fuera de Spotify.",
+      "work": ["Selección de momentos clave", "Reencuadre multicámara", "Subtítulos", "Branding del podcast"],
+      "results": [
+        { "value": "+240%", "label": "alcance en Instagram" },
+        { "value": "3", "label": "clips con más de 500 mil vistas" },
+        { "value": "+35%", "label": "oyentes nuevos por episodio" }
+      ],
+      "quote": "Cada episodio ahora se convierte en una semana entera de contenido.",
+      "before": { "type": "file", "src": "/portfolio-contenido/demo/caso-3-crudo.mp4", "poster": "/portfolio-contenido/demo/caso-3-crudo.jpg" },
+      "after": { "type": "file", "src": "/portfolio-contenido/demo/caso-3-editado.mp4", "poster": "/portfolio-contenido/demo/caso-3-editado.jpg" }
+    },
+    {
+      "id": "skincare-ads",
+      "format": "ads",
+      "orientation": "vertical",
+      "client": "Alba Skin",
+      "niche": "Marca de skincare",
+      "handle": "@albaskin",
+      "profileUrl": "https://instagram.com/",
+      "deliverable": "Anuncios UGC · 6 variantes por campaña",
+      "challenge": "Los anuncios de producto se veían genéricos y el costo por compra no paraba de subir.",
+      "work": ["Variantes de hook para testear", "Edición estilo UGC", "Textos en pantalla", "Formatos 9:16 y 4:5"],
+      "results": [
+        { "value": "−38%", "label": "costo por compra" },
+        { "value": "2,1×", "label": "CTR frente a los anuncios anteriores" },
+        { "value": "6", "label": "variantes por semana" }
+      ],
+      "quote": "Nos dieron variantes listas para testear cada semana. Bajamos el costo por compra en el primer mes.",
+      "before": { "type": "file", "src": "/portfolio-contenido/demo/caso-4-crudo.mp4", "poster": "/portfolio-contenido/demo/caso-4-crudo.jpg" },
+      "after": { "type": "file", "src": "/portfolio-contenido/demo/caso-4-editado.mp4", "poster": "/portfolio-contenido/demo/caso-4-editado.jpg" }
+    }
+  ],
+
+  "testimonials": [
+    {
+      "kind": "video",
+      "name": "Laura Ferrer",
+      "role": "Coach fitness · @laura.entrena",
+      "media": { "type": "file", "src": "/portfolio-contenido/demo/testimonio-1.mp4", "poster": "/portfolio-contenido/demo/testimonio-1.jpg" }
+    },
+    {
+      "kind": "video",
+      "name": "Martín Ríos",
+      "role": "YouTuber · Finanzas en Simple",
+      "media": { "type": "file", "src": "/portfolio-contenido/demo/testimonio-2.mp4", "poster": "/portfolio-contenido/demo/testimonio-2.jpg" }
+    },
+    {
+      "kind": "audio",
+      "name": "Charlas de Oficio",
+      "role": "Podcast de emprendedores",
+      "quote": "Lo que más valoro es que entienden el tono del podcast. No hace falta explicarles nada dos veces.",
+      "media": { "src": "/portfolio-contenido/demo/testimonio-audio.mp3" }
+    }
+  ],
+
+  "process": [
+    { "title": "Brief", "text": "Nos contás tu objetivo, tu público y referencias. Definimos estilo, formatos y frecuencia." },
+    { "title": "Primer corte", "text": "En 48 h tenés la primera versión, con hooks, ritmo y subtítulos." },
+    { "title": "Revisiones", "text": "Ajustamos sobre tu feedback. Dos rondas incluidas por video." },
+    { "title": "Entrega", "text": "Archivos listos para publicar en cada plataforma, con portada incluida." }
+  ],
+
+  "services": [
+    { "title": "Reels y Shorts", "text": "Contenido vertical pensado para retener desde el primer segundo." },
+    { "title": "YouTube largo", "text": "Estructura, motion graphics, sonido y miniaturas para aumentar el tiempo de visualización." },
+    { "title": "Clips de podcast", "text": "Convertimos cada episodio en una semana de contenido." },
+    { "title": "Anuncios", "text": "Variantes listas para testear en Meta y TikTok Ads." }
+  ]
+}

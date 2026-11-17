@@ -1,0 +1,136 @@
+---
+/**
+ * Renders one piece of media for the content portfolio.
+ *
+ * type:
+ *   - "file"    → an mp4 in /public or a direct video URL
+ *   - "youtube" → src is the video ID (e.g. "dQw4w9WgXcQ")
+ *   - "vimeo"   → src is the video ID (e.g. "76979871")
+ *
+ * mode:
+ *   - "ambient" → muted loop that plays only while on screen (case previews)
+ *   - "click"   → shows the poster and a play button; plays with sound on click
+ */
+export interface MediaItem {
+  type: 'file' | 'youtube' | 'vimeo';
+  src: string;
+  poster?: string;
+}
+
+interface Props {
+  media: MediaItem;
+  mode?: 'ambient' | 'click';
+  label?: string;
+  class?: string;
+}
+
+const { media, mode = 'click', label = 'Reproducir video', class: className = '' } = Astro.props;
+
+const poster =
+  media.poster ??
+  (media.type === 'youtube' ? `https://i.ytimg.com/vi/${media.src}/hqdefault.jpg` : undefined);
+
+const embedUrl =
+  media.type === 'youtube'
+    ? `https://www.youtube-nocookie.com/embed/${media.src}?autoplay=1&rel=0&modestbranding=1&playsinline=1`
+    : media.type === 'vimeo'
+      ? `https://player.vimeo.com/video/${media.src}?autoplay=1&title=0&byline=0&portrait=0`
+      : undefined;
+---
+
+<div class:list={['pc-media', className]} data-media-mode={mode}>
+  {media.type === 'file' ? (
+    mode === 'ambient' ? (
+      <video
+        class="pc-media-el"
+        src={media.src}
+        poster={poster}
+        muted
+        loop
+        playsinline
+        preload="none"
+        data-ambient
+        aria-hidden="true"
+      />
+    ) : (
+      <>
+        <video class="pc-media-el" src={media.src} poster={poster} playsinline preload="none" data-click-video />
+        <button type="button" class="pc-play" data-play aria-label={label}>
+          <span class="pc-play-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
+          </span>
+        </button>
+      </>
+    )
+  ) : (
+    <>
+      {poster && <img class="pc-media-el" src={poster} alt="" loading="lazy" />}
+      <button type="button" class="pc-play" data-embed={embedUrl} aria-label={label}>
+        <span class="pc-play-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
+        </span>
+      </button>
+    </>
+  )}
+</div>
+
+<style>
+  .pc-media {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #111110;
+    overflow: hidden;
+  }
+
+  .pc-media-el,
+  .pc-media :global(iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+    display: block;
+  }
+
+  .pc-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0) 40%, rgba(10, 10, 10, 0.45) 100%);
+    border: 0;
+    cursor: pointer;
+    color: #0A0A0A;
+    transition: background 0.3s;
+  }
+
+  .pc-play-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: var(--color-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 3px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  }
+
+  .pc-play:hover .pc-play-icon,
+  .pc-play:focus-visible .pc-play-icon {
+    transform: scale(1.08);
+    background: var(--color-green);
+    box-shadow:
+      0 0 0 10px rgba(184, 232, 174, 0.15),
+      0 10px 40px rgba(0, 0, 0, 0.45);
+  }
+
+  .pc-play:focus-visible {
+    outline: 2px solid var(--color-purple);
+    outline-offset: -4px;
+  }
+</style>

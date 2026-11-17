@@ -7,6 +7,8 @@ interface Props {
   image?: string;
   /** Skips the preloader and the section dots (used by legal/secondary pages). */
   minimal?: boolean;
+  /** Asks search engines not to index the page (drafts and demo content). */
+  noindex?: boolean;
 }
 
 const {
@@ -14,6 +16,7 @@ const {
   description = 'Diseño web, contenido visual y automatización para negocios en Barcelona. Trabajás directamente con quienes hacen el trabajo.',
   image = '/og-image.jpg',
   minimal = false,
+  noindex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstudio.com');
@@ -31,6 +34,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://calaxstu
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
