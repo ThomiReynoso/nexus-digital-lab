@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import Media from '../components/portfolio-contenido/Media.astro';
 import data from '../data/portfolio-contenido.json';
 
-const { demo, showreel, stats, formats, cases, testimonials, process, services } = data as any;
+const { demo, hero, showreel, stats, formats, pillars, coaching, cases, testimonials, process } = data as any;
 
 const formatLabel = (id: string) => formats.find((f: any) => f.id === id)?.label ?? id;
 const pad = (n: number) => String(n).padStart(2, '0');
@@ -31,13 +31,8 @@ const whatsappUrl =
 
       <div class="pc-wrap pc-hero-inner">
         <p class="section-label" data-animate>Portfolio · Edición de contenido</p>
-        <h1 class="pc-hero-title" data-animate>
-          Videos que la gente <em>mira hasta el final</em>.
-        </h1>
-        <p class="pc-hero-sub" data-animate>
-          Editamos Reels, Shorts, YouTube, podcasts y anuncios para creadores y marcas. Acá tenés casos
-          reales: qué recibimos, qué hicimos y qué resultados logró cada cliente.
-        </p>
+        <h1 class="pc-hero-title" data-animate set:html={hero.title} />
+        <p class="pc-hero-sub" data-animate>{hero.subtitle}</p>
         <div class="pc-hero-actions" data-animate>
           <a href="#casos" class="btn-primary">Ver casos</a>
           <a href="/#contacto" class="btn-secondary">Pedir presupuesto</a>
@@ -62,10 +57,53 @@ const whatsappUrl =
       ))}
     </section>
 
+    <!-- ─── Pillars ──────────────────────────────────────────────────────── -->
+    <section class="pc-wrap pc-section" id="servicios">
+      <p class="section-label" data-animate>Cómo te acompañamos</p>
+      <h2 class="section-title" data-split-text>No es solo edición: estamos <em>en todo el proceso</em></h2>
+
+      <div class="pc-services">
+        {pillars.map((s: any, i: number) => (
+          <div class="pc-service" data-animate>
+            <span class="pc-service-n">{pad(i + 1)}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            {s.items?.length > 0 && (
+              <ul class="pc-service-items">
+                {s.items.map((it: string) => <li>{it}</li>)}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ─── Coaching ─────────────────────────────────────────────────────── -->
+    <section class="pc-wrap pc-section" id="coaching">
+      <div class="pc-coach">
+        <div class="pc-coach-photo" data-animate>
+          <img src={coaching.photo} alt={coaching.name} loading="lazy" />
+          <div class="pc-coach-id">
+            <strong>{coaching.name}</strong>
+            <span>{coaching.role}</span>
+          </div>
+        </div>
+        <div class="pc-coach-text" data-animate>
+          <p class="section-label">{coaching.label}</p>
+          <h2 class="pc-coach-title" set:html={coaching.title} />
+          <p class="pc-coach-body">{coaching.text}</p>
+          <ul class="pc-coach-points">
+            {coaching.points.map((pt: string) => <li>{pt}</li>)}
+          </ul>
+          <a href="/#contacto" class="btn-secondary">Quiero una sesión</a>
+        </div>
+      </div>
+    </section>
+
     <!-- ─── Cases ────────────────────────────────────────────────────────── -->
     <section class="pc-wrap pc-section" id="casos">
       <p class="section-label" data-animate>Casos</p>
-      <h2 class="section-title" data-split-text>Del clip crudo al <em>video que funciona</em></h2>
+      <h2 class="section-title" data-split-text>Del clip crudo a un video <em>que te representa</em></h2>
 
       <div class="pc-filters" role="group" aria-label="Filtrar casos por formato" data-animate>
         <button type="button" class="pc-chip is-active" data-filter="all" aria-pressed="true">Todos</button>
@@ -185,23 +223,11 @@ const whatsappUrl =
       </div>
     </section>
 
-    <!-- ─── Services + process ───────────────────────────────────────────── -->
-    <section class="pc-wrap pc-section" id="servicios">
-      <p class="section-label" data-animate>Qué editamos</p>
-      <h2 class="section-title" data-split-text>Un formato para cada <em>objetivo</em></h2>
-
-      <div class="pc-services">
-        {services.map((s: any, i: number) => (
-          <div class="pc-service" data-animate>
-            <span class="pc-service-n">{pad(i + 1)}</span>
-            <h3>{s.title}</h3>
-            <p>{s.text}</p>
-          </div>
-        ))}
-      </div>
-
+    <!-- ─── Process ──────────────────────────────────────────────────────── -->
+    <section class="pc-wrap pc-section">
       <div class="pc-process" id="proceso">
         <p class="section-label" data-animate>Cómo trabajamos</p>
+        <h2 class="section-title" data-split-text>Paso a paso, <em>con vos</em></h2>
         <ol class="pc-steps">
           {process.map((p: any, i: number) => (
             <li class="pc-step" data-animate>
@@ -217,8 +243,8 @@ const whatsappUrl =
     <!-- ─── CTA ──────────────────────────────────────────────────────────── -->
     <section class="pc-cta">
       <div class="pc-wrap pc-cta-inner" data-animate>
-        <h2 class="pc-cta-title">¿Tu contenido merece <em>verse así</em>?</h2>
-        <p>Completá el formulario y te mostramos cómo editaríamos tu contenido. Sin compromiso.</p>
+        <h2 class="pc-cta-title">¿Empezamos a <em>contar tu historia</em>?</h2>
+        <p>Contanos de tu proyecto y vemos juntos cómo podemos acompañarte. Sin compromiso.</p>
         <div class="pc-hero-actions">
           <a href="/#contacto" class="btn-primary">Contanos tu proyecto</a>
           <a href={whatsappUrl} class="btn-secondary" target="_blank" rel="noopener noreferrer">Escribinos por WhatsApp</a>
@@ -232,7 +258,7 @@ const whatsappUrl =
   {demo && (
     <div class="pc-demo-banner" role="note">
       <span class="pc-demo-dot" aria-hidden="true"></span>
-      Versión de prueba: videos, métricas y testimonios de ejemplo
+      Versión de prueba · contenido de ejemplo
     </div>
   )}
 </Layout>
@@ -294,14 +320,14 @@ const whatsappUrl =
   .pc-hero-title {
     font-family: var(--font-serif);
     font-weight: 400;
-    font-size: clamp(44px, 7vw, 96px);
+    font-size: clamp(40px, 5.6vw, 80px);
     line-height: 1.02;
     letter-spacing: -0.03em;
     color: var(--color-cream);
     margin-bottom: 28px;
   }
 
-  .pc-hero-title em,
+  .pc-hero-title :global(em),
   .pc-cta-title em {
     font-style: italic;
     background: linear-gradient(90deg, var(--color-purple), var(--color-green));
@@ -824,9 +850,148 @@ const whatsappUrl =
     color: var(--color-ink-muted);
   }
 
+  .pc-service-items {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 20px;
+  }
+
+  .pc-service-items li {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 5px 11px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .pc-service:last-child {
+    background: linear-gradient(165deg, rgba(26, 43, 24, 0.9), rgba(17, 17, 16, 0.6));
+    border-color: rgba(184, 232, 174, 0.2);
+  }
+
+  .pc-service:last-child .pc-service-n {
+    color: var(--color-green);
+  }
+
+  /* ─── Coaching ─── */
+  .pc-coach {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(32px, 6vw, 88px);
+    align-items: center;
+    padding: clamp(24px, 4vw, 56px);
+    border-radius: 32px;
+    background:
+      radial-gradient(70% 90% at 0% 100%, rgba(111, 207, 90, 0.16), transparent 70%),
+      linear-gradient(160deg, #141413 0%, #0E0E0D 100%);
+    border: 1px solid rgba(184, 232, 174, 0.14);
+  }
+
+  .pc-coach-photo {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--color-green-light);
+  }
+
+  .pc-coach-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pc-coach-id {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .pc-coach-id strong {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--color-cream);
+  }
+
+  .pc-coach-id span {
+    font-size: 12px;
+    color: var(--color-green);
+  }
+
+  .pc-coach-text .section-label {
+    color: var(--color-green-deep);
+  }
+
+  .pc-coach-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--color-cream);
+    margin-bottom: 20px;
+  }
+
+  .pc-coach-title :global(em) {
+    font-style: italic;
+    color: var(--color-green);
+  }
+
+  .pc-coach-body {
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 24px;
+  }
+
+  .pc-coach-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .pc-coach-points li {
+    position: relative;
+    padding-left: 28px;
+    font-size: 15px;
+    color: var(--color-cream);
+  }
+
+  .pc-coach-points li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(184, 232, 174, 0.15);
+    color: var(--color-green);
+  }
+
   /* ─── Process ─── */
   .pc-process {
-    margin-top: clamp(72px, 9vw, 112px);
+    margin-top: 0;
   }
 
   .pc-steps {
@@ -932,6 +1097,7 @@ const whatsappUrl =
     align-items: center;
     gap: 10px;
     max-width: calc(100vw - 32px);
+    white-space: nowrap;
     font-size: 12px;
     color: #0A0A0A;
     background: var(--color-green);
@@ -965,6 +1131,14 @@ const whatsappUrl =
   }
 
   @media (max-width: 860px) {
+    .pc-coach {
+      grid-template-columns: 1fr;
+    }
+
+    .pc-coach-photo {
+      max-width: 420px;
+    }
+
     .pc-case {
       grid-template-columns: 1fr;
     }
