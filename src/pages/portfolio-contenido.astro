@@ -1,0 +1,1413 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Media from '../components/portfolio-contenido/Media.astro';
+import data from '../data/portfolio-contenido.json';
+
+const { demo, hero, showreel, stats, formats, pillars, coaching, cases, testimonials, process } = data as any;
+
+const formatLabel = (id: string) => formats.find((f: any) => f.id === id)?.label ?? id;
+const pad = (n: number) => String(n).padStart(2, '0');
+
+const whatsappUrl =
+  'https://wa.me/5491166587697?text=' +
+  encodeURIComponent('Hola, vi el portfolio de edición de Calax y quiero consultar por la edición de mis videos.');
+---
+
+<Layout
+  title="Portfolio de edición de contenido | Calax Studio"
+  description="Reels, Shorts, YouTube, podcasts y anuncios editados por Calax Studio. Casos reales con el antes y el después, resultados y testimonios de clientes."
+  minimal
+  noindex={demo}
+>
+  <Nav base="/" />
+
+  <main class="pc">
+    <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
+    <section class="pc-hero" id="hero">
+      <div class="pc-blob pc-blob-1" aria-hidden="true"></div>
+      <div class="pc-blob pc-blob-2" aria-hidden="true"></div>
+
+      <div class="pc-wrap pc-hero-inner">
+        <p class="section-label" data-animate>Portfolio · Edición de contenido</p>
+        <h1 class="pc-hero-title" data-animate set:html={hero.title} />
+        <p class="pc-hero-sub" data-animate>{hero.subtitle}</p>
+        <div class="pc-hero-actions" data-animate>
+          <a href="#casos" class="btn-primary">Ver casos</a>
+          <a href="/#contacto" class="btn-secondary">Pedir presupuesto</a>
+        </div>
+      </div>
+
+      <div class="pc-wrap">
+        <div class="pc-showreel" data-animate>
+          <Media media={showreel} mode="click" label="Reproducir showreel" />
+          <span class="pc-showreel-tag">Showreel {new Date().getFullYear()}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Stats ────────────────────────────────────────────────────────── -->
+    <section class="pc-wrap pc-stats" aria-label="Resultados en números">
+      {stats.map((s: any) => (
+        <div class="pc-stat" data-animate>
+          <div class="pc-stat-value" data-counter={s.value}>{s.value}{s.suffix}</div>
+          <div class="pc-stat-label">{s.label}</div>
+        </div>
+      ))}
+    </section>
+
+    <!-- ─── Pillars ──────────────────────────────────────────────────────── -->
+    <section class="pc-wrap pc-section" id="servicios">
+      <p class="section-label" data-animate>Cómo te acompañamos</p>
+      <h2 class="section-title" data-split-text>No es solo edición: estamos <em>en todo el proceso</em></h2>
+
+      <div class="pc-services">
+        {pillars.map((s: any, i: number) => (
+          <div class="pc-service" data-animate>
+            <span class="pc-service-n">{pad(i + 1)}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            {s.items?.length > 0 && (
+              <ul class="pc-service-items">
+                {s.items.map((it: string) => <li>{it}</li>)}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ─── Coaching ─────────────────────────────────────────────────────── -->
+    <section class="pc-wrap pc-section" id="coaching">
+      <div class="pc-coach">
+        <div class="pc-coach-photo" data-animate>
+          <img src={coaching.photo} alt={coaching.name} loading="lazy" />
+          <div class="pc-coach-id">
+            <strong>{coaching.name}</strong>
+            <span>{coaching.role}</span>
+          </div>
+        </div>
+        <div class="pc-coach-text" data-animate>
+          <p class="section-label">{coaching.label}</p>
+          <h2 class="pc-coach-title" set:html={coaching.title} />
+          <p class="pc-coach-body">{coaching.text}</p>
+          <ul class="pc-coach-points">
+            {coaching.points.map((pt: string) => <li>{pt}</li>)}
+          </ul>
+          <a href="/#contacto" class="btn-secondary">Quiero una sesión</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Cases ────────────────────────────────────────────────────────── -->
+    <section class="pc-wrap pc-section" id="casos">
+      <p class="section-label" data-animate>Casos</p>
+      <h2 class="section-title" data-split-text>Del clip crudo a un video <em>que te representa</em></h2>
+
+      <div class="pc-filters" role="group" aria-label="Filtrar casos por formato" data-animate>
+        <button type="button" class="pc-chip is-active" data-filter="all" aria-pressed="true">Todos</button>
+        {formats.map((f: any) => (
+          <button type="button" class="pc-chip" data-filter={f.id} aria-pressed="false">{f.label}</button>
+        ))}
+      </div>
+
+      <div class="pc-cases">
+        {cases.map((c: any, i: number) => (
+          <article class:list={['pc-case', i % 2 === 1 && 'is-reversed', c.extra?.length && !c.before && 'has-trio']} data-format={c.format} id={c.id}>
+            <div class:list={['pc-case-media', `is-${c.orientation}`]} data-animate>
+              {c.before ? (
+                <div class="pc-ba" data-ba data-state="after">
+                  <div class="pc-ba-layer" data-ba-layer="before">
+                    <Media media={c.before} mode="ambient" />
+                  </div>
+                  <div class="pc-ba-layer" data-ba-layer="after">
+                    <Media media={c.after} mode="ambient" />
+                  </div>
+                  <div class="pc-ba-toggle" role="group" aria-label="Comparar antes y después">
+                    <button type="button" data-ba-btn="before" aria-pressed="false">Crudo</button>
+                    <button type="button" data-ba-btn="after" aria-pressed="true" class="is-active">Editado</button>
+                  </div>
+                </div>
+              ) : c.extra?.length ? (
+                <div class="pc-trio">
+                  {[c.after, ...c.extra].map((m: any) => (
+                    <div class="pc-ba">
+                      <Media media={m} mode="click" label={`Reproducir video de ${c.client}`} />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div class="pc-ba">
+                  <Media media={c.after} mode="click" label={`Reproducir video de ${c.client}`} />
+                </div>
+              )}
+            </div>
+
+            <div class="pc-case-info" data-animate>
+              <div class="pc-case-meta">
+                <span class="pc-case-index">{pad(i + 1)} / {pad(cases.length)}</span>
+                <span class="pc-tag">{formatLabel(c.format)}</span>
+              </div>
+              <h3 class="pc-case-client">{c.client}</h3>
+              <p class="pc-case-niche">{c.niche} · <span>{c.deliverable}</span></p>
+
+              {c.challenge && (
+                <div class="pc-case-block">
+                  <h4>El desafío</h4>
+                  <p>{c.challenge}</p>
+                </div>
+              )}
+
+              <div class="pc-case-block">
+                <h4>Qué hice</h4>
+                <p>{c.work}</p>
+              </div>
+
+              {c.results?.length > 0 && (
+                <div class="pc-results">
+                  {c.results.map((r: any) => (
+                    <div class="pc-result">
+                      <div class="pc-result-value">{r.value}</div>
+                      <div class="pc-result-label">{r.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {c.quote && (
+                <blockquote class="pc-quote">
+                  <p>“{c.quote}”</p>
+                  <cite>{c.client}</cite>
+                </blockquote>
+              )}
+
+              {c.profileUrl && (
+                <a class="pc-case-link" href={c.profileUrl} target="_blank" rel="noopener noreferrer">
+                  Ver {c.handle} →
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- ─── Testimonials ─────────────────────────────────────────────────── -->
+    <section class="pc-section pc-testimonials" id="testimonios">
+      <div class="pc-wrap">
+        <p class="section-label" data-animate>Testimonios</p>
+        <h2 class="section-title" data-split-text>Mejor que lo <em>cuenten ellos</em></h2>
+
+        <div class="pc-tgrid">
+          {testimonials.map((t: any) =>
+            t.kind === 'video' ? (
+              <figure class="pc-tcard pc-tcard-video" data-animate>
+                <div class="pc-tvideo">
+                  <Media media={t.media} mode="click" label={`Reproducir testimonio de ${t.name}`} />
+                </div>
+                <figcaption>
+                  <strong>{t.name}</strong>
+                  <span>{t.role}</span>
+                </figcaption>
+              </figure>
+            ) : (
+              <figure class="pc-tcard pc-tcard-audio" data-animate data-audio-card>
+                <div class="pc-audio-badge">Testimonio en audio</div>
+                {t.quote && <p class="pc-audio-quote">“{t.quote}”</p>}
+                <div class="pc-audio">
+                  <audio src={t.media.src} preload="metadata" data-audio></audio>
+                  <button type="button" class="pc-audio-btn" data-audio-btn aria-label={`Escuchar a ${t.name}`}>
+                    <svg class="i-play" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
+                    <svg class="i-pause" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor" /></svg>
+                  </button>
+                  <div class="pc-wave" data-audio-bar aria-hidden="true">
+                    {Array.from({ length: 36 }).map((_, k) => (
+                      <span style={`height:${28 + Math.round(60 * Math.abs(Math.sin(k * 1.7) * Math.cos(k * 0.45)))}%`}></span>
+                    ))}
+                  </div>
+                  <span class="pc-audio-time" data-audio-time>0:00</span>
+                </div>
+                <figcaption>
+                  <strong>{t.name}</strong>
+                  <span>{t.role}</span>
+                </figcaption>
+              </figure>
+            )
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Process ──────────────────────────────────────────────────────── -->
+    <section class="pc-wrap pc-section">
+      <div class="pc-process" id="proceso">
+        <p class="section-label" data-animate>Cómo trabajamos</p>
+        <h2 class="section-title" data-split-text>Paso a paso, <em>con vos</em></h2>
+        <ol class="pc-steps">
+          {process.map((p: any, i: number) => (
+            <li class="pc-step" data-animate>
+              <span class="pc-step-dot">{i + 1}</span>
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- ─── CTA ──────────────────────────────────────────────────────────── -->
+    <section class="pc-cta">
+      <div class="pc-wrap pc-cta-inner" data-animate>
+        <h2 class="pc-cta-title">¿Empezamos a <em>contar tu historia</em>?</h2>
+        <p>Contanos de tu proyecto y vemos juntos cómo podemos acompañarte. Sin compromiso.</p>
+        <div class="pc-hero-actions">
+          <a href="/#contacto" class="btn-primary">Contanos tu proyecto</a>
+          <a href={whatsappUrl} class="btn-secondary" target="_blank" rel="noopener noreferrer">Escribinos por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer base="/" />
+
+  {demo && (
+    <div class="pc-demo-banner" role="note">
+      <span class="pc-demo-dot" aria-hidden="true"></span>
+      Versión de prueba · contenido de ejemplo
+    </div>
+  )}
+</Layout>
+
+<style>
+  .pc {
+    position: relative;
+    z-index: 1;
+    overflow-x: clip;
+  }
+
+  .pc-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 48px);
+  }
+
+  .pc-section {
+    padding-top: clamp(96px, 12vw, 160px);
+  }
+
+  /* ─── Hero ─── */
+  .pc-hero {
+    position: relative;
+    padding-top: clamp(140px, 18vw, 200px);
+  }
+
+  .pc-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    pointer-events: none;
+    opacity: 0.35;
+    z-index: -1;
+  }
+
+  .pc-blob-1 {
+    width: 520px;
+    height: 520px;
+    background: var(--color-purple-deep);
+    top: 40px;
+    left: -160px;
+  }
+
+  .pc-blob-2 {
+    width: 420px;
+    height: 420px;
+    background: var(--color-green-deep);
+    top: 360px;
+    right: -140px;
+    opacity: 0.2;
+  }
+
+  .pc-hero-inner {
+    max-width: 1000px;
+    margin-bottom: clamp(48px, 6vw, 72px);
+  }
+
+  .pc-hero-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(40px, 5.6vw, 80px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: var(--color-cream);
+    margin-bottom: 28px;
+  }
+
+  .pc-hero-title :global(em),
+  .pc-cta-title em {
+    font-style: italic;
+    background: linear-gradient(90deg, var(--color-purple), var(--color-green));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .pc-hero-sub {
+    font-size: clamp(16px, 1.4vw, 19px);
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    max-width: 620px;
+    margin-bottom: 36px;
+  }
+
+  .pc-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .pc-showreel {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 40px 120px rgba(123, 107, 176, 0.25),
+      0 0 0 1px rgba(184, 169, 217, 0.08);
+  }
+
+  .pc-showreel-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 100px;
+    background: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+
+  /* ─── Stats ─── */
+  .pc-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    margin-top: clamp(64px, 8vw, 96px);
+  }
+
+  .pc-stat {
+    padding: 28px 24px;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .pc-stat:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .pc-stat-value {
+    font-family: var(--font-serif);
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1;
+    color: var(--color-cream);
+    margin-bottom: 10px;
+  }
+
+  .pc-stat-label {
+    font-size: 13px;
+    color: var(--color-ink-muted);
+    line-height: 1.4;
+  }
+
+  /* ─── Filters ─── */
+  .pc-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -24px 0 56px;
+  }
+
+  .pc-chip {
+    font: inherit;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 9px 18px;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+  }
+
+  .pc-chip:hover {
+    color: #fff;
+    border-color: rgba(184, 169, 217, 0.5);
+  }
+
+  .pc-chip.is-active {
+    color: #0A0A0A;
+    background: var(--color-purple);
+    border-color: var(--color-purple);
+  }
+
+  /* ─── Case ─── */
+  .pc-cases {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(72px, 9vw, 120px);
+  }
+
+  .pc-case {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: clamp(32px, 6vw, 88px);
+    align-items: center;
+  }
+
+  .pc-case[hidden] {
+    display: none;
+  }
+
+  .pc-case.is-reversed .pc-case-media {
+    order: 2;
+  }
+
+  .pc-case-media {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pc-ba {
+    position: relative;
+    width: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #111110;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+  }
+
+  .is-vertical .pc-ba {
+    aspect-ratio: 9 / 16;
+    max-width: 360px;
+  }
+
+  .is-horizontal .pc-ba {
+    aspect-ratio: 16 / 9;
+  }
+
+  .pc-case.has-trio {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  }
+
+  .pc-trio {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    align-items: center;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .is-vertical .pc-trio .pc-ba {
+    max-width: none;
+    border-radius: 20px;
+    transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+
+  .pc-trio .pc-ba:first-child {
+    transform: translateY(24px) rotate(-2deg);
+  }
+
+  .pc-trio .pc-ba:last-child {
+    transform: translateY(-24px) rotate(2deg);
+  }
+
+  /* the hovered video straightens, grows and glows; its sibling steps back */
+  .pc-trio .pc-ba:hover {
+    transform: translateY(0) rotate(0) scale(1.06);
+    z-index: 2;
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .pc-trio:hover .pc-ba:not(:hover) {
+    opacity: 0.5;
+    filter: saturate(0.6);
+  }
+
+  @media (max-width: 720px) {
+    .pc-trio {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 12px;
+      padding: 8px 4px 16px;
+      scrollbar-width: none;
+    }
+
+    .pc-trio::-webkit-scrollbar {
+      display: none;
+    }
+
+    .is-vertical .pc-trio .pc-ba {
+      flex: 0 0 68%;
+      scroll-snap-align: center;
+      transform: none !important;
+    }
+  }
+
+  .pc-ba-layer {
+    position: absolute;
+    inset: 0;
+    transition: opacity 0.45s ease;
+  }
+
+  .pc-ba[data-state='after'] [data-ba-layer='before'],
+  .pc-ba[data-state='before'] [data-ba-layer='after'] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .pc-ba-toggle {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: flex;
+    padding: 4px;
+    border-radius: 100px;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    z-index: 2;
+  }
+
+  .pc-ba-toggle button {
+    font: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.65);
+    background: transparent;
+    border: 0;
+    border-radius: 100px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .pc-ba-toggle button.is-active {
+    background: var(--color-cream);
+    color: #0A0A0A;
+  }
+
+  .pc-case-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .pc-case-index {
+    font-size: 12px;
+    color: var(--color-ink-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .pc-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    background: rgba(184, 232, 174, 0.08);
+    border: 1px solid rgba(184, 232, 174, 0.2);
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+
+  .pc-case-client {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(32px, 3.6vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--color-cream);
+    margin-bottom: 8px;
+  }
+
+  .pc-case-niche {
+    font-size: 15px;
+    color: var(--color-purple);
+    margin-bottom: 32px;
+  }
+
+  .pc-case-niche span {
+    color: var(--color-ink-muted);
+  }
+
+  .pc-case-block {
+    margin-bottom: 24px;
+  }
+
+  .pc-case-block h4 {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    margin-bottom: 10px;
+  }
+
+  .pc-case-block p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .pc-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 32px 0 28px;
+  }
+
+  .pc-result {
+    padding: 18px 16px;
+    border-radius: 16px;
+    background: linear-gradient(160deg, rgba(42, 35, 64, 0.7), rgba(28, 28, 26, 0.6));
+    border: 1px solid rgba(184, 169, 217, 0.14);
+  }
+
+  .pc-result-value {
+    font-family: var(--font-serif);
+    font-size: clamp(26px, 2.6vw, 34px);
+    line-height: 1;
+    color: var(--color-green);
+    margin-bottom: 8px;
+  }
+
+  .pc-result-label {
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--color-ink-muted);
+  }
+
+  .pc-quote {
+    border-left: 2px solid var(--color-purple-deep);
+    padding: 4px 0 4px 20px;
+    margin-bottom: 24px;
+  }
+
+  .pc-quote p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--color-cream);
+    margin-bottom: 8px;
+  }
+
+  .pc-quote cite {
+    font-style: normal;
+    font-size: 13px;
+    color: var(--color-ink-muted);
+  }
+
+  .pc-case-link {
+    font-size: 14px;
+    color: var(--color-purple);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184, 169, 217, 0.3);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .pc-case-link:hover {
+    color: var(--color-green);
+    border-color: var(--color-green);
+  }
+
+  /* ─── Testimonials ─── */
+  .pc-tgrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .pc-tcard {
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #111110;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pc-tvideo {
+    position: relative;
+    aspect-ratio: 9 / 14;
+  }
+
+  .pc-tcard figcaption {
+    padding: 18px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .pc-tcard figcaption strong {
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--color-cream);
+  }
+
+  .pc-tcard figcaption span {
+    font-size: 13px;
+    color: var(--color-ink-muted);
+  }
+
+  .pc-tcard-audio {
+    background: linear-gradient(170deg, var(--color-purple-light) 0%, #111110 70%);
+    padding-top: 28px;
+  }
+
+  .pc-audio-badge {
+    margin: 0 22px 20px;
+    align-self: flex-start;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-purple);
+    border: 1px solid rgba(184, 169, 217, 0.3);
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+
+  .pc-audio-quote {
+    font-family: var(--font-serif);
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.35;
+    color: var(--color-cream);
+    padding: 0 22px;
+    flex: 1;
+  }
+
+  .pc-audio {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 28px 22px 4px;
+    padding: 12px;
+    border-radius: 100px;
+    background: rgba(10, 10, 10, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .pc-audio-btn {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 0;
+    background: var(--color-green);
+    color: #0A0A0A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .pc-audio-btn:hover {
+    transform: scale(1.06);
+  }
+
+  .pc-audio-btn .i-pause,
+  .is-playing .pc-audio-btn .i-play {
+    display: none;
+  }
+
+  .is-playing .pc-audio-btn .i-pause {
+    display: block;
+  }
+
+  .pc-wave {
+    flex: 1;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    --progress: 0%;
+  }
+
+  .pc-wave span {
+    flex: 1;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .pc-wave span.is-played {
+    background: var(--color-green);
+  }
+
+  .pc-audio-time {
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-ink-muted);
+    min-width: 34px;
+    padding-right: 8px;
+  }
+
+  /* ─── Services ─── */
+  .pc-services {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .pc-service {
+    padding: 28px 24px 32px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .pc-service:hover {
+    border-color: rgba(184, 169, 217, 0.35);
+    transform: translateY(-4px);
+  }
+
+  .pc-service-n {
+    display: block;
+    font-size: 12px;
+    color: var(--color-purple-deep);
+    margin-bottom: 40px;
+  }
+
+  .pc-service h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--color-cream);
+    margin-bottom: 10px;
+  }
+
+  .pc-service p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+  }
+
+  .pc-service-items {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 20px;
+  }
+
+  .pc-service-items li {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 5px 11px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .pc-service:last-child {
+    background: linear-gradient(165deg, rgba(26, 43, 24, 0.9), rgba(17, 17, 16, 0.6));
+    border-color: rgba(184, 232, 174, 0.2);
+  }
+
+  .pc-service:last-child .pc-service-n {
+    color: var(--color-green);
+  }
+
+  /* ─── Coaching ─── */
+  .pc-coach {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(32px, 6vw, 88px);
+    align-items: center;
+    padding: clamp(24px, 4vw, 56px);
+    border-radius: 32px;
+    background:
+      radial-gradient(70% 90% at 0% 100%, rgba(111, 207, 90, 0.16), transparent 70%),
+      linear-gradient(160deg, #141413 0%, #0E0E0D 100%);
+    border: 1px solid rgba(184, 232, 174, 0.14);
+  }
+
+  .pc-coach-photo {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--color-green-light);
+  }
+
+  .pc-coach-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pc-coach-id {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .pc-coach-id strong {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--color-cream);
+  }
+
+  .pc-coach-id span {
+    font-size: 12px;
+    color: var(--color-green);
+  }
+
+  .pc-coach-text .section-label {
+    color: var(--color-green-deep);
+  }
+
+  .pc-coach-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--color-cream);
+    margin-bottom: 20px;
+  }
+
+  .pc-coach-title :global(em) {
+    font-style: italic;
+    color: var(--color-green);
+  }
+
+  .pc-coach-body {
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 24px;
+  }
+
+  .pc-coach-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .pc-coach-points li {
+    position: relative;
+    padding-left: 28px;
+    font-size: 15px;
+    color: var(--color-cream);
+  }
+
+  .pc-coach-points li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(184, 232, 174, 0.15);
+    color: var(--color-green);
+  }
+
+  /* ─── Process ─── */
+  .pc-process {
+    margin-top: 0;
+  }
+
+  .pc-steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+    margin-top: 12px;
+  }
+
+  .pc-steps::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-purple-deep), var(--color-green-deep));
+    opacity: 0.5;
+  }
+
+  .pc-step {
+    position: relative;
+  }
+
+  .pc-step-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    background: #0A0A0A;
+    border: 1px solid var(--color-purple);
+    color: var(--color-purple);
+    margin-bottom: 22px;
+    position: relative;
+  }
+
+  .pc-step h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--color-cream);
+    margin-bottom: 8px;
+  }
+
+  .pc-step p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+  }
+
+  /* ─── CTA ─── */
+  .pc-cta {
+    margin-top: clamp(112px, 14vw, 180px);
+    padding: clamp(80px, 10vw, 128px) 0;
+    background:
+      radial-gradient(60% 80% at 20% 0%, rgba(123, 107, 176, 0.28), transparent 70%),
+      radial-gradient(50% 70% at 90% 100%, rgba(111, 207, 90, 0.14), transparent 70%);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .pc-cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .pc-cta-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--color-cream);
+    margin-bottom: 20px;
+    max-width: 900px;
+  }
+
+  .pc-cta-inner > p {
+    font-size: 17px;
+    color: var(--color-ink-muted);
+    margin-bottom: 36px;
+  }
+
+  .pc-cta-inner .pc-hero-actions {
+    justify-content: center;
+  }
+
+  /* ─── Demo banner ─── */
+  .pc-demo-banner {
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: calc(100vw - 32px);
+    white-space: nowrap;
+    font-size: 12px;
+    color: #0A0A0A;
+    background: var(--color-green);
+    padding: 9px 16px;
+    border-radius: 100px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+  }
+
+  .pc-demo-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #0A0A0A;
+    flex-shrink: 0;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 1024px) {
+    .pc-services {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pc-tgrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pc-tcard-audio {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .pc-coach {
+      grid-template-columns: 1fr;
+    }
+
+    .pc-coach-photo {
+      max-width: 420px;
+    }
+
+    .pc-case,
+    .pc-case.has-trio {
+      grid-template-columns: 1fr;
+    }
+
+    .pc-case.is-reversed .pc-case-media {
+      order: 0;
+    }
+
+    .pc-stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+
+    .pc-stat,
+    .pc-stat:first-child {
+      padding: 24px 0;
+      border-left: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pc-steps {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 40px;
+    }
+
+    .pc-steps::before {
+      display: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .pc-results {
+      grid-template-columns: 1fr;
+    }
+
+    .pc-result {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    .pc-tgrid,
+    .pc-services,
+    .pc-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .pc-tvideo {
+      aspect-ratio: 4 / 5;
+    }
+
+    .pc-showreel {
+      border-radius: 16px;
+    }
+
+    .pc-hero-actions a {
+      flex: 1 1 auto;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  // ─── Ambient videos: play only while visible ────────────────────────────────
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ambient = document.querySelectorAll<HTMLVideoElement>('video[data-ambient]');
+
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const v = entry.target as HTMLVideoElement;
+          if (entry.isIntersecting) {
+            if (v.preload === 'none') v.preload = 'auto';
+            v.play().catch(() => {});
+          } else {
+            v.pause();
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+    ambient.forEach((v) => io.observe(v));
+  } else {
+    ambient.forEach((v) => (v.preload = 'metadata'));
+  }
+
+  // ─── Click-to-play (files and YouTube/Vimeo embeds) ─────────────────────────
+  function pauseOthers(except?: HTMLMediaElement) {
+    document.querySelectorAll<HTMLMediaElement>('video[data-click-video], audio[data-audio]').forEach((m) => {
+      if (m !== except && !m.paused) m.pause();
+    });
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.pc-media .pc-play').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const wrap = btn.closest('.pc-media') as HTMLElement;
+      const embed = btn.dataset.embed;
+
+      if (embed) {
+        pauseOthers();
+        const iframe = document.createElement('iframe');
+        iframe.src = embed;
+        iframe.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+        iframe.allowFullscreen = true;
+        iframe.title = btn.getAttribute('aria-label') || 'Video';
+        wrap.innerHTML = '';
+        wrap.appendChild(iframe);
+        return;
+      }
+
+      const video = wrap.querySelector<HTMLVideoElement>('video');
+      if (!video) return;
+      pauseOthers(video);
+      video.controls = true;
+      btn.remove();
+      video.play().catch(() => {});
+    });
+  });
+
+  document.querySelectorAll<HTMLVideoElement>('video[data-click-video]').forEach((v) => {
+    v.addEventListener('play', () => pauseOthers(v));
+  });
+
+  // ─── Before / after toggle ───────────────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>('[data-ba]').forEach((ba) => {
+    const buttons = ba.querySelectorAll<HTMLButtonElement>('[data-ba-btn]');
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const state = btn.dataset.baBtn as string;
+        ba.dataset.state = state;
+        buttons.forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', String(on));
+        });
+        const shown = ba.querySelector<HTMLVideoElement>(`[data-ba-layer="${state}"] video`);
+        if (shown && !reduceMotion) {
+          shown.currentTime = 0;
+          shown.play().catch(() => {});
+        }
+      });
+    });
+  });
+
+  // ─── Format filter ───────────────────────────────────────────────────────────
+  const chips = document.querySelectorAll<HTMLButtonElement>('.pc-chip');
+  const cases = document.querySelectorAll<HTMLElement>('.pc-case');
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const f = chip.dataset.filter;
+      chips.forEach((c) => {
+        const on = c === chip;
+        c.classList.toggle('is-active', on);
+        c.setAttribute('aria-pressed', String(on));
+      });
+      cases.forEach((c) => {
+        const show = f === 'all' || c.dataset.format === f;
+        c.hidden = !show;
+        if (show) {
+          // Make sure filtered-in cases are visible even if their entrance animation never ran.
+          c.querySelectorAll<HTMLElement>('[data-animate]').forEach((el) => {
+            el.style.opacity = '1';
+            el.style.visibility = 'visible';
+            el.style.transform = 'none';
+          });
+        }
+      });
+      window.dispatchEvent(new Event('resize'));
+    });
+  });
+
+  // ─── Audio testimonials ─────────────────────────────────────────────────────
+  const fmt = (s: number) => {
+    if (!isFinite(s)) return '0:00';
+    const m = Math.floor(s / 60);
+    return `${m}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-audio-card]').forEach((card) => {
+    const audio = card.querySelector<HTMLAudioElement>('audio[data-audio]')!;
+    const btn = card.querySelector<HTMLButtonElement>('[data-audio-btn]')!;
+    const bar = card.querySelector<HTMLElement>('[data-audio-bar]')!;
+    const time = card.querySelector<HTMLElement>('[data-audio-time]')!;
+    const bars = Array.from(bar.children) as HTMLElement[];
+
+    audio.addEventListener('loadedmetadata', () => (time.textContent = fmt(audio.duration)));
+    audio.addEventListener('timeupdate', () => {
+      const p = audio.duration ? audio.currentTime / audio.duration : 0;
+      const n = Math.round(p * bars.length);
+      bars.forEach((b, i) => b.classList.toggle('is-played', i < n));
+      time.textContent = fmt(audio.currentTime);
+    });
+    audio.addEventListener('play', () => {
+      pauseOthers(audio);
+      card.classList.add('is-playing');
+    });
+    audio.addEventListener('pause', () => card.classList.remove('is-playing'));
+    audio.addEventListener('ended', () => card.classList.remove('is-playing'));
+
+    btn.addEventListener('click', () => (audio.paused ? audio.play() : audio.pause()));
+    bar.addEventListener('click', (e) => {
+      const r = bar.getBoundingClientRect();
+      if (audio.duration) audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+      if (audio.paused) audio.play();
+    });
+  });
+</script>

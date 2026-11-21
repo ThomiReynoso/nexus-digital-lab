@@ -1,0 +1,231 @@
+{
+  "_instrucciones": "Mientras 'demo' sea true, la página muestra un aviso de contenido de ejemplo y no se indexa en Google. Cambialo a false cuando todo el contenido sea real. Videos: 'type' puede ser 'file' (mp4 en /public o URL directa), 'youtube' (ID del video) o 'vimeo' (ID del video). 'poster' es la imagen que se ve antes de reproducir. Los títulos 'hero.title' y 'coaching.title' aceptan <em>…</em> para resaltar palabras.",
+  "demo": true,
+  "showreel": {
+    "type": "file",
+    "src": "/portfolio-contenido/demo/showreel.mp4",
+    "poster": "/portfolio-contenido/demo/showreel.jpg"
+  },
+  "stats": [
+    {
+      "value": 150,
+      "suffix": "+",
+      "label": "Videos editados"
+    },
+    {
+      "value": 15,
+      "suffix": "+",
+      "label": "Creadores y marcas acompañados"
+    },
+    {
+      "value": 8,
+      "suffix": "",
+      "label": "Nichos distintos"
+    },
+    {
+      "value": 48,
+      "suffix": "h",
+      "label": "Entrega promedio del primer corte"
+    }
+  ],
+  "formats": [
+    {
+      "id": "reels",
+      "label": "Reels y Shorts"
+    },
+    {
+      "id": "youtube",
+      "label": "YouTube"
+    }
+  ],
+  "cases": [
+    {
+      "id": "flor-madia",
+      "format": "reels",
+      "orientation": "vertical",
+      "client": "Flor Madia",
+      "niche": "Entrenadora personal",
+      "handle": "@flormadiafit",
+      "profileUrl": "https://instagram.com/flormadiafit",
+      "deliverable": "Estrategia, calendario y edición de Reels",
+      "work": "Acompañé a Flor desde la elección de los temas hasta la edición final. Juntas definimos qué queríamos contar sobre su trabajo y a quién le hablábamos. Con eso, armé el calendario y preparé los guiones para que llegara a cada grabación con una idea clara y pudiera explicarla con sus palabras. Después edité los Reels, diseñé las portadas y revisé en qué momentos la gente dejaba de mirar para ajustar los videos siguientes.",
+      "after": {
+        "type": "file",
+        "src": "/portfolio-contenido/flor-madia/editado.mp4",
+        "poster": "/portfolio-contenido/flor-madia/editado.jpg"
+      },
+      "challenge": "Flor quería que más personas conocieran su asesoría online. Tenía mucho para compartir como entrenadora y buscaba una forma de llevarlo a redes que conservara su manera de hablar y ayudara a potenciales clientes a entender cómo era entrenar con ella.",
+      "quote": "Lo que más valoro de trabajar con Mai es que me escucha de verdad. Entiende lo que quiero transmitir y me ayuda a convertirlo en contenido con estrategia. Gracias a su ayuda, cada vez más personas se acercan a mi programa online.",
+      "extra": [
+        {
+          "type": "file",
+          "src": "/portfolio-contenido/flor-madia/editado-2.mp4",
+          "poster": "/portfolio-contenido/flor-madia/editado-2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "pomposo-y-peligroso",
+      "format": "reels",
+      "orientation": "vertical",
+      "client": "Pomposo y Peligroso",
+      "niche": "Programa de entrenamiento online",
+      "handle": "@pomposoypeligrosotmc",
+      "profileUrl": "https://instagram.com/pomposoypeligrosotmc",
+      "deliverable": "Estrategia, calendario y edición de Reels",
+      "challenge": "El equipo quería dar a conocer su programa de 12 semanas para mujeres de más de 30 años. El objetivo era que alguien que llegaba por primera vez a la cuenta entendiera cómo se trabajaban el entrenamiento y la alimentación, y pudiera decidir si el programa era para ella.",
+      "work": "Me encargué de la estrategia de contenido de la cuenta. Definí qué temas íbamos a tratar, qué buscábamos con cada publicación y cómo repartirlos en el calendario. También escribí los guiones que Flor grababa frente a cámara. A partir de sus grabaciones, edité los Reels combinando su voz con imágenes, texto y otros recursos visuales para que cada explicación fuera fácil de seguir. Diseñé las portadas y revisé las métricas para planificar el contenido siguiente.",
+      "after": {
+        "type": "file",
+        "src": "/portfolio-contenido/pomposo-y-peligroso/editado.mp4",
+        "poster": "/portfolio-contenido/pomposo-y-peligroso/editado.jpg"
+      },
+      "quote": "Queríamos que nuestro centro se viera tan profesional en redes como es en la vida real, y Mai lo logró. Nos ordenó el contenido, nos acompañó en cada paso y hoy llegan más personas interesadas en nuestros programas online.",
+      "extra": [
+        {
+          "type": "file",
+          "src": "/portfolio-contenido/pomposo-y-peligroso/editado-2.mp4",
+          "poster": "/portfolio-contenido/pomposo-y-peligroso/editado-2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "the-monkeys",
+      "format": "reels",
+      "orientation": "vertical",
+      "client": "The Monkeys",
+      "niche": "Centro de entrenamiento en Sant Feliu",
+      "handle": "@themonkeyscommunity",
+      "profileUrl": "https://instagram.com/themonkeyscommunity",
+      "deliverable": "Estrategia, grabación y edición de Reels",
+      "challenge": "The Monkeys quería dar a conocer la apertura de su nuevo centro y mostrar algo que cuesta transmitir con una foto del espacio: cómo se vive un entrenamiento en grupos reducidos y qué comunidad hay detrás.",
+      "work": "Me encargué de pensar y producir el contenido de la cuenta. Armé el calendario, preparé los guiones y planifiqué qué necesitábamos grabar para mostrar el espacio, los entrenamientos y al equipo. Fui al centro a grabar y cubrí la apertura. Después seleccioné las tomas, edité los Reels y diseñé las portadas. Al revisar las métricas, tenía una referencia para decidir qué seguir mostrando en las próximas publicaciones.",
+      "after": {
+        "type": "file",
+        "src": "/portfolio-contenido/the-monkeys/editado.mp4",
+        "poster": "/portfolio-contenido/the-monkeys/editado.jpg"
+      },
+      "quote": "Mai entendió desde el principio lo que somos como comunidad. Se encargó de grabar, editar y cubrir la apertura de nuestro nuevo centro, y gracias a eso pudimos mostrarnos con una imagen profesional y cercana, como realmente somos."
+    },
+    {
+      "id": "jf-frutos",
+      "format": "youtube",
+      "orientation": "horizontal",
+      "client": "Juan Francisco Frutos Casado",
+      "niche": "Periodista y formador en comunicación",
+      "handle": "@JF_FrutosCasado",
+      "profileUrl": "https://youtube.com/@JF_FrutosCasado",
+      "deliverable": "Edición de YouTube y diseño de miniaturas",
+      "challenge": "Frutos comparte contenido de comunicación y oratoria en YouTube. Necesitaba que sus videos largos fueran fáciles de seguir de principio a fin y que la edición respetara algo muy propio de su trabajo: su manera de usar la voz y las pausas para explicar una idea.",
+      "work": "Me encargué de editar los videos de su canal a partir del material que él grababa. Trabajé los cortes y las pausas para darle ritmo a cada explicación, y sumé imágenes de apoyo, gráficos y textos cuando ayudaban a entender mejor lo que estaba contando. También diseñé las miniaturas para que se reconociera el tema de cada video antes de darle play.",
+      "after": {
+        "type": "youtube",
+        "src": "6wGsjt9oaUA"
+      }
+    }
+  ],
+  "testimonials": [
+    {
+      "kind": "video",
+      "name": "Laura Ferrer",
+      "role": "Coach fitness · @laura.entrena",
+      "media": {
+        "type": "file",
+        "src": "/portfolio-contenido/demo/testimonio-1.mp4",
+        "poster": "/portfolio-contenido/demo/testimonio-1.jpg"
+      }
+    },
+    {
+      "kind": "video",
+      "name": "Martín Ríos",
+      "role": "YouTuber · Finanzas en Simple",
+      "media": {
+        "type": "file",
+        "src": "/portfolio-contenido/demo/testimonio-2.mp4",
+        "poster": "/portfolio-contenido/demo/testimonio-2.jpg"
+      }
+    },
+    {
+      "kind": "audio",
+      "name": "Charlas de Oficio",
+      "role": "Podcast de emprendedores",
+      "quote": "Lo que más valoro es que entienden el tono del podcast. No hace falta explicarles nada dos veces.",
+      "media": {
+        "src": "/portfolio-contenido/demo/testimonio-audio.mp3"
+      }
+    }
+  ],
+  "process": [
+    {
+      "title": "Diagnóstico y estrategia",
+      "text": "Conocemos tu negocio, tu nicho y a tu cliente ideal. Definimos pilares de contenido y un calendario."
+    },
+    {
+      "title": "Grabación",
+      "text": "Grabás con una guía clara. Si la cámara te frena, te acompañamos con sesiones de coaching."
+    },
+    {
+      "title": "Edición",
+      "text": "Primer corte en 48 h y dos rondas de revisión. Archivos listos para publicar."
+    },
+    {
+      "title": "Métricas y ajustes",
+      "text": "Cada mes analizamos qué funcionó y ajustamos la estrategia con vos."
+    }
+  ],
+  "hero": {
+    "title": "Videos que transmiten <em>quién sos</em> y conectan con tu cliente ideal.",
+    "subtitle": "Te acompañamos en todo el camino: pensamos la estrategia, te ayudamos a sentirte en confianza frente a la cámara, editamos tus videos y miramos juntos qué funciona."
+  },
+  "pillars": [
+    {
+      "title": "Estrategia de contenido",
+      "text": "Entendemos tu nicho y a tu cliente ideal para definir qué contar y cómo contarlo.",
+      "items": [
+        "Pilares de contenido",
+        "Calendario editorial",
+        "Ideas y guiones"
+      ]
+    },
+    {
+      "title": "Edición",
+      "text": "Cada video con hooks, ritmo y subtítulos, adaptado a la plataforma donde se publica.",
+      "items": [
+        "Reels y Shorts",
+        "YouTube",
+        "Clips de podcast",
+        "Anuncios"
+      ]
+    },
+    {
+      "title": "Análisis de métricas",
+      "text": "Revisamos los números con vos para entender qué funciona, qué no y qué ajustar.",
+      "items": [
+        "Reporte mensual",
+        "Retención y alcance",
+        "Ajustes de estrategia"
+      ]
+    },
+    {
+      "title": "Coaching frente a cámara",
+      "text": "Sesiones para soltar miedos y animarte a mostrarte con naturalidad.",
+      "items": [
+        "Sesiones 1 a 1",
+        "Coach certificada"
+      ]
+    }
+  ],
+  "coaching": {
+    "label": "Coaching frente a cámara",
+    "title": "Animarse a mostrarse también <em>se entrena</em>.",
+    "text": "Muchas personas tienen algo valioso para contar, pero la cámara las frena. Mai es coach certificada y acompaña en sesiones 1 a 1 para trabajar los miedos, la vergüenza y la autoexigencia, y ganar confianza para grabar con naturalidad.",
+    "points": [
+      "Sesiones 1 a 1, online o presenciales",
+      "Ejercicios prácticos para soltarte frente a la cámara",
+      "Acompañamiento en tus primeras grabaciones"
+    ],
+    "name": "Mai",
+    "role": "Coach certificada · Edición y estrategia",
+    "photo": "/Mai.webp"
+  }
+}
