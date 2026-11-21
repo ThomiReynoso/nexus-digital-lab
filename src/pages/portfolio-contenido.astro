@@ -114,20 +114,34 @@ const whatsappUrl =
 
       <div class="pc-cases">
         {cases.map((c: any, i: number) => (
-          <article class:list={['pc-case', i % 2 === 1 && 'is-reversed']} data-format={c.format} id={c.id}>
+          <article class:list={['pc-case', i % 2 === 1 && 'is-reversed', c.extra?.length && !c.before && 'has-trio']} data-format={c.format} id={c.id}>
             <div class:list={['pc-case-media', `is-${c.orientation}`]} data-animate>
-              <div class="pc-ba" data-ba data-state="after">
-                <div class="pc-ba-layer" data-ba-layer="before">
-                  <Media media={c.before} mode="ambient" />
+              {c.before ? (
+                <div class="pc-ba" data-ba data-state="after">
+                  <div class="pc-ba-layer" data-ba-layer="before">
+                    <Media media={c.before} mode="ambient" />
+                  </div>
+                  <div class="pc-ba-layer" data-ba-layer="after">
+                    <Media media={c.after} mode="ambient" />
+                  </div>
+                  <div class="pc-ba-toggle" role="group" aria-label="Comparar antes y después">
+                    <button type="button" data-ba-btn="before" aria-pressed="false">Crudo</button>
+                    <button type="button" data-ba-btn="after" aria-pressed="true" class="is-active">Editado</button>
+                  </div>
                 </div>
-                <div class="pc-ba-layer" data-ba-layer="after">
-                  <Media media={c.after} mode="ambient" />
+              ) : c.extra?.length ? (
+                <div class="pc-trio">
+                  {[c.after, ...c.extra].map((m: any) => (
+                    <div class="pc-ba">
+                      <Media media={m} mode="click" label={`Reproducir video de ${c.client}`} />
+                    </div>
+                  ))}
                 </div>
-                <div class="pc-ba-toggle" role="group" aria-label="Comparar antes y después">
-                  <button type="button" data-ba-btn="before" aria-pressed="false">Crudo</button>
-                  <button type="button" data-ba-btn="after" aria-pressed="true" class="is-active">Editado</button>
+              ) : (
+                <div class="pc-ba">
+                  <Media media={c.after} mode="click" label={`Reproducir video de ${c.client}`} />
                 </div>
-              </div>
+              )}
             </div>
 
             <div class="pc-case-info" data-animate>
@@ -138,26 +152,28 @@ const whatsappUrl =
               <h3 class="pc-case-client">{c.client}</h3>
               <p class="pc-case-niche">{c.niche} · <span>{c.deliverable}</span></p>
 
-              <div class="pc-case-block">
-                <h4>El desafío</h4>
-                <p>{c.challenge}</p>
-              </div>
+              {c.challenge && (
+                <div class="pc-case-block">
+                  <h4>El desafío</h4>
+                  <p>{c.challenge}</p>
+                </div>
+              )}
 
               <div class="pc-case-block">
-                <h4>Qué hicimos</h4>
-                <ul class="pc-work">
-                  {c.work.map((w: string) => <li>{w}</li>)}
-                </ul>
+                <h4>Qué hice</h4>
+                <p>{c.work}</p>
               </div>
 
-              <div class="pc-results">
-                {c.results.map((r: any) => (
-                  <div class="pc-result">
-                    <div class="pc-result-value">{r.value}</div>
-                    <div class="pc-result-label">{r.label}</div>
-                  </div>
-                ))}
-              </div>
+              {c.results?.length > 0 && (
+                <div class="pc-results">
+                  {c.results.map((r: any) => (
+                    <div class="pc-result">
+                      <div class="pc-result-value">{r.value}</div>
+                      <div class="pc-result-label">{r.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {c.quote && (
                 <blockquote class="pc-quote">
@@ -487,6 +503,67 @@ const whatsappUrl =
     aspect-ratio: 16 / 9;
   }
 
+  .pc-case.has-trio {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  }
+
+  .pc-trio {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    align-items: center;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .is-vertical .pc-trio .pc-ba {
+    max-width: none;
+    border-radius: 20px;
+    transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+
+  .pc-trio .pc-ba:first-child {
+    transform: translateY(24px) rotate(-2deg);
+  }
+
+  .pc-trio .pc-ba:last-child {
+    transform: translateY(-24px) rotate(2deg);
+  }
+
+  /* the hovered video straightens, grows and glows; its sibling steps back */
+  .pc-trio .pc-ba:hover {
+    transform: translateY(0) rotate(0) scale(1.06);
+    z-index: 2;
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .pc-trio:hover .pc-ba:not(:hover) {
+    opacity: 0.5;
+    filter: saturate(0.6);
+  }
+
+  @media (max-width: 720px) {
+    .pc-trio {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 12px;
+      padding: 8px 4px 16px;
+      scrollbar-width: none;
+    }
+
+    .pc-trio::-webkit-scrollbar {
+      display: none;
+    }
+
+    .is-vertical .pc-trio .pc-ba {
+      flex: 0 0 68%;
+      scroll-snap-align: center;
+      transform: none !important;
+    }
+  }
+
   .pc-ba-layer {
     position: absolute;
     inset: 0;
@@ -594,22 +671,6 @@ const whatsappUrl =
     font-size: 16px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.85);
-  }
-
-  .pc-work {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .pc-work li {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 7px 14px;
-    border-radius: 100px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03);
   }
 
   .pc-results {
@@ -1139,7 +1200,8 @@ const whatsappUrl =
       max-width: 420px;
     }
 
-    .pc-case {
+    .pc-case,
+    .pc-case.has-trio {
       grid-template-columns: 1fr;
     }
 
